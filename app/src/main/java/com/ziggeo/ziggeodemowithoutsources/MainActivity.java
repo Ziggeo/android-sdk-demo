@@ -5,12 +5,9 @@ import android.os.Bundle;
 
 import com.ziggeo.androidsdk.Ziggeo;
 
-/**
- * Created by Alexandr on 19.10.2015.
- */
 public class MainActivity extends Activity {
 
-    public static final String APP_TOKEN = "0edc011c3056fe19e7c850785358066a";
+    public static final String APP_TOKEN = "APP_TOKEN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
