@@ -12,8 +12,8 @@ compile 'com.google.guava:guava:18.0'
 
 ```java
 Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
-long maxVideoDutaion = 1000 * 60 * 5;//for ex. 5 mins.
-ziggeo.createVideo(this, maxVideoDutaion);
+long maxVideoDuration = 1000 * 60 * 5;//for ex. 5 mins.
+ziggeo.createVideo(this, maxVideoDuration);
 ```
 
 ### How to use video player:
