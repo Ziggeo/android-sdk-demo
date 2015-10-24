@@ -1,8 +1,8 @@
 # Android-SDK
-### How to sdk:
-Put **sdk.aar** in **libs** folder.
-Press File->New->New Module and select Import .JAR/.AAR Package.
-Add dependencies to your build.gradle file
+### How to include the sdk:
+Put **sdk.aar** in **libs** folder for your project.
+In Android Studio choose File->New->New Module and select Import .JAR/.AAR Package.
+Add the following dependencies to your build.gradle file
 ```
 compile 'cz.msebera.android:httpclient:4.4.1.1'
 compile 'com.google.guava:guava:18.0'
