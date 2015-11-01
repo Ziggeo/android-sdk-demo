@@ -26,8 +26,9 @@ repositories {
     }
 
     dependencies{
-        compile(name:'sdk', ext:'aar')
+        compile(name:'ziggeo-sdk-v0.0.1', ext:'aar')
         compile 'cz.msebera.android:httpclient:4.4.1.1'
         compile 'com.google.guava:guava:18.0'
+        compile 'com.danikula:videocache:2.3.2'
     }
 }
