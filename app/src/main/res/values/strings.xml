@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ZiggeoDemoWithoutSources</string>
+    <string name="embedded_recorder">Embedded recorder</string>
 </resources>
