@@ -118,3 +118,29 @@ ArrayList<BasicNameValuePair> extraArgs = ...;
   * @param extraArgs - extra args to append to the playback stream url.
   */
 ziggeo.attachPlayer(manager, contentId, token, extraArgs);
+```
+
+## Events (read more here: https://github.com/greenrobot/EventBus):
+##### Subscribe for events 
+```java
+BusProvider.getInstance().register(this);
+```
+##### Unsubscribe 
+```java
+BusProvider.getInstance().unregister(this);
+```
+
+##### Receive events
+```java
+@Subscribe
+public void onVideoSent(VideoSentEvent event){}
+
+@Subscribe
+public void onCreateVideoError(CreateVideoErrorEvent event){}
+```
+
+##### Send events
+```java
+// for ex. to close recorder from anywhere
+BusProvider.getInstance().post(new CloseRecorderEvent());
+```
