@@ -8,6 +8,8 @@ Add the following dependencies to your build.gradle file
         compile 'cz.msebera.android:httpclient:4.4.1.1'
         compile 'com.google.guava:guava:18.0'
         compile 'com.danikula:videocache:2.3.2'
+        compile "com.android.support:support-v4:23.1.0"
+        compile "com.android.support:support-v13:23.1.0"
 ```
 
 ## Fullscreen video recorder:
