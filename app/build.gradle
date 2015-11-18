@@ -26,11 +26,11 @@ repositories {
     }
 
     dependencies{
-        compile(name:'ziggeo-sdk-v0.2.3', ext:'aar')
+        compile(name:'ziggeo-sdk-v0.3.0', ext:'aar')
         compile 'cz.msebera.android:httpclient:4.4.1.1'
         compile 'com.google.guava:guava:18.0'
         compile 'com.danikula:videocache:2.3.2'
-        compile "com.android.support:support-v4:23.1.0"
-        compile "com.android.support:support-v13:23.1.0"
+        compile "com.android.support:support-v4:23.1.1"
+        compile "com.android.support:support-v13:23.1.1"
     }
 }
