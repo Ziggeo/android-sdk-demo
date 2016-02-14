@@ -1,10 +1,11 @@
 # Android-SDK
+## Please, use latest build tools and compile sdk version.
 ### How to include the sdk:
 Put **ziggeo-sdk-v*.aar** in **libs** folder for your project.
 In Android Studio choose File->New->New Module and select Import .JAR/.AAR Package.
 Add the following dependencies to your build.gradle file
 ```
-        compile(name:'ziggeo-sdk-v0.3.0', ext:'aar')
+        compile(name:'ziggeo-sdk-v0.4.0', ext:'aar')
         compile 'cz.msebera.android:httpclient:4.4.1.1'
         compile 'com.google.guava:guava:18.0'
         compile 'com.danikula:videocache:2.3.2'
