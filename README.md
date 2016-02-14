@@ -50,6 +50,53 @@ ziggeo.setExtraArgsForCreateVideo(...);
 ```java
 ziggeo.setSendImmediately(false);
 ```
+##### You also can disable camera switching
+```java
+/**
+     * Use this for launch embedded recorder
+     *
+     * @param manager                - {@link FragmentManager}
+     * @param contentId              - Identifier of the container this fragment is to be placed in.
+     * @param maxDurationInMillis    - allowed max video duration in milliseconds.
+     * @param disableCameraSwitching - removes ability to switch cameras.
+     *                               The default camera is {@link Camera.CameraInfo.CAMERA_FACING_BACK}
+     */
+    public void attachRecorder(FragmentManager manager, int contentId, long maxDurationInMillis,
+                               boolean disableCameraSwitching)
+/**
+     * Use this for launch standalone activity with video recorder and player.
+     * With standalone recorder can be used {@link com.ziggeo.androidsdk.eventbus.events.CloseRecorderEvent}
+     *
+     * @param context                - context
+     * @param maxDurationInMillis    - allowed max video duration in milliseconds.
+     * @param disableCameraSwitching - removes ability to switch cameras.
+     *                               The default camera is {@link Camera.CameraInfo.CAMERA_FACING_BACK}
+     */
+    public void createVideo(Context context, long maxDurationInMillis, boolean disableCameraSwitching)
+```
+
+##### Or select default camera and disable switching.
+```java
+/**
+     * Use this for launch standalone activity with video recorder and player.
+     * With standalone recorder can be used {@link com.ziggeo.androidsdk.eventbus.events.CloseRecorderEvent}
+     *
+     * @param context             - context
+     * @param maxDurationInMillis - allowed max video duration in milliseconds.
+     * @param preferredCameraId   - allow the app use only selected camera if exists.
+     */
+    public void createVideo(Context context, long maxDurationInMillis, int preferredCameraId)
+/**
+     * Use this for launch embedded recorder
+     *
+     * @param manager             - {@link FragmentManager}
+     * @param contentId           - Identifier of the container this fragment is to be placed in.
+     * @param maxDurationInMillis - allowed max video duration in milliseconds.
+     * @param preferredCameraId          - allow the app use only selected camera if exists.
+     */
+    public void attachRecorder(FragmentManager manager, int contentId, long maxDurationInMillis,
+                               int preferredCameraId)
+```
 
 ## Video player:
 ```java
