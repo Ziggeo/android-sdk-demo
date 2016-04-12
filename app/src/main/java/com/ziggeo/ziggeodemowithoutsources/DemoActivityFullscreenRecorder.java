@@ -9,7 +9,7 @@ public class DemoActivityFullscreenRecorder extends Activity {
 
     public static final String TAG = DemoActivityFullscreenRecorder.class.getSimpleName();
 
-    public static final String APP_TOKEN = "0edc011c3056fe19e7c850785358066a";
+    public static final String APP_TOKEN = ""; // TODO place your token here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
