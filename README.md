@@ -45,7 +45,7 @@ ziggeo.attachRecorder(getFragmentManager(), R.id._your_id_here_, maxDuration);
 ```java
 ziggeo.setExtraArgsForCreateVideo(...);
 ```
-```
+
 ##### Direct video file uploading
 ```java
 ziggeo.uploadVideoFile(...);
