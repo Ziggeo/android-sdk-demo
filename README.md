@@ -16,7 +16,7 @@ Add the following dependencies to your build.gradle file
 ## Fullscreen video recorder:
 ```java
 Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
-long maxVideoDutaion = 1000 * 60 * 5; //for ex. 5 mins.
+long maxVideoDuration = 1000 * 60 * 5; //for ex. 5 mins.
 
 /**
   * Use this for launch standalone activity with video recorder and player.
