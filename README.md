@@ -43,12 +43,12 @@ ziggeo.attachRecorder(getFragmentManager(), R.id._your_id_here_, maxDuration);
 ```
 ##### Add extra args
 ```java
-ziggeo.setExtraArgsForCreateVideo(...);
+ziggeo.setExtraArgsForCreateVideo(RestParams extraArgs);
 ```
 
 ##### Direct video file uploading
 ```java
-ziggeo.uploadVideoFile(...);
+ziggeo.uploadVideoFile(Context context, Video videoFile);
 ```
 
 ##### By default recorded video will send immideately after it was recorded. 
