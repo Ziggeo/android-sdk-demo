@@ -46,11 +46,6 @@ ziggeo.attachRecorder(getFragmentManager(), R.id._your_id_here_, maxDuration);
 ziggeo.setExtraArgsForCreateVideo(RestParams extraArgs);
 ```
 
-##### Direct video file uploading
-```java
-ziggeo.uploadVideoFile(Context context, Video videoFile);
-```
-
 ##### By default recorded video will send immideately after it was recorded. 
 ##### To prevent this use
 ```java
@@ -166,3 +161,33 @@ public void onCreateVideoError(CreateVideoErrorEvent event){}
 // for ex. to close recorder from anywhere
 BusProvider.getInstance().post(new CloseRecorderEvent());
 ```
+
+## Ziggeo API access
+##### Direct video file uploading
+```java
+ziggeo.uploadVideoFile(Context context, Video videoFile);
+```
+
+##### Index
+```java
+/**
+  * Query an array of videos (will return at most 50 videos by default).
+  * Newest videos come first.
+  *
+  * @param context -  context
+  * @param params  - request params
+  */
+ziggeo.index(Context context, RestParams params);
+
+@Subscribe
+public void onIndexRequestSuccess(IndexRequestSuccessEvent event) {
+    Log.e(TAG, "onIndexRequestSuccess:" + event.getResult());
+}
+
+@Subscribe
+public void onIndexRequestError(IndexRequestErrorEvent event) {
+    Log.e(TAG, "onIndexRequestError:" + event.getException().getMessage());
+}
+```
+
+
