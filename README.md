@@ -5,18 +5,18 @@ Put **ziggeo-sdk-v*.aar** in **libs** folder for your project.
 In Android Studio choose File->New->New Module and select Import .JAR/.AAR Package.
 Add the following dependencies to your build.gradle file
 ```
-        compile(name:'ziggeo-sdk-v0.43.0', ext:'aar')
-        compile 'cz.msebera.android:httpclient:4.4.1.1'
+        compile(name: 'ziggeo-sdk-v0.44.0', ext: 'aar')
+        compile 'com.squareup.okhttp3:okhttp:3.2.0'
         compile 'com.google.guava:guava:18.0'
         compile 'com.danikula:videocache:2.3.2'
-        compile "com.android.support:support-v4:23.1.1"
-        compile "com.android.support:support-v13:23.1.1"
+        compile "com.android.support:support-v4:23.3.0"
+        compile "com.android.support:support-v13:23.3.0""
 ```
 
 ## Fullscreen video recorder:
 ```java
 Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
-long maxVideoDutaion = 1000 * 60 * 5; //for ex. 5 mins.
+long maxVideoDuration = 1000 * 60 * 5; //for ex. 5 mins.
 
 /**
   * Use this for launch standalone activity with video recorder and player.
@@ -43,8 +43,9 @@ ziggeo.attachRecorder(getFragmentManager(), R.id._your_id_here_, maxDuration);
 ```
 ##### Add extra args
 ```java
-ziggeo.setExtraArgsForCreateVideo(...);
+ziggeo.setExtraArgsForCreateVideo(RestParams extraArgs);
 ```
+
 ##### By default recorded video will send immideately after it was recorded. 
 ##### To prevent this use
 ```java
@@ -160,3 +161,33 @@ public void onCreateVideoError(CreateVideoErrorEvent event){}
 // for ex. to close recorder from anywhere
 BusProvider.getInstance().post(new CloseRecorderEvent());
 ```
+
+## Ziggeo API access
+##### Direct video file uploading
+```java
+ziggeo.uploadVideoFile(Context context, Video videoFile);
+```
+
+##### Index
+```java
+/**
+  * Query an array of videos (will return at most 50 videos by default).
+  * Newest videos come first.
+  *
+  * @param context -  context
+  * @param params  - request params
+  */
+ziggeo.index(Context context, RestParams params);
+
+@Subscribe
+public void onIndexRequestSuccess(IndexRequestSuccessEvent event) {
+    Log.e(TAG, "onIndexRequestSuccess:" + event.getResult());
+}
+
+@Subscribe
+public void onIndexRequestError(IndexRequestErrorEvent event) {
+    Log.e(TAG, "onIndexRequestError:" + event.getException().getMessage());
+}
+```
+
+
