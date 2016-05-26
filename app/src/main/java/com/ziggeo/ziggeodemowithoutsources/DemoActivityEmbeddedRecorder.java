@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.common.eventbus.Subscribe;
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.eventbus.BusProvider;
-import com.ziggeo.androidsdk.eventbus.events.CreateVideoErrorEvent;
-import com.ziggeo.androidsdk.eventbus.events.VideoSentEvent;
-import com.ziggeo.androidsdk.recording.CameraHelper;
+import com.ziggeo.androidsdk.io.rest.HttpStatusCodes;
+import com.ziggeo.androidsdk.io.rest.exceptions.RestResponseException;
 
-public class DemoActivityEmbeddedRecorder extends Activity {
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+public class DemoActivityEmbeddedRecorder extends Activity  implements Callback {
 
     public static final String TAG = DemoActivityEmbeddedRecorder.class.getSimpleName();
 
@@ -20,23 +23,33 @@ public class DemoActivityEmbeddedRecorder extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        BusProvider.getInstance().register(this);
-
         setContentView(R.layout.activity_embedded_recorder);
 
         Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
         long maxDuration = 20000L;
-        ziggeo.attachRecorder(getFragmentManager(), R.id.fl_content, maxDuration, CameraHelper.Quality.LOW);
+        ziggeo.setSendImmediately(false);
+        ziggeo.attachRecorder(getFragmentManager(), R.id.fl_content, maxDuration, this);
     }
 
-    @Subscribe
-    public void onVideoSent(VideoSentEvent event) {
-        Log.e(TAG, "Video successfully sent. Video token is: " + event.getVideoToken());
+    @Override
+    public void onFailure(Call call, IOException e) {
+        Log.e(TAG, "Request failure. Exception:" + e.toString());
     }
 
-    @Subscribe
-    public void onCreateVideoError(CreateVideoErrorEvent event) {
-        Log.e(TAG, "Error while sending the video.");
+    @Override
+    public void onResponse(Call call, Response response) throws IOException {
+        if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
+            String responseString = response.body().string();
+            Log.d(TAG, "Request success:" + responseString);
+
+//            do something here
+
+        } else {
+            RestResponseException exception = new RestResponseException(
+                    response.code(), response.message()
+            );
+            onFailure(call, exception);
+        }
     }
+
 }
