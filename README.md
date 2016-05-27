@@ -1,5 +1,10 @@
 # Android-SDK
 ## Please, use latest build tools and compile sdk version.
+### What's new in 0.50.0:
+- Added part of ziggeo's api support for video and stream services.
+- Access to api method will be through its own service, so now, instead of ``` ziggeo.index(...);``` you will have to call ```ziggeo.videos().index(...);``` and ```ziggeo.streams().index(...);``` etc.
+- Removed subscribing on custom events. Now for every action you will have to provide callback.
+
 ### How to include the sdk:
 Put **ziggeo-sdk-v*.aar** in **libs** folder for your project.
 In Android Studio choose File->New->New Module and select Import .JAR/.AAR Package.
