@@ -24,7 +24,6 @@ long maxVideoDuration = 1000 * 60 * 5; //for ex. 5 mins.
 
 /**
   * Use this for launch standalone activity with video recorder and player.
-  * With standalone recorder can be used {@link com.ziggeo.androidsdk.eventbus.events.CloseRecorderEvent}
   *
   * @param context             - context
   * @param maxDurationInMillis - allowed max video duration in milliseconds.
@@ -72,7 +71,6 @@ ziggeo.setSendImmediately(false);
                                boolean disableCameraSwitching)
 /**
      * Use this for launch standalone activity with video recorder and player.
-     * With standalone recorder can be used {@link com.ziggeo.androidsdk.eventbus.events.CloseRecorderEvent}
      *
      * @param context                - context
      * @param maxDurationInMillis    - allowed max video duration in milliseconds.
@@ -86,7 +84,6 @@ ziggeo.setSendImmediately(false);
 ```java
 /**
      * Use this for launch standalone activity with video recorder and player.
-     * With standalone recorder can be used {@link com.ziggeo.androidsdk.eventbus.events.CloseRecorderEvent}
      *
      * @param context             - context
      * @param maxDurationInMillis - allowed max video duration in milliseconds.
