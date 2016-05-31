@@ -1,16 +1,17 @@
 # Android-SDK
 ## Please, use latest build tools and compile sdk version.
-### What's new in 0.50.0:
+### What's new in 0.5+:
 - Added part of ziggeo's api support for video and stream services.
 - Access to api method will be through its own service, so now, instead of ``` ziggeo.index(...);``` you will have to call ```ziggeo.videos().index(...);``` and ```ziggeo.streams().index(...);``` etc.
 - Removed subscribing on custom events. Now for every action you will have to provide callback.
+- Added ```ProgressCallback``` to handle file uploading progress. Just use it instead of simple ```Callback```.
 
 ### How to include the sdk:
 Put **ziggeo-sdk-v*.aar** in **libs** folder for your project.
 In Android Studio choose File->New->New Module and select Import .JAR/.AAR Package.
 Add the following dependencies to your build.gradle file
 ```
-        compile(name: 'ziggeo-sdk-v0.50.0', ext: 'aar')
+        compile(name: 'ziggeo-sdk-v0.52.0', ext: 'aar')
         compile 'com.squareup.okhttp3:okhttp:3.2.0'
         compile 'com.danikula:videocache:2.3.2'
         compile "com.android.support:support-v4:23.3.0"
@@ -27,7 +28,7 @@ long maxVideoDuration = 1000 * 60 * 5; //for ex. 5 mins.
   *
   * @param context             - context
   * @param maxDurationInMillis - allowed max video duration in milliseconds.
-  * @param callback            - callback to receive video recording result
+  * @param callback            - callback to receive video recording result or handle progress
   */
 ziggeo.createVideo(Context context, long maxDurationInMillis, Callback callback);
 ```
@@ -42,7 +43,7 @@ long maxVideoDutaion = 1000 * 60 * 5; //for ex. 5 mins.
   * @param manager             - {@link FragmentManager}
   * @param contentId           - Identifier of the container this fragment is to be placed in.
   * @param maxDurationInMillis - allowed max video duration in milliseconds.
-  * @param callback            - callback to receive video recording result
+  * @param callback            - callback to receive video recording result or handle progress
   */
 ziggeo.attachRecorder(FragmentManager manager, int contentId, long maxDurationInMillis, Callback callback);
 ```
@@ -219,7 +220,7 @@ ziggeo.streams().create(String videoTokenOrKey, Callback callback);
      * @param videoTokenOrKey  - video token
      * @param streamTokenOrKey - stream to attach a file
      * @param imageFile        - file to attach
-     * @param callback         - callback to receive action result
+     * @param callback         - callback to receive action result or handler progress
      */
 ziggeo.streams().attachImage(videoTokenOrKey, String streamTokenOrKey, File imageFile, Callback callback);
 
@@ -229,7 +230,7 @@ ziggeo.streams().attachImage(videoTokenOrKey, String streamTokenOrKey, File imag
      * @param videoTokenOrKey  - video token
      * @param streamTokenOrKey - stream to attach a file
      * @param videoFile        - file to attach
-     * @param callback         - callback to receive action result
+     * @param callback         - callback to receive action result or handle progress
      */
 ziggeo.streams().attachVideo(String videoTokenOrKey, String streamTokenOrKey, File videoFile, Callback callback);
 
