@@ -7,6 +7,7 @@ import android.util.Log;
 import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.io.rest.HttpStatusCodes;
 import com.ziggeo.androidsdk.io.rest.exceptions.RestResponseException;
+import com.ziggeo.androidsdk.net.rest.ProgressCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +20,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DemoActivityFullscreenRecorder extends Activity implements Callback {
+public class DemoActivityFullscreenRecorder extends Activity implements ProgressCallback {
 
     public static final String TAG = DemoActivityFullscreenRecorder.class.getSimpleName();
 
@@ -39,6 +40,11 @@ public class DemoActivityFullscreenRecorder extends Activity implements Callback
         args.put("tags", "tag_for_video1, tag_for_video2");
         mZiggeo.setExtraArgsForCreateVideo(args);
         mZiggeo.createVideo(this, maxDuration, this);
+    }
+
+    @Override
+    public void onProgressUpdate(int percent) {
+        Log.e(TAG, "Progress:" + percent);
     }
 
     @Override
@@ -111,7 +117,7 @@ public class DemoActivityFullscreenRecorder extends Activity implements Callback
     /**
      * Here is example how we can combine video and stream services
      * and use this combination for upload custom preview image for video.
-     * <p>
+     * <p/>
      * How we will do it
      * 1. Create video object
      * 2. Create stream for it
