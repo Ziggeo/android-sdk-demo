@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.io.rest.HttpStatusCodes;
-import com.ziggeo.androidsdk.io.rest.exceptions.RestResponseException;
+import com.ziggeo.androidsdk.net.HttpStatusCodes;
 import com.ziggeo.androidsdk.net.rest.ProgressCallback;
+import com.ziggeo.androidsdk.net.rest.exceptions.RestResponseException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
