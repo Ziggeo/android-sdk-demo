@@ -175,31 +175,49 @@ ziggeo.videos().index(HashMap<String, String> argsMap, Callback callback);
 ziggeo.videos().get(String keyOrToken, Callback callback);
 
 /**
-     * Update single video by token or key.
-     *
-     * @param keyOrToken - video token or key.
-     *                   If you're using key make sure to add "_" prefix.
-     * @param argsMap    - min_duration: Minimal duration of video
-     *                   - max_duration: Maximal duration of video
-     *                   - tags: Video Tags
-     *                   - key: Unique (optional) name of video
-     *                   - volatile: Automatically removed this video if it remains empty
-     *                   - expiration_days: After how many days will this video be deleted
-     * @param callback   - callback to receive action result
-     */
+  * Download the video data file.
+  *
+  * @param keyOrToken - video token or key.
+  *                   If you're using key make sure to add "_" prefix.
+  * @param callback   - callback to receive action result
+  */
+  ziggeo.videos().downloadVideo(@NonNull String keyOrToken, @NonNull Callback callback);
+
+ /**
+  * Download the video data file.
+  *
+  * @param keyOrToken - video token or key.
+  *                   If you're using key make sure to add "_" prefix.
+  * @param callback   - callback to receive action result
+  */
+   ziggeo.videos().downloadImage(@NonNull String keyOrToken, @NonNull Callback callback);
+
+/**
+  * Update single video by token or key.
+  *
+  * @param keyOrToken - video token or key.
+  *                   If you're using key make sure to add "_" prefix.
+  * @param argsMap    - min_duration: Minimal duration of video
+  *                   - max_duration: Maximal duration of video
+  *                   - tags: Video Tags
+  *                   - key: Unique (optional) name of video
+  *                   - volatile: Automatically removed this video if it remains empty
+  *                   - expiration_days: After how many days will this video be deleted
+  * @param callback   - callback to receive action result
+  */
 ziggeo.videos().update(String keyOrToken, HashMap<String, String> argsMap, Callback callback);
 
-    /**
-     * Create a new video.
-     *
-     * @param argsMap  - file: Video file to be uploaded
-     *                 - min_duration: Minimal duration of video
-     *                 - max_duration: Maximal duration of video
-     *                 - tags: Video Tags
-     *                 - key: Unique (optional) name of video
-     *                 - volatile: Automatically removed this video if it remains empty
-     * @param callback - callback to receive action result
-     */
+/**
+  * Create a new video.
+  *
+  * @param argsMap  - file: Video file to be uploaded
+  *                 - min_duration: Minimal duration of video
+  *                 - max_duration: Maximal duration of video
+  *                 - tags: Video Tags
+  *                 - key: Unique (optional) name of video
+  *                 - volatile: Automatically removed this video if it remains empty
+  * @param callback - callback to receive action result
+  */
 ziggeo.videos().create(HashMap<String, String> argsMap, Callback callback);
 ```
 
@@ -213,6 +231,15 @@ ziggeo.videos().create(HashMap<String, String> argsMap, Callback callback);
      * @param callback        - callback to receive action result
      */
 ziggeo.streams().create(String videoTokenOrKey, Callback callback);
+
+/**
+     * Create a new stream
+     *
+     * @param videoTokenOrKey - video for which stream will be created
+     * @param videoFile       - Video file to be uploaded
+     * @param callback        - callback to receive action result
+     */
+ ziggeo.streams().create(@NonNull String videoTokenOrKey, @NonNull File videoFile, @Nullable HashMap<String, String> argsMap, @NonNull Callback callback);
 
 /**
      * Attaches an image to a new stream
@@ -235,13 +262,32 @@ ziggeo.streams().attachImage(videoTokenOrKey, String streamTokenOrKey, File imag
 ziggeo.streams().attachVideo(String videoTokenOrKey, String streamTokenOrKey, File videoFile, Callback callback);
 
 /**
-     * Closes and submits the stream
-     *
-     * @param videoTokenOrKey  - video token
-     * @param streamTokenOrKey - stream to attach a file
-     * @param callback         - callback to receive action result
-     */
+  * Closes and submits the stream
+  *
+  * @param videoTokenOrKey  - video token
+  * @param streamTokenOrKey - stream to attach a file
+  * @param callback         - callback to receive action result
+  */
 ziggeo.streams().bind(String videoTokenOrKey, String streamTokenOrKey, Callback callback);
+
+ /**
+  * Download the video data associated with the stream
+  *
+  * @param videoTokenOrKey  - video token
+  * @param streamTokenOrKey - stream to attach a file
+  * @param callback         - callback to receive action result
+  */
+ ziggeo.streams().downloadVideo(@NonNull String videoTokenOrKey, @NonNull String streamTokenOrKey, @NonNull Callback callback);
+
+ /**
+  * Download the image data associated with the stream
+  *
+  * @param videoTokenOrKey  - video token
+  * @param streamTokenOrKey - stream to attach a file
+  * @param callback         - callback to receive action result
+  */
+ ziggeo.streams().downloadImage(@NonNull String videoTokenOrKey, @NonNull String streamTokenOrKey, @NonNull Callback callback);
+
 
 /**
      * Get a single stream
