@@ -8,6 +8,7 @@ import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.net.HttpStatusCodes;
 import com.ziggeo.androidsdk.net.rest.ProgressCallback;
 import com.ziggeo.androidsdk.net.rest.exceptions.RestResponseException;
+import com.ziggeo.androidsdk.recording.VideoRecordingCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,6 +41,22 @@ public class DemoActivityFullscreenRecorder extends Activity implements Progress
         args.put("tags", "tag_for_video1, tag_for_video2");
         mZiggeo.setExtraArgsForCreateVideo(args);
         mZiggeo.createVideo(this, maxDuration, this);
+        mZiggeo.setVideoRecordingProcessCallback(new VideoRecordingCallback() {
+            @Override
+            public void onStarted() {
+                Log.d(TAG, "onStarted");
+            }
+
+            @Override
+            public void onStopped() {
+                Log.d(TAG, "onStopped");
+            }
+
+            @Override
+            public void onError() {
+                Log.d(TAG, "onError");
+            }
+        });
     }
 
     @Override
