@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
 
     defaultConfig {
         applicationId "com.ziggeo.ziggeodemowithoutsources"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
@@ -26,10 +26,10 @@ repositories {
     }
 
     dependencies {
-        compile(name: 'ziggeo-sdk-v0.57.3', ext: 'aar')
+        compile(name: 'ziggeo-sdk-v0.58.0', ext: 'aar')
         compile 'com.squareup.okhttp3:okhttp:3.4.1'
         compile 'com.danikula:videocache:2.4.0'
-        compile "com.android.support:support-v4:23.4.0"
-        compile "com.android.support:support-v13:23.4.0"
+        compile "com.android.support:support-v4:24.2.0"
+        compile "com.android.support:support-v13:24.2.0"
     }
 }
