@@ -2,6 +2,7 @@ package com.ziggeo.ziggeodemowithoutsources;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
@@ -36,6 +37,8 @@ public class DemoActivityFullscreenRecorder extends Activity implements Progress
 
         long maxDuration = 20000L;
         mZiggeo.setSendImmediately(false);
+        mZiggeo.setTurnOffCameraWhileUploading(true);
+        mZiggeo.setColorForStoppedCameraOverlay(ContextCompat.getColor(this, android.R.color.holo_green_dark));
         HashMap<String, String> args = new HashMap<>();
         args.put("key", "key_for_video");
         args.put("tags", "tag_for_video1, tag_for_video2");
