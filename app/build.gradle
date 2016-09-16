@@ -26,7 +26,7 @@ repositories {
     }
 
     dependencies {
-        compile(name: 'ziggeo-sdk-v0.58.1', ext: 'aar')
+        compile(name: 'ziggeo-sdk-v0.58.2', ext: 'aar')
         compile 'com.squareup.okhttp3:okhttp:3.4.1'
         compile 'com.danikula:videocache:2.4.0'
         compile 'com.android.support:support-v4:24.2.0'
