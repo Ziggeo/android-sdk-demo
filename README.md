@@ -11,7 +11,7 @@ Put **ziggeo-sdk-v*.aar** in **libs** folder for your project.
 In Android Studio choose File->New->New Module and select Import .JAR/.AAR Package.
 Add the following dependencies to your build.gradle file
 ```
-        compile(name: 'ziggeo-sdk-v0.59.0', ext: 'aar')
+        compile(name: 'ziggeo-sdk-v0.60.0', ext: 'aar')
         compile 'com.squareup.okhttp3:okhttp:3.4.1'
         compile 'com.danikula:videocache:2.4.0'
         compile "com.android.support:support-v4:24.2.0"
@@ -306,4 +306,14 @@ ziggeo.streams().get(String videoTokenOrKey, String streamTokenOrKey, Callback c
      * @param callback         - callback to receive action result
      */
 ziggeo.streams().delete(String videoTokenOrKey, String streamTokenOrKey, Callback callback);
-     ```
+```
+
+##### Requests cancellation
+Every service call returns `Call` object, you can cancel request execution, by calling ```cancel``` method. 
+For example
+```java
+Call call = mVideoService.create(...);
+call.cancel();
+```
+Also you can cancel requests for embedded recorder
+`mZiggeo.cancel()`
