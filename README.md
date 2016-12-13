@@ -11,7 +11,7 @@ Put **ziggeo-sdk-v*.aar** in **libs** folder for your project.
 In Android Studio choose File->New->New Module and select Import .JAR/.AAR Package.
 Add the following dependencies to your build.gradle file
 ```
-        compile(name: 'ziggeo-sdk-v0.60.0', ext: 'aar')
+        compile(name: 'ziggeo-sdk-v0.62.0', ext: 'aar')
         compile 'com.squareup.okhttp3:okhttp:3.4.1'
         compile 'com.danikula:videocache:2.4.0'
         compile "com.android.support:support-v4:24.2.0"
