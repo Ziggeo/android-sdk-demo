@@ -20,7 +20,7 @@ Add the following dependencies to your build.gradle file
 
 ## Fullscreen video recorder:
 ```java
-Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
+Ziggeo ziggeo = new Ziggeo(APP_TOKEN, context);
 long maxVideoDuration = 1000 * 60 * 5; //for ex. 5 mins.
 
 /**
@@ -34,7 +34,7 @@ ziggeo.createVideo(Context context, long maxDurationInMillis, Callback callback)
 ```
 ## Embedded video recorder:
 ```java
-Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
+Ziggeo ziggeo = new Ziggeo(APP_TOKEN, context);
 long maxVideoDutaion = 1000 * 60 * 5; //for ex. 5 mins.
 
 /**
@@ -109,7 +109,7 @@ com.ziggeo.androidsdk.recording.CameraHelper.Quality
 
 ## Video player:
 ```java
-Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
+Ziggeo ziggeo = new Ziggeo(APP_TOKEN, context);
 Uri path = ...; // path to file or stream url
 // or
 String token = ...; // video token
