@@ -2,6 +2,7 @@ package com.ziggeo.ziggeodemowithoutsources;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
@@ -51,7 +52,7 @@ public class DemoActivityFullscreenRecorder extends Activity implements Progress
             }
 
             @Override
-            public void onStopped() {
+            public void onStopped(String path) {
                 Log.d(TAG, "onStopped");
             }
 
@@ -86,6 +87,19 @@ public class DemoActivityFullscreenRecorder extends Activity implements Progress
             );
             onFailure(call, exception);
         }
+    }
+
+    private void startVideoRecordingWithDelay() {
+        // starting preview with delay
+        final long previewDelay = 3000L; // 3 seconds
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final long autostartRecording = 5000L; // after 5 seconds
+                mZiggeo.setAutostartRecordingAfter(autostartRecording);
+                mZiggeo.createVideo(DemoActivityFullscreenRecorder.this, 20000, DemoActivityFullscreenRecorder.this);
+            }
+        }, previewDelay);
     }
 
     /**

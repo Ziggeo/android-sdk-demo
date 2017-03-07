@@ -1,25 +1,27 @@
 # Android-SDK
 ## Please, use latest build tools and compile sdk version.
-### What's new in 0.5+:
-- Added part of ziggeo's api support for video and stream services.
-- Access to api method will be through its own service, so now, instead of ``` ziggeo.index(...);``` you will have to call ```ziggeo.videos().index(...);``` and ```ziggeo.streams().index(...);``` etc.
-- Removed subscribing on custom events. Now for every action you will have to provide callback.
-- Added ```ProgressCallback``` to handle file uploading progress. Just use it instead of simple ```Callback```.
 
-### How to include the sdk:
-Put **ziggeo-sdk-v*.aar** in **libs** folder for your project.
-In Android Studio choose File->New->New Module and select Import .JAR/.AAR Package.
-Add the following dependencies to your build.gradle file
+### Download:
+Add it in your root build.gradle at the end of repositories:
+
+**Step 1.** Add the JitPack repository to your build file
 ```
-        compile(name: 'ziggeo-sdk-v0.62.0', ext: 'aar')
-        compile 'com.squareup.okhttp3:okhttp:3.4.1'
-        compile 'com.danikula:videocache:2.4.0'
-        compile "com.android.support:support-v4:24.2.0"
-        compile "com.android.support:support-v13:24.2.0"
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+**Step 2.** Add the dependency
+```
+dependencies {
+        compile 'com.github.ZiggeoJitpackService:Android-SDK:0.63.2'
+}
 ```
 
 ## Fullscreen video recorder:
-```java
+```
 Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
 long maxVideoDuration = 1000 * 60 * 5; //for ex. 5 mins.
 
@@ -33,7 +35,7 @@ long maxVideoDuration = 1000 * 60 * 5; //for ex. 5 mins.
 ziggeo.createVideo(Context context, long maxDurationInMillis, Callback callback);
 ```
 ## Embedded video recorder:
-```java
+```
 Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
 long maxVideoDutaion = 1000 * 60 * 5; //for ex. 5 mins.
 
@@ -48,17 +50,17 @@ long maxVideoDutaion = 1000 * 60 * 5; //for ex. 5 mins.
 ziggeo.attachRecorder(FragmentManager manager, int contentId, long maxDurationInMillis, Callback callback);
 ```
 ##### Add extra args
-```java
+```
 ziggeo.setExtraArgsForCreateVideo(HashMap<String, String> extraArgs);
 ```
 
 ##### By default recorded video will send immideately after it was recorded. 
 ##### To prevent this use
-```java
+```
 ziggeo.setSendImmediately(false);
 ```
 ##### You also can disable camera switching
-```java
+```
 /**
      * Use this for launch embedded recorder
      *
@@ -82,7 +84,7 @@ ziggeo.setSendImmediately(false);
 ```
 
 ##### Or select default camera and disable switching.
-```java
+```
 /**
      * Use this for launch standalone activity with video recorder and player.
      *
@@ -91,6 +93,7 @@ ziggeo.setSendImmediately(false);
      * @param preferredCameraId   - allow the app use only selected camera if exists.
      */
     public void createVideo(Context context, long maxDurationInMillis, int preferredCameraId)
+    
 /**
      * Use this for launch embedded recorder
      *
@@ -103,12 +106,45 @@ ziggeo.setSendImmediately(false);
                                int preferredCameraId)
 ```
 ##### And select video quality using
-```java
+```
 com.ziggeo.androidsdk.recording.CameraHelper.Quality
+```
+##### Automatically start recording with delay
+```
+/**
+     * Sets the time after what we should automatically start recording.
+     *
+     * @param millis - delay to autostart
+     */
+    public void setAutostartRecordingAfter(long millis)
+```
+##### Show dialog to confirm recording stop
+```
+ /**
+       * Setup stop recording confirmation dialog
+       *
+       * @param show - should it be shown
+       * @param titleResId - dialog title
+       * @param mesResId - dialog message
+       * @param posBtnResId - positive button text
+       * @param negBtnResId - negative button text
+       */
+      public void initStopRecordingConfirmationDialog(boolean show, @StringRes int titleResId, @StringRes int mesResId,
+                                                      @StringRes int posBtnResId, @StringRes int negBtnResId)
+```
+
+##### Time formatting for recorder screen
+```
+ /**
+      * Provides a way for custom time formatting for recorder screen
+      *
+      * @param function takes current time, max time and returns formatted string
+      */
+     public void setTimeFormatAction(BiFunction<Long, Long, String> function)
 ```
 
 ## Video player:
-```java
+```
 Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
 Uri path = ...; // path to file or stream url
 // or
@@ -124,7 +160,7 @@ String token = ...; // video token
 ziggeo.attachPlayer(FragmentManager manager, int contentId, Uri path);
 ```
 
-```java
+```
  /**
   * Use this for launch embedded player from stream.
   * Can be also used with extra args.
@@ -137,13 +173,20 @@ ziggeo.attachPlayer(FragmentManager manager, int contentId, String videoToken);
 ```
 
 ##### Add extra args
-```java
-ziggeo.setExtraArgsForPlayVideo(...);
+```
+/**
+     * Sets the time after what we should automatically start recording.
+     *
+     * @param millis - delay to autostart
+     */
+    public void setAutostartRecordingAfter(long millis) {
+        this.mAutostartRecordingAfter = millis;
+    }
 ```
 
 ## Ziggeo API access
 ##### Videos api
-```java
+```
 /**
      * Delete a single video by token or key.
      *
@@ -223,7 +266,7 @@ ziggeo.videos().create(HashMap<String, String> argsMap, Callback callback);
 
 ##### Streams api
 
-```java
+```
 /**
      * Create a new stream
      *
@@ -311,7 +354,7 @@ ziggeo.streams().delete(String videoTokenOrKey, String streamTokenOrKey, Callbac
 ##### Requests cancellation
 Every service call returns `Call` object, you can cancel request execution, by calling ```cancel``` method. 
 For example
-```java
+```
 Call call = mVideoService.create(...);
 call.cancel();
 ```
