@@ -34,7 +34,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mZiggeo = new Ziggeo(APP_TOKEN);
+        mZiggeo = new Ziggeo(APP_TOKEN, this);
 
         long maxDuration = 20000L;
         mZiggeo.setSendImmediately(false);
