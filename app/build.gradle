@@ -5,11 +5,12 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        applicationId "com.ziggeo.ziggeodemowithoutsources"
+        applicationId "com.ziggeo.androidsdk.demo"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -20,5 +21,6 @@ android {
 }
 
 dependencies {
-    compile 'com.github.ZiggeoJitpackService:Android-SDK:0.63.2'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.github.ZiggeoJitpackService:Android-SDK:0.64.0'
 }

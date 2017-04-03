@@ -1,9 +1,9 @@
-package com.ziggeo.ziggeodemowithoutsources;
+package com.ziggeo.androidsdk.demo;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
@@ -23,9 +23,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DemoActivityFullscreenRecorder extends Activity implements ProgressCallback {
+public class FullscreenRecorderActivity extends AppCompatActivity implements ProgressCallback {
 
-    public static final String TAG = DemoActivityFullscreenRecorder.class.getSimpleName();
+    public static final String TAG = FullscreenRecorderActivity.class.getSimpleName();
 
     public static final String APP_TOKEN = ""; // TODO place your token here
 
@@ -97,7 +97,7 @@ public class DemoActivityFullscreenRecorder extends Activity implements Progress
             public void run() {
                 final long autostartRecording = 5000L; // after 5 seconds
                 mZiggeo.setAutostartRecordingAfter(autostartRecording);
-                mZiggeo.createVideo(DemoActivityFullscreenRecorder.this, 20000, DemoActivityFullscreenRecorder.this);
+                mZiggeo.createVideo(FullscreenRecorderActivity.this, 20000, FullscreenRecorderActivity.this);
             }
         }, previewDelay);
     }

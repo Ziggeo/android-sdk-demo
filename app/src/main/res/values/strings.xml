@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ZiggeoDemoWithoutSources</string>
     <string name="embedded_recorder">Embedded recorder</string>
+    <string name="common_ok">OK</string>
+    <string name="common_grant_permissions">Please, grant permissions.</string>
+    <string name="common_missing_permission">App can\'t work without permissions.</string>
 </resources>

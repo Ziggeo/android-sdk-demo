@@ -1,12 +1,13 @@
-package com.ziggeo.ziggeodemowithoutsources;
+package com.ziggeo.androidsdk.demo;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.net.HttpStatusCodes;
 import com.ziggeo.androidsdk.net.rest.exceptions.RestResponseException;
+import com.ziggeo.demo.R;
 
 import java.io.IOException;
 
@@ -14,9 +15,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DemoActivityEmbeddedRecorder extends Activity  implements Callback {
+public class EmbeddedRecorderActivity extends AppCompatActivity implements Callback {
 
-    public static final String TAG = DemoActivityEmbeddedRecorder.class.getSimpleName();
+    public static final String TAG = EmbeddedRecorderActivity.class.getSimpleName();
 
     public static final String APP_TOKEN = ""; // TODO place your token here
 
