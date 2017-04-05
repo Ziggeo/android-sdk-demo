@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 0.65.0 *(2017-04-05)*
+----------------------------
+
+ * New: Added support for EU host.
+ * Fix: Minor UI fixes
+
 Version 0.64.0 *(2017-04-03)*
 ----------------------------
 
