@@ -103,7 +103,7 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onRecodingError(Throwable throwable) {
                 super.onRecodingError(throwable);
-                Log.d(TAG, "onRecodingError:" + throwable.toString());
+                Log.e(TAG, "onRecodingError:" + throwable.toString());
             }
         });
 
@@ -212,21 +212,22 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
         return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED;
     }
 
-    private void uploadFile() {
+    void uploadFile() {
         ziggeo.videos().create(fileToSaveRecording, null, new ProgressCallback() {
             @Override
             public void onProgressUpdate(int i) {
-
+                Log.d(TAG, "onProgressUpdate:" + i);
             }
 
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Log.e(TAG, "onFailure:" + e.toString());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
+                Log.d(TAG, "onResponse:" + response.body().string());
+                response.body().close();
             }
         });
     }
