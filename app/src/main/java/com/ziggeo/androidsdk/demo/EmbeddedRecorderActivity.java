@@ -29,7 +29,7 @@ public class EmbeddedRecorderActivity extends AppCompatActivity implements Callb
         Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
         long maxDuration = 20000L;
         ziggeo.setSendImmediately(false);
-        ziggeo.attachRecorder(getFragmentManager(), R.id.fl_content, maxDuration, this);
+        ziggeo.attachRecorder(getSupportFragmentManager(), R.id.fl_content, maxDuration, this);
     }
 
     @Override

@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.66.0 *(2017-04-28)*
+----------------------------
+ * New: SDK refactored with support library
+ * New: Added sample for playing uploaded video
+ 
 Version 0.65.1 *(2017-04-13)*
 ----------------------------
  * Fix: Proper selection of resolution for video recording 
