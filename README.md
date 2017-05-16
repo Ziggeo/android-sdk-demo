@@ -49,7 +49,7 @@ long maxVideoDutaion = 1000 * 60 * 5; //for ex. 5 mins.
   */
 ziggeo.attachRecorder(FragmentManager manager, int contentId, long maxDurationInMillis, Callback callback);
 ```
-##### Add extra args
+##### Add extra recorder args
 ```
 ziggeo.setExtraArgsForCreateVideo(HashMap<String, String> extraArgs);
 ```
@@ -172,7 +172,7 @@ ziggeo.attachPlayer(FragmentManager manager, int contentId, Uri path);
 ziggeo.attachPlayer(FragmentManager manager, int contentId, String videoToken);
 ```
 
-##### Add extra args
+##### Add extra player args
 ```
 /**
      * Sets the time after what we should automatically start recording.
