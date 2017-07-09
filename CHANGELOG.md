@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.67.0 *(2017-07-9)*
+----------------------------
+ * Refactoring of SDK configuration
+ * Fixed issue related to missing cover selector dialog
+ 
 Version 0.66.0 *(2017-04-28)*
 ----------------------------
  * New: SDK refactored with support library

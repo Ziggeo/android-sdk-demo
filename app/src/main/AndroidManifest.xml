@@ -18,12 +18,7 @@
 
         <activity android:name="com.ziggeo.androidsdk.demo.CameraViewActivity" />
 
-        <activity android:name="com.ziggeo.androidsdk.demo.PlayerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name="com.ziggeo.androidsdk.demo.PlayerActivity" />
 
     </application>
 

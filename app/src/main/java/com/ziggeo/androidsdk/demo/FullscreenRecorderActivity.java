@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -40,7 +41,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         mZiggeo.setSendImmediately(false);
         mZiggeo.setTurnOffCameraWhileUploading(true);
         mZiggeo.setColorForStoppedCameraOverlay(ContextCompat.getColor(this, android.R.color.holo_green_dark));
-        HashMap<String, String> args = new HashMap<>();
+        Map<String, String> args = new HashMap<>();
         args.put("key", "key_for_video");
         args.put("tags", "tag_for_video1, tag_for_video2");
         mZiggeo.setExtraArgsForCreateVideo(args);

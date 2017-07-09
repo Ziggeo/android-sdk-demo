@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ZiggeoDemoWithoutSources</string>
+    <string name="app_name">ZiggeoDemo</string>
     <string name="embedded_recorder">Embedded recorder</string>
     <string name="common_ok">OK</string>
     <string name="common_grant_permissions">Please, grant permissions.</string>
