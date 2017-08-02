@@ -45,7 +45,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         args.put("key", "key_for_video");
         args.put("tags", "tag_for_video1, tag_for_video2");
         mZiggeo.setExtraArgsForCreateVideo(args);
-        mZiggeo.createVideo(this, maxDuration, this);
+        mZiggeo.setMaxRecordingDuration(maxDuration);
+        mZiggeo.setNetworkRequestsCallback(this);
         mZiggeo.setVideoRecordingProcessCallback(new VideoRecordingCallback() {
             @Override
             public void onStarted() {
@@ -62,6 +63,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                 Log.d(TAG, "onError");
             }
         });
+        mZiggeo.startRecorder();
     }
 
     @Override

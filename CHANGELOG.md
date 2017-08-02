@@ -1,8 +1,10 @@
 Change Log
 ==========
 
-Version 0.67.4 *(2017-08-2)*
+Version 0.67.5 *(2017-08-2)*
 ----------------------------
+ * New: `createVideo` methods now deprecated. All params should be set through setters.
+ Use `startRecorder` instead.
  * New: Change `onProgressUpdate` callback. Now it accepts `sent` and `total` bytes as args.
  * New: If max duration is zero video will be endless.
  * New: Added extra time format for case of zero maximum duration.
