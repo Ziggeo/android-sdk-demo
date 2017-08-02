@@ -1,10 +1,18 @@
 Change Log
 ==========
 
+Version 0.67.4 *(2017-08-2)*
+----------------------------
+ * New: Change `onProgressUpdate` callback. Now it accepts `sent` and `total` bytes as args.
+ * New: If max duration is zero video will be endless.
+ * New: Added extra time format for case of zero maximum duration.
+ * Fix: Small issues
+ * Fix: UI improvements
+ 
 Version 0.67.0 *(2017-07-9)*
 ----------------------------
- * Refactoring of SDK configuration
- * Fixed issue related to missing cover selector dialog
+ * Fix: Refactoring of SDK configuration
+ * Fix: Issue related to missing cover selector dialog
  
 Version 0.66.0 *(2017-04-28)*
 ----------------------------

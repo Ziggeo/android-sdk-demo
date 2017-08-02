@@ -65,8 +65,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
     }
 
     @Override
-    public void onProgressUpdate(int percent) {
-        Log.e(TAG, "Progress:" + percent);
+    public void onProgressUpdate(long sent, long total) {
+        Log.e(TAG, "Sent " + sent + "/" + total);
     }
 
     @Override

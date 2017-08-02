@@ -26,7 +26,7 @@ public class EmbeddedRecorderActivity extends AppCompatActivity implements Callb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_embedded_recorder);
 
-        Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
+        Ziggeo ziggeo = new Ziggeo(APP_TOKEN, this);
         long maxDuration = 20000L;
         ziggeo.setSendImmediately(false);
         ziggeo.attachRecorder(getSupportFragmentManager(), R.id.fl_content, maxDuration, this);
