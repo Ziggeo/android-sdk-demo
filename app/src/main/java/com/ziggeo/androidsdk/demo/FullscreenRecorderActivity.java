@@ -31,6 +31,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
     public static final String APP_TOKEN = ""; // TODO place your token here
 
     private Ziggeo mZiggeo;
+    private int progressPercent = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,11 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
 
     @Override
     public void onProgressUpdate(long sent, long total) {
-        Log.e(TAG, "Sent " + sent + "/" + total);
+        int newProgr = (int) ((float) sent / total * 100);
+        if (newProgr > progressPercent) {
+            progressPercent = newProgr;
+            Log.d(TAG, "Sent " + sent + "/" + total + "(" + progressPercent + "%)");
+        }
     }
 
     @Override

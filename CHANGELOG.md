@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.67.6*(2017-08-10)*
+----------------------------
+ * Fix: Resolved issue related to uploading speed.
+
 Version 0.67.5 *(2017-08-2)*
 ----------------------------
  * New: `createVideo` methods now deprecated. All params should be set through setters.
