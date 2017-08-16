@@ -27,6 +27,7 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Response;
+import okhttp3.internal.Util;
 
 /**
  * Created by Alex Bedulin on 4/3/17.
@@ -227,7 +228,7 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Log.d(TAG, "onResponse:" + response.body().string());
-                response.body().close();
+                Util.closeQuietly(response);
             }
         });
     }

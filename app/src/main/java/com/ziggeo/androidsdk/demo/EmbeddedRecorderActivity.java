@@ -14,6 +14,7 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import okhttp3.internal.Util;
 
 public class EmbeddedRecorderActivity extends AppCompatActivity implements Callback {
 
@@ -43,6 +44,7 @@ public class EmbeddedRecorderActivity extends AppCompatActivity implements Callb
     public void onResponse(Call call, Response response) throws IOException {
         if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
             String responseString = response.body().string();
+            Util.closeQuietly(response);
             Log.d(TAG, "Request success:" + responseString);
 
 //            do something here

@@ -2,6 +2,7 @@ package com.ziggeo.androidsdk.demo;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,6 +24,7 @@ import java.util.Map;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import okhttp3.internal.Util;
 
 public class FullscreenRecorderActivity extends AppCompatActivity implements ProgressCallback {
 
@@ -55,8 +57,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
             }
 
             @Override
-            public void onStopped(String path) {
-                Log.d(TAG, "onStopped");
+            public void onStopped(@NonNull String path) {
+                Log.d(TAG, "onStopped:" + path);
             }
 
             @Override
@@ -84,11 +86,17 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
     @Override
     public void onResponse(Call call, Response response) throws IOException {
         if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
-            String responseString = response.body().string();
-            Log.d(TAG, "Request success:" + responseString);
+            try {
+                String responseString = response.body().string();
+                response.close();
+                Log.d(TAG, "Request success:" + responseString);
 
-//            do something here
-
+//              do something here
+            } catch (Exception e) {
+                Log.e(TAG, e.toString());
+            } finally {
+                Util.closeQuietly(response);
+            }
         } else {
             RestResponseException exception = new RestResponseException(
                     response.code(), response.message()
@@ -215,6 +223,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                 }
             } catch (IOException | JSONException e) {
                 Log.e(TAG, e.toString());
+            } finally {
+                Util.closeQuietly(response);
             }
         }
     };
@@ -246,6 +256,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                 }
             } catch (IOException | JSONException e) {
                 Log.e(TAG, e.toString());
+            } finally {
+                Util.closeQuietly(response);
             }
         }
     };
@@ -274,6 +286,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                 }
             } catch (IOException e) {
                 Log.e(TAG, e.toString());
+            } finally {
+                Util.closeQuietly(response);
             }
         }
 
@@ -302,6 +316,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                 }
             } catch (IOException e) {
                 Log.e(TAG, e.toString());
+            } finally {
+                Util.closeQuietly(response);
             }
         }
 
@@ -318,7 +334,6 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
             try {
                 if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
                     String responseString = response.body().string();
-
                     Log.d(TAG, "Bind stream success:" + responseString);
 
                 } else {
@@ -329,6 +344,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                 }
             } catch (IOException e) {
                 Log.e(TAG, e.toString());
+            } finally {
+                Util.closeQuietly(response);
             }
         }
     };

@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 0.68.0*(2017-08-16)*
+----------------------------
+ * Fix: Reduced video file size
+ * New: Added quality settings for `CameraView`
+ * Fix: Bugfixing
+ 
 Version 0.67.6*(2017-08-10)*
 ----------------------------
  * Fix: Resolved issue related to uploading speed.
