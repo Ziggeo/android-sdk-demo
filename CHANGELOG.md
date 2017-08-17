@@ -1,8 +1,15 @@
 Change Log
 ==========
 
+Version 0.68.1*(2017-08-17)*
+----------------------------
+ * Fix: Missing resource id crash
+ * Fix: Removed wrong `Deprecated` mark
+
 Version 0.68.0*(2017-08-16)*
 ----------------------------
+ * Broken compatibility: `CameraView` should be using for layout customisation instead of `SurfaceView`
+ * New: Customisation through layout is `Deprecated`. `CameraView` should be used instead.
  * Fix: Reduced video file size
  * New: Added quality settings for `CameraView`
  * Fix: Bugfixing
