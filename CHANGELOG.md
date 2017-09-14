@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 0.69.0*(2017-09-21)*
+----------------------------
+ * Fix: Improved video size scaling for medium quality
+ * New: Added video compressor in case of using medium video quality
+ * New: Added two methods to VideoRecordingCallback to indicate compression progress
+
 Version 0.68.1*(2017-08-17)*
 ----------------------------
  * Fix: Missing resource id crash

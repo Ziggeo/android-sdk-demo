@@ -12,6 +12,7 @@ import com.ziggeo.androidsdk.net.HttpStatusCodes;
 import com.ziggeo.androidsdk.net.rest.ProgressCallback;
 import com.ziggeo.androidsdk.net.rest.exceptions.RestResponseException;
 import com.ziggeo.androidsdk.recording.VideoRecordingCallback;
+import com.ziggeo.androidsdk.widgets.cameraview.CameraView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,6 +65,18 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
             @Override
             public void onError() {
                 Log.d(TAG, "onError");
+            }
+
+            @Override
+            public void onCompressionStarted() {
+                super.onCompressionStarted();
+                Log.d(TAG, "onCompressionStarted");
+            }
+
+            @Override
+            public void onCompressionStopped() {
+                super.onCompressionStopped();
+                Log.d(TAG, "onCompressionStopped");
             }
         });
         mZiggeo.startRecorder();
