@@ -1,7 +1,11 @@
 Change Log
 ==========
 
-Version 0.69.0*(2017-09-21)*
+Version 0.69.1*(2017-09-15)*
+----------------------------
+ * Fix: Forced AAC audio codec and H264 video codec for Camera1
+
+Version 0.69.0*(2017-09-14)*
 ----------------------------
  * Fix: Improved video size scaling for medium quality
  * New: Added video compressor in case of using medium video quality
