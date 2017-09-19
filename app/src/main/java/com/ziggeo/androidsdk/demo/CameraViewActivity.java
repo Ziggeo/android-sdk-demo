@@ -18,6 +18,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ziggeo.androidsdk.Ziggeo;
+import com.ziggeo.androidsdk.compressor.VideoCompressor;
+import com.ziggeo.androidsdk.compressor.VideoCompressorImpl;
 import com.ziggeo.androidsdk.net.rest.ProgressCallback;
 import com.ziggeo.androidsdk.widgets.cameraview.CameraView;
 import com.ziggeo.demo.R;
@@ -98,6 +100,7 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
             public void onRecodingStopped() {
                 super.onRecodingStopped();
                 Log.d(TAG, "onRecodingStopped");
+                compressFile();
 //                uploadFile();
             }
 
@@ -213,7 +216,7 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
         return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED;
     }
 
-    void uploadFile() {
+    private void uploadFile() {
         ziggeo.videos().create(fileToSaveRecording, null, new ProgressCallback() {
             @Override
             public void onProgressUpdate(long sent, long total) {
@@ -231,6 +234,19 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
                 Util.closeQuietly(response);
             }
         });
+    }
+
+    private void compressFile() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                VideoCompressor compressor = new VideoCompressorImpl(CameraViewActivity.this);
+                File convertFrom = fileToSaveRecording;
+                File convertTo = new File(convertFrom.getParent() + "/anyFileName.mp4");
+
+                compressor.compress(convertFrom, convertTo);
+            }
+        }).start();
     }
 
 }

@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.69.2*(2017-09-19)*
+----------------------------
+ * New: Video compressor exposed to interface.
+
 Version 0.69.1*(2017-09-15)*
 ----------------------------
  * Fix: Forced AAC audio codec and H264 video codec for Camera1
