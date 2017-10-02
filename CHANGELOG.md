@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 0.70.0*(2017-09-19)*
+----------------------------
+ * Fix: Fixed player layout.
+ * Fix: Fixed logic for immediate video sending.
+ * New: Methods for getting Videos and Stream services exposed to interface.
+
 Version 0.69.2*(2017-09-19)*
 ----------------------------
  * New: Video compressor exposed to interface.
