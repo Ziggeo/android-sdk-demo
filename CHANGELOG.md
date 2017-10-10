@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.70.1*(2017-10-10)*
+----------------------------
+ * New: Added ability to start player as separate screen.
+
 Version 0.70.0*(2017-09-19)*
 ----------------------------
  * Fix: Fixed player layout.
