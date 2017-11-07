@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.net.HttpStatusCodes;
 import com.ziggeo.androidsdk.net.rest.exceptions.RestResponseException;
 import com.ziggeo.demo.R;
 
@@ -42,7 +41,7 @@ public class EmbeddedRecorderActivity extends AppCompatActivity implements Callb
 
     @Override
     public void onResponse(Call call, Response response) throws IOException {
-        if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
+        if (response.isSuccessful() && response.body() != null) {
             String responseString = response.body().string();
             Util.closeQuietly(response);
             Log.d(TAG, "Request success:" + responseString);

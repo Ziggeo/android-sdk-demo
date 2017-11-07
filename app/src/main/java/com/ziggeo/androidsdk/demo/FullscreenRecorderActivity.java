@@ -8,11 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.net.HttpStatusCodes;
 import com.ziggeo.androidsdk.net.rest.ProgressCallback;
 import com.ziggeo.androidsdk.net.rest.exceptions.RestResponseException;
 import com.ziggeo.androidsdk.recording.VideoRecordingCallback;
-import com.ziggeo.androidsdk.widgets.cameraview.CameraView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +42,6 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         long maxDuration = 20000L;
         mZiggeo.setSendImmediately(false);
         mZiggeo.setTurnOffCameraWhileUploading(true);
-        mZiggeo.setColorForStoppedCameraOverlay(ContextCompat.getColor(this, android.R.color.holo_green_dark));
         Map<String, String> args = new HashMap<>();
         args.put("key", "key_for_video");
         args.put("tags", "tag_for_video1, tag_for_video2");
@@ -98,7 +95,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
 
     @Override
     public void onResponse(Call call, Response response) throws IOException {
-        if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
+        if (response.isSuccessful() && response.body() != null) {
             try {
                 String responseString = response.body().string();
                 response.close();
@@ -219,7 +216,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             try {
-                if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
                     Log.d(TAG, "Create video object success:" + responseString);
 
@@ -251,7 +248,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             try {
-                if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
                     Log.d(TAG, "Create stream success:" + responseString);
 
@@ -284,7 +281,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             try {
-                if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
                     Log.d(TAG, "Attach image success:" + responseString);
 
@@ -315,7 +312,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             try {
-                if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
                     Log.d(TAG, "Attach video success:" + responseString);
 
@@ -345,7 +342,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             try {
-                if (HttpStatusCodes.isSuccess(response.code()) && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
                     Log.d(TAG, "Bind stream success:" + responseString);
 
