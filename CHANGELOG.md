@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+Version 0.71.0*(2017-11-7)*
+----------------------------
+ * New: Analytics integration.
+ * Fix: Orientation calculation for recorder in Camera1 
+ * Fix: Params transferring between Ziggeo object and internal activities/fragments
+ * Fix: Default state for `switchCameraDisabled` set to `false`
+ * Other fixes and improvements
+
 Version 0.70.1*(2017-10-10)*
 ----------------------------
  * New: Added ability to start player as separate screen.
