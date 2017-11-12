@@ -2,9 +2,7 @@
 ## Please, use latest build tools and compile sdk version.
 
 ### Download:
-Add it in your root build.gradle at the end of repositories:
-
-**Step 1.** Add the JitPack repository to your build file
+**Step 1.** Add the JitPack repository in your root `build.gradle`
 ```
 allprojects {
     repositories {
@@ -13,208 +11,259 @@ allprojects {
     }
 }
 ```
-**Step 2.** Add the dependency
+
+**Step 2.** Add the dependency in your application related dependencies
 ```
 dependencies {
         compile 'com.github.ZiggeoJitpackService:Android-SDK:0.67.1'
 }
 ```
+## Initialize
+```
+/**
+  * @param appToken - Ziggeo application token
+  * @param context - Application context
+  */
+Ziggeo ziggeo = new Ziggeo(appToken, context);
+```
+
+## Configure:
+```
+/**
+  * Set the maximum duration of the video.
+  * If the value is 0, the recording will be endless.
+  * <p>
+  * Default value is 0
+  *
+  * @param duration - duration in millis
+  */
+ziggeo.setMaxRecordingDuration(maxVideoDuration);
+
+/**
+  * Set the time after what the recording will be automatically started.
+  * If the value is 0, the recording will be started immediately.
+  * If the value is -1, the feature will be turned off. 
+  * <p>  
+  * Default value is -1
+  *
+  * @param millis - delay to autostart
+  */
+ziggeo.setAutostartRecordingAfter(autoStartAfterInMillis);
+
+/**
+  * Set the folder where videos will be stored after recording.
+  * Default path is Environment.getExternalStorageDirectory() + "/Ziggeo"
+  *
+  * @param cacheFolderPath - path to the folder
+  */
+ziggeo.setCacheFolder(path);
+
+/**
+  * Register a callback to be invoked when a recording is started, stopped or an error occupied.
+  *
+  * @param callback - the callback
+  */
+ziggeo.setVideoRecordingProcessCallback(callback);
+
+/**
+  * Register a callback to be invoked when request finished with either an HTTP response or a
+  * failure exception.
+  *
+  * @param callback - the callback
+  */
+ziggeo.setNetworkRequestsCallback(@callback);
+
+/**
+  * If true will hide the preview when uploading is started and show the preview after
+  * uploading will be finished successfully or with the error.
+  * The preview will also be shown if user will start a new recording.
+  * <p>
+  * Default value is false
+  * <p>
+  * Does not release the Camera.
+  *
+  * @param turnOffCameraWhileUploading
+  */
+ziggeo.setTurnOffCameraWhileUploading(turnOffCameraWhileUploading);
+
+/**
+  * Set the color to be shown as a background when camera preview is stopped.
+  * <p>
+  * Default color is @android:color/black
+  *
+  * @param colorForStoppedCameraOverlay - the color
+  */
+ziggeo.setColorForStoppedCameraOverlay(colorForStoppedCameraOverlay);
+
+/**
+  * Set if a dialog for selecting a cover shot should be shown after the recording is stopped.
+  * <p>
+  * Default value is true
+  *
+  * @param enabled
+  */
+ziggeo.setCoverSelectorEnabled(enabled);
+
+ /**
+  * Set the maximum duration of a video.
+  * 0 is for endless recording
+  * <p>
+  * Default value is 0
+  *
+  * @param duration - duration in millis
+  */
+ziggeo.setMaxRecordingDuration(duration);
+
+/**
+  * Set what camera facing to use by default.
+  * <p>
+  * Default value is CameraView.FACING_BACK
+  *
+  * @param facing - back or front facing
+  */
+ziggeo.setPreferredCameraFacing(facing);
+
+/**
+  * Set what quality to use for recording.
+  * <p>
+  * Default value is CameraView.QUALITY_HIGH
+  *
+  * @param videoQuality - the quality
+  */
+ziggeo.setPreferredQuality(videoQuality);
+
+/**
+  * If true disable switching camera from back to front and vice versa.
+  * <p>
+  * Default value is false.
+  */
+ziggeo.setCameraSwitchDisabled(enabled);
+
+/**
+  * Set the recorder to send a video right after it was recorded.
+  * <p>
+  * Default value is true.
+  */
+ziggeo.setSendImmediately(boolean sendImmediately);
+
+/**
+  * Set extra arguments for create video request.
+  *
+  * @param extraArgs - map of args which will be sent with create video request
+  */
+ziggeo.setExtraArgsForCreateVideo(extraArgs);
+
+/**
+  * Set extra arguments for stream video player.
+  *
+  * @param extraArgs
+  */
+ziggeo.setExtraArgsForPlayVideo(@Nullable Map<String, String> extraArgs);
+    
+/**
+  * Cancel a network request which is in execution right now.
+  */
+ziggeo.cancelRequest();
+
+/**
+  * Configure a dialog to confirm recording stop.
+  *
+  * @param show        - if the dialog will be shown
+  * @param titleResId  - the title
+  * @param mesResId    - the message
+  * @param posBtnResId - the text for positive button
+  * @param negBtnResId - the text for negative button
+  */
+ziggeo.initStopRecordingConfirmationDialog(boolean show, @StringRes int titleResId, @StringRes int mesResId,
+                                             @StringRes int posBtnResId, @StringRes int negBtnResId);
+```
 
 ## Fullscreen video recorder:
 ```
-Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
-long maxVideoDuration = 1000 * 60 * 5; //for ex. 5 mins.
-
 /**
-  * Use this for launch standalone activity with video recorder and player.
-  *
-  * @param context             - context
-  * @param maxDurationInMillis - allowed max video duration in milliseconds.
-  * @param callback            - callback to receive video recording result or handle progress
+  * Launch standalone activity with video recorder and player.
   */
-ziggeo.createVideo(Context context, long maxDurationInMillis, Callback callback);
+ziggeo.startRecorder();
 ```
 ## Embedded video recorder:
 ```
-Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
-long maxVideoDutaion = 1000 * 60 * 5; //for ex. 5 mins.
-
 /**
-  * Use this for launch embedded recorder
+  * Embed the recorder.
   *
-  * @param manager             - {@link FragmentManager}
-  * @param contentId           - Identifier of the container this fragment is to be placed in.
-  * @param maxDurationInMillis - allowed max video duration in milliseconds.
-  * @param callback            - callback to receive video recording result or handle progress
+  * @param fragmentManager - {@link FragmentManager}
+  * @param contentId       - Identifier of the container this fragment is to be placed in.
   */
-ziggeo.attachRecorder(FragmentManager manager, int contentId, long maxDurationInMillis, Callback callback);
-```
-##### Add extra recorder args
-```
-ziggeo.setExtraArgsForCreateVideo(HashMap<String, String> extraArgs);
+ziggeo.attachRecorder(@NonNull FragmentManager fragmentManager, int contentId);
 ```
 
-##### By default recorded video will send immideately after it was recorded. 
-##### To prevent this use
-```
-ziggeo.setSendImmediately(false);
-```
-##### You also can disable camera switching
+## Fullscreen video player:
 ```
 /**
-     * Use this for launch embedded recorder
-     *
-     * @param manager                - {@link FragmentManager}
-     * @param contentId              - Identifier of the container this fragment is to be placed in.
-     * @param maxDurationInMillis    - allowed max video duration in milliseconds.
-     * @param disableCameraSwitching - removes ability to switch cameras.
-     *                               The default camera is {@link Camera.CameraInfo.CAMERA_FACING_BACK}
-     */
-    public void attachRecorder(FragmentManager manager, int contentId, long maxDurationInMillis,
-                               boolean disableCameraSwitching)
-/**
-     * Use this for launch standalone activity with video recorder and player.
-     *
-     * @param context                - context
-     * @param maxDurationInMillis    - allowed max video duration in milliseconds.
-     * @param disableCameraSwitching - removes ability to switch cameras.
-     *                               The default camera is {@link Camera.CameraInfo.CAMERA_FACING_BACK}
-     */
-    public void createVideo(Context context, long maxDurationInMillis, boolean disableCameraSwitching)
-```
-
-##### Or select default camera and disable switching.
-```
-/**
-     * Use this for launch standalone activity with video recorder and player.
-     *
-     * @param context             - context
-     * @param maxDurationInMillis - allowed max video duration in milliseconds.
-     * @param preferredCameraId   - allow the app use only selected camera if exists.
-     */
-    public void createVideo(Context context, long maxDurationInMillis, int preferredCameraId)
-    
-/**
-     * Use this for launch embedded recorder
-     *
-     * @param manager             - {@link FragmentManager}
-     * @param contentId           - Identifier of the container this fragment is to be placed in.
-     * @param maxDurationInMillis - allowed max video duration in milliseconds.
-     * @param preferredCameraId          - allow the app use only selected camera if exists.
-     */
-    public void attachRecorder(FragmentManager manager, int contentId, long maxDurationInMillis,
-                               int preferredCameraId)
-```
-##### And select video quality using
-```
-com.ziggeo.androidsdk.recording.CameraHelper.Quality
-```
-##### Automatically start recording with delay
-```
-/**
-     * Sets the time after what we should automatically start recording.
-     *
-     * @param millis - delay to autostart
-     */
-    public void setAutostartRecordingAfter(long millis)
-```
-##### Show dialog to confirm recording stop
-```
- /**
-       * Setup stop recording confirmation dialog
-       *
-       * @param show - should it be shown
-       * @param titleResId - dialog title
-       * @param mesResId - dialog message
-       * @param posBtnResId - positive button text
-       * @param negBtnResId - negative button text
-       */
-      public void initStopRecordingConfirmationDialog(boolean show, @StringRes int titleResId, @StringRes int mesResId,
-                                                      @StringRes int posBtnResId, @StringRes int negBtnResId)
-```
-
-##### Time formatting for recorder screen
-```
- /**
-      * Provides a way for custom time formatting for recorder screen
-      *
-      * @param function takes current time, max time and returns formatted string
-      */
-     public void setTimeFormatAction(BiFunction<Long, Long, String> function)
-```
-
-## Video player:
-```
-Ziggeo ziggeo = new Ziggeo(APP_TOKEN);
-Uri path = ...; // path to file or stream url
-// or
-String token = ...; // video token
-
-/**
-  * Use this for launch embedded player from path
+  * Launch standalone activity with the player to play the file from uri.
   *
-  * @param manager   - {@link FragmentManager}
-  * @param contentId - Identifier of the container this fragment is to be placed in.
-  * @param path      - {@link Uri} path to file.
+  * @param path - {@link Uri} path to file.
   */
-ziggeo.attachPlayer(FragmentManager manager, int contentId, Uri path);
-```
+ziggeo.startPlayer(@NonNull Uri path);
 
-```
- /**
-  * Use this for launch embedded player from stream.
-  * Can be also used with extra args.
+/**
+  * Launch standalone activity with the player to play the file from stream.
   *
-  * @param manager   - {@link FragmentManager}
-  * @param contentId - Identifier of the container this fragment is to be placed in.
-  * @param token     - video token.
+  * @param videoToken - video token.
   */
-ziggeo.attachPlayer(FragmentManager manager, int contentId, String videoToken);
+ziggeo.startPlayer(@NonNull String videoToken);
 ```
-
-##### Add extra player args
+## Embedded video player:
 ```
 /**
-     * Sets the time after what we should automatically start recording.
-     *
-     * @param millis - delay to autostart
-     */
-    public void setAutostartRecordingAfter(long millis) {
-        this.mAutostartRecordingAfter = millis;
-    }
+  * Embed the player to play the file from uri.
+  *
+  * @param fragmentManager - {@link FragmentManager}
+  * @param contentId       - Identifier of the container this fragment is to be placed in.
+  * @param path            - {@link Uri} path to file.
+  */
+ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, Uri path);
+
+/**
+  * Embed the player to play the file from stream.
+  *
+  * @param fragmentManager - {@link FragmentManager}
+  * @param contentId       - Identifier of the container this fragment is to be placed in.
+  * @param videoToken      - video token.
+  */
+ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, String videoToken);
 ```
 
 ## Ziggeo API access
 ##### Videos api
 ```
 /**
-     * Delete a single video by token or key.
-     *
-     * @param keyOrToken - video token or key.
-     *                   If you're using key make sure to add "_" prefix.
-     * @param callback   - callback to receive action result
-     */
-ziggeo.videos().delete(String keyOrToken, Callback callback);
+  * Delete a single video by token or key.
+  *
+  * @param keyOrToken - video token or key.
+  *                   If you're using key make sure to add "_" prefix.
+  * @param callback   - callback to receive action result
+  */
+ziggeo.videos().destroy(String keyOrToken, Callback callback);
 
 /**
-     * Query an array of videos (will return at most 50 videos by default). Newest videos come first.
-     *
-     * @param argsMap  - limit: Limit the number of returned videos. Can be set up to 100.
-     *                 - skip: Skip the first [n] entries.
-     *                 - reverse: Reverse the order in which videos are returned.
-     *                 - states: Filter videos by state
-     *                 - tags: Filter the search result to certain tags
-     * @param callback - - callback to receive action result
-     */
+  * Query an array of videos (will return at most 50 videos by default). Newest videos come first.
+  *
+  * @param argsMap  - limit: Limit the number of returned videos. Can be set up to 100.
+  *                 - skip: Skip the first [n] entries.
+  *                 - reverse: Reverse the order in which videos are returned.
+  *                 - states: Filter videos by state
+  *                 - tags: Filter the search result to certain tags
+  * @param callback - - callback to receive action result
+  */
 ziggeo.videos().index(HashMap<String, String> argsMap, Callback callback);
 
 /**
-     * Get a single video by token or key.
-     *
-     * @param keyOrToken - video token or key.
-     *                   If you're using key make sure to add "_" prefix.
-     * @param callback   - callback to receive action result
-     */
+  * Get a single video by token or key.
+  *
+  * @param keyOrToken - video token or key.
+  *                   If you're using key make sure to add "_" prefix.
+  * @param callback   - callback to receive action result
+  */
 ziggeo.videos().get(String keyOrToken, Callback callback);
 
 /**
@@ -268,40 +317,40 @@ ziggeo.videos().create(HashMap<String, String> argsMap, Callback callback);
 
 ```
 /**
-     * Create a new stream
-     *
-     * @param videoTokenOrKey - video for which stream will be created
-     * @param callback        - callback to receive action result
-     */
+  * Create a new stream
+  *
+  * @param videoTokenOrKey - video for which stream will be created
+  * @param callback        - callback to receive action result
+  */
 ziggeo.streams().create(String videoTokenOrKey, Callback callback);
 
 /**
-     * Create a new stream
-     *
-     * @param videoTokenOrKey - video for which stream will be created
-     * @param videoFile       - Video file to be uploaded
-     * @param callback        - callback to receive action result
-     */
+  * Create a new stream
+  *
+  * @param videoTokenOrKey - video for which stream will be created
+  * @param videoFile       - Video file to be uploaded
+  * @param callback        - callback to receive action result
+  */
  ziggeo.streams().create(@NonNull String videoTokenOrKey, @NonNull File videoFile, @Nullable HashMap<String, String> argsMap, @NonNull Callback callback);
 
 /**
-     * Attaches an image to a new stream
-     *
-     * @param videoTokenOrKey  - video token
-     * @param streamTokenOrKey - stream to attach a file
-     * @param imageFile        - file to attach
-     * @param callback         - callback to receive action result or handler progress
-     */
+  * Attaches an image to a new stream
+  *
+  * @param videoTokenOrKey  - video token
+  * @param streamTokenOrKey - stream to attach a file
+  * @param imageFile        - file to attach
+  * @param callback         - callback to receive action result or handler progress
+  */
 ziggeo.streams().attachImage(videoTokenOrKey, String streamTokenOrKey, File imageFile, Callback callback);
 
 /**
-     * Attaches a video to a new stream
-     *
-     * @param videoTokenOrKey  - video token
-     * @param streamTokenOrKey - stream to attach a file
-     * @param videoFile        - file to attach
-     * @param callback         - callback to receive action result or handle progress
-     */
+  * Attaches a video to a new stream
+  *
+  * @param videoTokenOrKey  - video token
+  * @param streamTokenOrKey - stream to attach a file
+  * @param videoFile        - file to attach
+  * @param callback         - callback to receive action result or handle progress
+  */
 ziggeo.streams().attachVideo(String videoTokenOrKey, String streamTokenOrKey, File videoFile, Callback callback);
 
 /**
@@ -333,21 +382,21 @@ ziggeo.streams().bind(String videoTokenOrKey, String streamTokenOrKey, Callback 
 
 
 /**
-     * Get a single stream
-     *
-     * @param videoTokenOrKey  - video token
-     * @param streamTokenOrKey - stream to attach a file
-     * @param callback         - callback to receive action result
-     */
+  * Get a single stream
+  *
+  * @param videoTokenOrKey  - video token
+  * @param streamTokenOrKey - stream to attach a file
+  * @param callback         - callback to receive action result
+  */
 ziggeo.streams().get(String videoTokenOrKey, String streamTokenOrKey, Callback callback);
 
 /**
-     * Delete the stream
-     *
-     * @param videoTokenOrKey  - video token
-     * @param streamTokenOrKey - stream to attach a file
-     * @param callback         - callback to receive action result
-     */
+  * Delete the stream
+  *
+  * @param videoTokenOrKey  - video token
+  * @param streamTokenOrKey - stream to attach a file
+  * @param callback         - callback to receive action result
+  */
 ziggeo.streams().delete(String videoTokenOrKey, String streamTokenOrKey, Callback callback);
 ```
 

@@ -100,7 +100,6 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
             public void onRecodingStopped() {
                 super.onRecodingStopped();
                 Log.d(TAG, "onRecodingStopped");
-                compressFile();
 //                uploadFile();
             }
 
@@ -234,19 +233,6 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
                 Util.closeQuietly(response);
             }
         });
-    }
-
-    private void compressFile() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                VideoCompressor compressor = new VideoCompressorImpl(CameraViewActivity.this);
-                File convertFrom = fileToSaveRecording;
-                File convertTo = new File(convertFrom.getParent() + "/anyFileName.mp4");
-
-                compressor.compress(convertFrom, convertTo);
-            }
-        }).start();
     }
 
 }

@@ -1,7 +1,13 @@
 Change Log
 ==========
 
-Version 0.71.0*(2017-11-7)*
+Version 0.71.4*(2017-11-12)*
+----------------------------
+ * Fix: Removed compressor for medium video size. Lower bitrate set for medium and low quality. 
+ * Fix: Showing preview after start pressed if the preview was hidden. 
+ * Versions of dependencies updated.
+
+Version 0.71.1*(2017-11-7)*
 ----------------------------
  * New: Analytics integration.
  * Fix: Orientation calculation for recorder in Camera1 

@@ -3,7 +3,6 @@ package com.ziggeo.androidsdk.demo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -62,18 +61,6 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
             @Override
             public void onError() {
                 Log.d(TAG, "onError");
-            }
-
-            @Override
-            public void onCompressionStarted() {
-                super.onCompressionStarted();
-                Log.d(TAG, "onCompressionStarted");
-            }
-
-            @Override
-            public void onCompressionStopped() {
-                super.onCompressionStopped();
-                Log.d(TAG, "onCompressionStopped");
             }
         });
         mZiggeo.startRecorder();
