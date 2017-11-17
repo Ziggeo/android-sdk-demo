@@ -1,7 +1,11 @@
 Change Log
 ==========
 
-Version 0.71.4*(2017-11-12)*
+Version 0.71.6*(2017-11-17)*
+----------------------------
+ * Fix: Crash when starting activity from application context. 
+ 
+Version 0.71.5*(2017-11-12)*
 ----------------------------
  * Fix: Removed compressor for medium video size. Lower bitrate set for medium and low quality. 
  * Fix: Showing preview after start pressed if the preview was hidden. 
