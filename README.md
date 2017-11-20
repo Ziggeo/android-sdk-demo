@@ -162,6 +162,7 @@ ziggeo.setExtraArgsForPlayVideo(@Nullable Map<String, String> extraArgs);
     
 /**
   * Cancel a network request which is in execution right now.
+  * Can be used only with native recorder.
   */
 ziggeo.cancelRequest();
 
