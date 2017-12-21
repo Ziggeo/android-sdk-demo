@@ -1,7 +1,7 @@
 # Android-SDK
 ## Please, use latest build tools and compile sdk version.
 
-### Download:
+### Preparation
 **Step 1.** Add the JitPack repository in your root `build.gradle`
 ```
 allprojects {
@@ -27,7 +27,7 @@ dependencies {
 Ziggeo ziggeo = new Ziggeo(appToken, context);
 ```
 
-## Configure:
+## Configure
 ```
 /**
   * Set the maximum duration of the video.
@@ -133,14 +133,15 @@ ziggeo.setPreferredCameraFacing(facing);
 ziggeo.setPreferredQuality(videoQuality);
 
 /**
-  * If true disable switching camera from back to front and vice versa.
+  * Disable camera switching.
   * <p>
   * Default value is false.
   */
 ziggeo.setCameraSwitchDisabled(enabled);
 
 /**
-  * Set the recorder to send a video right after it was recorded.
+  * By default recorded video will be immediately submitted once it's recorded. To prevent automatic
+  * and immediate submission, set to false.
   * <p>
   * Default value is true.
   */
@@ -179,14 +180,15 @@ ziggeo.initStopRecordingConfirmationDialog(boolean show, @StringRes int titleRes
                                              @StringRes int posBtnResId, @StringRes int negBtnResId);
 ```
 
-## Fullscreen video recorder:
+## Fullscreen Video Recorder
 ```
 /**
   * Launch standalone activity with video recorder and player.
   */
 ziggeo.startRecorder();
 ```
-## Embedded video recorder:
+
+## Embedded Video Recorder
 ```
 /**
   * Embed the recorder.
@@ -197,7 +199,7 @@ ziggeo.startRecorder();
 ziggeo.attachRecorder(@NonNull FragmentManager fragmentManager, int contentId);
 ```
 
-## Fullscreen video player:
+## Fullscreen Video Player
 ```
 /**
   * Launch standalone activity with the player to play the file from uri.
@@ -213,7 +215,8 @@ ziggeo.startPlayer(@NonNull Uri path);
   */
 ziggeo.startPlayer(@NonNull String videoToken);
 ```
-## Embedded video player:
+
+## Embedded Video Player
 ```
 /**
   * Embed the player to play the file from uri.
@@ -234,8 +237,9 @@ ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, Uri
 ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, String videoToken);
 ```
 
-## Ziggeo API access
-##### Videos api
+## Ziggeo API Access
+
+##### Videos API
 ```
 /**
   * Delete a single video by token or key.
@@ -314,7 +318,7 @@ ziggeo.videos().update(String keyOrToken, HashMap<String, String> argsMap, Callb
 ziggeo.videos().create(HashMap<String, String> argsMap, Callback callback);
 ```
 
-##### Streams api
+##### Streams API
 
 ```
 /**
@@ -401,12 +405,12 @@ ziggeo.streams().get(String videoTokenOrKey, String streamTokenOrKey, Callback c
 ziggeo.streams().delete(String videoTokenOrKey, String streamTokenOrKey, Callback callback);
 ```
 
-##### Requests cancellation
-Every service call returns `Call` object, you can cancel request execution, by calling ```cancel``` method. 
-For example
+##### Request Cancellation
+Every service call returns a `Call` object, allowing you to cancel the request execution, by invoking the ```cancel``` method. 
+For example:
 ```
 Call call = mVideoService.create(...);
 call.cancel();
 ```
-Also you can cancel requests for embedded recorder
+Note: you can also cancel requests for embedded recorder
 `mZiggeo.cancel()`
