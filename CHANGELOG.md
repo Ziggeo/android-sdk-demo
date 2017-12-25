@@ -1,10 +1,15 @@
 Change Log
 ==========
 
+Version 0.71.7*(2017-12-25)*
+----------------------------
+ * Fix: Fixed issue with loosing config for camera in case of autoswitching from Camera2 to Camera1.
+ * Fix: Added seconds to video file name to prevent losing videos recorded during one minute.
+
 Version 0.71.6*(2017-11-17)*
 ----------------------------
- * Fix: Crash when starting activity from application context. 
- 
+ * Fix: Crash when starting activity from application context.
+
 Version 0.71.5*(2017-11-12)*
 ----------------------------
  * Fix: Removed compressor for medium video size. Lower bitrate set for medium and low quality. 

@@ -21,6 +21,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:design:27.0.1'
-    compile 'com.github.ZiggeoJitpackService:Android-SDK:0.71.6'
+    compile 'com.android.support:design:27.0.2'
+    compile 'com.github.ZiggeoJitpackService:Android-SDK:0.71.7'
 }
