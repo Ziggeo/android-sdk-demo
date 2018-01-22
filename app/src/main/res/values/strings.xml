@@ -4,4 +4,8 @@
     <string name="common_ok">OK</string>
     <string name="common_grant_permissions">Please, grant permissions.</string>
     <string name="common_missing_permission">App can\'t work without permissions.</string>
+
+    <string name="youtube_error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="youtube_playerview_text">This is a YouTubePlayerView!</string>
+
 </resources>

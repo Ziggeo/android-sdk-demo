@@ -18,7 +18,8 @@
 
         <activity android:name="com.ziggeo.androidsdk.demo.CameraViewActivity" />
 
-        <activity android:name="com.ziggeo.androidsdk.demo.PlayerActivity" />
+        <activity android:name="com.ziggeo.androidsdk.demo.players.ZiggeoPlayerActivity" />
+        <activity android:name="com.ziggeo.androidsdk.demo.players.YouTubePlayerActivity" />
 
     </application>
 

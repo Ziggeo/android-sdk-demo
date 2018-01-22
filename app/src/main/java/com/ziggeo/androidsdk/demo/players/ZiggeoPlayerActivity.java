@@ -1,4 +1,4 @@
-package com.ziggeo.androidsdk.demo;
+package com.ziggeo.androidsdk.demo.players;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import com.ziggeo.androidsdk.Ziggeo;
  * Created by Alex Bedulin on 4/26/17.
  */
 
-public class PlayerActivity extends AppCompatActivity {
+public class ZiggeoPlayerActivity extends AppCompatActivity {
 
     public static final String APP_TOKEN = ""; // TODO place your token here
 
