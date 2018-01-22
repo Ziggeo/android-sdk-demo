@@ -18,9 +18,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     compile 'com.android.support:design:27.0.2'
     compile 'com.github.ZiggeoJitpackService:Android-SDK:0.71.7'
+    implementation('com.vimeo.networking:vimeo-networking:1.1.0') {
+        exclude group: 'com.intellij', module: 'annotations'
+    }
+    implementation files('libs/YouTubeAndroidPlayerApi_v1.2.2.jar')
 }
