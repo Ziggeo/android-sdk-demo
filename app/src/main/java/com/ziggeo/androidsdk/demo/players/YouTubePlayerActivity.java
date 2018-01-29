@@ -12,6 +12,8 @@ import com.ziggeo.demo.R;
 
 public class YouTubePlayerActivity extends YouTubeFailureRecoveryActivity implements YouTubePlayer.OnInitializedListener {
 
+    private static final String YOUTUBE_VIDEO_ID = "fBFMdVYPmV4";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +27,7 @@ public class YouTubePlayerActivity extends YouTubeFailureRecoveryActivity implem
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
                                         boolean wasRestored) {
         if (!wasRestored) {
-            player.cueVideo("wKJ9KzGQq0w");
+            player.cueVideo(YOUTUBE_VIDEO_ID);
         }
     }
 
