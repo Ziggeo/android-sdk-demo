@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 0.72.0*(2018-1-29)*
+----------------------------
+ * New: Added settings for player cache.
+ * Fix: Cache for player
+ * Fix: Checking for filled cache.
+ * Fix: Blank preview for case when the app returns from background.
+
 Version 0.71.7*(2017-12-25)*
 ----------------------------
  * Fix: Fixed issue with loosing config for camera in case of autoswitching from Camera2 to Camera1.

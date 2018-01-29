@@ -52,11 +52,51 @@ ziggeo.setAutostartRecordingAfter(autoStartAfterInMillis);
 
 /**
   * Set the folder where videos will be stored after recording.
-  * Default path is Environment.getExternalStorageDirectory() + "/Ziggeo"
+  * Default path is Environment.getExternalStorageDirectory() + "/Ziggeo/Recorder"
   *
   * @param cacheFolderPath - path to the folder
   */
-ziggeo.setCacheFolder(path);
+ziggeo.setRecorderCacheFolder(path);
+
+/**
+  * Set the maximum allowed cache size.
+  * If the maximum is reached than before starting a new record the most old file will be deleted.
+  *
+  * @param maxCacheSize - max size in bytes.
+  */
+ziggeo.setMaxRecorderCacheSize(long maxCacheSize);
+
+/**
+  * Set the maximum allowed cache files count.
+  * If the maximum is reached than before starting a new record the most file old will be deleted.
+  *
+  * @param filesCount - max file count.
+  */
+ziggeo.setMaxRecorderCacheFilesCount(int filesCount);
+
+/**
+  * Set the folder where videos will be stored after recording.
+  * Default path is `Environment.getExternalStorageDirectory() + "/Ziggeo/Player"`
+  *
+  * @param cacheFolderPath - path to the folder
+  */
+ziggeo.setPlayerCacheFolder(@NonNull String cacheFolderPath);
+
+/**
+  * Set the maximum allowed cache size.
+  * If the maximum is reached than before playing the most old file will be deleted.
+  *
+  * @param maxCacheSize - max size in bytes.
+  */
+ziggeo.setMaxPlayerCacheSize(long maxCacheSize);
+
+/**
+  * Set the maximum allowed cache files count.
+  * If the maximum is reached than before starting a new record the most old file will be deleted.
+  *
+  * @param filesCount - max files count.
+  */
+ziggeo.setMaxPlayerCacheFilesCount(int filesCount);
 
 /**
   * Register a callback to be invoked when a recording is started, stopped or an error occupied.
