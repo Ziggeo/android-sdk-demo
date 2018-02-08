@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.72.1*(2018-2-8)*
+--------------------------
+ * New: Changed launch mode for recorder activity to `singleInstance`.
+
 Version 0.72.0*(2018-1-29)*
 ----------------------------
  * New: Added settings for player cache.
