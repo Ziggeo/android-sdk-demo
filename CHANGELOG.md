@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.72.2*(2018-2-16)*
+---------------------------
+ * New: Removed deprecated video encoder.
+
 Version 0.72.1*(2018-2-8)*
 --------------------------
  * New: Changed launch mode for recorder activity to `singleInstance`.

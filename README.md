@@ -1,7 +1,7 @@
 # Android-SDK
-### Upgrading from `v.0.72.0` to `v.0.72.1`
-New changes bring new features without changing the entry or exit points of any methods or functions. You can safely upgrade without any changes.
- * Feature: Changed launch mode for recorder activity to `singleInstance`.
+### Upgrading from `v.0.72.1` to `v.0.72.2`
+Broken changes
+ * Feature: Removed deprecated `VideoCompressor`.
 
 ## Please, use latest build tools and compile sdk version.
 
@@ -19,7 +19,7 @@ allprojects {
 **Step 2.** Add the dependency in your application related dependencies
 ```
 dependencies {
-        compile 'com.github.ZiggeoJitpackService:Android-SDK:0.72.1'
+        compile 'com.github.ZiggeoJitpackService:Android-SDK:0.72.2'
 }
 ```
 ## Initialize

@@ -18,8 +18,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.compressor.VideoCompressor;
-import com.ziggeo.androidsdk.compressor.VideoCompressorImpl;
 import com.ziggeo.androidsdk.net.rest.ProgressCallback;
 import com.ziggeo.androidsdk.widgets.cameraview.CameraView;
 import com.ziggeo.demo.R;
