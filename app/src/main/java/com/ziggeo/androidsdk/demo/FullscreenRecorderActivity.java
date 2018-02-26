@@ -110,7 +110,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
             public void run() {
                 final long autostartRecording = 5000L; // after 5 seconds
                 mZiggeo.setAutostartRecordingAfter(autostartRecording);
-                mZiggeo.createVideo(FullscreenRecorderActivity.this, 20000, FullscreenRecorderActivity.this);
+                mZiggeo.startRecorder();
             }
         }, previewDelay);
     }
@@ -148,7 +148,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
      * Make sure your application was allowed to do delete.
      */
     private void deleteVideoApiCallExample(String videoToken, Callback callback) {
-        mZiggeo.videos().delete(videoToken, callback);
+        mZiggeo.videos().destroy(videoToken, callback);
     }
 
     /**

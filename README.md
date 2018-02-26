@@ -1,7 +1,9 @@
 # Android-SDK
-### Upgrading from `v.0.72.1` to `v.0.72.2`
+### Upgrading from `v.0.72.2` to `v.0.72.3`
 Broken changes
- * Feature: Removed deprecated `VideoCompressor`.
+ * Feature: Removed deprecated callbacks `onCompressionStarted` and `onCompressionStopped`.
+New
+ * Fixed authentication though client/server tokens.
 
 ## Please, use latest build tools and compile sdk version.
 

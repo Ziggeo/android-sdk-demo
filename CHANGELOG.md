@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.72.3*(2018-2-26)*
+---------------------------
+ * New: Removed deprecated callbacks for video compressor.
+ * Fix: Fixed authentication through server/client tokens.
+
 Version 0.72.2*(2018-2-16)*
 ---------------------------
  * New: Removed deprecated video encoder.
