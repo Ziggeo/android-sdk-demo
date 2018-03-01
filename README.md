@@ -1,9 +1,8 @@
 # Android-SDK
-### Upgrading from `v.0.72.2` to `v.0.72.3`
-Broken changes
- * Feature: Removed deprecated callbacks `onCompressionStarted` and `onCompressionStopped`.
-New
- * Fixed authentication though client/server tokens.
+### Upgrading from `v.0.72.3` to `v.0.72.4`
+New changes bring new features without changing the entry or exit points of any methods or functions.
+You can safely upgrade without any changes.
+ * Session token now automatically appended to every request.
 
 ## Please, use latest build tools and compile sdk version.
 

@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.72.4*(2018-3-1)*
+--------------------------
+ * Fix: Session token now automatically appended to every request.
+
 Version 0.72.3*(2018-2-26)*
 ---------------------------
  * New: Removed deprecated callbacks for video compressor.
