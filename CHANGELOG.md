@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.72.6*(2018-3-5)*
+--------------------------
+ * Method `setExtraArgsForCreateVideo` was deprecated, please use `setExtraArgsForEmbeddedRecorder`.
+ * Method `setExtraArgsForPlayVideo` was deprecated, please use `setExtraArgsForEmbeddedPlayer`.
+
 Version 0.72.4*(2018-3-1)*
 --------------------------
  * Fix: Session token now automatically appended to every request.

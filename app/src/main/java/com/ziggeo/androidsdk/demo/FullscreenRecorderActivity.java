@@ -44,7 +44,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         Map<String, String> args = new HashMap<>();
         args.put("key", "key_for_video");
         args.put("tags", "tag_for_video1, tag_for_video2");
-        mZiggeo.setExtraArgsForCreateVideo(args);
+        mZiggeo.setExtraArgsForEmbeddedRecorder(args);
         mZiggeo.setMaxRecordingDuration(maxDuration);
         mZiggeo.setNetworkRequestsCallback(this);
         mZiggeo.setVideoRecordingProcessCallback(new VideoRecordingCallback() {
