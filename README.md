@@ -198,14 +198,14 @@ ziggeo.setSendImmediately(boolean sendImmediately);
   *
   * @param extraArgs - map of args which will be sent with create video request
   */
-ziggeo.setExtraArgsForCreateVideo(extraArgs);
+ziggeo.setExtraArgsForEmbeddedRecorder(extraArgs);
 
 /**
   * Set extra arguments for stream video player.
   *
   * @param extraArgs
   */
-ziggeo.setExtraArgsForPlayVideo(@Nullable Map<String, String> extraArgs);
+ziggeo.setExtraArgsForEmbeddedPlayer(@Nullable Map<String, String> extraArgs);
     
 /**
   * Cancel a network request which is in execution right now.
