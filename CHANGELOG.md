@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.72.7*(2018-3-6)*
+--------------------------
+ * Lambdas removed from the SDK.
+
 Version 0.72.6*(2018-3-5)*
 --------------------------
  * Method `setExtraArgsForCreateVideo` was deprecated, please use `setExtraArgsForEmbeddedRecorder`.

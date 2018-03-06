@@ -1,5 +1,6 @@
 package com.ziggeo.androidsdk.demo.players;
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -80,7 +81,12 @@ public class VimeoPlayerActivity extends AppCompatActivity {
         controller.setAnchorView(videoView);
         videoView.setMediaController(controller);
         showProgress(true);
-        videoView.setOnPreparedListener(mp -> showProgress(false));
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                showProgress(false);
+            }
+        });
         videoView.start();
     }
 

@@ -1,9 +1,10 @@
 # Android-SDK
-### Upgrading from `v.0.72.4` to `v.0.72.6`
+### Upgrading from `v.0.72.4` to `v.0.72.7`
 New changes bring new features without changing the entry or exit points of any methods or functions.
 You can safely upgrade without any changes.
  * Method `setExtraArgsForCreateVideo` was deprecated, please use `setExtraArgsForEmbeddedRecorder`.
  * Method `setExtraArgsForPlayVideo` was deprecated, please use `setExtraArgsForEmbeddedPlayer`.
+ * Lambdas removed from the SDK.
 
 ## Please, use latest build tools and compile sdk version.
 
