@@ -12,9 +12,18 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
     }
+    signingConfigs {
+        release {
+            storeFile file("tempKeystore/temp.jks")
+            storePassword "temptemp"
+            keyAlias "temptemp"
+            keyPassword "temptemp"
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

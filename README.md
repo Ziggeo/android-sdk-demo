@@ -461,3 +461,6 @@ call.cancel();
 ```
 Note: you can also cancel requests for embedded recorder
 `mZiggeo.cancel()`
+
+## Proguard config
+See `app\proguard-rules.pro`
