@@ -1,10 +1,54 @@
 # Android-SDK
-### Upgrading from `v.0.72.4` to `v.0.72.7`
-New changes bring new features without changing the entry or exit points of any methods or functions.
-You can safely upgrade without any changes.
- * Method `setExtraArgsForCreateVideo` was deprecated, please use `setExtraArgsForEmbeddedRecorder`.
- * Method `setExtraArgsForPlayVideo` was deprecated, please use `setExtraArgsForEmbeddedPlayer`.
- * Lambdas removed from the SDK.
+### Upgrading from `v.0.72.7` to `v.0.73.0`
+Broken changes - removed old deprecated methods.
+   * Docs updated.
+   * Fixed issue when dialog for stop recording confirmation overlaps with covershot selection dialog.
+   * Fixed issue when dialog for stop recording confirmation does not hide when recording actually stops after time limit exceeded.
+   * Changes for player's cache
+    * To configure cache `ziggeo.configureLocalPlayback(@Nullable LocalPlaybackConfig config)` should be used.
+      Other methods is deprecated.
+    * Default maximum cache size changed to 512Mb
+    * Default maximum files count in cache changed to 5
+    * Default cache path cahnged to `/Android/data/[app_package_name]/cache/video-cache/` if card is mounted and app has appropriate permission
+      or `video-cache` subdirectory in default application's cache directory otherwise.
+   * Added `ziggeo.setDrawableForStoppedCameraOverlay(@DrawableRes int drawableResource)`
+   * Deprecated `onError()` method in IVideoRecordingCallback and added `onError(throwable)`.
+   * Deprecated method for configuration of stop rectoring confirmation dialog.
+     Instead of `ziggeo.initStopRecordingConfirmationDialog(boolean show, @StringRes int titleResId, @StringRes int mesResId,
+                                                                     @StringRes int posBtnResId, @StringRes int negBtnResId)`
+
+      please use `ziggeo.configureStopRecordingConfirmationDialog(@Nullable StopRecordingConfirmationDialogConfig config)`
+   * Deprecated methods related to recorder's cache
+    * `ziggeo.setRecorderCacheFolder(@NonNull String cacheFolderPath)`
+    * `ziggeo.getRecorderCacheFolder()`
+    * `ziggeo.setMaxRecorderCacheSize(long maxCacheSize)`
+    * `ziggeo.getMaxRecorderCacheSize()`
+    * `ziggeo.setMaxRecorderCacheFilesCount(int filesCount)`
+    * `ziggeo.getMaxRecorderCacheFilesCount()`
+   * Deleted old deprecated method for overriding layout for recorder
+     `ziggeo.setRecorderLayout(@LayoutRes int layoutId)`
+   * Deleted old deprecated classes and methods
+     * `IOUtils.checkVideoIsInCache(String token)`
+     * `HttpStatusCodes`
+     * `CameraHelper`
+     * `ziggeo.cancel()`
+     * `ziggeo.setCacheFolder(@NonNull String cacheFolderPath)`
+     * `ziggeo.setMaxCacheSize(long maxCacheSize)`
+     * `ziggeo.setShowCoverShotSelectionPopup(boolean showCoverShotSelectionPopup)`
+     * `ziggeo.startPlayer(@NonNull Context context, @NonNull Uri path)`
+     * `ziggeo.startPlayer(@NonNull Context context, @NonNull String videoToken)`
+     * `ziggeo.attachRecorder(@NonNull FragmentManager fragmentManager, int contentId, long maxDurationInMillis,                Callback callback)`
+     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, boolean disableCameraSwitching, Callback callback)`
+     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, int preferredCameraId, Callback callback)`
+     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, CameraHelper.Quality videoQuality, Callback callback)`
+     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, boolean disableCameraSwitching, CameraHelper.Quality videoQuality, Callback callback)`
+     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, int preferredCameraId, CameraHelper.Quality videoQuality, Callback callback)`
+     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, @Nullable Callback callback)`
+     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, boolean disableCameraSwitching, @Nullable Callback callback)`
+     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, @CameraView.Facing int preferredCamera, @Nullable Callback callback)`
+     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, @Nullable CameraHelper.Quality videoQuality, @Nullable Callback callback)`
+     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, boolean disableCameraSwitching, @Nullable CameraHelper.Quality videoQuality, @Nullable Callback callback)`
+     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, @CameraView.Facing int preferredCamera, @Nullable CameraHelper.Quality videoQuality, @Nullable Callback callback)`
 
 ## Please, use latest build tools and compile sdk version.
 
@@ -37,75 +81,32 @@ Ziggeo ziggeo = new Ziggeo(appToken, context);
 ## Configure
 ```
 /**
-  * Set the maximum duration of the video.
-  * If the value is 0, the recording will be endless.
+  * For recorder.
   * <p>
-  * Default value is 0
+  * Set the maximum duration of the video. `0` for endless recording.
+  * Also used in elapsed time indicator in the top-right corner.
+  * <p>
+  * Default value is `0`
   *
   * @param duration - duration in millis
   */
 ziggeo.setMaxRecordingDuration(maxVideoDuration);
 
 /**
-  * Set the time after what the recording will be automatically started.
-  * If the value is 0, the recording will be started immediately.
-  * If the value is -1, the feature will be turned off. 
-  * <p>  
-  * Default value is -1
+  * For recorder.
+  * <p>
+  * Set the time after what the recording will be automatically started
+  * `0` value will start immediately
+  * `-1` value will turn off this feature
+  * Default value is `-1`
   *
   * @param millis - delay to autostart
   */
 ziggeo.setAutostartRecordingAfter(autoStartAfterInMillis);
 
 /**
-  * Set the folder where videos will be stored after recording.
-  * Default path is Environment.getExternalStorageDirectory() + "/Ziggeo/Recorder"
-  *
-  * @param cacheFolderPath - path to the folder
-  */
-ziggeo.setRecorderCacheFolder(path);
-
-/**
-  * Set the maximum allowed cache size.
-  * If the maximum is reached than before starting a new record the most old file will be deleted.
-  *
-  * @param maxCacheSize - max size in bytes.
-  */
-ziggeo.setMaxRecorderCacheSize(long maxCacheSize);
-
-/**
-  * Set the maximum allowed cache files count.
-  * If the maximum is reached than before starting a new record the most file old will be deleted.
-  *
-  * @param filesCount - max file count.
-  */
-ziggeo.setMaxRecorderCacheFilesCount(int filesCount);
-
-/**
-  * Set the folder where videos will be stored after recording.
-  * Default path is `Environment.getExternalStorageDirectory() + "/Ziggeo/Player"`
-  *
-  * @param cacheFolderPath - path to the folder
-  */
-ziggeo.setPlayerCacheFolder(@NonNull String cacheFolderPath);
-
-/**
-  * Set the maximum allowed cache size.
-  * If the maximum is reached than before playing the most old file will be deleted.
-  *
-  * @param maxCacheSize - max size in bytes.
-  */
-ziggeo.setMaxPlayerCacheSize(long maxCacheSize);
-
-/**
-  * Set the maximum allowed cache files count.
-  * If the maximum is reached than before starting a new record the most old file will be deleted.
-  *
-  * @param filesCount - max files count.
-  */
-ziggeo.setMaxPlayerCacheFilesCount(int filesCount);
-
-/**
+  * For recorder.
+  * <p>
   * Register a callback to be invoked when a recording is started, stopped or an error occupied.
   *
   * @param callback - the callback
@@ -113,6 +114,8 @@ ziggeo.setMaxPlayerCacheFilesCount(int filesCount);
 ziggeo.setVideoRecordingProcessCallback(callback);
 
 /**
+  * For recorder.
+  * <p>
   * Register a callback to be invoked when request finished with either an HTTP response or a
   * failure exception.
   *
@@ -121,101 +124,119 @@ ziggeo.setVideoRecordingProcessCallback(callback);
 ziggeo.setNetworkRequestsCallback(@callback);
 
 /**
-  * If true will hide the preview when uploading is started and show the preview after
-  * uploading will be finished successfully or with the error.
+  * For recorder.
+  * <p>
+  * If `true` will hide the preview when uploading is started and show the preview after
+  * uploading is finished (successfully or with the error).
   * The preview will also be shown if user will start a new recording.
   * <p>
-  * Default value is false
+  * Default value is `false`
   * <p>
-  * Does not release the Camera.
+  * Does not release the `Camera`.
   *
   * @param turnOffCameraWhileUploading
   */
 ziggeo.setTurnOffCameraWhileUploading(turnOffCameraWhileUploading);
 
 /**
-  * Set the color to be shown as a background when camera preview is stopped.
+  * For recorder.
   * <p>
-  * Default color is @android:color/black
+  * Set the color to be shown as a background when camera preview is stopped.
+  * Default color is `@android:color/black`
   *
   * @param colorForStoppedCameraOverlay - the color
   */
 ziggeo.setColorForStoppedCameraOverlay(colorForStoppedCameraOverlay);
 
 /**
-  * Set if a dialog for selecting a cover shot should be shown after the recording is stopped.
+  * For recorder.
   * <p>
-  * Default value is true
+  * Set the drawable to be shown as a background when camera preview is stopped.
+  * Default color is `@android:color/black`
   *
-  * @param enabled
+  * @param drawableResource - the drawable resource
   */
-ziggeo.setCoverSelectorEnabled(enabled);
+void setDrawableForStoppedCameraOverlay(@DrawableRes int drawableResource);
 
- /**
-  * Set the maximum duration of a video.
-  * 0 is for endless recording
+/**
+  * For recorder.
   * <p>
-  * Default value is 0
+  * Set the maximum duration of the video. `0` for endless recording.
+  * Also used in elapsed time indicator in the top-right corner.
+  * <p>
+  * Default value is `0`
   *
   * @param duration - duration in millis
   */
 ziggeo.setMaxRecordingDuration(duration);
 
 /**
-  * Set what camera facing to use by default.
+  * For recorder.
   * <p>
-  * Default value is CameraView.FACING_BACK
+  * Set what camera facing to use by default.
+  * Default value is {@link CameraView.FACING_BACK}
   *
   * @param facing - back or front facing
   */
 ziggeo.setPreferredCameraFacing(facing);
 
 /**
-  * Set what quality to use for recording.
+  * For recorder.
   * <p>
-  * Default value is CameraView.QUALITY_HIGH
+  * Set what quality to use for recording.
+  * Default value is {@link CameraView.QUALITY_HIGH}
   *
   * @param videoQuality - the quality
   */
 ziggeo.setPreferredQuality(videoQuality);
 
 /**
-  * Disable camera switching.
+  * For recorder.
   * <p>
-  * Default value is false.
+  * If true the button for switching will not be shown.
+  * Default value is `false`.
   */
 ziggeo.setCameraSwitchDisabled(enabled);
 
 /**
-  * By default recorded video will be immediately submitted once it's recorded. To prevent automatic
-  * and immediate submission, set to false.
+  * For recorder.
   * <p>
-  * Default value is true.
+  * If true the video will be sent right after it was recorded.
+  * Default value is `true`.
   */
 ziggeo.setSendImmediately(boolean sendImmediately);
 
 /**
-  * Set extra arguments for create video request.
+  * For recorder.
+  * <p>
+  * Set extra arguments for create video request when creating video using embedded recorder.
   *
-  * @param extraArgs - map of args which will be sent with create video request
+  * @param extraArgs - args will be sent with create video request
   */
-ziggeo.setExtraArgsForEmbeddedRecorder(extraArgs);
+ziggeo.setExtraArgsForRecorder(extraArgs);
 
 /**
+  * For player.
+  * <p>
   * Set extra arguments for stream video player.
   *
   * @param extraArgs
   */
-ziggeo.setExtraArgsForEmbeddedPlayer(@Nullable Map<String, String> extraArgs);
+ziggeo.setExtraArgsForPlayer(@Nullable Map<String, String> extraArgs);
     
 /**
-  * Cancel a network request which is in execution right now.
-  * Can be used only with native recorder.
+  * For recorder.
+  * <p>
+  * Cancel the latest network request which is in execution right now.
+  * For example, if two videos were recorder and both uploading right now the last one will be cancelled.
   */
 ziggeo.cancelRequest();
 
 /**
+  * For recorder.
+  * <p>
   * Configure a dialog to confirm recording stop.
+  * The dialog will be shown for both cases: either user press `stop` button or `sendAndClose` checkmark.
   *
   * @param show        - if the dialog will be shown
   * @param titleResId  - the title
@@ -366,7 +387,6 @@ ziggeo.videos().create(HashMap<String, String> argsMap, Callback callback);
 ```
 
 ##### Streams API
-
 ```
 /**
   * Create a new stream
@@ -459,7 +479,7 @@ For example:
 Call call = mVideoService.create(...);
 call.cancel();
 ```
-Note: you can also cancel requests for embedded recorder
+Note: you can also cancel the last active request for recorder using
 `mZiggeo.cancel()`
 
 ## Proguard config
