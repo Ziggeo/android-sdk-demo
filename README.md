@@ -1,54 +1,12 @@
 # Android-SDK
-### Upgrading from `v.0.72.7` to `v.0.73.0`
-Broken changes - removed old deprecated methods.
-   * Docs updated.
-   * Fixed issue when dialog for stop recording confirmation overlaps with covershot selection dialog.
-   * Fixed issue when dialog for stop recording confirmation does not hide when recording actually stops after time limit exceeded.
-   * Changes for player's cache
-    * To configure cache `ziggeo.configureLocalPlayback(@Nullable LocalPlaybackConfig config)` should be used.
-      Other methods is deprecated.
-    * Default maximum cache size changed to 512Mb
-    * Default maximum files count in cache changed to 5
-    * Default cache path cahnged to `/Android/data/[app_package_name]/cache/video-cache/` if card is mounted and app has appropriate permission
-      or `video-cache` subdirectory in default application's cache directory otherwise.
-   * Added `ziggeo.setDrawableForStoppedCameraOverlay(@DrawableRes int drawableResource)`
-   * Deprecated `onError()` method in IVideoRecordingCallback and added `onError(throwable)`.
-   * Deprecated method for configuration of stop rectoring confirmation dialog.
-     Instead of `ziggeo.initStopRecordingConfirmationDialog(boolean show, @StringRes int titleResId, @StringRes int mesResId,
-                                                                     @StringRes int posBtnResId, @StringRes int negBtnResId)`
-
-      please use `ziggeo.configureStopRecordingConfirmationDialog(@Nullable StopRecordingConfirmationDialogConfig config)`
-   * Deprecated methods related to recorder's cache
-    * `ziggeo.setRecorderCacheFolder(@NonNull String cacheFolderPath)`
-    * `ziggeo.getRecorderCacheFolder()`
-    * `ziggeo.setMaxRecorderCacheSize(long maxCacheSize)`
-    * `ziggeo.getMaxRecorderCacheSize()`
-    * `ziggeo.setMaxRecorderCacheFilesCount(int filesCount)`
-    * `ziggeo.getMaxRecorderCacheFilesCount()`
-   * Deleted old deprecated method for overriding layout for recorder
-     `ziggeo.setRecorderLayout(@LayoutRes int layoutId)`
-   * Deleted old deprecated classes and methods
-     * `IOUtils.checkVideoIsInCache(String token)`
-     * `HttpStatusCodes`
-     * `CameraHelper`
-     * `ziggeo.cancel()`
-     * `ziggeo.setCacheFolder(@NonNull String cacheFolderPath)`
-     * `ziggeo.setMaxCacheSize(long maxCacheSize)`
-     * `ziggeo.setShowCoverShotSelectionPopup(boolean showCoverShotSelectionPopup)`
-     * `ziggeo.startPlayer(@NonNull Context context, @NonNull Uri path)`
-     * `ziggeo.startPlayer(@NonNull Context context, @NonNull String videoToken)`
-     * `ziggeo.attachRecorder(@NonNull FragmentManager fragmentManager, int contentId, long maxDurationInMillis,                Callback callback)`
-     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, boolean disableCameraSwitching, Callback callback)`
-     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, int preferredCameraId, Callback callback)`
-     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, CameraHelper.Quality videoQuality, Callback callback)`
-     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, boolean disableCameraSwitching, CameraHelper.Quality videoQuality, Callback callback)`
-     * `ziggeo.attachRecorder(@NonNull FragmentManager manager, int contentId, long maxDurationInMillis, int preferredCameraId, CameraHelper.Quality videoQuality, Callback callback)`
-     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, @Nullable Callback callback)`
-     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, boolean disableCameraSwitching, @Nullable Callback callback)`
-     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, @CameraView.Facing int preferredCamera, @Nullable Callback callback)`
-     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, @Nullable CameraHelper.Quality videoQuality, @Nullable Callback callback)`
-     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, boolean disableCameraSwitching, @Nullable CameraHelper.Quality videoQuality, @Nullable Callback callback)`
-     * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, @CameraView.Facing int preferredCamera, @Nullable CameraHelper.Quality videoQuality, @Nullable Callback callback)`
+### Upgrading from `v.0.73.0` to `v.0.73.1`
+No broken changes
+ * Fix: Added 1 hour expiration time for a session token
+ * Config improvements:
+    * Gradle wrapper updated to 4.4
+    * Gradle plugin version updated to 3.1.0
+    * Build tools version updated to 27.0.3
+    * Project dependencies provided with the latest approach
 
 ## Please, use latest build tools and compile sdk version.
 

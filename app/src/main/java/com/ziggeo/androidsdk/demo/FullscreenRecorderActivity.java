@@ -59,8 +59,9 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
             }
 
             @Override
-            public void onError() {
-                Log.d(TAG, "onError");
+            public void onError(@NonNull Throwable throwable) {
+                super.onError(throwable);
+                Log.d(TAG, "onError:" + throwable.toString());
             }
         });
         mZiggeo.startRecorder();
@@ -81,7 +82,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
     }
 
     @Override
-    public void onResponse(Call call, Response response) throws IOException {
+    public void onResponse(Call call, Response response) {
         if (response.isSuccessful() && response.body() != null) {
             try {
                 String responseString = response.body().string();

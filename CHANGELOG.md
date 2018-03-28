@@ -1,5 +1,14 @@
 Change Log
 ==========
+Version 0.73.1*(2018-3-28)*
+--------------------------
+ * Fix: Added 1 hour expiration time for a session token
+ * Config improvements:
+    * Gradle wrapper updated to 4.4
+    * Gradle plugin version updated to 3.1.0
+    * Build tools version updated to 27.0.3
+    * Project dependencies provided with the latest approach
+
 Version 0.73.0*(2018-3-20)*
 ---------------------------
  * Docs updated.
