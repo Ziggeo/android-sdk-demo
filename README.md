@@ -24,7 +24,7 @@ allprojects {
 **Step 2.** Add the dependency in your application related dependencies
 ```
 dependencies {
-        compile 'com.github.ZiggeoJitpackService:Android-SDK:0.72.2'
+        compile 'com.github.ZiggeoJitpackService:Android-SDK:0.73.1'
 }
 ```
 ## Initialize
