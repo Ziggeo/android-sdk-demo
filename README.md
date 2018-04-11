@@ -1,12 +1,7 @@
 # Android-SDK
-### Upgrading from `v.0.73.0` to `v.0.73.1`
+### Upgrading from `v.0.73.1` to `v.0.73.2`
 No broken changes
- * Fix: Added 1 hour expiration time for a session token
- * Config improvements:
-    * Gradle wrapper updated to 4.4
-    * Gradle plugin version updated to 3.1.0
-    * Build tools version updated to 27.0.3
-    * Project dependencies provided with the latest approach
+ * Added ability to set client and server auth tokens for all requests.
 
 ## Please, use latest build tools and compile sdk version.
 
@@ -439,6 +434,23 @@ call.cancel();
 ```
 Note: you can also cancel the last active request for recorder using
 `mZiggeo.cancel()`
+
+#### Authentication
+```
+/**
+  * Sets the client auth token.
+  *
+  * @param token - token which will be used for authentication in requests
+  */
+ziggeo.setClientAuthToken(@NonNull String token);
+
+/**
+  * Sets the server auth token.
+  *
+  * @param token - token which will be used for authentication in requests
+  */
+ziggeo.setServerAuthToken(@NonNull String token);
+```
 
 ## Proguard config
 See `app\proguard-rules.pro`

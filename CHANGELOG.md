@@ -1,5 +1,10 @@
 Change Log
 ==========
+Version 0.73.2*(2018-4-11)*
+--------------------------
+ * Added ability to set client and server auth tokens for all requests.
+
+==========
 Version 0.73.1*(2018-3-28)*
 --------------------------
  * Fix: Added 1 hour expiration time for a session token
