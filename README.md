@@ -1,7 +1,8 @@
 # Android-SDK
 ### Upgrading from `v.0.73.1` to `v.0.73.2`
-No broken changes
- * Added ability to set client and server auth tokens for all requests.
+Broken changes
+ * Methods `setExtraArgsForRecorder` and `setExtraArgsForPlayer` are now not allowed to be used for authentication, instead there are two new `setClientAuthToken` and `setServerAuthToken`.
+ Please, see **Authentication** section.
 
 ## Please, use latest build tools and compile sdk version.
 
