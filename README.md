@@ -1,8 +1,7 @@
 # Android-SDK
-### Upgrading from `v.0.73.1` to `v.0.73.2`
-Broken changes
- * Methods `setExtraArgsForRecorder` and `setExtraArgsForPlayer` are now not allowed to be used for authentication, instead there are two new `setClientAuthToken` and `setServerAuthToken`.
- Please, see **Authentication** section.
+### Upgrading from `v.0.73.2` to `v.0.73.3`
+You can safely upgrade without any changes.
+ * Added a few getters to prevent issues when binding the SDK with Xamarin.
 
 ## Please, use latest build tools and compile sdk version.
 

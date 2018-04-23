@@ -1,5 +1,9 @@
 Change Log
 ==========
+Version 0.73.3*(2018-4-11)*
+--------------------------
+ * Added a few getters to prevent issues when binding the SDK with Xamarin.
+
 Version 0.73.2*(2018-4-11)*
 --------------------------
  * Added ability to set client and server auth tokens for all requests.
