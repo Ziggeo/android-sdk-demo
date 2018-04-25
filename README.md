@@ -1,7 +1,9 @@
 # Android-SDK
-### Upgrading from `v.0.73.2` to `v.0.73.3`
+### Upgrading from `v.0.73.3` to `v.0.73.4`
 You can safely upgrade without any changes.
- * Added a few getters to prevent issues when binding the SDK with Xamarin.
+ * Removed some unused classes.
+ * Small code improvements.
+ * Improved gradle config for naming of output build files.
 
 ## Please, use latest build tools and compile sdk version.
 

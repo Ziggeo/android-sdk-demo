@@ -1,7 +1,13 @@
 Change Log
 ==========
-Version 0.73.3*(2018-4-11)*
+Version 0.73.4*(2018-4-25)*
 --------------------------
+ * Removed some unused classes.
+ * Small code improvements.
+ * Improved gradle config for naming of output build files.
+
+Version 0.73.3*(2018-4-23)*
+---------------------------
  * Added a few getters to prevent issues when binding the SDK with Xamarin.
 
 Version 0.73.2*(2018-4-11)*
