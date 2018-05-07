@@ -1,9 +1,8 @@
 # Android-SDK
-### Upgrading from `v.0.73.3` to `v.0.73.4`
+### Upgrading from `v.0.73.4` to `v.0.73.5`
 You can safely upgrade without any changes.
- * Removed some unused classes.
- * Small code improvements.
- * Improved gradle config for naming of output build files.
+ * Additional permission check for player
+ * Small code improvements and bugfixes
 
 ## Please, use latest build tools and compile sdk version.
 

@@ -1,5 +1,10 @@
 Change Log
 ==========
+Version 0.73.5*(2018-5-07)*
+--------------------------
+ * Additional permission check for player
+ * Small code improvements and bugfixes
+
 Version 0.73.4*(2018-4-25)*
 --------------------------
  * Removed some unused classes.
