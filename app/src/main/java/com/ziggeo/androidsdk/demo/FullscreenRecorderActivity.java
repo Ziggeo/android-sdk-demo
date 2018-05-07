@@ -30,24 +30,24 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
 
     public static final String APP_TOKEN = ""; // TODO place your token here
 
-    private Ziggeo mZiggeo;
+    private Ziggeo ziggeo;
     private int progressPercent = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mZiggeo = new Ziggeo(APP_TOKEN, this);
+        ziggeo = new Ziggeo(APP_TOKEN, this);
 
         long maxDuration = 20000L;
-        mZiggeo.setSendImmediately(false);
-        mZiggeo.setTurnOffCameraWhileUploading(true);
+        ziggeo.setSendImmediately(false);
+        ziggeo.setTurnOffCameraWhileUploading(true);
         Map<String, String> args = new HashMap<>();
         args.put("key", "key_for_video");
         args.put("tags", "tag_for_video1, tag_for_video2");
-        mZiggeo.setExtraArgsForRecorder(args);
-        mZiggeo.setMaxRecordingDuration(maxDuration);
-        mZiggeo.setNetworkRequestsCallback(this);
-        mZiggeo.setVideoRecordingProcessCallback(new VideoRecordingCallback() {
+        ziggeo.setExtraArgsForRecorder(args);
+        ziggeo.setMaxRecordingDuration(maxDuration);
+        ziggeo.setNetworkRequestsCallback(this);
+        ziggeo.setVideoRecordingProcessCallback(new VideoRecordingCallback() {
             @Override
             public void onStarted() {
                 Log.d(TAG, "onStarted");
@@ -64,7 +64,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                 Log.d(TAG, "onError:" + throwable.toString());
             }
         });
-        mZiggeo.startRecorder();
+        ziggeo.startRecorder();
     }
 
     @Override
@@ -110,8 +110,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
             @Override
             public void run() {
                 final long autostartRecording = 5000L; // after 5 seconds
-                mZiggeo.setAutostartRecordingAfter(autostartRecording);
-                mZiggeo.startRecorder();
+                ziggeo.setAutostartRecordingAfter(autostartRecording);
+                ziggeo.startRecorder();
             }
         }, previewDelay);
     }
@@ -127,7 +127,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
             argsMap.put("tags", "tag1,tag2");
             argsMap.put("key", "The best video ever");
 
-            mZiggeo.videos().create(file, argsMap, callback);
+            ziggeo.videos().create(file, argsMap, callback);
         } else {
             Log.e(TAG, "Video file doesn't exists");
         }
@@ -141,7 +141,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         HashMap<String, String> argsMap = new HashMap<>();
         argsMap.put("tags", "newTag");
 
-        mZiggeo.videos().update(videoToken, argsMap, callback);
+        ziggeo.videos().update(videoToken, argsMap, callback);
     }
 
     /**
@@ -149,7 +149,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
      * Make sure your application was allowed to do delete.
      */
     private void deleteVideoApiCallExample(String videoToken, Callback callback) {
-        mZiggeo.videos().destroy(videoToken, callback);
+        ziggeo.videos().destroy(videoToken, callback);
     }
 
     /**
@@ -159,7 +159,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
     private void index(Callback callback) {
         HashMap<String, String> args = new HashMap<>();
         args.put("tags", "your_tags_here");
-        mZiggeo.videos().index(args, callback);
+        ziggeo.videos().index(args, callback);
     }
 
     /**
@@ -173,29 +173,29 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
      * 4. Attach video to stream
      * 5. Bind the stream.
      */
-    private File mVideoFile;
-    private File mSnapshotFile;
-    private String mVideoToken;
-    private String mStreamToken;
+    private File videoFile;
+    private File snapshotFile;
+    private String videoToken;
+    private String streamToken;
 
     private void uploadVideoWithCustomSnapshotExample() {
         String videoFilePath = "";
         String snapshotImagePath = "";
-        mVideoFile = new File(videoFilePath);
-        mSnapshotFile = new File(snapshotImagePath);
+        videoFile = new File(videoFilePath);
+        snapshotFile = new File(snapshotImagePath);
         // make sure files exists
-        if (mVideoFile.exists() && mSnapshotFile.exists()) {
+        if (videoFile.exists() && snapshotFile.exists()) {
             HashMap<String, String> args = new HashMap<>();
             args.put("tags", "t1,t2");
             args.put("key", "test_key");
 
-            mZiggeo.videos().create(args, mCreateVideoCallback);
+            ziggeo.videos().create(args, createVideoCallback);
         } else {
             Log.e(TAG, "Video or snapshot file not found");
         }
     }
 
-    private Callback mCreateVideoCallback = new Callback() {
+    private Callback createVideoCallback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
             Log.e(TAG, "Create video object failure. Exception:" + e.toString());
@@ -209,9 +209,9 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                     Log.d(TAG, "Create video object success:" + responseString);
 
                     final JSONObject responseJson = new JSONObject(responseString);
-                    mVideoToken = responseJson.getString("token");
+                    videoToken = responseJson.getString("token");
 
-                    mZiggeo.streams().create(mVideoToken, mCreateStreamCallback);
+                    ziggeo.streams().create(videoToken, createStreamCallback);
 
                 } else {
                     RestResponseException exception = new RestResponseException(
@@ -227,7 +227,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         }
     };
 
-    private Callback mCreateStreamCallback = new Callback() {
+    private Callback createStreamCallback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
             Log.e(TAG, "Create stream failure. Exception:" + e.toString());
@@ -241,10 +241,10 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                     Log.d(TAG, "Create stream success:" + responseString);
 
                     JSONObject responseJson = new JSONObject(responseString);
-                    mStreamToken = responseJson.getString("token");
+                    streamToken = responseJson.getString("token");
 
-                    mZiggeo.streams().attachImage(mVideoToken, mStreamToken, mSnapshotFile,
-                            mAttachImageToStreamCallback);
+                    ziggeo.streams().attachImage(videoToken, streamToken, snapshotFile,
+                            attachImageToStreamCallback);
 
                 } else {
                     RestResponseException exception = new RestResponseException(
@@ -260,7 +260,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         }
     };
 
-    private Callback mAttachImageToStreamCallback = new Callback() {
+    private Callback attachImageToStreamCallback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
             Log.e(TAG, "Attach image failure. Exception:" + e.toString());
@@ -273,8 +273,8 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                     String responseString = response.body().string();
                     Log.d(TAG, "Attach image success:" + responseString);
 
-                    mZiggeo.streams().attachVideo(mVideoToken, mStreamToken, mVideoFile,
-                            mAttachVideoToStreamCallback);
+                    ziggeo.streams().attachVideo(videoToken, streamToken, videoFile,
+                            attachVideoToStreamCallback);
 
                 } else {
                     RestResponseException exception = new RestResponseException(
@@ -291,7 +291,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
 
     };
 
-    private Callback mAttachVideoToStreamCallback = new Callback() {
+    private Callback attachVideoToStreamCallback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
             Log.e(TAG, "Attach video failure. Exception:" + e.toString());
@@ -304,7 +304,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                     String responseString = response.body().string();
                     Log.d(TAG, "Attach video success:" + responseString);
 
-                    mZiggeo.streams().bind(mVideoToken, mStreamToken, mBindStreamCallback);
+                    ziggeo.streams().bind(videoToken, streamToken, bindStreamCallback);
 
                 } else {
                     RestResponseException exception = new RestResponseException(
@@ -321,7 +321,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
 
     };
 
-    private Callback mBindStreamCallback = new Callback() {
+    private Callback bindStreamCallback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
             Log.e(TAG, "Bind stream failure. Exception:" + e.toString());
