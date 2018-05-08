@@ -164,7 +164,7 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
                 );
 
                 fabSwitchCamera.setImageResource(
-                        cvCamera.getFacing() == CameraView.FACING_FRONT ? R.drawable.ic_camera_switch_to_rear : R.drawable.ic_camera_switch_to_front
+                        cvCamera.getFacing() == CameraView.FACING_FRONT ? R.drawable.ic_switch_camera_back : R.drawable.ic_switch_camera_front
                 );
             }
         });
