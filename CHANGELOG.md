@@ -1,5 +1,11 @@
 Change Log
 ==========
+Version 0.73.6*(2018-5-08)*
+--------------------------
+ * Removed rests of Hungarian notation.
+ * Replaced old icons with vectors
+ * General code/layouts improvements
+
 Version 0.73.5*(2018-5-07)*
 --------------------------
  * Additional permission check for player

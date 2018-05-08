@@ -1,8 +1,8 @@
 # Android-SDK
-### Upgrading from `v.0.73.4` to `v.0.73.5`
+### Upgrading from `v.0.73.5` to `v.0.73.6`
 You can safely upgrade without any changes.
- * Additional permission check for player
- * Small code improvements and bugfixes
+ * Replaced old icons with vectors
+ * General code/layouts improvements
 
 ## Please, use latest build tools and compile sdk version.
 
