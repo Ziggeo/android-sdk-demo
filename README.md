@@ -1,8 +1,7 @@
 # Android-SDK
-### Upgrading from `v.0.73.5` to `v.0.73.6`
+### Upgrading from `v.0.73.6` to `v.0.73.7`
 You can safely upgrade without any changes.
- * Replaced old icons with vectors
- * General code/layouts improvements
+ * Fixed recorder icons visibility
 
 ## Please, use latest build tools and compile sdk version.
 

@@ -1,5 +1,9 @@
 Change Log
 ==========
+Version 0.73.7*(2018-5-11)*
+--------------------------
+ * Fixed recorder icons visibility
+
 Version 0.73.6*(2018-5-08)*
 --------------------------
  * Removed rests of Hungarian notation.
