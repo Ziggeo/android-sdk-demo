@@ -1,5 +1,9 @@
 Change Log
 ==========
+Version 0.73.8*(2018-5-12)*
+--------------------------
+ * Added callback to indicate video uploading started.
+
 Version 0.73.7*(2018-5-11)*
 --------------------------
  * Fixed recorder icons visibility

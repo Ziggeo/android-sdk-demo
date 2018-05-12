@@ -1,7 +1,7 @@
 # Android-SDK
-### Upgrading from `v.0.73.6` to `v.0.73.7`
+### Upgrading from `v.0.73.7` to `v.0.73.8`
 You can safely upgrade without any changes.
- * Fixed recorder icons visibility
+ * Added callback to indicate video uploading started.
 
 ## Please, use latest build tools and compile sdk version.
 
