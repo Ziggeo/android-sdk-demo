@@ -1,5 +1,14 @@
 Change Log
 ==========
+Version 0.73.9*(2018-6-13)*
+--------------------------
+ * Changed return type for `ziggeo.getVideoRecordingProcessCallback()` from class to its interface.
+ * Fixed issue 20. Lost bundle args were causing a crash.
+ * Gradle version updated.
+ * Small xml layout improvements.
+ * Removed deprecated method from IVideoRecordingCallback.
+ * Added applyEffect method to Videos API.
+
 Version 0.73.8*(2018-5-12)*
 --------------------------
  * Added callback to indicate video uploading started.

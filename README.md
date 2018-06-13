@@ -1,7 +1,12 @@
 # Android-SDK
-### Upgrading from `v.0.73.7` to `v.0.73.8`
-You can safely upgrade without any changes.
- * Added callback to indicate video uploading started.
+### Upgrading from `v.0.73.8` to `v.0.73.9`
+Contains small broken change, see description below
+ * Changed return type for `ziggeo.getVideoRecordingProcessCallback()` from class to its interface.
+ * Fixed issue 20. Lost bundle args were causing a crash.
+ * Gradle version updated.
+ * Small xml layout improvements.
+ * Removed deprecated method from IVideoRecordingCallback.
+ * Added applyEffect method to Videos API.
 
 ## Please, use latest build tools and compile sdk version.
 
