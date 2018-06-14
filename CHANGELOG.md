@@ -1,6 +1,6 @@
 Change Log
 ==========
-Version 0.73.9*(2018-6-13)*
+Version 0.73.10*(2018-6-13)*
 --------------------------
  * Changed return type for `ziggeo.getVideoRecordingProcessCallback()` from class to its interface.
  * Fixed issue 20. Lost bundle args were causing a crash.

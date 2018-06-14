@@ -1,5 +1,5 @@
 # Android-SDK
-### Upgrading from `v.0.73.8` to `v.0.73.9`
+### Upgrading from `v.0.73.8` to `v.0.73.10`
 Contains small broken change, see description below
  * Changed return type for `ziggeo.getVideoRecordingProcessCallback()` from class to its interface.
  * Fixed issue 20. Lost bundle args were causing a crash.
