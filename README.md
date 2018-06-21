@@ -1,12 +1,8 @@
 # Android-SDK
-### Upgrading from `v.0.73.8` to `v.0.73.10`
-Contains small broken change, see description below
- * Changed return type for `ziggeo.getVideoRecordingProcessCallback()` from class to its interface.
- * Fixed issue 20. Lost bundle args were causing a crash.
- * Gradle version updated.
- * Small xml layout improvements.
- * Removed deprecated method from IVideoRecordingCallback.
- * Added applyEffect method to Videos API.
+### Upgrading from `v.0.73.10` to `v.0.73.11`
+Contains broken change, see description below
+ * Changed checkmark behavior - currently it closes the recorder.
+   Also the recorder will be closed if video is sent immediately after the recording is finished.
 
 ## Please, use latest build tools and compile sdk version.
 

@@ -1,5 +1,11 @@
 Change Log
 ==========
+Version 0.73.11*(2018-6-21)*
+--------------------------
+ * Changed checkmark behavior - currently it closes the recorder.
+   Also the recorder will be closed if video is sent immediately after the recording is finished.
+
+
 Version 0.73.10*(2018-6-13)*
 --------------------------
  * Changed return type for `ziggeo.getVideoRecordingProcessCallback()` from class to its interface.
