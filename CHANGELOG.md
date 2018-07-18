@@ -1,5 +1,9 @@
 Change Log
 ==========
+Version 0.73.12*(2018-7-18)*
+--------------------------
+ * Fixed error during recorder initialisation on Android 8.0 for Camera2 api.
+
 Version 0.73.11*(2018-6-21)*
 --------------------------
  * Changed checkmark behavior - currently it closes the recorder.

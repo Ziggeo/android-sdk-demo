@@ -1,8 +1,6 @@
 # Android-SDK
-### Upgrading from `v.0.73.10` to `v.0.73.11`
-Contains broken change, see description below
- * Changed checkmark behavior - currently it closes the recorder.
-   Also the recorder will be closed if video is sent immediately after the recording is finished.
+### Upgrading from `v.0.73.11` to `v.0.73.12`
+You can safely upgrade without any changes.
 
 ## Please, use latest build tools and compile sdk version.
 
