@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.net.rest.exceptions.RestResponseException;
+import com.ziggeo.androidsdk.net.exceptions.ResponseException;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -46,7 +46,7 @@ public class VideosApiSamples {
                     final File imageFile = new File(Environment.getExternalStorageDirectory() + "/Download/image.png");
                     saveByteStreamToFile(body.byteStream(), imageFile);
                 } else {
-                    RestResponseException exception = new RestResponseException(
+                    ResponseException exception = new ResponseException(
                             response.code(), response.message()
                     );
                     onFailure(call, exception);
@@ -72,7 +72,7 @@ public class VideosApiSamples {
                     final File videoFile = new File(Environment.getExternalStorageDirectory() + "/Download/video.mp4");
                     saveByteStreamToFile(body.byteStream(), videoFile);
                 } else {
-                    RestResponseException exception = new RestResponseException(
+                    ResponseException exception = new ResponseException(
                             response.code(), response.message()
                     );
                     onFailure(call, exception);

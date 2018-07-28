@@ -1,6 +1,12 @@
 # Android-SDK
-### Upgrading from `v.0.73.11` to `v.0.73.12`
-You can safely upgrade without any changes.
+### Upgrading from `v.0.73.12` to `v.0.74.0`
+New version contains broken changes.
+ * API 21+: Added screen recorder feature.
+ * Fixed vector icon causing crash on android below API 21.
+ * `com.ziggeo.androidsdk.net.rest.ProgressCallback` moved to `com.ziggeo.androidsdk.net.callbacks.ProgressCallback`
+ * Class `ResponseException` renamed to `ResponseException`
+ * In class `ResponseException` methods `getResponse` and `setResponse` are deprecated. Use `getMessage` and `setMessage` instead.
+ * Classes `IStreamsService`, `StreamsService`,  `IVideosService`,  `VideosService` moved from `com.ziggeo.androidsdk.net.rest.services.` to `com.ziggeo.androidsdk.net.services.`
 
 ## Please, use latest build tools and compile sdk version.
 
@@ -449,6 +455,29 @@ ziggeo.setClientAuthToken(@NonNull String token);
   * @param token - token which will be used for authentication in requests
   */
 ziggeo.setServerAuthToken(@NonNull String token);
+```
+
+## Screen recording (available on API 21+)
+```
+/**
+  * Start foreground service for screen recording
+  */
+ziggeo.startScreenCaptureService(@Nullable ScreenRecordServiceNotificationConfig config);
+
+/**
+  * Stop foreground service for screen recording
+  */
+ziggeo.stopScreenCaptureService();
+
+/**
+  * Start foreground service for screen recording and screen recording
+  */
+ziggeo.startScreenCapture(@Nullable ScreenRecordServiceNotificationConfig config);
+
+/**
+  * Stop screen recording if running
+  */
+ziggeo.stopScreenCapture();
 ```
 
 ## Proguard config

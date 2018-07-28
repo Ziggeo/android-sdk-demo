@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.net.rest.ProgressCallback;
+import com.ziggeo.androidsdk.net.callbacks.ProgressCallback;
 import com.ziggeo.androidsdk.widgets.cameraview.CameraView;
 import com.ziggeo.demo.R;
 
@@ -60,14 +60,14 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void setupCamera() {
-        fabRecord = (FloatingActionButton) findViewById(R.id.fab_record);
+        fabRecord = findViewById(R.id.fab_record);
         fabRecord.setOnClickListener(this);
-        fabTakePicture = (FloatingActionButton) findViewById(R.id.fab_take_picture);
+        fabTakePicture = findViewById(R.id.fab_take_picture);
         fabTakePicture.setOnClickListener(this);
-        fabSwitchCamera = (FloatingActionButton) findViewById(R.id.fab_switch_camera);
+        fabSwitchCamera = findViewById(R.id.fab_switch_camera);
         fabSwitchCamera.setOnClickListener(this);
 
-        cvCamera = (CameraView) findViewById(R.id.cv_camera);
+        cvCamera = findViewById(R.id.cv_camera);
         cvCamera.addCallback(new CameraView.Callback() {
             @Override
             public void onCameraOpened(CameraView cameraView) {

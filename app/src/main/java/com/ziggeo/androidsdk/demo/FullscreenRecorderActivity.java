@@ -7,8 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.net.rest.ProgressCallback;
-import com.ziggeo.androidsdk.net.rest.exceptions.RestResponseException;
+import com.ziggeo.androidsdk.net.callbacks.ProgressCallback;
+import com.ziggeo.androidsdk.net.exceptions.ResponseException;
 import com.ziggeo.androidsdk.recording.VideoRecordingCallback;
 
 import org.json.JSONException;
@@ -96,7 +96,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                 Util.closeQuietly(response);
             }
         } else {
-            RestResponseException exception = new RestResponseException(
+            ResponseException exception = new ResponseException(
                     response.code(), response.message()
             );
             onFailure(call, exception);
@@ -202,7 +202,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         }
 
         @Override
-        public void onResponse(Call call, Response response) throws IOException {
+        public void onResponse(Call call, Response response) {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
@@ -214,7 +214,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                     ziggeo.streams().create(videoToken, createStreamCallback);
 
                 } else {
-                    RestResponseException exception = new RestResponseException(
+                    ResponseException exception = new ResponseException(
                             response.code(), response.message()
                     );
                     onFailure(call, exception);
@@ -234,7 +234,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         }
 
         @Override
-        public void onResponse(Call call, Response response) throws IOException {
+        public void onResponse(Call call, Response response) {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
@@ -247,7 +247,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                             attachImageToStreamCallback);
 
                 } else {
-                    RestResponseException exception = new RestResponseException(
+                    ResponseException exception = new ResponseException(
                             response.code(), response.message()
                     );
                     onFailure(call, exception);
@@ -267,7 +267,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         }
 
         @Override
-        public void onResponse(Call call, Response response) throws IOException {
+        public void onResponse(Call call, Response response) {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
@@ -277,7 +277,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                             attachVideoToStreamCallback);
 
                 } else {
-                    RestResponseException exception = new RestResponseException(
+                    ResponseException exception = new ResponseException(
                             response.code(), response.message()
                     );
                     onFailure(call, exception);
@@ -298,7 +298,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         }
 
         @Override
-        public void onResponse(Call call, Response response) throws IOException {
+        public void onResponse(Call call, Response response) {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
@@ -307,7 +307,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
                     ziggeo.streams().bind(videoToken, streamToken, bindStreamCallback);
 
                 } else {
-                    RestResponseException exception = new RestResponseException(
+                    ResponseException exception = new ResponseException(
                             response.code(), response.message()
                     );
                     onFailure(call, exception);
@@ -328,14 +328,14 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         }
 
         @Override
-        public void onResponse(Call call, Response response) throws IOException {
+        public void onResponse(Call call, Response response) {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
                     Log.d(TAG, "Bind stream success:" + responseString);
 
                 } else {
-                    RestResponseException exception = new RestResponseException(
+                    ResponseException exception = new ResponseException(
                             response.code(), response.message()
                     );
                     onFailure(call, exception);

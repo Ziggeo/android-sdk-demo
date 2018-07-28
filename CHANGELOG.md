@@ -1,5 +1,14 @@
 Change Log
 ==========
+Version 0.74.0*(2018-7-28)*
+--------------------------
+ * API 21+: Added screen recorder feature.
+ * Fixed vector icon causing crash on android below API 21.
+ * `com.ziggeo.androidsdk.net.rest.ProgressCallback` moved to `com.ziggeo.androidsdk.net.callbacks.ProgressCallback`
+ * Class `ResponseException` renamed to `ResponseException`
+ * In class `ResponseException` methods `getResponse` and `setResponse` are deprecated. Use `getMessage` and `setMessage` instead.
+ * Classes `IStreamsService`, `StreamsService`,  `IVideosService`,  `VideosService` moved from `com.ziggeo.androidsdk.net.rest.services.` to `com.ziggeo.androidsdk.net.services.`
+
 Version 0.73.12*(2018-7-18)*
 --------------------------
  * Fixed error during recorder initialisation on Android 8.0 for Camera2 api.

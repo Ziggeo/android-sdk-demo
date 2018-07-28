@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
-import com.ziggeo.androidsdk.net.rest.exceptions.RestResponseException;
+import com.ziggeo.androidsdk.net.exceptions.ResponseException;
 import com.ziggeo.demo.R;
 
 import java.io.IOException;
@@ -49,7 +49,7 @@ public class EmbeddedRecorderActivity extends AppCompatActivity implements Callb
 //            do something here
 
         } else {
-            RestResponseException exception = new RestResponseException(
+            ResponseException exception = new ResponseException(
                     response.code(), response.message()
             );
             onFailure(call, exception);
