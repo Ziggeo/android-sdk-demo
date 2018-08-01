@@ -1,5 +1,34 @@
 Change Log
 ==========
+--------------------------
+Version 0.74.2*(2018-8-1)*
+--------------------------
+ * Removed old deprecated methods
+ ```
+ setExtraArgsForCreateVideo
+ setExtraArgsForEmbeddedRecorder
+ setExtraArgsForEmbeddedPlayer
+ setExtraArgsForPlayVideo
+ setRecorderCacheFolder
+ getRecorderCacheFolder
+ setMaxRecorderCacheSize
+ getMaxRecorderCacheSize
+ setMaxRecorderCacheFilesCount
+ getMaxRecorderCacheFilesCount
+ setPlayerCacheFolder
+ getPlayerCacheFolder
+ setMaxPlayerCacheSize
+ getMaxPlayerCacheSize
+ setMaxPlayerCacheFilesCount
+ getMaxPlayerCacheFilesCount
+ initStopRecordingConfirmationDialog
+ getCacheFolder
+ getMaxCachedVideosCount
+ getMaxCacheSize
+ setMaxCachedFilesCount
+ ```
+ * Added mute sound functionality for player
+
 Version 0.74.0*(2018-7-28)*
 --------------------------
  * API 21+: Added screen recorder feature.

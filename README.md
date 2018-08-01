@@ -1,14 +1,39 @@
 # Android-SDK
-### Upgrading from `v.0.73.12` to `v.0.74.0`
+### Upgrading from `v.0.73.12` to `v.0.74.2`
 New version contains broken changes.
+ * Added mute sound button for playback
  * API 21+: Added screen recorder feature.
  * Fixed vector icon causing crash on android below API 21.
  * `com.ziggeo.androidsdk.net.rest.ProgressCallback` moved to `com.ziggeo.androidsdk.net.callbacks.ProgressCallback`
  * Class `ResponseException` renamed to `ResponseException`
  * In class `ResponseException` methods `getResponse` and `setResponse` are deprecated. Use `getMessage` and `setMessage` instead.
  * Classes `IStreamsService`, `StreamsService`,  `IVideosService`,  `VideosService` moved from `com.ziggeo.androidsdk.net.rest.services.` to `com.ziggeo.androidsdk.net.services.`
+ * Removed old deprecated methods
+  ```
+  setExtraArgsForCreateVideo
+  setExtraArgsForEmbeddedRecorder
+  setExtraArgsForEmbeddedPlayer
+  setExtraArgsForPlayVideo
+  setRecorderCacheFolder
+  getRecorderCacheFolder
+  setMaxRecorderCacheSize
+  getMaxRecorderCacheSize
+  setMaxRecorderCacheFilesCount
+  getMaxRecorderCacheFilesCount
+  setPlayerCacheFolder
+  getPlayerCacheFolder
+  setMaxPlayerCacheSize
+  getMaxPlayerCacheSize
+  setMaxPlayerCacheFilesCount
+  getMaxPlayerCacheFilesCount
+  initStopRecordingConfirmationDialog
+  getCacheFolder
+  getMaxCachedVideosCount
+  getMaxCacheSize
+  setMaxCachedFilesCount
+  ```
 
-## Please, use latest build tools and compile sdk version.
+### Please, use latest build tools and compile sdk version.
 
 ### Preparation
 **Step 1.** Add the JitPack repository in your root `build.gradle`
