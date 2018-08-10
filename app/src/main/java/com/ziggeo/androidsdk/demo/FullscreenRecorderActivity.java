@@ -28,7 +28,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
 
     public static final String TAG = FullscreenRecorderActivity.class.getSimpleName();
 
-    public static final String APP_TOKEN = ""; // TODO place your token here
+    public static final String APP_TOKEN = ""; // place your token here
 
     private Ziggeo ziggeo;
     private int progressPercent = -1;

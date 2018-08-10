@@ -12,7 +12,7 @@ import com.ziggeo.androidsdk.Ziggeo;
 
 public class ZiggeoPlayerActivity extends AppCompatActivity {
 
-    public static final String APP_TOKEN = ""; // TODO place your token here
+    public static final String APP_TOKEN = ""; // place your token here
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class ZiggeoPlayerActivity extends AppCompatActivity {
 
         // your own container can be here
         final int fragmentContainerResId = android.R.id.content;
-        final String videoTokenOrKey = "";// TODO place token or key of the video you want to play
+        final String videoTokenOrKey = "";// place token or key of the video you want to play
         ziggeo.attachPlayer(getSupportFragmentManager(), fragmentContainerResId, videoTokenOrKey);
     }
 }

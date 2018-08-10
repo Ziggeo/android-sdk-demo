@@ -45,6 +45,7 @@
 -dontwarn com.google.appengine.**
 -dontwarn java.nio.file.**
 -dontwarn org.codehaus.**
+-dontwarn com.google.gson.Gson$6
 
 -dontwarn retrofit2.**
 -dontwarn org.codehaus.mojo.**

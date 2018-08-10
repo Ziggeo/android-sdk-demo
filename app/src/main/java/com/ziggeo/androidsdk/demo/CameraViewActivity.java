@@ -33,7 +33,7 @@ import okhttp3.internal.Util;
  * Created by Alex Bedulin on 4/3/17.
  */
 public class CameraViewActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String APP_TOKEN = ""; // TODO your token here
+    private static final String APP_TOKEN = ""; // your token here
 
     static final String TAG = CameraViewActivity.class.getSimpleName();
 

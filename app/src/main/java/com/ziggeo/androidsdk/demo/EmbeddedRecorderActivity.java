@@ -19,7 +19,7 @@ public class EmbeddedRecorderActivity extends AppCompatActivity implements Callb
 
     public static final String TAG = EmbeddedRecorderActivity.class.getSimpleName();
 
-    public static final String APP_TOKEN = ""; // TODO place your token here
+    public static final String APP_TOKEN = ""; // place your token here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

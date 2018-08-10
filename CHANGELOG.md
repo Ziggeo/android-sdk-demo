@@ -1,6 +1,12 @@
 Change Log
 ==========
 --------------------------
+Version 0.74.3*(2018-8-10)*
+--------------------------
+* Added crash tracking system.
+* Bugfixing
+* Gradle version updated
+
 Version 0.74.2*(2018-8-1)*
 --------------------------
  * Removed old deprecated methods

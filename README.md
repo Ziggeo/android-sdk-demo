@@ -1,5 +1,5 @@
 # Android-SDK
-### Upgrading from `v.0.73.12` to `v.0.74.2`
+### Upgrading from `v.0.73.12` to `v.0.74.3`
 New version contains broken changes.
  * Added mute sound button for playback
  * API 21+: Added screen recorder feature.
@@ -32,6 +32,9 @@ New version contains broken changes.
   getMaxCacheSize
   setMaxCachedFilesCount
   ```
+ * Added crash tracking system.
+ * Bugfixing
+ * Gradle version updated
 
 ### Please, use latest build tools and compile sdk version.
 
