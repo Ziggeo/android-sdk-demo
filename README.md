@@ -1,40 +1,6 @@
 # Android-SDK
-### Upgrading from `v.0.73.12` to `v.0.74.3`
-New version contains broken changes.
- * Added mute sound button for playback
- * API 21+: Added screen recorder feature.
- * Fixed vector icon causing crash on android below API 21.
- * `com.ziggeo.androidsdk.net.rest.ProgressCallback` moved to `com.ziggeo.androidsdk.net.callbacks.ProgressCallback`
- * Class `ResponseException` renamed to `ResponseException`
- * In class `ResponseException` methods `getResponse` and `setResponse` are deprecated. Use `getMessage` and `setMessage` instead.
- * Classes `IStreamsService`, `StreamsService`,  `IVideosService`,  `VideosService` moved from `com.ziggeo.androidsdk.net.rest.services.` to `com.ziggeo.androidsdk.net.services.`
- * Removed old deprecated methods
-  ```
-  setExtraArgsForCreateVideo
-  setExtraArgsForEmbeddedRecorder
-  setExtraArgsForEmbeddedPlayer
-  setExtraArgsForPlayVideo
-  setRecorderCacheFolder
-  getRecorderCacheFolder
-  setMaxRecorderCacheSize
-  getMaxRecorderCacheSize
-  setMaxRecorderCacheFilesCount
-  getMaxRecorderCacheFilesCount
-  setPlayerCacheFolder
-  getPlayerCacheFolder
-  setMaxPlayerCacheSize
-  getMaxPlayerCacheSize
-  setMaxPlayerCacheFilesCount
-  getMaxPlayerCacheFilesCount
-  initStopRecordingConfirmationDialog
-  getCacheFolder
-  getMaxCachedVideosCount
-  getMaxCacheSize
-  setMaxCachedFilesCount
-  ```
- * Added crash tracking system.
- * Bugfixing
- * Gradle version updated
+### Upgrading from `v.0.74.3` to `v.0.75.0`
+You can safely upgrade without any changes.
 
 ### Please, use latest build tools and compile sdk version.
 

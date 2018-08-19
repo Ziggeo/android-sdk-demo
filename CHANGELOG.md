@@ -1,6 +1,17 @@
 Change Log
 ==========
 --------------------------
+Version 0.75.0*(2018-8-19)*
+--------------------------
+* New: Added send-and-close feature for screen recorder.
+* New: Showing sound bar on player screen when sound icon was long clicked.
+* Fix: Forced screen recorder service notification text and background color to black
+* Fix: Fixed crash when extra args for recorder are null
+* Fix: Added nullability annotations for player
+* Fix: For screen recorder if cover shot selector is visible, it will be closed when new recording is started
+* Fix: UI lag when stopping the recording
+* Fix: Removed library for getting the device name
+
 Version 0.74.3*(2018-8-10)*
 --------------------------
 * Added crash tracking system.
