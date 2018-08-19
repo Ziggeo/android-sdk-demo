@@ -3,6 +3,13 @@ Change Log
 --------------------------
 Version 0.75.0*(2018-8-19)*
 --------------------------
+* New: Methods marked as deprecated
+ `startScreenCaptureService`, `stopScreenCaptureService`, `startScreenCapture`, `stopScreenCapture`
+ Use instead
+ `startScreenRecordService`, `stopScreenRecordService`, `startScreenRecord`, `stopScreenRecord`
+
+Version 0.75.0*(2018-8-19)*
+--------------------------
 * New: Added send-and-close feature for screen recorder.
 * New: Showing sound bar on player screen when sound icon was long clicked.
 * Fix: Forced screen recorder service notification text and background color to black

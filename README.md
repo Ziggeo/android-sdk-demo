@@ -1,6 +1,10 @@
 # Android-SDK
-### Upgrading from `v.0.74.3` to `v.0.75.0`
-You can safely upgrade without any changes.
+### Upgrading from `v.0.75.0` to `v.0.75.1`
+New version contains broken changes.
+* Methods marked as deprecated
+ `startScreenCaptureService`, `stopScreenCaptureService`, `startScreenCapture`, `stopScreenCapture`
+ Use instead
+ `startScreenRecordService`, `stopScreenRecordService`, `startScreenRecord`, `stopScreenRecord`
 
 ### Please, use latest build tools and compile sdk version.
 
@@ -456,7 +460,7 @@ ziggeo.setServerAuthToken(@NonNull String token);
 /**
   * Start foreground service for screen recording
   */
-ziggeo.startScreenCaptureService(@Nullable ScreenRecordServiceNotificationConfig config);
+    ziggeo.startScreenCaptureService(@Nullable ScreenRecordServiceNotificationConfig config);
 
 /**
   * Stop foreground service for screen recording
