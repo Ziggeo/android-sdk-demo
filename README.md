@@ -460,22 +460,22 @@ ziggeo.setServerAuthToken(@NonNull String token);
 /**
   * Start foreground service for screen recording
   */
-    ziggeo.startScreenCaptureService(@Nullable ScreenRecordServiceNotificationConfig config);
+    ziggeo.startScreenRecordService(@Nullable ScreenRecordServiceNotificationConfig config);
 
 /**
   * Stop foreground service for screen recording
   */
-ziggeo.stopScreenCaptureService();
+ziggeo.stopScreenCaptureRecord();
 
 /**
   * Start foreground service for screen recording and screen recording
   */
-ziggeo.startScreenCapture(@Nullable ScreenRecordServiceNotificationConfig config);
+ziggeo.startScreenRecord(@Nullable ScreenRecordServiceNotificationConfig config);
 
 /**
   * Stop screen recording if running
   */
-ziggeo.stopScreenCapture();
+ziggeo.stopScreenRecord();
 ```
 
 ## Proguard config
