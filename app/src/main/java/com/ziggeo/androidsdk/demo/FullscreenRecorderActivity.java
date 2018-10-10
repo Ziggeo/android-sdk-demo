@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.ziggeo.androidsdk.LocalPlaybackConfig;
 import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.net.callbacks.ProgressCallback;
 import com.ziggeo.androidsdk.net.exceptions.ResponseException;
@@ -24,7 +25,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.internal.Util;
 
-public class FullscreenRecorderActivity extends AppCompatActivity implements ProgressCallback {
+public class FullscreenRecorderActivity extends AppCompatActivity {
 
     public static final String TAG = FullscreenRecorderActivity.class.getSimpleName();
 
@@ -44,9 +45,45 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         Map<String, String> args = new HashMap<>();
         args.put("key", "key_for_video");
         args.put("tags", "tag_for_video1, tag_for_video2");
-        ziggeo.setExtraArgsForRecorder(args);
         ziggeo.setMaxRecordingDuration(maxDuration);
-        ziggeo.setNetworkRequestsCallback(this);
+        ziggeo.setNetworkRequestsCallback(new ProgressCallback() {
+            @Override
+            public void onProgressUpdate(@NonNull String videoToken, @NonNull File file, long sentBytes, long totalBytes) {
+                int newProgr = (int) ((float) sentBytes / totalBytes * 100);
+                if (newProgr > progressPercent) {
+                    progressPercent = newProgr;
+                    Log.d(TAG, "Token:" + videoToken + " File:" + file + " Sent " + sentBytes + "/" + totalBytes + "(" + progressPercent + "%)");
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e(TAG, "Request failure. Exception:" + e.toString());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    try {
+                        String responseString = response.body().string();
+                        response.close();
+                        Log.d(TAG, "Request success:" + responseString);
+
+//              do something here
+                    } catch (Exception e) {
+                        Log.e(TAG, e.toString());
+                    } finally {
+                        Util.closeQuietly(response);
+                    }
+                } else {
+                    ResponseException exception = new ResponseException(
+                            response.code(), response.message()
+                    );
+                    onFailure(call, exception);
+                }
+            }
+        });
+        ziggeo.configureLocalPlayback(new LocalPlaybackConfig.Builder(this).build());
         ziggeo.setVideoRecordingProcessCallback(new VideoRecordingCallback() {
             @Override
             public void onStarted() {
@@ -65,42 +102,6 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
             }
         });
         ziggeo.startRecorder();
-    }
-
-    @Override
-    public void onProgressUpdate(long sent, long total) {
-        int newProgr = (int) ((float) sent / total * 100);
-        if (newProgr > progressPercent) {
-            progressPercent = newProgr;
-            Log.d(TAG, "Sent " + sent + "/" + total + "(" + progressPercent + "%)");
-        }
-    }
-
-    @Override
-    public void onFailure(Call call, IOException e) {
-        Log.e(TAG, "Request failure. Exception:" + e.toString());
-    }
-
-    @Override
-    public void onResponse(Call call, Response response) {
-        if (response.isSuccessful() && response.body() != null) {
-            try {
-                String responseString = response.body().string();
-                response.close();
-                Log.d(TAG, "Request success:" + responseString);
-
-//              do something here
-            } catch (Exception e) {
-                Log.e(TAG, e.toString());
-            } finally {
-                Util.closeQuietly(response);
-            }
-        } else {
-            ResponseException exception = new ResponseException(
-                    response.code(), response.message()
-            );
-            onFailure(call, exception);
-        }
     }
 
     private void startVideoRecordingWithDelay() {
@@ -202,7 +203,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity implements Pro
         }
 
         @Override
-        public void onResponse(Call call, Response response) {
+        public void onResponse(@NonNull Call call, Response response) {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();

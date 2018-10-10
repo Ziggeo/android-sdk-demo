@@ -1,10 +1,12 @@
 # Android-SDK
-### Upgrading from `v.0.75.0` to `v.0.75.1`
+### Upgrading from `v.0.75.0` to `v.0.76.0`
 New version contains broken changes.
 * Methods marked as deprecated
  `startScreenCaptureService`, `stopScreenCaptureService`, `startScreenCapture`, `stopScreenCapture`
  Use instead
  `startScreenRecordService`, `stopScreenRecordService`, `startScreenRecord`, `stopScreenRecord`
+* Method `onProgressUpdate(long sentBytes, long totalBytes)` in ProgressCallback class is deprecated.
+  Use `onProgressUpdate(@NonNull File file, long sentBytes, long totalBytes)` instead.
 
 ### Please, use latest build tools and compile sdk version.
 

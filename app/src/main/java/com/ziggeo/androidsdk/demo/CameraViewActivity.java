@@ -216,8 +216,8 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
     private void uploadFile() {
         ziggeo.videos().create(fileToSaveRecording, null, new ProgressCallback() {
             @Override
-            public void onProgressUpdate(long sent, long total) {
-                Log.d(TAG, "Sent " + sent + "/" + total);
+            public void onProgressUpdate(@NonNull String videoToken, @NonNull File file, long sentBytes, long totalBytes) {
+                Log.d(TAG, "Sent " + sentBytes + "/" + totalBytes);
             }
 
             @Override

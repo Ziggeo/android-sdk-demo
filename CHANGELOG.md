@@ -1,6 +1,19 @@
 Change Log
 ==========
 --------------------------
+Version 0.76.0*(2018-10-10)*
+--------------------------
+* Method `onProgressUpdate(long sentBytes, long totalBytes)` in ProgressCallback class is deprecated.
+  Use `onProgressUpdate(@NonNull File file, long sentBytes, long totalBytes)` instead.
+* Added delegates for tracking Uploading progress in Xamarin
+* Gradle version updated
+* Fixed crash logging
+* Added deep linking for player
+* Player switched to CDN server.
+* Fixed issue when screen recording is not started if screen share permission has not been given previously.
+* Methods `startScreenRecordService`, `stopScreenRecordService`, `stopScreenRecord` are deprecated.
+* Added check on null bundle to prevent crash.
+
 Version 0.75.0*(2018-8-19)*
 --------------------------
 * New: Methods marked as deprecated
