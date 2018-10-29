@@ -1,6 +1,9 @@
 Change Log
 ==========
+Version 0.76.1*(2018-10-29)*
 --------------------------
+* Fixed token value returned by `create` request for Xamarin.
+
 Version 0.76.0*(2018-10-10)*
 --------------------------
 * Method `onProgressUpdate(long sentBytes, long totalBytes)` in ProgressCallback class is deprecated.

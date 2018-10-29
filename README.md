@@ -1,5 +1,5 @@
 # Android-SDK
-### Upgrading from `v.0.75.0` to `v.0.76.0`
+### Upgrading from `v.0.75.0` to `v.0.76.1`
 New version contains broken changes.
 * Methods marked as deprecated
  `startScreenCaptureService`, `stopScreenCaptureService`, `startScreenCapture`, `stopScreenCapture`
