@@ -8,4 +8,13 @@
     <string name="youtube_error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
     <string name="youtube_playerview_text">This is a YouTubePlayerView!</string>
 
+    <!-- Deep linking demo -->
+    <string name="play_video">Play video</string>
+    <string name="view_image">View image</string>
+    <string name="play_audio">Play audio</string>
+    <string name="record_screen">Record screen</string>
+    <string name="record_audio">Record audio</string>
+    <string name="record_video">Record video</string>
+    <string name="capture_image">Capture image</string>
+
 </resources>

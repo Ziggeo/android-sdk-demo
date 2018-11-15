@@ -3,14 +3,13 @@ package com.ziggeo.androidsdk.demo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.LocalPlaybackConfig;
 import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.net.callbacks.ProgressCallback;
 import com.ziggeo.androidsdk.net.exceptions.ResponseException;
-import com.ziggeo.androidsdk.recording.VideoRecordingCallback;
+import com.ziggeo.androidsdk.recording.RecordingProcessCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +24,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.internal.Util;
 
-public class FullscreenRecorderActivity extends AppCompatActivity {
+public class FullscreenRecorderActivity extends BaseActivity {
 
     public static final String TAG = FullscreenRecorderActivity.class.getSimpleName();
 
@@ -84,7 +83,7 @@ public class FullscreenRecorderActivity extends AppCompatActivity {
             }
         });
         ziggeo.configureLocalPlayback(new LocalPlaybackConfig.Builder(this).build());
-        ziggeo.setVideoRecordingProcessCallback(new VideoRecordingCallback() {
+        ziggeo.setRecordingProcessCallback(new RecordingProcessCallback() {
             @Override
             public void onStarted() {
                 Log.d(TAG, "onStarted");
@@ -319,7 +318,6 @@ public class FullscreenRecorderActivity extends AppCompatActivity {
                 Util.closeQuietly(response);
             }
         }
-
     };
 
     private Callback bindStreamCallback = new Callback() {

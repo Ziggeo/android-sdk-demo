@@ -12,7 +12,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,7 +31,7 @@ import okhttp3.internal.Util;
 /**
  * Created by Alex Bedulin on 4/3/17.
  */
-public class CameraViewActivity extends AppCompatActivity implements View.OnClickListener {
+public class CameraViewActivity extends BaseActivity implements View.OnClickListener {
     private static final String APP_TOKEN = ""; // your token here
 
     static final String TAG = CameraViewActivity.class.getSimpleName();
@@ -54,9 +53,13 @@ public class CameraViewActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera_view);
         ziggeo = new Ziggeo(APP_TOKEN, this);
         setupCamera();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_camera_view;
     }
 
     private void setupCamera() {

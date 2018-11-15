@@ -1,7 +1,6 @@
 package com.ziggeo.androidsdk.demo;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
@@ -15,7 +14,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.internal.Util;
 
-public class EmbeddedRecorderActivity extends AppCompatActivity implements Callback {
+public class EmbeddedRecorderActivity extends BaseActivity implements Callback {
 
     public static final String TAG = EmbeddedRecorderActivity.class.getSimpleName();
 
@@ -24,7 +23,6 @@ public class EmbeddedRecorderActivity extends AppCompatActivity implements Callb
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_embedded_recorder);
 
         Ziggeo ziggeo = new Ziggeo(APP_TOKEN, this);
         long maxDuration = 20000L;
@@ -32,6 +30,11 @@ public class EmbeddedRecorderActivity extends AppCompatActivity implements Callb
         ziggeo.setMaxRecordingDuration(maxDuration);
         ziggeo.setNetworkRequestsCallback(this);
         ziggeo.attachRecorder(getSupportFragmentManager(), R.id.fl_content);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_embedded_recorder;
     }
 
     @Override
