@@ -1,5 +1,13 @@
 Change Log
 ==========
+Version 0.77.0*(2018-10-16)*
+--------------------------
+* Deep linking support
+* Playlist support
+* Added theming params for hiding recorder and player controls
+* Audio recorder implemented
+* `IVideoRecordingCallback` is deprecated, use `IRecordingProcessCallback` instead.
+
 Version 0.76.1*(2018-10-29)*
 --------------------------
 * Fixed token value returned by `create` request for Xamarin.
