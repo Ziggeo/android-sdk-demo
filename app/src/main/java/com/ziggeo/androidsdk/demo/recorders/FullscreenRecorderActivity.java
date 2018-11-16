@@ -1,4 +1,4 @@
-package com.ziggeo.androidsdk.demo;
+package com.ziggeo.androidsdk.demo.recorders;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.ziggeo.androidsdk.LocalPlaybackConfig;
 import com.ziggeo.androidsdk.Ziggeo;
+import com.ziggeo.androidsdk.demo.BaseActivity;
 import com.ziggeo.androidsdk.net.callbacks.ProgressCallback;
 import com.ziggeo.androidsdk.net.exceptions.ResponseException;
 import com.ziggeo.androidsdk.recording.RecordingProcessCallback;
@@ -23,12 +24,11 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.internal.Util;
+import timber.log.Timber;
 
 public class FullscreenRecorderActivity extends BaseActivity {
 
     public static final String TAG = FullscreenRecorderActivity.class.getSimpleName();
-
-    public static final String APP_TOKEN = ""; // place your token here
 
     private Ziggeo ziggeo;
     private int progressPercent = -1;
@@ -51,13 +51,13 @@ public class FullscreenRecorderActivity extends BaseActivity {
                 int newProgr = (int) ((float) sentBytes / totalBytes * 100);
                 if (newProgr > progressPercent) {
                     progressPercent = newProgr;
-                    Log.d(TAG, "Token:" + videoToken + " File:" + file + " Sent " + sentBytes + "/" + totalBytes + "(" + progressPercent + "%)");
+                    Timber.d("Token:%s File:%s Sent %s / %s (%s%)", videoToken, file, sentBytes, totalBytes, progressPercent);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.e(TAG, "Request failure. Exception:" + e.toString());
+                Timber.e("Request failure. Exception:%s", e.toString());
             }
 
             @Override
@@ -66,11 +66,11 @@ public class FullscreenRecorderActivity extends BaseActivity {
                     try {
                         String responseString = response.body().string();
                         response.close();
-                        Log.d(TAG, "Request success:" + responseString);
+                        Timber.d("Request success:%s", responseString);
 
 //              do something here
                     } catch (Exception e) {
-                        Log.e(TAG, e.toString());
+                        Timber.e(e.toString());
                     } finally {
                         Util.closeQuietly(response);
                     }
@@ -86,18 +86,18 @@ public class FullscreenRecorderActivity extends BaseActivity {
         ziggeo.setRecordingProcessCallback(new RecordingProcessCallback() {
             @Override
             public void onStarted() {
-                Log.d(TAG, "onStarted");
+                Timber.d("onStarted");
             }
 
             @Override
             public void onStopped(@NonNull String path) {
-                Log.d(TAG, "onStopped:" + path);
+                Timber.d("onStopped:%s", path);
             }
 
             @Override
             public void onError(@NonNull Throwable throwable) {
                 super.onError(throwable);
-                Log.d(TAG, "onError:" + throwable.toString());
+                Timber.d("onError:%s", throwable.toString());
             }
         });
         ziggeo.startRecorder();
@@ -129,7 +129,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
 
             ziggeo.videos().create(file, argsMap, callback);
         } else {
-            Log.e(TAG, "Video file doesn't exists");
+            Timber.e("Video file doesn't exists");
         }
     }
 
@@ -191,14 +191,14 @@ public class FullscreenRecorderActivity extends BaseActivity {
 
             ziggeo.videos().create(args, createVideoCallback);
         } else {
-            Log.e(TAG, "Video or snapshot file not found");
+            Timber.e("Video or snapshot file not found");
         }
     }
 
     private Callback createVideoCallback = new Callback() {
         @Override
-        public void onFailure(Call call, IOException e) {
-            Log.e(TAG, "Create video object failure. Exception:" + e.toString());
+        public void onFailure(@NonNull Call call, IOException e) {
+            Timber.e("Create video object failure. Exception:%s", e.toString());
         }
 
         @Override
@@ -206,7 +206,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
-                    Log.d(TAG, "Create video object success:" + responseString);
+                    Timber.d("Create video object success:%s", responseString);
 
                     final JSONObject responseJson = new JSONObject(responseString);
                     videoToken = responseJson.getString("token");
@@ -220,7 +220,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
                     onFailure(call, exception);
                 }
             } catch (IOException | JSONException e) {
-                Log.e(TAG, e.toString());
+                Timber.e(e.toString());
             } finally {
                 Util.closeQuietly(response);
             }
@@ -230,7 +230,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
     private Callback createStreamCallback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
-            Log.e(TAG, "Create stream failure. Exception:" + e.toString());
+            Timber.e("Create stream failure. Exception:%s", e.toString());
         }
 
         @Override
@@ -238,7 +238,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
-                    Log.d(TAG, "Create stream success:" + responseString);
+                    Timber.d("Create stream success:%s", responseString);
 
                     JSONObject responseJson = new JSONObject(responseString);
                     streamToken = responseJson.getString("token");
@@ -253,7 +253,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
                     onFailure(call, exception);
                 }
             } catch (IOException | JSONException e) {
-                Log.e(TAG, e.toString());
+                Timber.e(e.toString());
             } finally {
                 Util.closeQuietly(response);
             }
@@ -262,16 +262,16 @@ public class FullscreenRecorderActivity extends BaseActivity {
 
     private Callback attachImageToStreamCallback = new Callback() {
         @Override
-        public void onFailure(Call call, IOException e) {
-            Log.e(TAG, "Attach image failure. Exception:" + e.toString());
+        public void onFailure(@NonNull Call call, IOException e) {
+            Timber.e("Attach image failure. Exception:%s", e.toString());
         }
 
         @Override
-        public void onResponse(Call call, Response response) {
+        public void onResponse(@NonNull Call call, Response response) {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
-                    Log.d(TAG, "Attach image success:" + responseString);
+                    Timber.d("Attach image success:%s", responseString);
 
                     ziggeo.streams().attachVideo(videoToken, streamToken, videoFile,
                             attachVideoToStreamCallback);
@@ -283,7 +283,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
                     onFailure(call, exception);
                 }
             } catch (IOException e) {
-                Log.e(TAG, e.toString());
+                Timber.e(e.toString());
             } finally {
                 Util.closeQuietly(response);
             }
@@ -293,16 +293,16 @@ public class FullscreenRecorderActivity extends BaseActivity {
 
     private Callback attachVideoToStreamCallback = new Callback() {
         @Override
-        public void onFailure(Call call, IOException e) {
-            Log.e(TAG, "Attach video failure. Exception:" + e.toString());
+        public void onFailure(@NonNull Call call, IOException e) {
+            Timber.e("Attach video failure. Exception:%s", e.toString());
         }
 
         @Override
-        public void onResponse(Call call, Response response) {
+        public void onResponse(@NonNull Call call, Response response) {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
-                    Log.d(TAG, "Attach video success:" + responseString);
+                    Timber.d("Attach video success:%s", responseString);
 
                     ziggeo.streams().bind(videoToken, streamToken, bindStreamCallback);
 
@@ -313,7 +313,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
                     onFailure(call, exception);
                 }
             } catch (IOException e) {
-                Log.e(TAG, e.toString());
+                Timber.e(e.toString());
             } finally {
                 Util.closeQuietly(response);
             }
@@ -322,8 +322,8 @@ public class FullscreenRecorderActivity extends BaseActivity {
 
     private Callback bindStreamCallback = new Callback() {
         @Override
-        public void onFailure(Call call, IOException e) {
-            Log.e(TAG, "Bind stream failure. Exception:" + e.toString());
+        public void onFailure(@NonNull Call call, IOException e) {
+            Timber.e("Bind stream failure. Exception:%s", e.toString());
         }
 
         @Override
@@ -331,7 +331,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
             try {
                 if (response.isSuccessful() && response.body() != null) {
                     String responseString = response.body().string();
-                    Log.d(TAG, "Bind stream success:" + responseString);
+                    Timber.d("Bind stream success:%s", responseString);
 
                 } else {
                     ResponseException exception = new ResponseException(
@@ -340,7 +340,7 @@ public class FullscreenRecorderActivity extends BaseActivity {
                     onFailure(call, exception);
                 }
             } catch (IOException e) {
-                Log.e(TAG, e.toString());
+                Timber.e(e.toString());
             } finally {
                 Util.closeQuietly(response);
             }

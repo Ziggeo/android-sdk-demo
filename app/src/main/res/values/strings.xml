@@ -17,4 +17,7 @@
     <string name="record_video">Record video</string>
     <string name="capture_image">Capture image</string>
 
+    <!-- Audio recorder -->
+    <string name="btn_text_start_audio_recorder">Press me to start audio recorder</string>
+
 </resources>

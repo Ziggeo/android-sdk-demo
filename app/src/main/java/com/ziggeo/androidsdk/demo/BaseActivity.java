@@ -7,6 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
+    // put your tokens here
+    public static final String APP_TOKEN = "";
+    public static final String VIDEO_TOKEN = "";
+    public static final String IMAGE_TOKEN = "";
+    public static final String AUDIO_TOKEN = "";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

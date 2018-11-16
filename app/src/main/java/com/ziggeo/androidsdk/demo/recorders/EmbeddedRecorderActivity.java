@@ -1,9 +1,10 @@
-package com.ziggeo.androidsdk.demo;
+package com.ziggeo.androidsdk.demo.recorders;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.ziggeo.androidsdk.Ziggeo;
+import com.ziggeo.androidsdk.demo.BaseActivity;
 import com.ziggeo.androidsdk.net.exceptions.ResponseException;
 import com.ziggeo.demo.R;
 
@@ -17,8 +18,6 @@ import okhttp3.internal.Util;
 public class EmbeddedRecorderActivity extends BaseActivity implements Callback {
 
     public static final String TAG = EmbeddedRecorderActivity.class.getSimpleName();
-
-    public static final String APP_TOKEN = ""; // place your token here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

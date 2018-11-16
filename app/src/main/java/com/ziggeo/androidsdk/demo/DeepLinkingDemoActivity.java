@@ -8,12 +8,8 @@ import com.ziggeo.demo.R;
 
 import butterknife.OnClick;
 
-public class UriSupportDemoActivity extends BaseActivity {
-    // put your tokens here
-    private static final String APP_TOKEN = "";
-    private static final String VIDEO_TOKEN = "";
-    private static final String IMAGE_TOKEN = "";
-    private static final String AUDIO_TOKEN = "";
+public class DeepLinkingDemoActivity extends BaseActivity {
+
     private static final String STUB = "1";
 
     private static final String URL_PLAY_VIDEO = "ziggeo://play?v=" + VIDEO_TOKEN + "&app=" + APP_TOKEN;

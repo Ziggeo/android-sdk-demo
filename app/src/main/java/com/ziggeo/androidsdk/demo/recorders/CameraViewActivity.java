@@ -1,4 +1,4 @@
-package com.ziggeo.androidsdk.demo;
+package com.ziggeo.androidsdk.demo.recorders;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ziggeo.androidsdk.Ziggeo;
+import com.ziggeo.androidsdk.demo.BaseActivity;
 import com.ziggeo.androidsdk.net.callbacks.ProgressCallback;
 import com.ziggeo.androidsdk.widgets.cameraview.CameraView;
 import com.ziggeo.demo.R;
@@ -32,7 +33,6 @@ import okhttp3.internal.Util;
  * Created by Alex Bedulin on 4/3/17.
  */
 public class CameraViewActivity extends BaseActivity implements View.OnClickListener {
-    private static final String APP_TOKEN = ""; // your token here
 
     static final String TAG = CameraViewActivity.class.getSimpleName();
 
