@@ -1,5 +1,18 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="AppTheme" parent="Theme.AppCompat"></style>
+
+    <style name="PlayerStyle" parent="DefaultPlayerStyle">
+        <!--<item name="controllerStyle"></item>-->
+        <!--<item name="textColor"></item>-->
+        <!--<item name="backgroundDrawable"></item>-->
+        <!--<item name="unplayedColor"></item>-->
+        <!--<item name="playedColor"></item>-->
+        <!--<item name="bufferedColor"></item>-->
+        <!--<item name="tintColor"></item>-->
+        <!--<item name="muteOffImageDrawable"></item>-->
+        <!--<item name="muteOnImageDrawable"></item>-->
+        <!--<item name="hidePlayerControls"></item>-->
+    </style>
 
 </resources>
