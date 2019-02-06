@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ziggeo.androidsdk.Ziggeo;
+import com.ziggeo.androidsdk.callbacks.RecorderCallback;
 import com.ziggeo.androidsdk.demo.BaseActivity;
 import com.ziggeo.androidsdk.net.callbacks.ProgressCallback;
 import com.ziggeo.androidsdk.widgets.cameraview.CameraView;
@@ -28,6 +29,7 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Response;
 import okhttp3.internal.Util;
+import timber.log.Timber;
 
 /**
  * Created by Alex Bedulin on 4/3/17.
@@ -71,43 +73,42 @@ public class CameraViewActivity extends BaseActivity implements View.OnClickList
         fabSwitchCamera.setOnClickListener(this);
 
         cvCamera = findViewById(R.id.cv_camera);
-        cvCamera.addCallback(new CameraView.Callback() {
+        cvCamera.setCameraCallback(new CameraView.CameraCallback() {
             @Override
-            public void onCameraOpened(CameraView cameraView) {
-                super.onCameraOpened(cameraView);
-                Log.d(TAG, "onCameraOpened");
+            public void cameraOpened() {
+                super.cameraOpened();
+                Timber.d("cameraOpened");
             }
 
             @Override
-            public void onCameraClosed(CameraView cameraView) {
-                super.onCameraClosed(cameraView);
-                Log.d(TAG, "onCameraClosed");
+            public void cameraClosed() {
+                super.cameraClosed();
+                Timber.d("cameraClosed");
+            }
+        });
+        cvCamera.setRecorderCallback(new RecorderCallback() {
+            @Override
+            public void readyToRecord() {
+                super.readyToRecord();
+                Timber.d("readyToRecord");
             }
 
             @Override
-            public void onPictureTaken(CameraView cameraView, byte[] data) {
-                super.onPictureTaken(cameraView, data);
-                Log.d(TAG, "onPictureTaken");
-                showImagePreview(data);
+            public void recordingStarted() {
+                super.recordingStarted();
+                Timber.d("recordingStarted");
             }
 
             @Override
-            public void onRecodingStarted() {
-                super.onRecodingStarted();
-                Log.d(TAG, "onRecodingStarted");
+            public void recordingStopped(@NonNull String path) {
+                super.recordingStopped(path);
+                Timber.d("recordingStopped:%s", path);
             }
 
             @Override
-            public void onRecodingStopped() {
-                super.onRecodingStopped();
-                Log.d(TAG, "onRecodingStopped");
-//                uploadFile();
-            }
-
-            @Override
-            public void onRecodingError(Throwable throwable) {
-                super.onRecodingError(throwable);
-                Log.e(TAG, "onRecodingError:" + throwable.toString());
+            public void recordingProgress(long time) {
+                super.recordingProgress(time);
+                Timber.d("recordingProgress:%s", time);
             }
         });
 

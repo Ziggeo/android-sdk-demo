@@ -4,7 +4,7 @@ import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.demo.BaseActivity;
 import com.ziggeo.demo.R;
 
-public class EmbeddedRecorderActivity extends BaseActivity {
+public class CameraEmbeddedRecorderActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
@@ -15,6 +15,6 @@ public class EmbeddedRecorderActivity extends BaseActivity {
     protected void init() {
         super.init();
         Ziggeo ziggeo = new Ziggeo(APP_TOKEN, this);
-        ziggeo.attachRecorder(getSupportFragmentManager(), R.id.fl_content);
+        ziggeo.attachCameraRecorder(getSupportFragmentManager(), R.id.fl_content);
     }
 }

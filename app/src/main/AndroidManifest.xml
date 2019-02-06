@@ -11,14 +11,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="com.ziggeo.androidsdk.demo.recorders.FullscreenRecorderActivity">
+        <activity android:name="com.ziggeo.androidsdk.demo.recorders.CameraFullscreenRecorderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.ziggeo.androidsdk.demo.recorders.EmbeddedRecorderActivity" />
+        <activity android:name="com.ziggeo.androidsdk.demo.recorders.CameraEmbeddedRecorderActivity" />
 
         <activity android:name="com.ziggeo.androidsdk.demo.recorders.CameraViewActivity" />
 
