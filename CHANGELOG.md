@@ -1,5 +1,59 @@
 Change Log
 ==========
+Version 0.78.0*(2019-02-06)*
+----------------------------
+ - Changes in autostart logic. Method `setAutostartRecordingAfter` is deprecated, instead there are now two methods
+   a. `setAutostartRecording` - if `true`, when the recorder is initialized, the count down timer will be started. After the time will run out the recording will be started.
+   Default if `false`.
+   b. `setStartDelay` - set the value for count down timer before start the recording. Default is `3` seconds.
+
+ - Foreground service for recordings uploading. During the uploading notifications will be visible in notification bar. In case of error there are two options available `Retry` and `Try later`
+ In case of try later the SDK will try to make uploading after the delay. Default delay is 2 hours.
+ Also it is possible to do uploading only when WiFi is available.
+ See sample below:
+ ```
+         ziggeo.configureUploading(new UploadingConfig.Builder()
+                .syncInterval(15 * 60 * 1000)
+                .useWifiOnly(true)
+                .build());
+ ```
+ - Face outline image.
+ FaceOutlineConfig config = new FaceOutlineConfig();
+  config.setShow(true);
+// config.setOutlineImageResource(R.drawable.youImage); // optional
+// put created object in `RecorderConfig`
+```
+ - New file selector with multiple selection ability.
+ - `ziggeo.clearRecorder` - the method that allows the devs to clear the cache through code. Would remove the videos even if they are not uploaded.
+ - Playlist for the player. `ziggo.startPlayer(token1, token2, ...)`
+ - Player theming. 
+   There is now ability to style the player. You can use one of the predefined themes and change colors for them. Styling available through styles.xml and through code. If both way used, only params in code will be handled. 
+   Sample can be found in `ZiggeoPlayerActivity`.
+```
+ - New callback system for player, recorder and camera
+ - Subtitles for video player
+ `playerConfig.showSubtitles(boolean value)`
+
+Fixes/Small changes
+ - New method `getNumberOfCameras()` in `CameraView` class.
+ - fixed camera issue on Samsung Galaxy J7
+ - date pattern in file names changed from `dd-MM-yyyy_hh-mm-ss` to `dd.MM.yyyy_HH.mm.ss`
+
+Broken
+ - java8
+ - method `startRecorder(boolean audioOnly)` is deprecated. Please, use `startAudioRecorder()`.
+ - method `startRecorder()` is deprecated. Please, use `startCameraRecorder()`.
+ - method `attachRecorder(FragmentManager fragmentManager, int contentId)` is deprecated. Please, use `attachCameraRecorder(FragmentManager fragmentManager, int contentId)`.
+ - method `attachRecorder(FragmentManager fragmentManager, int contentId, boolean audioOnly)` is deprecated. Please, use `attachAudioRecorder(FragmentManager fragmentManager, int contentId)`.
+ - methods `setExtraArgsForRecorder`, `getExtraArgsForRecorder`, `configureStopRecordingConfirmationDialog`, `getStopRecordingConfirmationDialogConfig`, `setAutostartRecordingAfter`, `setAutostartRecordingAfter`, `getAutostartRecordingAfter`, `setVideoRecordingProcessCallback`, `setRecordingProcessCallback`, `getVideoRecordingProcessCallback`, `getRecordingProcessCallback`,
+ `setTurnOffCameraWhileUploading`, `setColorForStoppedCameraOverlay`, `setDrawableForStoppedCameraOverlay`, `setCoverSelectorEnabled`, `setCoverSelectorEnabled`, `setMaxRecordingDuration`, `setPreferredCameraFacing`, `setPreferredQuality`, `getPreferredQuality`, `setCameraSwitchDisabled`, `setSendImmediately`, `isSendImmediately` are deprecated. Please, use methods in `CameraRecorderConfig.Builder` class.
+ - methods `configureLocalPlayback`, `getLocalPlaybackConfig`, `setExtraArgsForPlayer` are deprecated. Please, use corresponding
+ - method `addCallback` in `CameraView` class is deprecated. Please, use `setCameraCallback` and `
+
+Version 0.77.1*(2018-12-10)*
+----------------------------
+* Added methods for setting theme params for non-native SDKs.
+
 Version 0.77.0*(2018-10-16)*
 --------------------------
 * Deep linking support

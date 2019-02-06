@@ -1,8 +1,64 @@
 # Android-SDK
-### Upgrading from `v.0.76.1` to `0.77.0`
-New version contains broken changes.
-* `IVideoRecordingCallback` is deprecated, use `IRecordingProcessCallback` instead.
+### Upgrading from `v.0.77.0` to `0.78.0`
+##### Broken changes
+ - Java8 support added to the SDK. Please, add the following code in `app/build.gradle` in `android` section
+ ```
+compileOptions {
+         sourceCompatibility JavaVersion.VERSION_1_8
+         targetCompatibility JavaVersion.VERSION_1_8
+}
+```
+ - method `startRecorder(boolean audioOnly)` is deprecated. Please, use `startAudioRecorder()`.
+ - method `startRecorder()` is deprecated. Please, use `startCameraRecorder()`.
+ - method `attachRecorder(FragmentManager fragmentManager, int contentId)` is deprecated. Please, use `attachCameraRecorder(FragmentManager fragmentManager, int contentId)`.
+ - method `attachRecorder(FragmentManager fragmentManager, int contentId, boolean audioOnly)` is deprecated. Please, use `attachAudioRecorder(FragmentManager fragmentManager, int contentId)`.
+ - methods `setExtraArgsForRecorder`, `getExtraArgsForRecorder`, `configureStopRecordingConfirmationDialog`, `getStopRecordingConfirmationDialogConfig`, `setAutostartRecordingAfter`, `setAutostartRecordingAfter`, `getAutostartRecordingAfter`, `setVideoRecordingProcessCallback`, `setRecordingProcessCallback`, `getVideoRecordingProcessCallback`, `getRecordingProcessCallback`,
+ `setTurnOffCameraWhileUploading`, `setColorForStoppedCameraOverlay`, `setDrawableForStoppedCameraOverlay`, `setCoverSelectorEnabled`, `setCoverSelectorEnabled`, `setMaxRecordingDuration`, `setPreferredCameraFacing`, `setPreferredQuality`, `getPreferredQuality`, `setCameraSwitchDisabled`, `setSendImmediately`, `isSendImmediately` are deprecated. Please, use methods in `CameraRecorderConfig.Builder` class.
+ - methods `configureLocalPlayback`, `getLocalPlaybackConfig`, `setExtraArgsForPlayer` are deprecated. Please, use corresponding
+ - method `addCallback` in `CameraView` class is deprecated. Please, use `setCameraCallback` and `
 
+
+##### New features
+ - Changes in autostart logic.  
+   Method `setAutostartRecordingAfter` is deprecated, instead there are now two methods  
+    - `setAutostartRecording` - if `true`, when the recorder is initialized, the count down timer will be started.  
+   After the time will run out the recording will be started.  
+   Default if `false`.  
+    - `setStartDelay` - set the value for count down timer before start the recording.  
+   Default is `3` seconds.
+
+ - Foreground service for recordings uploading.  
+ During the uploading notifications will be visible in notification bar. In case of error there are two options available:  
+   - `Retry` - just make another try to upload
+   - `Try later` - the SDK will try to make uploading after the delay. Default delay is 2 hours.  
+ Also it is possible to do uploading only when WiFi is available. See sample below:
+ ```
+ziggeo.configureUploading(new UploadingConfig.Builder()
+                .syncInterval(15 * 60 * 1000)
+                .useWifiOnly(true)
+                .build());
+ ```
+ - Face outline image.  
+ ```
+ FaceOutlineConfig config = new FaceOutlineConfig();
+ config.setShow(true);
+ config.setOutlineImageResource(R.drawable.youImage); // optional
+// put created object in RecorderConfig class
+```
+ - New file selector with multiple selection ability.
+ - `ziggeo.clearRecorder` - the method that allows the devs to clear the cache through code. Would remove the videos even if they are not uploaded.
+ - Playlist for the player. `ziggo.startPlayer(token1, token2, ...)`
+ - Player theming.  
+   There is now ability to style the player. You can use one of the predefined themes and change colors for them. Styling available through styles.xml and through code. If both way used, only params in code will be handled.  
+   Sample can be found in `ZiggeoPlayerActivity`.
+ - New callback system for player, recorder and camera
+ - Subtitles for video player
+ `playerConfig.showSubtitles(boolean value)`
+
+Fixes/Small changes
+ - New method `getNumberOfCameras()` in `CameraView` class.
+ - fixed camera issue on Samsung Galaxy J7
+ - date pattern in file names changed from `dd-MM-yyyy_hh-mm-ss` to `dd.MM.yyyy_HH.mm.ss`
 
 ### Please, use latest build tools and compile sdk version.
 
@@ -32,11 +88,10 @@ dependencies {
 Ziggeo ziggeo = new Ziggeo(appToken, context);
 ```
 
-## Configure
+## Configure the recorder
 ```
+RecorderConfig.Builder configBuilder = new RecorderConfig.Builder();
 /**
-  * For recorder.
-  * <p>
   * Set the maximum duration of the video. `0` for endless recording.
   * Also used in elapsed time indicator in the top-right corner.
   * <p>
@@ -44,151 +99,66 @@ Ziggeo ziggeo = new Ziggeo(appToken, context);
   *
   * @param duration - duration in millis
   */
-ziggeo.setMaxRecordingDuration(maxVideoDuration);
+configBuilder.maxDuration(long maxDuration);
 
 /**
-  * For recorder.
-  * <p>
-  * Set the time after what the recording will be automatically started
-  * `0` value will start immediately
-  * `-1` value will turn off this feature
-  * Default value is `-1`
-  *
-  * @param millis - delay to autostart
-  */
-ziggeo.setAutostartRecordingAfter(autoStartAfterInMillis);
+ * Set the delay before the recording will be started
+ * Default value is `3` seconds
+ *
+ * @param startDelay - delay
+ */
+configBuilder.startDelay(int startDelay);
 
 /**
-  * For recorder.
-  * <p>
-  * Register a callback to be invoked when a recording is started, stopped or an error occupied.
-  *
-  * @param callback - the callback
-  */
-ziggeo.setVideoRecordingProcessCallback(callback);
+ * Configure if the recording should be started 
+ * after initialisation of the recorder.
+ */
+configBuilder.autostartRecording(boolean autostart);
 
 /**
-  * For recorder.
-  * <p>
-  * Register a callback to be invoked when request finished with either an HTTP response or a
-  * failure exception.
+  * Register a callback to be invoked when a recording 
+  * is started, stopped, an error occurred, etc.
   *
   * @param callback - the callback
   */
-ziggeo.setNetworkRequestsCallback(@callback);
+configBuilder.callback(callback);
 
 /**
-  * For recorder.
-  * <p>
-  * If `true` will hide the preview when uploading is started and show the preview after
-  * uploading is finished (successfully or with the error).
-  * The preview will also be shown if user will start a new recording.
-  * <p>
-  * Default value is `false`
-  * <p>
-  * Does not release the `Camera`.
-  *
-  * @param turnOffCameraWhileUploading
-  */
-ziggeo.setTurnOffCameraWhileUploading(turnOffCameraWhileUploading);
-
-/**
-  * For recorder.
-  * <p>
-  * Set the color to be shown as a background when camera preview is stopped.
-  * Default color is `@android:color/black`
-  *
-  * @param colorForStoppedCameraOverlay - the color
-  */
-ziggeo.setColorForStoppedCameraOverlay(colorForStoppedCameraOverlay);
-
-/**
-  * For recorder.
-  * <p>
-  * Set the drawable to be shown as a background when camera preview is stopped.
-  * Default color is `@android:color/black`
-  *
-  * @param drawableResource - the drawable resource
-  */
-void setDrawableForStoppedCameraOverlay(@DrawableRes int drawableResource);
-
-/**
-  * For recorder.
-  * <p>
-  * Set the maximum duration of the video. `0` for endless recording.
-  * Also used in elapsed time indicator in the top-right corner.
-  * <p>
-  * Default value is `0`
-  *
-  * @param duration - duration in millis
-  */
-ziggeo.setMaxRecordingDuration(duration);
-
-/**
-  * For recorder.
-  * <p>
   * Set what camera facing to use by default.
   * Default value is {@link CameraView.FACING_BACK}
   *
   * @param facing - back or front facing
   */
-ziggeo.setPreferredCameraFacing(facing);
+configBuilder.facing(@CameraView.Facing int facing);
 
 /**
-  * For recorder.
-  * <p>
   * Set what quality to use for recording.
   * Default value is {@link CameraView.QUALITY_HIGH}
   *
   * @param videoQuality - the quality
   */
-ziggeo.setPreferredQuality(videoQuality);
+configBuilder.quality(@CameraView.Quality int videoQuality);
 
 /**
-  * For recorder.
-  * <p>
   * If true the button for switching will not be shown.
   * Default value is `false`.
   */
-ziggeo.setCameraSwitchDisabled(enabled);
+configBuilder.disableCameraSwitch(boolean disable);
 
 /**
-  * For recorder.
-  * <p>
   * If true the video will be sent right after it was recorded.
   * Default value is `true`.
   */
-ziggeo.setSendImmediately(boolean sendImmediately);
+configBuilder.sendImmediately(boolean send);
 
 /**
-  * For recorder.
-  * <p>
-  * Set extra arguments for create video request when creating video using embedded recorder.
+  * Set extra arguments for create video request.
   *
   * @param extraArgs - args will be sent with create video request
   */
-ziggeo.setExtraArgsForRecorder(extraArgs);
+configBuilder.extraArgs(@Nullable HashMap<String, String> extraArgs);
 
 /**
-  * For player.
-  * <p>
-  * Set extra arguments for stream video player.
-  *
-  * @param extraArgs
-  */
-ziggeo.setExtraArgsForPlayer(@Nullable Map<String, String> extraArgs);
-    
-/**
-  * For recorder.
-  * <p>
-  * Cancel the latest network request which is in execution right now.
-  * For example, if two videos were recorder and both uploading right now the last one will be cancelled.
-  */
-ziggeo.cancelRequest();
-
-/**
-  * For recorder.
-  * <p>
   * Configure a dialog to confirm recording stop.
   * The dialog will be shown for both cases: either user press `stop` button or `sendAndClose` checkmark.
   *
@@ -198,16 +168,16 @@ ziggeo.cancelRequest();
   * @param posBtnResId - the text for positive button
   * @param negBtnResId - the text for negative button
   */
-ziggeo.initStopRecordingConfirmationDialog(boolean show, @StringRes int titleResId, @StringRes int mesResId,
-                                             @StringRes int posBtnResId, @StringRes int negBtnResId);
+configBuilder.confirmStopRecording(boolean confirmStopRecording);
+configBuilder.initStopRecordingConfirmationDialog(@Nullable StopRecordingConfirmationDialogConfig config);
 ```
 
-## Fullscreen Video Recorder
+## Fullscreen Camera Recorder
 ```
 /**
-  * Launch standalone activity with video recorder and player.
+  * Launch standalone activity with camera recorder and player.
   */
-ziggeo.startRecorder();
+ziggeo.startCameraRecorder();
 ```
 
 ## Embedded Video Recorder
@@ -218,9 +188,9 @@ ziggeo.startRecorder();
   * @param fragmentManager - {@link FragmentManager}
   * @param contentId       - Identifier of the container this fragment is to be placed in.
   */
-ziggeo.attachRecorder(@NonNull FragmentManager fragmentManager, int contentId);
+ziggeo.attachCameraRecorder(@NonNull FragmentManager fragmentManager, int contentId);
 ```
-
+## 
 ## Fullscreen Video Player
 ```
 /**
@@ -228,14 +198,14 @@ ziggeo.attachRecorder(@NonNull FragmentManager fragmentManager, int contentId);
   *
   * @param path - {@link Uri} path to file.
   */
-ziggeo.startPlayer(@NonNull Uri path);
+ziggeo.startPlayer(@NonNull Uri... path);
 
 /**
   * Launch standalone activity with the player to play the file from stream.
   *
   * @param videoToken - video token.
   */
-ziggeo.startPlayer(@NonNull String videoToken);
+ziggeo.startPlayer(@NonNull String... videoToken);
 ```
 
 ## Embedded Video Player
@@ -247,7 +217,7 @@ ziggeo.startPlayer(@NonNull String videoToken);
   * @param contentId       - Identifier of the container this fragment is to be placed in.
   * @param path            - {@link Uri} path to file.
   */
-ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, Uri path);
+ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, Uri... path);
 
 /**
   * Embed the player to play the file from stream.
@@ -256,7 +226,7 @@ ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, Uri
   * @param contentId       - Identifier of the container this fragment is to be placed in.
   * @param videoToken      - video token.
   */
-ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, String videoToken);
+ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, String... videoToken);
 ```
 
 ## Ziggeo API Access
@@ -477,7 +447,12 @@ ziggeo.stopScreenRecord();
 ```
 
 ## Theming
- * In app theme use `hidePlayerControls` and `hideRecorderControls` for making the control invisible.
+ * There is an ability to style the player. You can use one of the predefined themes and change colors for them.  
+ Styling available through `styles.xml` and through `PlayerStyle` class.  
+ If both way used, only params in code will be handled.  
+ Sample can be found in `ZiggeoPlayerActivity`.
+ * Use `hideControls()` method in `PlayerStyle` and `CameraRecorderStyle` for making the control invisible.  
+ Or `hidePlayerControls` and `hideRecorderControls` in `styles.xml`
 
 ## Proguard config
 See `app\proguard-rules.pro`
