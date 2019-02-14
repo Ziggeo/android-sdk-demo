@@ -2,7 +2,7 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
-    <style name="PlayerStyle" parent="DefaultPlayerStyle">
+    <style name="PlayerStyle">
         <!--<item name="controllerStyle"></item>-->
         <!--<item name="textColor"></item>-->
         <!--<item name="backgroundDrawable"></item>-->

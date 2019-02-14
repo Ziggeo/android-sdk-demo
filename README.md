@@ -229,6 +229,182 @@ ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, Uri
 ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, String... videoToken);
 ```
 
+## Callbacks
+##### Common:
+```
+/**
+ * Called in case of any error occurred
+ *
+ * @param throwable
+ */
+void error(@NonNull Throwable throwable);
+
+/**
+ * Triggered when the player / recorder is loaded for the first time
+ */
+void loaded();
+```
+##### Recorder
+```
+/**
+ * Video has been recorded and is available for preview and redo option and this shows a button
+ * that just raises this event, does not do anything on our end,
+ * however the button is basically there to confirm the submission of that video.
+ * <p>
+ * This is a requirement in some countries.
+ * <p>
+ * Will be fired in case of sendImmediately = false.
+ */
+void manuallySubmitted();
+
+/**
+ * Triggered when a recording process has started
+ * (Press on the Record button if update 0 or after the update goes to 0)
+ */
+void recordingStarted();
+
+/**
+ * Triggered when a recording process has stopped
+ * (Press on the Stop button or duration/size limit set)
+ */
+void recordingStopped(@NonNull String path);
+
+/**
+ * Triggered while a video recorder counts down (happens before recordingStarted)
+ *
+ * @param timeLeft - seconds before start, e.g. 10, 9, 8, 7, ...
+ */
+void countdown(int timeLeft);
+
+/**
+ * Continuous update notification during the recording process.
+ * Fires every second.
+ *
+ * @param time - parameter stating how much time has passed since the event has started.
+ */
+void recordingProgress(long time);
+
+/**
+ * Gets triggered as soon as the recording can be made.
+ * (Camera is ready and permissions are granted)
+ */
+void readyToRecord();
+
+/**
+ * Triggered when access to camera, mic or file storage is not granted.
+ *
+ * @param permissions - list of not granted permissions
+ */
+void accessForbidden(@NonNull List<String> permissions);
+
+/**
+ * Gets triggered when someone gives OK for our system to use camera, microphone and file storage.
+ */
+void accessGranted();
+    
+/**
+ * Called when no cameras found.
+ * It checks the {@link android.content.pm.PackageManager.FEATURE_CAMERA}
+ * and the number of available cameras.
+ */
+void noCamera();
+
+/**
+ * Called when no microphone found.
+ * It checks the {@link android.content.pm.PackageManager.FEATURE_MICROPHONE}
+ */
+void noMicrophone();
+
+/**
+ * Called when at least one camera is accessible
+ */
+void hasCamera();
+
+/**
+ * Called when at microphone is accessible
+ */
+void hasMicrophone();
+
+/**
+ * Called when the user cancelled the recording and closed the screen
+ */
+void canceledByUser();
+
+/**
+ * Fires after upload has finished.
+ */
+void uploaded(@NonNull String path, @NonNull String token);
+
+/**
+ * Triggered when a video uploadingStarted has started
+ */
+void uploadingStarted(@NonNull String path);
+
+/**
+ * Continuous updates on the upload progress.
+ */
+void uploadProgress(@NonNull String videoToken, @NonNull File file, long uploaded, long total);
+
+/**
+ * Continuous update notifications while processing the video.
+ */
+void processing(@NonNull String token);
+
+/**
+ * Video successfully processed.
+ */
+void processed(@NonNull String token);
+
+/**
+ * Triggered after video is uploaded and verified that it can be processed.
+ */
+void verified(@NonNull String token);
+
+/**
+ * Called every second and checks recorder's amplitude.
+ *
+ * @param level - GOOD, MODERATE or BAD value
+ */
+void microphoneHealth(@NonNull MicSoundLevel level);
+```
+
+##### Player:
+```
+/**
+ * Fires any time a playback is started
+ */
+void playing();
+
+/**
+ * Fires when the pause button is clicked (and at the end of the video)
+ */
+void paused();
+
+/**
+ * Fires when a video playback has ended (reaches the end)
+ */
+void ended();
+
+/**
+ * Triggered when the user moves the progress indicator to continue video playback from a different position
+ */
+void seek(long millis);
+
+/**
+ * Triggered when a video player is ready to play a video
+ */
+void readyToPlay();
+```
+##### Sensor
+```
+/**
+ * Called every second.
+ *
+ * @param level - {@link Sensor.TYPE_LIGHT} value
+ */
+void lightSensorLevel(float level);
+```
+
 ## Ziggeo API Access
 
 ##### Videos API

@@ -1,5 +1,17 @@
 Change Log
 ==========
+
+Version 0.78.1*(2019-02-14)*
+----------------------------
+* Added `setSensorCallback()` method for all possible info from sensors 
+* Added docs for several methods
+* Fixed player issue with seekbar: it was not possible to change the progress of the video
+* Fixes for Xamarin integration:  
+  * removed duplicated `error` callback from two different interfaces, instead, it moved to a separate `IErrorCallback` 
+  * own styles implemented instead of using Exoplayer’s styles 
+  * fixed assigning of ids for views 
+  * added attrs missing in Exoplayer’s binding
+  
 Version 0.78.0*(2019-02-06)*
 ----------------------------
  - Changes in autostart logic. Method `setAutostartRecordingAfter` is deprecated, instead there are now two methods

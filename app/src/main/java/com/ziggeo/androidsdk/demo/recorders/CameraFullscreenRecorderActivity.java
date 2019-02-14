@@ -33,6 +33,7 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
                 .maxDuration(20000)
                 .build();
         ziggeo.configureRecorder(config);
+        ziggeo.setSensorCallback(level -> Timber.d("Recorder. lightSensorLevel:%s", level));
         ziggeo.startAudioRecorder();
     }
 
@@ -173,12 +174,6 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
             public void error(@NonNull Throwable throwable) {
                 super.error(throwable);
                 Timber.d(throwable, "Recorder. Error");
-            }
-
-            @Override
-            public void lightSensorLevel(float level) {
-                super.lightSensorLevel(level);
-                Timber.d("Recorder. lightSensorLevel:%s", level);
             }
         };
     }
