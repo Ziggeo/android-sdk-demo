@@ -1,5 +1,5 @@
 # Android-SDK
-### Upgrading from `v.0.77.0` to `0.78.0`
+### Upgrading from `v.0.77.0` to `0.78.1`
 ##### Broken changes
  - Java8 support added to the SDK. Please, add the following code in `app/build.gradle` in `android` section
  ```
@@ -56,6 +56,7 @@ ziggeo.configureUploading(new UploadingConfig.Builder()
  `playerConfig.showSubtitles(boolean value)`
 
 Fixes/Small changes
+ - Fixed player issue with seekbar: it was not possible to change the progress of the video
  - New method `getNumberOfCameras()` in `CameraView` class.
  - fixed camera issue on Samsung Galaxy J7
  - date pattern in file names changed from `dd-MM-yyyy_hh-mm-ss` to `dd.MM.yyyy_HH.mm.ss`
