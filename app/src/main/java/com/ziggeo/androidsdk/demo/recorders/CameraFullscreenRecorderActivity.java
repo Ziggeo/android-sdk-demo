@@ -34,7 +34,7 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
                 .build();
         ziggeo.configureRecorder(config);
         ziggeo.setSensorCallback(level -> Timber.d("Recorder. lightSensorLevel:%s", level));
-        ziggeo.startAudioRecorder();
+        ziggeo.startCameraRecorder();
     }
 
     private IRecorderCallback prepareCallback() {
