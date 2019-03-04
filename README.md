@@ -1,5 +1,5 @@
 # Android-SDK
-### Upgrading from `v.0.77.0` to `0.78.1`
+### Upgrading from `v.0.77.0` to `0.78.2`
 ##### Broken changes
  - Java8 support added to the SDK. Please, add the following code in `app/build.gradle` in `android` section
  ```
@@ -398,6 +398,8 @@ void readyToPlay();
 ```
 ##### Sensor
 ```
+ziggeo.setSensorCallback(@Nullable SensorManager.Callback callback);
+
 /**
  * Called every second.
  *
