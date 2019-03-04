@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.78.3*(2019-03-04)*
+----------------------------
+* Fixed issue in player cause by wrong type in JSON
+  
 Version 0.78.2*(2019-03-04)*
 ----------------------------
 * Fixed stop confirmation for screen recorder
