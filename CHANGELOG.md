@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.78.2*(2019-03-04)*
+----------------------------
+* Fixed stop confirmation for screen recorder
+* Fixes for Xamarin integration
+  
 Version 0.78.1*(2019-02-14)*
 ----------------------------
 * Added `setSensorCallback()` method for all possible info from sensors 
