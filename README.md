@@ -1,5 +1,5 @@
 # Android-SDK
-### Upgrading from `v.0.77.0` to `0.78.3`
+### Upgrading from `v.0.77.0` to `0.78.4`
 ##### Broken changes
  - Java8 support added to the SDK. Please, add the following code in `app/build.gradle` in `android` section
  ```

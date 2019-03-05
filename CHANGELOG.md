@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.78.4*(2019-03-05)*
+----------------------------
+* Fixed access to the recorder configuration.
+  
 Version 0.78.3*(2019-03-04)*
 ----------------------------
 * Fixed issue in player cause by wrong type in JSON
