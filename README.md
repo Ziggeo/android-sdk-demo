@@ -4,22 +4,22 @@
 
 ## Index
 
-1. [Why Ziggeo's Android SDK?](#Why)
-2. [Prerequisites](#Prerequisites)
-    1. [Download](#Download)
-    2. [Dependencies](#Dependencies)
-    3. [Install](#Install)
-3. [Codes](#Codes)
-    1. [Init](#Init)
-    2. [Recorder](#Recorder)
-    3. [Player](#Player)
-    4. [Events / Callbacks](#Events)
+1. [Why Ziggeo's Android SDK?](#why-us)
+2. [Prerequisites](#prerequisites)
+    1. [Download](#download)
+    2. [Dependencies](#dependencies)
+    3. [Install](#install)
+3. [Codes](#codes)
+    1. [Init](#init)
+    2. [Recorder](#recorder)
+    3. [Player](#player)
+    4. [Events / Callbacks](#events)
     5. [API](#API)
-    6. [Examples](#Examples)
-4. [Update Information](#Update)
-5. [Changelog](#Changelog)
+    6. [Examples](#examples)
+4. [Update Information](#update)
+5. [Changelog](#changelog)
 
-## Why Ziggeo's Android SDK? <a name="Why"></a>
+## Why Ziggeo's Android SDK? <a name="why-us"></a>
 
 Ziggeo is powerfull whitelabel video SAAS that helps people be part and lead the video revolution. It has award winning multimedia API and its CEO and CTO can often be seen talking in various events around the world.
 
@@ -41,13 +41,13 @@ Want to provide a great video experience for your own customers?
 
 If any of the above is "Yes" then you are in the right place as this SDK is for you!
 
-## Prerequisites <a name="Prerequisites"></a>
+## Prerequisites <a name="prerequisites"></a>
 
-### Download <a name="Download"></a>
+### Download <a name="download"></a>
 
 You will want to either download the SDK zip file or to pull it in as git repository into your own project.
 
-### Dependencies<a name="Dependencies"></a>
+### Dependencies<a name="dependencies"></a>
 
 Please use latest build tools and sdk version when compiling.
 
@@ -55,7 +55,7 @@ You also should use `Theme.AppCompat` or its descendants as an application theme
 
 For Proguard config please see `app\\proguard-rules.pro`
 
-### Install<a name="Install"></a>
+### Install<a name="install"></a>
 
 **Step 1.** Add the JitPack repository in your root `build.gradle`
 
@@ -72,11 +72,11 @@ For Proguard config please see `app\\proguard-rules.pro`
             compile 'com.github.ZiggeoJitpackService:Android-SDK:$version'
     }
 
-## Codes<a name="Codes"></a>
+## Codes<a name="codes"></a>
 
 This section will introduce you to the most common ways you would integrate our video library into your app.
 
-### Init<a name="Init"></a>
+### Init<a name="init"></a>
 
     /**
       * @param appToken - Ziggeo application token
@@ -84,7 +84,7 @@ This section will introduce you to the most common ways you would integrate our 
       */
     Ziggeo ziggeo = new Ziggeo(appToken, context);
 
-### Recorder<a name="Recorder"></a>
+### Recorder<a name="recorder"></a>
 
 Recorder can be added in 2 ways. As a fullscreen recorder and the embedded recorder.
 
@@ -170,7 +170,7 @@ Playback from Ziggeo servers
       */
     ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, String... videoToken);
 
-### Events / Callbacks<a name="Events"></a>
+### Events / Callbacks<a name="events"></a>
 
 Callbacks allow you to know when something happens. They fire in case of some event happening, such as if error occurs. This way you can design your app to fine detail and be able to provide you customers with great experience.
 
@@ -813,7 +813,7 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
                     .extraArgs(extraArguments)
                     .build();
 
-## Update Information<a name="Update"></a>
+## Update Information<a name="update"></a>
 
 The information is for upgrading from `v.0.78.4` to `0.79.0`. You will need to inspect the Changelog if you are switching from older versions.
 
