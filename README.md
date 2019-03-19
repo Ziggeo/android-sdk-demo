@@ -4,22 +4,22 @@
 
 ## Index
 
-1. Why Ziggeo's Android SDK?
-2. Prerequisites
-    1. Download
-    2. Dependencies
-    3. Install
-3. Codes
-    1. Init
-    2. Recorder
-    3. Player
-    4. Events / Callbacks
-    5. API
-    6. Examples
-4. Update Information
-5. Changelog
+1. [Why Ziggeo's Android SDK?](#Why)
+2. [Prerequisites](#Prerequisites)
+    1. [Download](#Download)
+    2. [Dependencies](#Dependencies)
+    3. [Install](#Install)
+3. [Codes](#Codes)
+    1. [Init](#Init)
+    2. [Recorder](#Recorder)
+    3. [Player](#Player)
+    4. [Events / Callbacks](#Events)
+    5. [API](#API)
+    6. [Examples](#Examples)
+4. [Update Information](#Update)
+5. [Changelog](#Changelog)
 
-## Why Ziggeo's Android SDK?
+## Why Ziggeo's Android SDK? <a name="Why"></a>
 
 Ziggeo is powerfull whitelabel video SAAS that helps people be part and lead the video revolution. It has award winning multimedia API and its CEO and CTO can often be seen talking in various events around the world.
 
@@ -41,13 +41,13 @@ Want to provide a great video experience for your own customers?
 
 If any of the above is "Yes" then you are in the right place as this SDK is for you!
 
-## Prerequisites
+## Prerequisites <a name="Prerequisites"></a>
 
-### Download
+### Download <a name="Download"></a>
 
 You will want to either download the SDK zip file or to pull it in as git repository into your own project.
 
-### Dependencies
+### Dependencies<a name="Dependencies"></a>
 
 Please use latest build tools and sdk version when compiling.
 
@@ -55,7 +55,7 @@ You also should use `Theme.AppCompat` or its descendants as an application theme
 
 For Proguard config please see `app\\proguard-rules.pro`
 
-### Install
+### Install<a name="Install"></a>
 
 **Step 1.** Add the JitPack repository in your root `build.gradle`
 
@@ -72,11 +72,11 @@ For Proguard config please see `app\\proguard-rules.pro`
             compile 'com.github.ZiggeoJitpackService:Android-SDK:$version'
     }
 
-## Codes
+## Codes<a name="Codes"></a>
 
 This section will introduce you to the most common ways you would integrate our video library into your app.
 
-### Init
+### Init<a name="Init"></a>
 
     /**
       * @param appToken - Ziggeo application token
@@ -84,7 +84,7 @@ This section will introduce you to the most common ways you would integrate our 
       */
     Ziggeo ziggeo = new Ziggeo(appToken, context);
 
-### Recorder
+### Recorder<a name="Recorder"></a>
 
 Recorder can be added in 2 ways. As a fullscreen recorder and the embedded recorder.
 
@@ -120,7 +120,7 @@ The embedded recordder is useful when you want your recorder to be part of your 
       */
     ziggeo.startScreenRecorder(@Nullable ScreenRecordServiceNotificationConfig config);
 
-### Player
+### Player<a name="Player"></a>
 
 Player can be used to play local videos, videos from other services and of course videos from Ziggeo servers.
 
@@ -170,7 +170,7 @@ Playback from Ziggeo servers
       */
     ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, String... videoToken);
 
-### Events / Callbacks
+### Events / Callbacks<a name="Events"></a>
 
 Callbacks allow you to know when something happens. They fire in case of some event happening, such as if error occurs. This way you can design your app to fine detail and be able to provide you customers with great experience.
 
@@ -412,7 +412,7 @@ Are you interested in knowing microphone health status?
      */
     void microphoneHealth(@NonNull MicSoundLevel level);
 
-### API
+### API<a name="API"></a>
 
 Our API (at this time) has 2 unique segments. The main one is videos. This deals with the video and videos as a whole.
 
@@ -813,7 +813,7 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
                     .extraArgs(extraArguments)
                     .build();
 
-## Update Information
+## Update Information<a name="Update"></a>
 
 The information is for upgrading from `v.0.78.4` to `0.79.0`. You will need to inspect the Changelog if you are switching from older versions.
 
@@ -822,7 +822,7 @@ The information is for upgrading from `v.0.78.4` to `0.79.0`. You will need to i
 - Added zoom support for the camera.
 - Added `mute` config for player
 
-## Changelog
+## Changelog<a name="Changelog"></a>
 
 Version 0.79.0*(2019-03-18)*
 ----------------------------
