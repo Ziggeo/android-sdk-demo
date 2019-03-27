@@ -815,12 +815,15 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
 ## Update Information<a name="update"></a>
 
-The information is for upgrading from `v.0.78.4` to `0.79.0`. You will need to inspect the Changelog if you are switching from older versions.
+The information is for upgrading from `v.0.79.0` to `0.79.1`. You will need to inspect the Changelog if you are switching from older versions.
 
 ### No broken changes, you can safely upgrade.
-
-- Added zoom support for the camera.
-- Added `mute` config for player
+* Methods `configureUploading`, `configureRecorder`, `configurePlayer` are deprecated.
+Use `setUploadingConfig`, `setRecorderConfig`, `setPlayerConfig` instead.
+This is done to allow kotlin and other similar languages access class fields without getters/setters.
+* Fixed crash during first initialisation
+* Fixed extra args for file selector
+* Fixed fullHD resolution support.
 
 ## Changelog<a name="Changelog"></a>
 If you are interested in our changelog you can find it as a separate file next to this readme. It is named as `CHANGELOG.md`
