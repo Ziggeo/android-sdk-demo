@@ -32,7 +32,7 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
                 .enableCoverShot(false)
                 .maxDuration(20000)
                 .build();
-        ziggeo.configureRecorder(config);
+        ziggeo.setRecorderConfig(config);
         ziggeo.setSensorCallback(level -> Timber.d("Recorder. lightSensorLevel:%s", level));
         ziggeo.startCameraRecorder();
     }

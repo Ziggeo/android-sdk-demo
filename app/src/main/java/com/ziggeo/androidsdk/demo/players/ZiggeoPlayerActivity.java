@@ -1,7 +1,6 @@
 package com.ziggeo.androidsdk.demo.players;
 
 import android.support.annotation.NonNull;
-import android.util.SparseArray;
 
 import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.callbacks.PlayerCallback;
@@ -27,7 +26,7 @@ public class ZiggeoPlayerActivity extends BaseActivity {
     }
 
     /**
-     * Also see styles.xml for configurePlayer through XML
+     * Also see styles.xml for configuring the Player through XML
      */
     private void configurePlayer(@NonNull Ziggeo ziggeo) {
         PlayerConfig playerConfig = new PlayerConfig.Builder()
@@ -79,6 +78,6 @@ public class ZiggeoPlayerActivity extends BaseActivity {
                 })
                 .build();
 
-        ziggeo.configurePlayer(playerConfig);
+        ziggeo.setPlayerConfig(playerConfig);
     }
 }
