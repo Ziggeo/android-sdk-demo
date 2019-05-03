@@ -36,8 +36,8 @@ android {
 
 dependencies {
     implementation 'com.android.support:design:28.0.0'
-    implementation 'com.github.ZiggeoJitpackService:Android-SDK:0.79.0'
-    implementation('com.vimeo.networking:vimeo-networking:1.1.2') {
+    implementation 'com.github.ZiggeoJitpackService:Android-SDK:0.79.7'
+    implementation('com.vimeo.networking:vimeo-networking:1.1.3') {
         exclude group: 'com.intellij', module: 'annotations'
     }
     implementation 'com.jakewharton:butterknife:9.0.0-rc1'
