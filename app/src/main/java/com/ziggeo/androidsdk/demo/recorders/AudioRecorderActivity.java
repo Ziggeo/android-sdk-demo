@@ -8,10 +8,8 @@ import com.ziggeo.androidsdk.callbacks.RecorderCallback;
 import com.ziggeo.androidsdk.demo.BaseActivity;
 import com.ziggeo.androidsdk.recorder.MicSoundLevel;
 import com.ziggeo.androidsdk.recorder.RecorderConfig;
-import com.ziggeo.androidsdk.recorder.RecordingProcessCallback;
 import com.ziggeo.demo.R;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,7 +32,7 @@ public class AudioRecorderActivity extends BaseActivity {
                 .enableCoverShot(false)
                 .maxDuration(20000)
                 .build();
-        ziggeo.configureRecorder(config);
+        ziggeo.setRecorderConfig(config);
         ziggeo.startAudioRecorder();
     }
     private IRecorderCallback prepareCallback() {

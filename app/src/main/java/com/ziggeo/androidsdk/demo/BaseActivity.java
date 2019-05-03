@@ -23,11 +23,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         init();
     }
 
-    protected int getLayoutId(){
+    protected int getLayoutId() {
         return 0;
     }
 
-    protected void init(){
+    protected void init() {
 
     }
 }

@@ -15,6 +15,14 @@ Version 0.79.7*(2019-05-19)*
 * Fixed `cancelledByUser` callback for file selector
 * Switched from `implementation` to `api` for internal OkHttp dependency
 
+Version 0.79.1*(2019-03-27)*
+----------------------------
+* Methods `configureUploading`, `configureRecorder`, `configurePlayer` are deprecated.
+Use `setUploadingConfig`, `setRecorderConfig`, `setPlayerConfig` instead.
+* Fixed crash during first initialisation
+* Fixed extra args for file selector
+* Fixed fullHD resolution support.
+
 Version 0.79.0*(2019-03-18)*
 ----------------------------
 * Added zoom support for the camera.
