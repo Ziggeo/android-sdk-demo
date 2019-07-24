@@ -815,21 +815,14 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
 ## Update Information<a name="update"></a>
 
-The information is for upgrading from `0.79.0` to `0.79.7`. You will need to inspect the Changelog if you are switching from older versions.
+The information is for upgrading from `0.79.7` to `0.80.1`. You will need to inspect the Changelog if you are switching from older versions.
 
 ### No broken changes, you can safely upgrade.
-* Added support for FullHD aspect ratio
-* Fixed crash during the very first initialisation.
-* Method renamed to be consistent with common naming styles. This will allow kotlin/dart replace getter/setter with direct field access syntax.
-  * `configureUploading` -> `setUploadingConfig`
-  * `configureRecorder` -> `setRecorderConfig`
-  * `configurePlayer` -> `setPlayerConfig`
-* Added constructors and getters/setters for styling classes
-* Fixed crash in CrashLogger in case of lack of the crash info
-* Implemented correct `equals` and `hashCode` for `SessionModel` and `UploadingConfig`
-* Fixed several callback events for uploading
-* Fixed `cancelledByUser` callback for file selector
-* Switched from `implementation` to `api` for internal OkHttp dependency
+
+* Added video streaming
+* Zoom enabled by default
+* Added sound amplitude chart for audio recorder
+* Added seek bar for audio recorder and player
 
 ## Changelog<a name="Changelog"></a>
 

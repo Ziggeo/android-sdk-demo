@@ -1,5 +1,12 @@
 ## Changelog
 
+Version 0.80.1*(2019-7-24)*
+----------------------------
+* Added video streaming
+* Zoom enabled by default
+* Added sound amplitude chart for audio recorder
+* Added seek bar for audio recorder and player
+
 Version 0.79.7*(2019-05-19)*
 ----------------------------
 * Added support for FullHD aspect ratio
