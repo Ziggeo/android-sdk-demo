@@ -36,7 +36,7 @@ android {
 
 dependencies {
     implementation 'com.android.support:design:28.0.0'
-    implementation 'com.github.ZiggeoJitpackService:Android-SDK:0.79.7'
+    implementation 'com.github.ZiggeoJitpackService:Android-SDK:0.80.1'
     implementation('com.vimeo.networking:vimeo-networking:1.1.3') {
         exclude group: 'com.intellij', module: 'annotations'
     }
@@ -44,4 +44,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation files('libs/YouTubeAndroidPlayerApi_v1.2.2.jar')
+    implementation 'com.android.support:multidex:1.0.3'
 }

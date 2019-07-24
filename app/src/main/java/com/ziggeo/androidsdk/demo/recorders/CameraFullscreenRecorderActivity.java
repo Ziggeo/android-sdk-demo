@@ -33,7 +33,6 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
                 .maxDuration(20000)
                 .build();
         ziggeo.setRecorderConfig(config);
-        ziggeo.setSensorCallback(level -> Timber.d("Sensors. lightSensorLevel:%s", level));
         ziggeo.startCameraRecorder();
     }
 
@@ -175,7 +174,19 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
                 super.error(throwable);
                 Timber.d(throwable, "Recorder. Error");
             }
+
+            @Override
+            public void onPictureTaken(@NonNull String path) {
+                super.onPictureTaken(path);
+                Timber.d("Recorder. onPictureTaken:%s", path);
+            }
         };
+    }
+
+    private void disableZoom(){
+        for (String cameraId : ziggeo.getCameraIdList()) {
+            ziggeo.getCamera(cameraId).getCharacteristics().setZoomEnabled(false);
+        }
     }
 
 }

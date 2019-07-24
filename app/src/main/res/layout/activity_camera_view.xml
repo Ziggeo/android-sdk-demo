@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.ziggeo.androidsdk.widgets.cameraview.CameraView
@@ -14,11 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/common_margin"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:layout_marginBottom="@dimen/common_margin"
-        android:paddingBottom="@dimen/common_margin"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingBottom="@dimen/common_margin">
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_record"
@@ -30,16 +30,61 @@
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_take_picture"
             android:layout_width="wrap_content"
-            app:srcCompat="@drawable/ic_take_picture"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_margin"
             android:layout_marginEnd="@dimen/common_margin"
-            android:layout_marginStart="@dimen/common_margin" />
+            app:srcCompat="@drawable/ic_take_picture" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_switch_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_margin"
+            android:layout_marginEnd="@dimen/common_margin" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_margin"
             android:layout_marginLeft="@dimen/common_margin"
-            android:layout_marginStart="@dimen/common_margin" />
+            android:layout_marginEnd="@dimen/common_margin">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_stream"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:color/transparent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="16dp"
+                android:text="@string/common_live"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_preparing_stream_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin"
+            android:text="@string/cv_preparing_stream"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </FrameLayout>

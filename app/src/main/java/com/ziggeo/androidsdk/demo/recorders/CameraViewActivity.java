@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.recorders;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
@@ -12,21 +13,26 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
 import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.callbacks.RecorderCallback;
 import com.ziggeo.androidsdk.demo.BaseActivity;
 import com.ziggeo.androidsdk.net.callbacks.ProgressCallback;
+import com.ziggeo.androidsdk.net.models.VideoReadyForStreamingModel;
 import com.ziggeo.androidsdk.widgets.cameraview.CameraView;
 import com.ziggeo.demo.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.internal.Util;
 import timber.log.Timber;
@@ -35,22 +41,23 @@ import timber.log.Timber;
  * Created by Alex Bedulin on 4/3/17.
  */
 public class CameraViewActivity extends BaseActivity implements View.OnClickListener {
-
-    static final String TAG = CameraViewActivity.class.getSimpleName();
-
     public static final String[] VIDEO_PERMISSIONS = {
             Manifest.permission.CAMERA,
             Manifest.permission.RECORD_AUDIO,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-
+    private static final Gson GSON = new Gson();
     CameraView cvCamera;
     FloatingActionButton fabRecord;
     FloatingActionButton fabTakePicture;
     FloatingActionButton fabSwitchCamera;
-
+    FloatingActionButton fabStream;
+    private View preparingStreamProgress;
     private File fileToSaveRecording;
     private Ziggeo ziggeo;
+
+    private String videoToken;
+    private String streamToken;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +72,9 @@ public class CameraViewActivity extends BaseActivity implements View.OnClickList
     }
 
     private void setupCamera() {
+        preparingStreamProgress = findViewById(com.ziggeo.androidsdk.R.id.ll_preparing_stream_progress);
+        fabStream = findViewById(R.id.fab_stream);
+        fabStream.setOnClickListener(this);
         fabRecord = findViewById(R.id.fab_record);
         fabRecord.setOnClickListener(this);
         fabTakePicture = findViewById(R.id.fab_take_picture);
@@ -110,6 +120,24 @@ public class CameraViewActivity extends BaseActivity implements View.OnClickList
                 super.recordingProgress(time);
                 Timber.d("recordingProgress:%s", time);
             }
+
+            @Override
+            public void onPictureTaken(@NonNull String path) {
+                super.onPictureTaken(path);
+                Timber.d("onPictureTaken:%s", path);
+            }
+
+            @Override
+            public void streamingStarted() {
+                super.streamingStarted();
+                Timber.d("streamingStarted");
+            }
+
+            @Override
+            public void streamingStopped() {
+                super.streamingStopped();
+                Timber.d("streamingStopped");
+            }
         });
 
         updateIcons();
@@ -126,14 +154,15 @@ public class CameraViewActivity extends BaseActivity implements View.OnClickList
     }
 
     @Override
-    protected void onPause() {
-        cvCamera.stop();
-        super.onPause();
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.fab_stream:
+                if (cvCamera.isStreaming()) {
+                    stopStream();
+                } else {
+                    startStream();
+                }
+                break;
             case R.id.fab_record:
                 if (cvCamera.isRecording()) {
                     cvCamera.stopRecording();
@@ -181,7 +210,7 @@ public class CameraViewActivity extends BaseActivity implements View.OnClickList
                 fileToSaveRecording.getParentFile().mkdirs();
                 return fileToSaveRecording.createNewFile();
             } catch (IOException e) {
-                Log.e(TAG, e.toString());
+                Timber.e(e);
                 return false;
             }
         } else return true;
@@ -221,18 +250,92 @@ public class CameraViewActivity extends BaseActivity implements View.OnClickList
         ziggeo.videos().create(fileToSaveRecording, null, new ProgressCallback() {
             @Override
             public void onProgressUpdate(@NonNull String videoToken, @NonNull File file, long sentBytes, long totalBytes) {
-                Log.d(TAG, "Sent " + sentBytes + "/" + totalBytes);
+                Timber.d("Sent " + sentBytes + "/" + totalBytes);
             }
 
             @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Timber.e("onFailure:%s", e.toString());
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                Timber.d("onResponse:%s", response.body().string());
+                Util.closeQuietly(response);
+            }
+        });
+    }
+
+    @SuppressLint("CheckResult")
+    private void startStream() {
+        if (!cvCamera.isStreaming()) {
+            showPreparingStreamProgress();
+
+            HashMap<String, String> args = new HashMap<>();
+            args.put("flash_recording", String.valueOf(true));
+            ziggeo.videos().create(args, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    Timber.e("onFailure:%s", e.toString());
+                    hidePreparingStreamProgress();
+                }
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        VideoReadyForStreamingModel model =
+                                GSON.fromJson(response.body().string(), VideoReadyForStreamingModel.class);
+                        videoToken = model.getVideoModel().getToken();
+                        streamToken = model.getStreamModel().getToken();
+
+                        hidePreparingStreamProgress();
+                        cvCamera.startStream(APP_TOKEN, videoToken, streamToken);
+
+                        Timber.d("Streaming to:%s %s", videoToken, streamToken);
+                    } else {
+                        onFailure(call, new IOException(String.valueOf(response.code())));
+                    }
+                    Util.closeQuietly(response);
+                }
+            });
+        }
+    }
+
+    @SuppressLint("CheckResult")
+    private void stopStream() {
+        cvCamera.stopStream();
+
+        ziggeo.streams().bind(videoToken, streamToken, new Callback() {
+            @Override
             public void onFailure(Call call, IOException e) {
-                Log.e(TAG, "onFailure:" + e.toString());
+                Timber.e(e);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d(TAG, "onResponse:" + response.body().string());
-                Util.closeQuietly(response);
+                if (response.isSuccessful()) {
+                    Timber.d("binded");
+                } else {
+                    onFailure(call, new IOException(String.valueOf(response.code())));
+                }
+            }
+        });
+    }
+
+    private void showPreparingStreamProgress() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                preparingStreamProgress.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private void hidePreparingStreamProgress() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                preparingStreamProgress.setVisibility(View.GONE);
             }
         });
     }
