@@ -815,14 +815,11 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
 ## Update Information<a name="update"></a>
 
-The information is for upgrading from `0.79.7` to `0.80.1`. You will need to inspect the Changelog if you are switching from older versions.
+The information is for upgrading from `0.80.1` to `0.80.2`. You will need to inspect the Changelog if you are switching from older versions.
 
 ### No broken changes, you can safely upgrade.
-
-* Added video streaming
-* Zoom enabled by default
-* Added sound amplitude chart for audio recorder
-* Added seek bar for audio recorder and player
+* Added more configs to `RecorderConfig`: `resolution`, `videoBitrate`,
+`audioBitrate`, `audioSampleRate`
 
 ## Changelog<a name="Changelog"></a>
 

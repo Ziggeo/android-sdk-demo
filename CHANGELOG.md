@@ -1,5 +1,10 @@
 ## Changelog
 
+Version 0.80.2*(2019-8-1)*
+----------------------------
+* Added more configs to `RecorderConfig`: `resolution`, `videoBitrate`,
+`audioBitrate`, `audioSampleRate`
+
 Version 0.80.1*(2019-7-24)*
 ----------------------------
 * Added video streaming
