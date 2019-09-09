@@ -1,5 +1,11 @@
 ## Changelog
 
+Version 0.80.3*(2019-9-9)*
+----------------------------
+* Removed Timber and VideoCache dependencies
+* Some internal changes for Xamarin
+* Old deprecated things removed
+
 Version 0.80.2*(2019-8-1)*
 ----------------------------
 * Added more configs to `RecorderConfig`: `resolution`, `videoBitrate`,
