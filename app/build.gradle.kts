@@ -81,7 +81,12 @@ dependencies {
     val glideVersion = "4.9.0"
     implementation("com.github.bumptech.glide:glide:$glideVersion")
     kapt("com.github.bumptech.glide:compiler:$glideVersion")
-
+    //RxJava
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.7")
+    implementation("com.jakewharton.rxrelay2:rxrelay:2.1.0")
+    //Gson
+    implementation("com.google.code.gson:gson:2.8.5")
     //JUnit
     testImplementation("junit:junit:4.12")
     //Mockito
