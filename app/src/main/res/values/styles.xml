@@ -1,17 +1,11 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
-
-    <style name="PlayerStyle">
-        <!--<item name="controllerStyle"></item>-->
-        <!--<item name="textColor"></item>-->
-        <!--<item name="unplayedColor"></item>-->
-        <!--<item name="playedColor"></item>-->
-        <!--<item name="bufferedColor"></item>-->
-        <!--<item name="tintColor"></item>-->
-        <!--<item name="muteOffImageDrawable"></item>-->
-        <!--<item name="muteOnImageDrawable"></item>-->
-        <!--<item name="hidePlayerControls"></item>-->
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>

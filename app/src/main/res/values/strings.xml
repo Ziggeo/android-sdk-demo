@@ -1,27 +1,3 @@
 <resources>
-    <string name="app_name">ZiggeoDemo</string>
-    <string name="embedded_recorder">Embedded recorder</string>
-    <string name="common_live">Live</string>
-    <string name="common_ok">OK</string>
-    <string name="common_grant_permissions">Please, grant permissions.</string>
-    <string name="common_missing_permission">App can\'t work without permissions.</string>
-
-    <string name="youtube_error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
-    <string name="youtube_playerview_text">This is a YouTubePlayerView!</string>
-
-    <!-- CameraView demo-->
-    <string name="cv_preparing_stream">Preparing stream</string>
-
-    <!-- Deep linking demo -->
-    <string name="play_video">Play video</string>
-    <string name="view_image">View image</string>
-    <string name="play_audio">Play audio</string>
-    <string name="record_screen">Record screen</string>
-    <string name="record_audio">Record audio</string>
-    <string name="record_video">Record video</string>
-    <string name="capture_image">Capture image</string>
-
-    <!-- Audio recorder -->
-    <string name="btn_text_start_audio_recorder">Press me to start audio recorder</string>
-
+    <string name="app_name">ZiggeoAndroidDemo</string>
 </resources>
