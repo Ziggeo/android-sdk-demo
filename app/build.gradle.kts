@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId = "com.ziggeo.androidsdk.demo"
 
-        minSdkVersion(19)
+        minSdkVersion(16)
         targetSdkVersion(29)
 
         versionName = "1.0.0"
@@ -22,6 +22,7 @@ android {
 
         defaultConfig {
             multiDexEnabled = true
+            vectorDrawables.useSupportLibrary = true
         }
 
         buildTypes {

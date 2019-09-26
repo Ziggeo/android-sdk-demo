@@ -17,7 +17,7 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
  * alexb@ziggeo.com
  */
 class AuthFragment : BaseFragment(), AuthView {
-    override val layoutRes = R.layout.fragment_auth
+    override val layoutRes = R.layout.fragment_дщпшт
 
     override val parentScopeName = DI.APP_SCOPE
 

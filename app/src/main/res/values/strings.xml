@@ -4,4 +4,8 @@
     <string name="app_name">ZiggeoAndroidDemo</string>
     <string name="ok">OK</string>
 
+    <!-- Auth screen -->
+    <string name="auth_text">Please go to demo.ziggeo.com on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>
+    <string name="scan_qr">Scan QR code</string>
+
 </resources>

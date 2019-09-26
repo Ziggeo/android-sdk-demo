@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+    <dimen name="default_margin">16dp</dimen>
+
+    <!-- Auth screen -->
+    <dimen name="logo_width">250dp</dimen>
+    <dimen name="logo_margin_top">50dp</dimen>
+    <dimen name="logo_margin_bottom">24dp</dimen>
+    <dimen name="btn_qr_width">160dp</dimen>
+    <dimen name="btn_qr_height">55dp</dimen>
+    <dimen name="btn_qr_margin_bottom">250dp</dimen>
+
+</resources>
