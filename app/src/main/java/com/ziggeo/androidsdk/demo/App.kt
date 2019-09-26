@@ -40,7 +40,7 @@ class App : Application() {
     }
 
     private fun initToothpick() {
-        if (BuildConfig.DEBUG) {//TODO
+        if (BuildConfig.DEBUG) {
             Toothpick.setConfiguration(Configuration.forDevelopment().preventMultipleRootScopes())
         } else {
             Toothpick.setConfiguration(Configuration.forProduction())

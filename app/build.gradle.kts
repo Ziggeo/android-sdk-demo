@@ -10,7 +10,7 @@ android {
     compileSdkVersion(29)
 
     defaultConfig {
-        applicationId = "com.gitlab.terrakok.gitfox"
+        applicationId = "com.ziggeo.androidsdk.demo"
 
         minSdkVersion(19)
         targetSdkVersion(29)
@@ -20,26 +20,11 @@ android {
 
         buildToolsVersion = "29.0.2"
 
-        lintOptions {
-            isWarningsAsErrors = true
-            isIgnoreTestSources = true
-        }
-
         defaultConfig {
             multiDexEnabled = true
         }
 
         buildTypes {
-            create("debugPG") {
-                initWith(getByName("debug"))
-                isMinifyEnabled = true
-                versionNameSuffix = " debugPG"
-
-                proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    file("proguard-rules.pro")
-                )
-            }
             getByName("release") {
                 isMinifyEnabled = true
 

@@ -26,9 +26,10 @@ abstract class BaseFragment : MvpAppCompatFragment() {
 
     private val viewHandler = Handler()
 
+    //TODO remove this check at all?
     protected open val parentScopeName: String by lazy {
         (parentFragment as? BaseFragment)?.fragmentScopeName
-            ?: DI.SERVER_SCOPE
+            ?: DI.APP_SCOPE
     }
 
     private lateinit var fragmentScopeName: String
