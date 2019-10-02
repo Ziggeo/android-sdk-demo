@@ -38,7 +38,9 @@ class MainFlowFragment : FlowFragment(), MainFlowView,
         get() = childFragmentManager.findFragmentById(R.id.main_container) as? BaseFragment
 
     private val itemClickListener = { view: View ->
-        presenter.onMenuItemClick(view.tag as MainFlowView.MenuItem)
+        val menuItem = view.tag as MainFlowView.MenuItem
+        presenter.onMenuItemClick(menuItem)
+        selectMenuItem(menuItem)
     }
 
     override fun getContainerId() = R.id.main_container
@@ -141,6 +143,8 @@ class MainFlowFragment : FlowFragment(), MainFlowView,
         mi_clients.setOnClickListener(itemClickListener)
         mi_contact.setOnClickListener(itemClickListener)
         mi_about.setOnClickListener(itemClickListener)
+
+        selectMenuItem(RECORDINGS)
     }
 
     private companion object {
