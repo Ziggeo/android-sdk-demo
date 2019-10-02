@@ -58,6 +58,10 @@ class MainFlowFragment : FlowFragment(), MainFlowView,
         else drawer.closeDrawer(GravityCompat.START)
     }
 
+    override fun showAccName(appToken: String?) {
+        tv_app_token.text = appToken
+    }
+
     override fun onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             openNavDrawer(false)

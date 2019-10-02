@@ -23,6 +23,8 @@ interface MainFlowView : MvpView {
 
     fun selectMenuItem(item: MenuItem)
 
+    fun showAccName(appToken: String?)
+
     fun openDrawer()
     fun closeDrawer()
 

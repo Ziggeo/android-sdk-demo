@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.main
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.model.interactor.SessionInteractor
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import com.ziggeo.androidsdk.demo.presentation.main.MainFlowView.MenuItem
@@ -15,10 +16,16 @@ import javax.inject.Inject
  */
 @InjectViewState
 class MainFlowPresenter @Inject constructor(
-    private val sessionInteractor: SessionInteractor
+    private val sessionInteractor: SessionInteractor,
+    private val prefs: Prefs
 ) : BasePresenter<MainFlowView>() {
 
     private var currentSelectedItem: MenuItem? = null
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        viewState.showAccName(prefs.appToken)
+    }
 
     fun onMenuItemClick(item: MenuItem) {
         viewState.closeDrawer()
