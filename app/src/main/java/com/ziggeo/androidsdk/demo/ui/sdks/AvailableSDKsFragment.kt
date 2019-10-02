@@ -5,7 +5,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.availablesdks.AvailableSDKsPresenter
 import com.ziggeo.androidsdk.demo.presentation.availablesdks.AvailableSDKsView
-import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
+import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
 
 
 /**
@@ -13,7 +13,7 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class AvailableSDKsFragment : BaseFragment(), AvailableSDKsView {
+class AvailableSDKsFragment : BaseToolbarFragment(), AvailableSDKsView {
     override val layoutRes = R.layout.fragment_available_sdks
 
     @InjectPresenter
@@ -22,4 +22,7 @@ class AvailableSDKsFragment : BaseFragment(), AvailableSDKsView {
     @ProvidePresenter
     fun providePresenter(): AvailableSDKsPresenter =
         scope.getInstance(AvailableSDKsPresenter::class.java)
+
+    override fun getTitleRes() = R.string.title_sdks
+
 }

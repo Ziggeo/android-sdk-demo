@@ -5,7 +5,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.about.AboutPresenter
 import com.ziggeo.androidsdk.demo.presentation.about.AboutView
-import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
+import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
 
 
 /**
@@ -13,7 +13,7 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class AboutFragment : BaseFragment(), AboutView {
+class AboutFragment : BaseToolbarFragment(), AboutView {
     override val layoutRes = R.layout.fragment_about
 
     @InjectPresenter
@@ -22,5 +22,7 @@ class AboutFragment : BaseFragment(), AboutView {
     @ProvidePresenter
     fun providePresenter(): AboutPresenter =
         scope.getInstance(AboutPresenter::class.java)
+
+    override fun getTitleRes() = R.string.title_about
 
 }

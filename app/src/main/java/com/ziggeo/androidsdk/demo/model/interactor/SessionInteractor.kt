@@ -8,9 +8,17 @@ import javax.inject.Inject
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class LaunchInteractor @Inject constructor(
+class SessionInteractor @Inject constructor(
     private val prefs: Prefs
 ) {
     val hasAccount: Boolean
         get() = prefs.appToken != null
+
+    fun logout() {
+        prefs.appToken = null
+    }
+
+    fun login(appToken: String) {
+        prefs.appToken = appToken
+    }
 }

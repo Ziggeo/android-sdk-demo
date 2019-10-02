@@ -1,4 +1,4 @@
-package com.ziggeo.androidsdk.demo.presentation.topcustomers
+package com.ziggeo.androidsdk.demo.presentation.topclients
 
 import com.arellomobile.mvp.InjectViewState
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
@@ -11,6 +11,6 @@ import javax.inject.Inject
  * alexb@ziggeo.com
  */
 @InjectViewState
-class TopCustomersPresenter @Inject constructor() : BasePresenter<TopCustomersView>() {
+class TopClientsPresenter @Inject constructor() : BasePresenter<TopClientsView>() {
 
 }

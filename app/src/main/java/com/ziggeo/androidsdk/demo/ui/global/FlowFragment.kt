@@ -1,10 +1,12 @@
 package com.ziggeo.androidsdk.demo.ui.global
 
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.di.module.FlowNavigationModule
+import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.util.setLaunchScreen
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -32,7 +34,7 @@ abstract class FlowFragment : BaseFragment() {
     lateinit var navigatorHolder: NavigatorHolder
 
     @Inject
-    lateinit var router: Router
+    lateinit var router: FlowRouter
 
     override fun installModules(scope: Scope) {
         scope.installModules(
@@ -40,8 +42,11 @@ abstract class FlowFragment : BaseFragment() {
         )
     }
 
+    @IdRes
+    protected open fun getContainerId() = R.id.container
+
     private val navigator: Navigator by lazy {
-        object : SupportAppNavigator(this.activity, childFragmentManager, R.id.container) {
+        object : SupportAppNavigator(this.activity, childFragmentManager, getContainerId()) {
             override fun activityBack() {
                 router.exit()
             }

@@ -1,5 +1,7 @@
 package com.ziggeo.androidsdk.demo.util
 
+import android.graphics.drawable.Drawable
+import android.widget.TextView
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.BackTo
@@ -21,3 +23,12 @@ fun Navigator.setLaunchScreen(screen: SupportAppScreen) {
 }
 
 fun Any.objectScopeName() = "${javaClass.simpleName}_${hashCode()}"
+
+fun TextView.setStartDrawable(drawable: Drawable) {
+    setCompoundDrawablesRelativeWithIntrinsicBounds(
+        drawable,
+        null,
+        null,
+        null
+    )
+}

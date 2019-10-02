@@ -1,7 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation
 
 import com.ziggeo.androidsdk.demo.Screens
-import com.ziggeo.androidsdk.demo.model.interactor.LaunchInteractor
+import com.ziggeo.androidsdk.demo.model.interactor.SessionInteractor
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
@@ -11,13 +11,13 @@ import javax.inject.Inject
  * alexb@ziggeo.com
  */
 class AppLauncher @Inject constructor(
-    private val launchInteractor: LaunchInteractor,
+    private val sessionInteractor: SessionInteractor,
     private val router: Router
 ) {
 
     fun coldStart() {
         val rootScreen =
-            if (launchInteractor.hasAccount) Screens.DrawerFlow
+            if (sessionInteractor.hasAccount) Screens.Main
             else Screens.AuthFlow
 
         router.newRootScreen(rootScreen)

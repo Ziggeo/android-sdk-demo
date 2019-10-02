@@ -1,4 +1,4 @@
-package com.ziggeo.androidsdk.demo.presentation.topcustomers
+package com.ziggeo.androidsdk.demo.presentation.topclients
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
@@ -11,6 +11,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
  * alexb@ziggeo.com
  */
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface TopCustomersView : MvpView {
+interface TopClientsView : MvpView {
 
 }

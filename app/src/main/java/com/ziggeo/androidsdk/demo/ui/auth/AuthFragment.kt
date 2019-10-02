@@ -1,7 +1,5 @@
 package com.ziggeo.androidsdk.demo.ui.auth
 
-import android.os.Bundle
-import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
@@ -17,7 +15,7 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
  * alexb@ziggeo.com
  */
 class AuthFragment : BaseFragment(), AuthView {
-    override val layoutRes = R.layout.fragment_дщпшт
+    override val layoutRes = R.layout.fragment_auth
 
     override val parentScopeName = DI.APP_SCOPE
 
@@ -28,7 +26,4 @@ class AuthFragment : BaseFragment(), AuthView {
     fun providePresenter(): AuthPresenter =
         scope.getInstance(AuthPresenter::class.java)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 }

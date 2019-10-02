@@ -4,12 +4,12 @@ import com.ziggeo.androidsdk.demo.ui.about.AboutFragment
 import com.ziggeo.androidsdk.demo.ui.auth.AuthFlowFragment
 import com.ziggeo.androidsdk.demo.ui.auth.AuthFragment
 import com.ziggeo.androidsdk.demo.ui.contactus.ContactUsFragment
-import com.ziggeo.androidsdk.demo.ui.drawer.DrawerFlowFragment
+import com.ziggeo.androidsdk.demo.ui.main.MainFlowFragment
 import com.ziggeo.androidsdk.demo.ui.recordings.RecordingDetailsFragment
 import com.ziggeo.androidsdk.demo.ui.recordings.RecordingsFragment
 import com.ziggeo.androidsdk.demo.ui.sdks.AvailableSDKsFragment
 import com.ziggeo.androidsdk.demo.ui.settings.SettingsFragment
-import com.ziggeo.androidsdk.demo.ui.topcustomers.TopCustomersFragment
+import com.ziggeo.androidsdk.demo.ui.topclients.TopClientsFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 /**
@@ -24,13 +24,13 @@ object Screens {
         override fun getFragment() = AuthFlowFragment()
     }
 
-    object DrawerFlow : SupportAppScreen() {
-        override fun getFragment() = DrawerFlowFragment()
-    }
-
     // Screens
     object Auth : SupportAppScreen() {
         override fun getFragment() = AuthFragment()
+    }
+
+    object Main : SupportAppScreen() {
+        override fun getFragment() = MainFlowFragment()
     }
 
     object Recordings : SupportAppScreen() {
@@ -45,8 +45,8 @@ object Screens {
         override fun getFragment() = AvailableSDKsFragment()
     }
 
-    object TopCustomers : SupportAppScreen() {
-        override fun getFragment() = TopCustomersFragment()
+    object TopClients : SupportAppScreen() {
+        override fun getFragment() = TopClientsFragment()
     }
 
     object ContactUs : SupportAppScreen() {

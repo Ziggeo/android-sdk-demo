@@ -5,7 +5,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.settings.SettingsPresenter
 import com.ziggeo.androidsdk.demo.presentation.settings.SettingsView
-import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
+import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
 
 
 /**
@@ -13,7 +13,7 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class SettingsFragment : BaseFragment(), SettingsView {
+class SettingsFragment : BaseToolbarFragment(), SettingsView {
     override val layoutRes = R.layout.fragment_settings
 
     @InjectPresenter
@@ -22,4 +22,7 @@ class SettingsFragment : BaseFragment(), SettingsView {
     @ProvidePresenter
     fun providePresenter(): SettingsPresenter =
         scope.getInstance(SettingsPresenter::class.java)
+
+    override fun getTitleRes() = R.string.title_settings
+
 }

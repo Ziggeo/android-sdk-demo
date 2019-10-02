@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Common -->
     <color name="colorPrimary">#DC5163</color>
     <color name="colorPrimaryDark">#AA3E4B</color>
     <color name="colorPrimaryLight">#F0596C</color>
@@ -9,5 +10,8 @@
     <color name="colorSecondaryText">#757575</color>
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
+    <color name="white">@android:color/white</color>
+    <color name="lightGrey">#f1f1f1</color>
+
 
 </resources>

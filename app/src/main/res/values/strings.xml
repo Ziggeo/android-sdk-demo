@@ -3,9 +3,41 @@
     <!-- Common -->
     <string name="app_name">ZiggeoAndroidDemo</string>
     <string name="ok">OK</string>
+    <string name="btn_yes">Yes</string>
+    <string name="btn_no">No</string>
 
     <!-- Auth screen -->
     <string name="auth_text">Please go to demo.ziggeo.com on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>
     <string name="scan_qr">Scan QR code</string>
+
+    <!-- Drawer -->
+    <string name="title_app_token">Application token:</string>
+    <string name="item_recordings">Recording</string>
+    <string name="item_settings">Settings</string>
+    <string name="item_sdks">Available SDKs</string>
+    <string name="item_clients">Top clients</string>
+    <string name="item_contact">Contact us</string>
+    <string name="item_about">About</string>
+
+    <!-- Logout confirmation -->
+    <string name="logout_message">Are you sure you want to log out?</string>
+
+    <!-- Recordings screen -->
+    <string name="title_recordings">Recordings</string>
+
+    <!-- Settings screen -->
+    <string name="title_settings">Settings</string>
+
+    <!-- SDKs screen -->
+    <string name="title_sdks">Available SDKs</string>
+
+    <!-- Clients screen -->
+    <string name="title_clients">Top Clients</string>
+
+    <!-- Contact screen -->
+    <string name="title_contact">Contact us</string>
+
+    <!-- Recordings screen -->
+    <string name="title_about">About</string>
 
 </resources>

@@ -5,7 +5,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.contactus.ContactUsPresenter
 import com.ziggeo.androidsdk.demo.presentation.contactus.ContactUsView
-import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
+import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
 
 
 /**
@@ -13,7 +13,7 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class ContactUsFragment : BaseFragment(), ContactUsView {
+class ContactUsFragment : BaseToolbarFragment(), ContactUsView {
     override val layoutRes = R.layout.fragment_contact_us
 
     @InjectPresenter
@@ -22,5 +22,7 @@ class ContactUsFragment : BaseFragment(), ContactUsView {
     @ProvidePresenter
     fun providePresenter(): ContactUsPresenter =
         scope.getInstance(ContactUsPresenter::class.java)
+
+    override fun getTitleRes() = R.string.title_contact
 
 }

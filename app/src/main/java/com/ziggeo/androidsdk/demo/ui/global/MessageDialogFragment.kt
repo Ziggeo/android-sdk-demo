@@ -26,7 +26,7 @@ class MessageDialogFragment : DialogFragment() {
         get() = when {
             parentFragment is OnClickListener -> parentFragment as OnClickListener
             activity is OnClickListener -> activity as OnClickListener
-            else -> object : OnClickListener {}
+            else -> null
         }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
@@ -35,19 +35,19 @@ class MessageDialogFragment : DialogFragment() {
             setMessage(message)
             setPositiveButton(positiveText ?: getString(R.string.ok)) { _, _ ->
                 dismissAllowingStateLoss()
-                clickListener.dialogPositiveClicked(startTag)
+                clickListener?.dialogPositiveClicked(startTag)
             }
             negativeText?.let { negativeText ->
                 setNegativeButton(negativeText) { _, _ ->
                     dismissAllowingStateLoss()
-                    clickListener.dialogNegativeClicked(startTag)
+                    clickListener?.dialogNegativeClicked(startTag)
                 }
             }
         }.create()
 
     override fun onCancel(dialog: DialogInterface) {
         super.onCancel(dialog)
-        clickListener.dialogCanceled(startTag)
+        clickListener?.dialogCanceled(startTag)
     }
 
     companion object {

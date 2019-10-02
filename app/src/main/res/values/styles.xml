@@ -13,4 +13,36 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorAccent">@color/white</item>
+        <item name="fontFamily">@font/quicksand_regular</item>
+    </style>
+
+    <style name="PopupToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
+    <style name="Base.ToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:theme">@style/ToolbarTheme</item>
+        <item name="popupTheme">@style/PopupToolbarTheme</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Base.ToolbarStyle" />
+
+    <style name="MenuItemStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_light_grey_to_white</item>
+        <item name="android:drawablePadding">@dimen/drawer_menu_margin</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/drawer_menu_margin</item>
+        <item name="android:paddingLeft">@dimen/drawer_menu_margin</item>
+        <item name="android:paddingTop">@dimen/default_margin</item>
+        <item name="android:paddingEnd">@dimen/default_margin</item>
+        <item name="android:paddingRight">@dimen/default_margin</item>
+        <item name="android:paddingBottom">@dimen/default_margin</item>
+    </style>
+
 </resources>
