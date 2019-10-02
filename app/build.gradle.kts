@@ -23,6 +23,7 @@ android {
         defaultConfig {
             multiDexEnabled = true
             vectorDrawables.useSupportLibrary = true
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
 
         buildTypes {
@@ -79,6 +80,18 @@ dependencies {
     testImplementation("org.mockito:mockito-core:3.0.0")
     //Mockito Kotlin
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
+    //Espresso
+    androidTestImplementation("com.agoda.kakao:kakao:2.1.0")
+    androidTestImplementation("androidx.annotation:annotation:1.1.0")
+    val rulesAndRunner = "1.2.0"
+    androidTestImplementation("androidx.test:runner:$rulesAndRunner")
+    androidTestImplementation("androidx.test:rules:$rulesAndRunner")
+    val espresso = "3.2.0"
+    androidTestImplementation("androidx.test.espresso:espresso-intents:$espresso")
+    androidTestImplementation("androidx.test.espresso:espresso-core:$espresso")
+    androidTestImplementation("androidx.test.espresso:espresso-web:$espresso")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:$espresso")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:$espresso")
 }
 
 configurations.all {
