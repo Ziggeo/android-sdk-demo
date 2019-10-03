@@ -36,6 +36,11 @@ android {
                 )
             }
         }
+
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
     }
 }
 
@@ -44,6 +49,8 @@ androidExtensions {
 }
 
 dependencies {
+    //Ziggeo
+    implementation("com.github.ZiggeoJitpackService:Android-SDK:0.80.3")
     //Support
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("com.google.android.material:material:1.0.0")

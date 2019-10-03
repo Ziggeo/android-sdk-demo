@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.di.module
 
 import android.content.Context
+import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
@@ -19,6 +20,7 @@ class AppModule(context: Context) : Module() {
         // Global
         bind(Context::class.java).toInstance(context)
         bind(SystemMessageNotifier::class.java).toInstance(SystemMessageNotifier())
+        bind(Prefs::class.java).toInstance(Prefs(context))
 
         // Navigation
         val cicerone = Cicerone.create()

@@ -15,7 +15,6 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.Command
 import toothpick.Scope
-import toothpick.Toothpick
 import javax.inject.Inject
 
 
@@ -37,6 +36,7 @@ abstract class FlowFragment : BaseFragment() {
     lateinit var router: FlowRouter
 
     override fun installModules(scope: Scope) {
+        super.installModules(scope)
         scope.installModules(
             FlowNavigationModule(scope.getInstance(Router::class.java))
         )
@@ -65,7 +65,6 @@ abstract class FlowFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Toothpick.inject(this, scope)
         if (childFragmentManager.fragments.isEmpty()) {
             navigator.setLaunchScreen(getLaunchScreen())
         }

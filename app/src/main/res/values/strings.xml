@@ -5,6 +5,7 @@
     <string name="ok">OK</string>
     <string name="btn_yes">Yes</string>
     <string name="btn_no">No</string>
+    <string name="will_be_ready_soon">Will be ready soon!</string>
 
     <!-- Auth screen -->
     <string name="auth_text">Please go to demo.ziggeo.com on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>

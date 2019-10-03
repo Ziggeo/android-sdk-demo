@@ -10,7 +10,7 @@ import com.ziggeo.androidsdk.demo.ui.sdks.AvailableSDKsFragment
 import com.ziggeo.androidsdk.demo.ui.settings.SettingsFragment
 import com.ziggeo.androidsdk.demo.ui.topclients.TopClientsFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
-import ui.recordings.RecordingsFragment
+import com.ziggeo.androidsdk.demo.ui.recordings.RecordingsFragment
 
 /**
  * Created by Alexander Bedulin on 25-Sep-19.

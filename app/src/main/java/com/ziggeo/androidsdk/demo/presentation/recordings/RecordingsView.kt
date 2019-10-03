@@ -13,4 +13,12 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface RecordingsView : MvpView {
 
+    fun expandFabActions()
+    fun collapseFabActions()
+
+    fun startCameraRecorder()
+    fun startScreenRecorder()
+    fun startAudioRecorder()
+    fun startImageCapture()
+
 }

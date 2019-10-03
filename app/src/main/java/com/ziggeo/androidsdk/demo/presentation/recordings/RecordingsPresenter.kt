@@ -13,4 +13,31 @@ import javax.inject.Inject
 @InjectViewState
 class RecordingsPresenter @Inject constructor() : BasePresenter<RecordingsView>() {
 
+    var fabActionsExpanded = false
+
+    fun onFabCameraClicked() {
+        viewState.startCameraRecorder()
+    }
+
+    fun onFabScreenClicked() {
+        viewState.startScreenRecorder()
+    }
+
+    fun onFabAudioClicked() {
+        viewState.startAudioRecorder()
+    }
+
+    fun onFabImageClicked() {
+        viewState.startImageCapture()
+    }
+
+    fun onFabActionsClicked() {
+        if (fabActionsExpanded) {
+            viewState.collapseFabActions()
+        } else {
+            viewState.expandFabActions()
+        }
+        fabActionsExpanded = !fabActionsExpanded
+    }
+
 }
