@@ -11,7 +11,12 @@
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
     <color name="lightGrey">#f1f1f1</color>
 
+    <!-- Recordings screen -->
+    <color name="red">#C20202</color>
+    <color name="yellow">#FCC02C</color>
+    <color name="green">#46AF0B</color>
 
 </resources>

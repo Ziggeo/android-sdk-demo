@@ -2,9 +2,12 @@
 <resources>
 
     <!-- Common -->
-    <dimen name="half_margin">8dp</dimen>
-    <dimen name="default_margin">16dp</dimen>
+    <dimen name="common_half_margin">8dp</dimen>
+    <dimen name="common_margin">16dp</dimen>
     <dimen name="divider_height">1dp</dimen>
+    <dimen name="list_empty_message_margin_top">200dp</dimen>
+    <dimen name="item_elevation">4dp</dimen>
+    <dimen name="item_corner_radius">4dp</dimen>
 
     <!-- Auth screen -->
     <dimen name="logo_width">250dp</dimen>
@@ -20,5 +23,7 @@
 
     <!-- Recordings screen -->
     <dimen name="small_fab_size">40dp</dimen>
+    <dimen name="recording_item_height">100dp</dimen>
+    <dimen name="icon_size">60dp</dimen>
 
 </resources>

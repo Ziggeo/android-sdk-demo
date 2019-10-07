@@ -11,18 +11,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <TextView
+        android:id="@+id/tv_empty_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/list_empty_message_margin_top"
+        android:gravity="center"
+        android:text="@string/message_recordings_list_empty" />
+
+    <ProgressBar
+        android:id="@+id/pb_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/default_margin">
+        android:layout_margin="@dimen/common_margin">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/half_margin"
+            android:layout_marginBottom="@dimen/common_half_margin"
             android:visibility="invisible"
+            app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/fab_audio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +48,9 @@
             android:id="@+id/fab_audio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/half_margin"
+            android:layout_marginBottom="@dimen/common_half_margin"
             android:visibility="invisible"
+            app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/fab_screen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +60,9 @@
             android:id="@+id/fab_screen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/half_margin"
+            android:layout_marginBottom="@dimen/common_half_margin"
             android:visibility="invisible"
+            app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/fab_camera"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +72,9 @@
             android:id="@+id/fab_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/half_margin"
+            android:layout_marginBottom="@dimen/common_half_margin"
             android:visibility="invisible"
+            app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/fab_selector"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

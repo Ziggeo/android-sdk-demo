@@ -3,6 +3,8 @@ package com.ziggeo.androidsdk.demo.di.module
 import android.content.Context
 import com.ziggeo.androidsdk.Ziggeo
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
+import com.ziggeo.androidsdk.net.services.streams.IStreamsServiceRx
+import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import toothpick.config.Module
 
 
@@ -14,6 +16,9 @@ import toothpick.config.Module
 class FragmentModule(context: Context, prefs: Prefs) : Module() {
 
     init {
-        bind(Ziggeo::class.java).toInstance(Ziggeo(prefs.appToken!!, context))
+        val ziggeo = Ziggeo(prefs.appToken!!, context)
+        bind(Ziggeo::class.java).toInstance(ziggeo)
+        bind(IVideosServiceRx::class.java).toInstance(ziggeo.apiRx().videos())
+        bind(IStreamsServiceRx::class.java).toInstance(ziggeo.apiRx().streams())
     }
 }

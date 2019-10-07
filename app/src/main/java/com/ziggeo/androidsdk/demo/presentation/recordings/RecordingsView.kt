@@ -3,6 +3,7 @@ package com.ziggeo.androidsdk.demo.presentation.recordings
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import com.ziggeo.androidsdk.net.models.videos.VideoModel
 
 
 /**
@@ -21,4 +22,11 @@ interface RecordingsView : MvpView {
     fun startAudioRecorder()
     fun startImageCapture()
 
+    fun showRecordingsList(list: List<VideoModel>)
+    fun showNoRecordingsMessage()
+
+    fun showError()
+
+    fun showLoading()
+    fun hideLoading()
 }

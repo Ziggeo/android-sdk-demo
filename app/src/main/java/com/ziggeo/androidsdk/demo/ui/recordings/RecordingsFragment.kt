@@ -5,12 +5,14 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingsPresenter
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingsView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
+import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import kotlinx.android.synthetic.main.fragment_recordings.*
 
 
@@ -25,8 +27,6 @@ class RecordingsFragment : BaseToolbarFragment(), RecordingsView {
     @InjectPresenter
     lateinit var presenter: RecordingsPresenter
 
-    private lateinit var fabOpen: Animation
-    private lateinit var fabClose: Animation
     private lateinit var rotateForward: Animation
     private lateinit var rotateBackward: Animation
 
@@ -39,6 +39,33 @@ class RecordingsFragment : BaseToolbarFragment(), RecordingsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initFab()
+    }
+
+    override fun showRecordingsList(list: List<VideoModel>) {
+        tv_empty_list.visibility = View.INVISIBLE
+        rv_recordings.visibility = View.VISIBLE
+
+        val adapter = RecordingsAdapter(list)
+        rv_recordings.layoutManager = LinearLayoutManager(context)
+        rv_recordings.adapter = adapter
+    }
+
+    override fun showNoRecordingsMessage() {
+        tv_empty_list.visibility = View.VISIBLE
+        rv_recordings.visibility = View.INVISIBLE
+    }
+
+    override fun showLoading() {
+        tv_empty_list.visibility = View.INVISIBLE
+        pb_progress.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        pb_progress.visibility = View.INVISIBLE
+    }
+
+    override fun showError() {
+        Toast.makeText(context, R.string.common_error, Toast.LENGTH_SHORT).show()
     }
 
     override fun startCameraRecorder() {
@@ -59,23 +86,21 @@ class RecordingsFragment : BaseToolbarFragment(), RecordingsView {
 
     override fun expandFabActions() {
         fab_selector.startAnimation(rotateForward)
-        fab_camera.startAnimation(fabOpen)
-        fab_screen.startAnimation(fabOpen)
-        fab_audio.startAnimation(fabOpen)
-        fab_image.startAnimation(fabOpen)
+        fab_camera.show()
+        fab_screen.show()
+        fab_audio.show()
+        fab_image.show()
     }
 
     override fun collapseFabActions() {
         fab_selector.startAnimation(rotateBackward)
-        fab_camera.startAnimation(fabClose)
-        fab_screen.startAnimation(fabClose)
-        fab_audio.startAnimation(fabClose)
-        fab_image.startAnimation(fabClose)
+        fab_camera.hide()
+        fab_screen.hide()
+        fab_audio.hide()
+        fab_image.hide()
     }
 
     private fun initFab() {
-        fabOpen = AnimationUtils.loadAnimation(context, R.anim.fab_open)
-        fabClose = AnimationUtils.loadAnimation(context, R.anim.fab_close)
         rotateForward = AnimationUtils.loadAnimation(context, R.anim.rotate_forward)
         rotateBackward = AnimationUtils.loadAnimation(context, R.anim.rotate_backward)
 
