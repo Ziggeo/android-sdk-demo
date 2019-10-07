@@ -6,6 +6,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
@@ -48,6 +49,38 @@ class RecordingsFragment : BaseToolbarFragment(), RecordingsView {
         val adapter = RecordingsAdapter(list)
         rv_recordings.layoutManager = LinearLayoutManager(context)
         rv_recordings.adapter = adapter
+        rv_recordings.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0 && fab_selector.isShown) {
+                    presenter.onScrollDown()
+                } else if (dy < 0 && !fab_selector.isShown) {
+                    presenter.onScrollUp()
+                }
+            }
+        })
+    }
+
+    override fun showActionFabs() {
+        fab_camera.show()
+        fab_screen.show()
+        fab_audio.show()
+        fab_image.show()
+    }
+
+    override fun hideActionFabs() {
+        fab_camera.hide()
+        fab_screen.hide()
+        fab_audio.hide()
+        fab_image.hide()
+    }
+
+    override fun hideSelectorFab() {
+        fab_selector.hide()
+    }
+
+    override fun showSelectorFab() {
+        fab_selector.show()
     }
 
     override fun showNoRecordingsMessage() {
@@ -84,20 +117,12 @@ class RecordingsFragment : BaseToolbarFragment(), RecordingsView {
         Toast.makeText(context, R.string.will_be_ready_soon, Toast.LENGTH_SHORT).show()
     }
 
-    override fun expandFabActions() {
+    override fun startShowAnimationMainFab() {
         fab_selector.startAnimation(rotateForward)
-        fab_camera.show()
-        fab_screen.show()
-        fab_audio.show()
-        fab_image.show()
     }
 
-    override fun collapseFabActions() {
+    override fun startHideAnimationMainFab() {
         fab_selector.startAnimation(rotateBackward)
-        fab_camera.hide()
-        fab_screen.hide()
-        fab_audio.hide()
-        fab_image.hide()
     }
 
     private fun initFab() {

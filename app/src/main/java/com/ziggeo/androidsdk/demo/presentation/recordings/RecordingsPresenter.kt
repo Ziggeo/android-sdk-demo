@@ -49,11 +49,26 @@ class RecordingsPresenter @Inject constructor(
 
     fun onFabActionsClicked() {
         if (fabActionsExpanded) {
-            viewState.collapseFabActions()
+            viewState.startHideAnimationMainFab()
+            viewState.hideActionFabs()
         } else {
-            viewState.expandFabActions()
+            viewState.startShowAnimationMainFab()
+            viewState.showActionFabs()
         }
         fabActionsExpanded = !fabActionsExpanded
+    }
+
+    fun onScrollUp() {
+        viewState.showSelectorFab()
+    }
+
+    fun onScrollDown() {
+        if (fabActionsExpanded) {
+            viewState.startHideAnimationMainFab()
+            fabActionsExpanded = false
+        }
+        viewState.hideActionFabs()
+        viewState.hideSelectorFab()
     }
 
     private fun updateRecordingsList() {
@@ -67,6 +82,7 @@ class RecordingsPresenter @Inject constructor(
                     viewState.showRecordingsList(data)
                 }
             }, { error ->
+                viewState.showNoRecordingsMessage()
                 viewState.showError()
                 Timber.e(error)
             })

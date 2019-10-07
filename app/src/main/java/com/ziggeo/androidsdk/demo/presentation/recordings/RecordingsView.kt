@@ -14,9 +14,6 @@ import com.ziggeo.androidsdk.net.models.videos.VideoModel
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface RecordingsView : MvpView {
 
-    fun expandFabActions()
-    fun collapseFabActions()
-
     fun startCameraRecorder()
     fun startScreenRecorder()
     fun startAudioRecorder()
@@ -29,4 +26,12 @@ interface RecordingsView : MvpView {
 
     fun showLoading()
     fun hideLoading()
+
+    fun hideActionFabs()
+    fun showActionFabs()
+    fun hideSelectorFab()
+    fun showSelectorFab()
+
+    fun startShowAnimationMainFab()
+    fun startHideAnimationMainFab()
 }
