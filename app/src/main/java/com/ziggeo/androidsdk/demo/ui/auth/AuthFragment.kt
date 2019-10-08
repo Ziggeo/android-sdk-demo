@@ -36,4 +36,9 @@ class AuthFragment : BaseFragment(), AuthView {
         }
     }
 
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        presenter.onBackPressed()
+    }
 }

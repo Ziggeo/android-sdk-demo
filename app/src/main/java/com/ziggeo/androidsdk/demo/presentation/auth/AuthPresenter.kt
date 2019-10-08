@@ -27,6 +27,10 @@ class AuthPresenter @Inject constructor(
         }
     }
 
+    fun onBackPressed(){
+        router.exit()
+    }
+
     private fun navigateToMainFlow() {
         router.newRootScreen(Screens.MainFlow)
     }
