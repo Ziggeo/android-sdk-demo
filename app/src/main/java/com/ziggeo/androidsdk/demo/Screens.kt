@@ -6,11 +6,11 @@ import com.ziggeo.androidsdk.demo.ui.auth.AuthFragment
 import com.ziggeo.androidsdk.demo.ui.contactus.ContactUsFragment
 import com.ziggeo.androidsdk.demo.ui.main.MainFlowFragment
 import com.ziggeo.androidsdk.demo.ui.recordings.RecordingDetailsFragment
+import com.ziggeo.androidsdk.demo.ui.recordings.RecordingsFragment
 import com.ziggeo.androidsdk.demo.ui.sdks.AvailableSDKsFragment
 import com.ziggeo.androidsdk.demo.ui.settings.SettingsFragment
 import com.ziggeo.androidsdk.demo.ui.topclients.TopClientsFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
-import com.ziggeo.androidsdk.demo.ui.recordings.RecordingsFragment
 
 /**
  * Created by Alexander Bedulin on 25-Sep-19.
@@ -24,14 +24,15 @@ object Screens {
         override fun getFragment() = AuthFlowFragment()
     }
 
+    object MainFlow : SupportAppScreen() {
+        override fun getFragment() = MainFlowFragment()
+    }
+
     // Screens
     object Auth : SupportAppScreen() {
         override fun getFragment() = AuthFragment()
     }
 
-    object Main : SupportAppScreen() {
-        override fun getFragment() = MainFlowFragment()
-    }
 
     object Recordings : SupportAppScreen() {
         override fun getFragment() = RecordingsFragment()

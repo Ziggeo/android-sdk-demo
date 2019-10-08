@@ -1,20 +1,15 @@
 package com.ziggeo.androidsdk.demo.ui.global
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
-import com.ziggeo.androidsdk.Ziggeo
 import com.ziggeo.androidsdk.demo.di.DI
-import com.ziggeo.androidsdk.demo.di.module.FragmentModule
-import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.util.objectScopeName
 import timber.log.Timber
 import toothpick.Scope
 import toothpick.Toothpick
-import javax.inject.Inject
 
 private const val PROGRESS_TAG = "bf_progress"
 private const val STATE_SCOPE_NAME = "state_scope_name"
@@ -31,9 +26,6 @@ abstract class BaseFragment : MvpAppCompatFragment() {
 
     private val viewHandler = Handler()
 
-    @Inject
-    lateinit var ziggeo: Ziggeo
-
     //TODO remove this check at all?
     protected open val parentScopeName: String by lazy {
         (parentFragment as? BaseFragment)?.fragmentScopeName
@@ -45,12 +37,6 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         private set
 
     protected open fun installModules(scope: Scope) {
-        scope.installModules(
-            FragmentModule(
-                scope.getInstance(Context::class.java),
-                scope.getInstance(Prefs::class.java)
-            )
-        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

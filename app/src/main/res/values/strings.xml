@@ -9,8 +9,8 @@
     <string name="common_error">Something wrong happened. Please, try again.</string>
 
     <!-- Auth screen -->
-    <string name="auth_text">Please go to demo.ziggeo.com on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>
-    <string name="scan_qr">Scan QR code</string>
+    <string name="auth_message">Please go to demo.ziggeo.com on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>
+    <string name="btn_scan_qr_text">Scan QR code</string>
 
     <!-- Drawer -->
     <string name="title_app_token">Application token:</string>

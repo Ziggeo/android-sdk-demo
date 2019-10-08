@@ -17,7 +17,7 @@ class AppLauncher @Inject constructor(
 
     fun coldStart() {
         val rootScreen =
-            if (sessionInteractor.hasAccount) Screens.Main
+            if (sessionInteractor.hasAccount) Screens.MainFlow
             else Screens.AuthFlow
 
         router.newRootScreen(rootScreen)

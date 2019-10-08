@@ -1,5 +1,7 @@
 package com.ziggeo.androidsdk.demo.ui.auth
 
+import android.os.Bundle
+import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
@@ -7,6 +9,7 @@ import com.ziggeo.androidsdk.demo.di.DI
 import com.ziggeo.androidsdk.demo.presentation.auth.AuthPresenter
 import com.ziggeo.androidsdk.demo.presentation.auth.AuthView
 import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
+import kotlinx.android.synthetic.main.fragment_auth.*
 
 
 /**
@@ -25,5 +28,12 @@ class AuthFragment : BaseFragment(), AuthView {
     @ProvidePresenter
     fun providePresenter(): AuthPresenter =
         scope.getInstance(AuthPresenter::class.java)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btn_scan_qr.setOnClickListener {
+            presenter.onScanQrClicked()
+        }
+    }
 
 }

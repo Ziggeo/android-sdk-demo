@@ -1,7 +1,10 @@
 package com.ziggeo.androidsdk.demo.presentation.auth
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.demo.Screens
+import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
 
@@ -11,6 +14,20 @@ import javax.inject.Inject
  * alexb@ziggeo.com
  */
 @InjectViewState
-class AuthPresenter @Inject constructor() : BasePresenter<AuthView>() {
+class AuthPresenter @Inject constructor(
+    private var prefs: Prefs,
+    private var router: Router
+) : BasePresenter<AuthView>() {
 
+    fun onScanQrClicked() {
+        val token = ""
+        if (token.isNotEmpty()) {
+            prefs.appToken = token
+            navigateToMainFlow()
+        }
+    }
+
+    private fun navigateToMainFlow() {
+        router.newRootScreen(Screens.MainFlow)
+    }
 }
