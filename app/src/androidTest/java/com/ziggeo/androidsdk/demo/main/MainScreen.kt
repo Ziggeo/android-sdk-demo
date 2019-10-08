@@ -11,9 +11,10 @@ import com.ziggeo.androidsdk.demo.R
  * alexb@ziggeo.com
  */
 open class MainScreen : Screen<MainScreen>() {
+    val toolbar = KView { withId(R.id.toolbar) }
+
     val mainContainer = KView { withId(R.id.main_container) }
 
-    val toolbar = KView { withId(R.id.toolbar) }
     val tvAppToken = KView { withId(R.id.tv_app_token) }
 
     val miRecording = KView { withId(R.id.mi_recordings) }
