@@ -46,7 +46,6 @@ class AppActivity : MvpAppCompatActivity() {
                 nextFragment: Fragment?,
                 fragmentTransaction: FragmentTransaction
             ) {
-                // Fix incorrect order lifecycle callback of MainFragment TODO
                 fragmentTransaction.setReorderingAllowed(true)
             }
         }
@@ -81,7 +80,6 @@ class AppActivity : MvpAppCompatActivity() {
         ).show(supportFragmentManager, null)
     }
 
-    //TODO snacbar?
     private fun showToastMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
