@@ -8,7 +8,9 @@ plugins {
 val buildUid = System.getenv("BUILD_COMMIT_SHA") ?: "local"
 android {
     compileSdkVersion(29)
-
+    lintOptions {
+        isAbortOnError = false //todo
+    }
     defaultConfig {
         applicationId = "com.ziggeo.androidsdk.demo"
 
