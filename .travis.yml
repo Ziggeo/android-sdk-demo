@@ -14,6 +14,7 @@ android:
     - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository
+    - sys-img-armeabi-v7a-android-29
 jdk:
   - oraclejdk8
 before_install:
