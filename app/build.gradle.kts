@@ -7,7 +7,7 @@ plugins {
 
 val buildUid = System.getenv("BUILD_COMMIT_SHA") ?: "local"
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(29)
     lintOptions {
         isAbortOnError = false //todo
     }
@@ -15,12 +15,12 @@ android {
         applicationId = "com.ziggeo.androidsdk.demo"
 
         minSdkVersion(16)
-        targetSdkVersion(28)
+        targetSdkVersion(29)
 
         versionName = "1.0.0"
         versionCode = 1
 
-        buildToolsVersion = "28.0.3"
+        buildToolsVersion = "29.0.2"
 
         defaultConfig {
             multiDexEnabled = true
