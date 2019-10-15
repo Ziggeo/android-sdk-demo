@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.com/3akat/DemoCi.svg?token=mdQjmt7YBpiVWHG1fxhs&branch=new_demo)](https://travis-ci.com/3akat/DemoCi)
+[![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Binary%20Preferences-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5931)
+[![](https://jitpack.io/v/ZiggeoJitpackService/Android-SDK.svg)](https://jitpack.io/#ZiggeoJitpackService/Android-SDK)
+
 # Android SDK
 
 # Ziggeo's Android SDK
