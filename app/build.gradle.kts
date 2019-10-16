@@ -103,7 +103,11 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-contrib:$espresso")
     androidTestImplementation("androidx.test.espresso:espresso-intents:$espresso")
 }
-
+tasks.withType(Test::class.java) {
+    testLogging {
+        events("started", "passed", "skipped", "failed")
+    }
+}
 configurations.all {
     resolutionStrategy {
         force("org.jetbrains.kotlin:kotlin-stdlib:${extra["kotlinVersion"] as String}")
