@@ -4,7 +4,6 @@ plugins {
     kotlin("kapt")
     id("org.jetbrains.kotlin.android.extensions")
 }
-
 val buildUid = System.getenv("BUILD_COMMIT_SHA") ?: "local"
 android {
     compileSdkVersion(29)
@@ -27,6 +26,7 @@ android {
             vectorDrawables.useSupportLibrary = true
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
+        buildConfigField("String", "APP_TOKEN", System.getenv("app_token") ?: "\"\"")
 
         buildTypes {
             getByName("release") {

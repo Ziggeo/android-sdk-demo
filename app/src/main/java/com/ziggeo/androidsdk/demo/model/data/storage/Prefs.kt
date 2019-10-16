@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.model.data.storage
 
 import android.content.Context
+import com.ziggeo.androidsdk.demo.BuildConfig
 import javax.inject.Inject
 
 
@@ -22,7 +23,7 @@ class Prefs @Inject constructor(
     private val authPrefs by lazy { getSharedPreferences(AUTH_DATA) }
 
     var appToken: String?
-        get() = authPrefs.getString(KEY_APP_TOKEN, null)
+        get() = authPrefs.getString(KEY_APP_TOKEN, BuildConfig.APP_TOKEN)
         set(value) {
             authPrefs.edit().putString(KEY_APP_TOKEN, value).apply()
         }
