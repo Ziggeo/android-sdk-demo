@@ -39,7 +39,6 @@ class RecordingsAdapter(private val list: List<VideoModel>) :
         holder.bind(list[position])
     }
 
-
     class RecordingsViewHolder(
         view: View,
         private var ivIcon: ImageView? = view.findViewById(R.id.iv_icon),
@@ -56,6 +55,7 @@ class RecordingsAdapter(private val list: List<VideoModel>) :
             if (tags.isNullOrEmpty()) {
                 tvTags?.visibility = View.GONE
             } else {
+                tvTags?.visibility = View.VISIBLE
                 tvTags?.text = tags
             }
             tvDate?.text = DateFormat.format(DATE_FORMAT, model.submissionDate * 1000L)
