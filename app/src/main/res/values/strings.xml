@@ -45,5 +45,10 @@
 
     <!-- Recording details screen -->
     <string name="title_details">Details</string>
+    <string name="hint_token_or_key">Token or key</string>
+    <string name="hint_title">Title for the recording (optional)</string>
+    <string name="hint_description">Description for the recording (optional)</string>
+    <string name="btn_save_text">Save</string>
+    <string name="btn_delete_text">Delete</string>
 
 </resources>

@@ -48,6 +48,12 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
         rv_recordings.visibility = View.VISIBLE
 
         val adapter = RecordingsAdapter(list)
+        adapter.onItemClickListener = object : RecordingsAdapter.ItemClickListener {
+            override fun onItemClick(view: View, position: Int) {
+                presenter.onItemClicked(list[position])
+            }
+        }
+
         rv_recordings.layoutManager = LinearLayoutManager(context)
         rv_recordings.adapter = adapter
         rv_recordings.addOnScrollListener(object : RecyclerView.OnScrollListener() {

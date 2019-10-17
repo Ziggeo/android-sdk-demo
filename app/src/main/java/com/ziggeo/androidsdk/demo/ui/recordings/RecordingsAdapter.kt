@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 
 
@@ -20,14 +19,17 @@ import com.ziggeo.androidsdk.net.models.videos.VideoModel
 class RecordingsAdapter(private val list: List<VideoModel>) :
     RecyclerView.Adapter<RecordingsAdapter.RecordingsViewHolder>() {
 
+    var onItemClickListener: ItemClickListener? = null
+
     companion object {
         const val DATE_FORMAT = "dd.MM.yyyy HH:mm"
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordingsViewHolder {
         return RecordingsViewHolder(
+            onItemClickListener,
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_recording, parent, false)
+                .inflate(com.ziggeo.androidsdk.demo.R.layout.item_recording, parent, false)
         )
     }
 
@@ -40,16 +42,20 @@ class RecordingsAdapter(private val list: List<VideoModel>) :
     }
 
     class RecordingsViewHolder(
-        view: View,
-        private var ivIcon: ImageView? = view.findViewById(R.id.iv_icon),
-        private var tvVideoToken: TextView? = view.findViewById(R.id.tv_video_token),
-        private var tvTags: TextView? = view.findViewById(R.id.tv_tags),
-        private var tvStatus: TextView? = view.findViewById(R.id.tv_status),
-        private var tvDate: TextView? = view.findViewById(R.id.tv_date)
+        private var onItemClickListener: ItemClickListener?,
+        private var view: View,
+        private var ivIcon: ImageView? = view.findViewById(com.ziggeo.androidsdk.demo.R.id.iv_icon),
+        private var tvVideoToken: TextView? = view.findViewById(com.ziggeo.androidsdk.demo.R.id.tv_video_token),
+        private var tvTags: TextView? = view.findViewById(com.ziggeo.androidsdk.demo.R.id.tv_tags),
+        private var tvStatus: TextView? = view.findViewById(com.ziggeo.androidsdk.demo.R.id.tv_status),
+        private var tvDate: TextView? = view.findViewById(com.ziggeo.androidsdk.demo.R.id.tv_date)
     ) : RecyclerView.ViewHolder(view) {
 
         fun bind(model: VideoModel) {
-            ivIcon?.setImageResource(R.drawable.ic_videocam_white_24dp)
+            view.setOnClickListener {
+                onItemClickListener?.onItemClick(view, adapterPosition)
+            }
+            ivIcon?.setImageResource(com.ziggeo.androidsdk.demo.R.drawable.ic_videocam_white_24dp)
             tvVideoToken?.text = model.token
             val tags = model.tags?.toString()?.replace("[", "")?.replace("]", "")
             if (tags.isNullOrEmpty()) {
@@ -64,13 +70,29 @@ class RecordingsAdapter(private val list: List<VideoModel>) :
                 val context = itemView.context
                 tvStatus?.text = model.stateString
                 val color = when (model.stateString) {
-                    VideoModel.STATUS_FAILED -> ContextCompat.getColor(context, R.color.red)
-                    VideoModel.STATUS_READY -> ContextCompat.getColor(context, R.color.green)
-                    VideoModel.STATUS_PROCESSING -> ContextCompat.getColor(context, R.color.yellow)
-                    else -> ContextCompat.getColor(context, R.color.colorSecondaryText)
+                    VideoModel.STATUS_FAILED -> ContextCompat.getColor(
+                        context,
+                        com.ziggeo.androidsdk.demo.R.color.red
+                    )
+                    VideoModel.STATUS_READY -> ContextCompat.getColor(
+                        context,
+                        com.ziggeo.androidsdk.demo.R.color.green
+                    )
+                    VideoModel.STATUS_PROCESSING -> ContextCompat.getColor(
+                        context,
+                        com.ziggeo.androidsdk.demo.R.color.yellow
+                    )
+                    else -> ContextCompat.getColor(
+                        context,
+                        com.ziggeo.androidsdk.demo.R.color.colorSecondaryText
+                    )
                 }
                 tvStatus?.setTextColor(color)
             }
         }
+    }
+
+    interface ItemClickListener {
+        fun onItemClick(view: View, position: Int)
     }
 }

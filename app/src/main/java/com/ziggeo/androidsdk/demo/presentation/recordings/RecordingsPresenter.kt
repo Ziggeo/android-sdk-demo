@@ -1,10 +1,12 @@
 package com.ziggeo.androidsdk.demo.presentation.recordings
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
+import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import io.reactivex.disposables.Disposable
-import ru.terrakok.cicerone.Router
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -17,7 +19,7 @@ import javax.inject.Inject
 @InjectViewState
 class RecordingsPresenter @Inject constructor(
     private val recordingsInteractor: RecordingsInteractor,
-    private var router: Router
+    private var router: FlowRouter
 ) : BasePresenter<RecordingsView>() {
 
     private var fabActionsExpanded = false
@@ -38,7 +40,7 @@ class RecordingsPresenter @Inject constructor(
         router.exit()
     }
 
-    fun onPullToRefresh(){
+    fun onPullToRefresh() {
         updateRecordingsList()
     }
 
@@ -80,6 +82,10 @@ class RecordingsPresenter @Inject constructor(
         }
         viewState.hideActionFabs()
         viewState.hideSelectorFab()
+    }
+
+    fun onItemClicked(model: VideoModel) {
+        router.newRootFlow(Screens.RecordingDetailsFlow)
     }
 
     private fun updateRecordingsList() {

@@ -5,6 +5,7 @@ import com.ziggeo.androidsdk.demo.ui.auth.AuthFlowFragment
 import com.ziggeo.androidsdk.demo.ui.auth.AuthFragment
 import com.ziggeo.androidsdk.demo.ui.contactus.ContactUsFragment
 import com.ziggeo.androidsdk.demo.ui.main.MainFlowFragment
+import com.ziggeo.androidsdk.demo.ui.recordings.RecordingDetailsFlowFragment
 import com.ziggeo.androidsdk.demo.ui.recordings.RecordingDetailsFragment
 import com.ziggeo.androidsdk.demo.ui.recordings.RecordingsFragment
 import com.ziggeo.androidsdk.demo.ui.sdks.AvailableSDKsFragment
@@ -26,6 +27,10 @@ object Screens {
 
     object MainFlow : SupportAppScreen() {
         override fun getFragment() = MainFlowFragment()
+    }
+
+    object RecordingDetailsFlow : SupportAppScreen() {
+        override fun getFragment() = RecordingDetailsFlowFragment()
     }
 
     // Screens

@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/recording_item_height"
     android:layout_margin="@dimen/common_half_margin"
+    android:foreground="?selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
     app:cardCornerRadius="@dimen/item_corner_radius"
     app:cardElevation="@dimen/item_elevation">
 

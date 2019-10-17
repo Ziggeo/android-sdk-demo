@@ -1,6 +1,8 @@
 package com.ziggeo.androidsdk.demo.presentation.recordings
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.demo.Screens
+import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import javax.inject.Inject
 
@@ -11,6 +13,13 @@ import javax.inject.Inject
  * alexb@ziggeo.com
  */
 @InjectViewState
-class RecordingDetailsPresenter @Inject constructor() : BasePresenter<RecordingDetailsView>() {
+class RecordingDetailsPresenter @Inject constructor(
+    private var router: FlowRouter
+) : BasePresenter<RecordingDetailsView>() {
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        router.newRootFlow(Screens.MainFlow)
+    }
 
 }
