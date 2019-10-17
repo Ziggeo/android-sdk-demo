@@ -13,14 +13,14 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class ContactUsFragment : BaseToolbarFragment(), ContactUsView {
+class ContactUsFragment : BaseToolbarFragment<ContactUsView, ContactUsPresenter>(), ContactUsView {
     override val layoutRes = R.layout.fragment_contact_us
 
     @InjectPresenter
     lateinit var presenter: ContactUsPresenter
 
     @ProvidePresenter
-    fun providePresenter(): ContactUsPresenter =
+    override fun providePresenter(): ContactUsPresenter =
         scope.getInstance(ContactUsPresenter::class.java)
 
     override fun getTitleRes() = R.string.title_contact

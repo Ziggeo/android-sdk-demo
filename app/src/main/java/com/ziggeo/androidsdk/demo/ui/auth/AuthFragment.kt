@@ -8,7 +8,7 @@ import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.di.DI
 import com.ziggeo.androidsdk.demo.presentation.auth.AuthPresenter
 import com.ziggeo.androidsdk.demo.presentation.auth.AuthView
-import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
+import com.ziggeo.androidsdk.demo.ui.global.BaseScreenFragment
 import kotlinx.android.synthetic.main.fragment_auth.*
 
 
@@ -17,17 +17,13 @@ import kotlinx.android.synthetic.main.fragment_auth.*
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class AuthFragment : BaseFragment(), AuthView {
+class AuthFragment : BaseScreenFragment<AuthView, AuthPresenter>(), AuthView {
     override val layoutRes = R.layout.fragment_auth
 
     override val parentScopeName = DI.APP_SCOPE
 
     @InjectPresenter
     lateinit var presenter: AuthPresenter
-
-    @ProvidePresenter
-    fun providePresenter(): AuthPresenter =
-        scope.getInstance(AuthPresenter::class.java)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,9 +32,7 @@ class AuthFragment : BaseFragment(), AuthView {
         }
     }
 
+    @ProvidePresenter
+    override fun providePresenter(): AuthPresenter = scope.getInstance(AuthPresenter::class.java)
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        presenter.onBackPressed()
-    }
 }

@@ -22,4 +22,8 @@ open class BasePresenter<V : MvpView> : MvpPresenter<V>() {
     protected fun Disposable.connect() {
         compositeDisposable.add(this)
     }
+
+    open fun onBackPressed() {
+
+    }
 }

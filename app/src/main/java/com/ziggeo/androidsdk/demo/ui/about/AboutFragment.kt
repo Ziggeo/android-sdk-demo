@@ -13,14 +13,14 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class AboutFragment : BaseToolbarFragment(), AboutView {
+class AboutFragment : BaseToolbarFragment<AboutView, AboutPresenter>(), AboutView {
     override val layoutRes = R.layout.fragment_about
 
     @InjectPresenter
     lateinit var presenter: AboutPresenter
 
     @ProvidePresenter
-    fun providePresenter(): AboutPresenter =
+    override fun providePresenter(): AboutPresenter =
         scope.getInstance(AboutPresenter::class.java)
 
     override fun getTitleRes() = R.string.title_about

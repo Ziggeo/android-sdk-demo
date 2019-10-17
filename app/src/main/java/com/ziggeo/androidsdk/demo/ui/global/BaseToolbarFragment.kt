@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.Toolbar
+import com.arellomobile.mvp.MvpView
 import com.ziggeo.androidsdk.Ziggeo
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.di.module.FragmentModule
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
+import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import toothpick.Scope
 import javax.inject.Inject
 
@@ -17,7 +19,7 @@ import javax.inject.Inject
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-abstract class BaseToolbarFragment : BaseFragment() {
+abstract class BaseToolbarFragment<V : MvpView, P : BasePresenter<V>> : BaseScreenFragment<V,P>() {
 
     @Inject
     lateinit var ziggeo: Ziggeo

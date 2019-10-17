@@ -6,25 +6,25 @@
     android:clipChildren="false"
     android:clipToPadding="false">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_recordings"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_empty_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/list_empty_message_margin_top"
-        android:gravity="center"
-        android:text="@string/message_recordings_list_empty" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recordings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <ProgressBar
-        android:id="@+id/pb_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/tv_empty_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/list_empty_message_margin_top"
+            android:gravity="center"
+            android:text="@string/message_recordings_list_empty" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"

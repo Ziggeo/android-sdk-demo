@@ -13,14 +13,15 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class TopClientsFragment : BaseToolbarFragment(), TopClientsView {
+class TopClientsFragment : BaseToolbarFragment<TopClientsView, TopClientsPresenter>(),
+    TopClientsView {
     override val layoutRes = R.layout.fragment_top_clients
 
     @InjectPresenter
     lateinit var presenter: TopClientsPresenter
 
     @ProvidePresenter
-    fun providePresenter(): TopClientsPresenter =
+    override fun providePresenter(): TopClientsPresenter =
         scope.getInstance(TopClientsPresenter::class.java)
 
     override fun getTitleRes() = R.string.title_clients

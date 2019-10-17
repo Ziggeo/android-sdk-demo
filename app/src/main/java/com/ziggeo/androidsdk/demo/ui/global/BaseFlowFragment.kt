@@ -23,7 +23,7 @@ import javax.inject.Inject
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-abstract class FlowFragment : BaseFragment() {
+abstract class BaseFlowFragment : BaseFragment() {
     override val layoutRes: Int = R.layout.layout_container
 
     private val currentFragment

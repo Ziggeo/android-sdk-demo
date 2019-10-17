@@ -5,7 +5,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingDetailsPresenter
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingDetailsView
-import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
+import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
 
 
 /**
@@ -13,13 +13,16 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class RecordingDetailsFragment : BaseFragment(), RecordingDetailsView {
+class RecordingDetailsFragment :
+    BaseToolbarFragment<RecordingDetailsView, RecordingDetailsPresenter>(), RecordingDetailsView {
+    override fun getTitleRes(): Int = R.string.title_details
+
     override val layoutRes = R.layout.fragment_recording_details
 
     @InjectPresenter
     lateinit var presenter: RecordingDetailsPresenter
 
     @ProvidePresenter
-    fun providePresenter(): RecordingDetailsPresenter =
+    override fun providePresenter(): RecordingDetailsPresenter =
         scope.getInstance(RecordingDetailsPresenter::class.java)
 }

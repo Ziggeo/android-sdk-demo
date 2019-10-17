@@ -13,14 +13,15 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class AvailableSDKsFragment : BaseToolbarFragment(), AvailableSDKsView {
+class AvailableSDKsFragment : BaseToolbarFragment<AvailableSDKsView, AvailableSDKsPresenter>(),
+    AvailableSDKsView {
     override val layoutRes = R.layout.fragment_available_sdks
 
     @InjectPresenter
     lateinit var presenter: AvailableSDKsPresenter
 
     @ProvidePresenter
-    fun providePresenter(): AvailableSDKsPresenter =
+    override fun providePresenter(): AvailableSDKsPresenter =
         scope.getInstance(AvailableSDKsPresenter::class.java)
 
     override fun getTitleRes() = R.string.title_sdks

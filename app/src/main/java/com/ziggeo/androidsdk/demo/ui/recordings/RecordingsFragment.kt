@@ -22,7 +22,8 @@ import kotlinx.android.synthetic.main.fragment_recordings.*
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class RecordingsFragment : BaseToolbarFragment(), RecordingsView {
+class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresenter>(),
+    RecordingsView {
     override val layoutRes = R.layout.fragment_recordings
 
     @InjectPresenter
@@ -32,7 +33,7 @@ class RecordingsFragment : BaseToolbarFragment(), RecordingsView {
     private lateinit var rotateBackward: Animation
 
     @ProvidePresenter
-    fun providePresenter(): RecordingsPresenter =
+    override fun providePresenter(): RecordingsPresenter =
         scope.getInstance(RecordingsPresenter::class.java)
 
     override fun getTitleRes() = R.string.title_recordings
@@ -59,6 +60,10 @@ class RecordingsFragment : BaseToolbarFragment(), RecordingsView {
                 }
             }
         })
+
+        pull_to_refresh.setOnRefreshListener {
+            presenter.onPullToRefresh()
+        }
     }
 
     override fun showActionFabs() {
@@ -90,11 +95,11 @@ class RecordingsFragment : BaseToolbarFragment(), RecordingsView {
 
     override fun showLoading() {
         tv_empty_list.visibility = View.INVISIBLE
-        pb_progress.visibility = View.VISIBLE
+        pull_to_refresh.isRefreshing = true
     }
 
     override fun hideLoading() {
-        pb_progress.visibility = View.INVISIBLE
+        pull_to_refresh.isRefreshing = false
     }
 
     override fun showError() {

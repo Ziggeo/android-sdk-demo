@@ -13,14 +13,14 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class SettingsFragment : BaseToolbarFragment(), SettingsView {
+class SettingsFragment : BaseToolbarFragment<SettingsView, SettingsPresenter>(), SettingsView {
     override val layoutRes = R.layout.fragment_settings
 
     @InjectPresenter
     lateinit var presenter: SettingsPresenter
 
     @ProvidePresenter
-    fun providePresenter(): SettingsPresenter =
+    override fun providePresenter(): SettingsPresenter =
         scope.getInstance(SettingsPresenter::class.java)
 
     override fun getTitleRes() = R.string.title_settings

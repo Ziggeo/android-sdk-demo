@@ -43,4 +43,7 @@
     <string name="title_about">About</string>
     <string name="message_recordings_list_empty">There are no recordings.\nPress plus button to add some.</string>
 
+    <!-- Recording details screen -->
+    <string name="title_details">Details</string>
+
 </resources>

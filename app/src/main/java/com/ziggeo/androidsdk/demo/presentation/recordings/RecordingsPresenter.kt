@@ -4,6 +4,7 @@ import com.arellomobile.mvp.InjectViewState
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import io.reactivex.disposables.Disposable
+import ru.terrakok.cicerone.Router
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -15,7 +16,8 @@ import javax.inject.Inject
  */
 @InjectViewState
 class RecordingsPresenter @Inject constructor(
-    private val recordingsInteractor: RecordingsInteractor
+    private val recordingsInteractor: RecordingsInteractor,
+    private var router: Router
 ) : BasePresenter<RecordingsView>() {
 
     private var fabActionsExpanded = false
@@ -29,6 +31,15 @@ class RecordingsPresenter @Inject constructor(
     override fun detachView(view: RecordingsView?) {
         super.detachView(view)
         disposable?.dispose()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        router.exit()
+    }
+
+    fun onPullToRefresh(){
+        updateRecordingsList()
     }
 
     fun onFabCameraClicked() {

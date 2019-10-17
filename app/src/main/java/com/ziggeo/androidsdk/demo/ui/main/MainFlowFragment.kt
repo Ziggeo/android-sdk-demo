@@ -10,8 +10,8 @@ import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.presentation.main.MainFlowPresenter
 import com.ziggeo.androidsdk.demo.presentation.main.MainFlowView
 import com.ziggeo.androidsdk.demo.presentation.main.MainFlowView.MenuItem.*
+import com.ziggeo.androidsdk.demo.ui.global.BaseFlowFragment
 import com.ziggeo.androidsdk.demo.ui.global.BaseFragment
-import com.ziggeo.androidsdk.demo.ui.global.FlowFragment
 import com.ziggeo.androidsdk.demo.ui.global.MessageDialogFragment
 import kotlinx.android.synthetic.main.fragment_drawer_flow.*
 import kotlinx.android.synthetic.main.fragment_nav_drawer.*
@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_nav_drawer.*
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class MainFlowFragment : FlowFragment(), MainFlowView,
+class MainFlowFragment : BaseFlowFragment(), MainFlowView,
     MessageDialogFragment.OnClickListener {
 
     override val layoutRes = R.layout.fragment_drawer_flow

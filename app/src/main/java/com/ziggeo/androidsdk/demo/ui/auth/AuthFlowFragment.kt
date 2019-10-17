@@ -1,7 +1,7 @@
 package com.ziggeo.androidsdk.demo.ui.auth
 
 import com.ziggeo.androidsdk.demo.Screens
-import com.ziggeo.androidsdk.demo.ui.global.FlowFragment
+import com.ziggeo.androidsdk.demo.ui.global.BaseFlowFragment
 
 
 /**
@@ -9,6 +9,6 @@ import com.ziggeo.androidsdk.demo.ui.global.FlowFragment
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class AuthFlowFragment : FlowFragment() {
+class AuthFlowFragment : BaseFlowFragment() {
     override fun getLaunchScreen() = Screens.Auth
 }
