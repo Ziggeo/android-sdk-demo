@@ -1,6 +1,8 @@
 package com.ziggeo.androidsdk.demo.main
 
+import android.app.Application
 import android.view.Gravity
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -10,13 +12,18 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.rule.ActivityTestRule
 import com.agoda.kakao.screen.Screen.Companion.onScreen
+import com.ziggeo.androidsdk.demo.BuildConfig
 import com.ziggeo.androidsdk.demo.R
+import com.ziggeo.androidsdk.demo.di.DI
+import com.ziggeo.androidsdk.demo.di.module.AppModule
+import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.ui.AppActivity
 import com.ziggeo.androidsdk.demo.util.nthChildOf
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import toothpick.Toothpick
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
@@ -29,6 +36,10 @@ class DrawerTest {
     @Before
     fun navToMainScreen() {
         // make sure prefs has store token before launch
+        val application = ApplicationProvider.getApplicationContext<Application>()
+        val scope = Toothpick.openScope(DI.APP_SCOPE)
+        scope.installModules(AppModule(application))
+        scope.getInstance(Prefs::class.java).appToken = BuildConfig.APP_TOKEN
     }
 
     @Test

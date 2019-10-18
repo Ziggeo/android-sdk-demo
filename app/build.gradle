@@ -60,6 +60,8 @@ dependencies {
     def toothpickVersion = "3.0.2"
     implementation "com.github.stephanenicolas.toothpick:toothpick-runtime:$toothpickVersion"
     kapt "com.github.stephanenicolas.toothpick:toothpick-compiler:$toothpickVersion"
+    // Toothpick annotation processor for injecting in espresso tests
+    androidTestAnnotationProcessor "com.github.stephanenicolas.toothpick:toothpick-compiler:$toothpickVersion"
     //Image load and cache
     def glideVersion = "4.9.0"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
