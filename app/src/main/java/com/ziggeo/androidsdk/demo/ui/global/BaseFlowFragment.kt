@@ -50,16 +50,6 @@ abstract class BaseFlowFragment : BaseFragment() {
             override fun activityBack() {
                 router.exit()
             }
-
-            override fun setupFragmentTransaction(
-                command: Command?,
-                currentFragment: Fragment?,
-                nextFragment: Fragment?,
-                fragmentTransaction: FragmentTransaction
-            ) {
-                // Fix incorrect order lifecycle callback of MainFragment
-                fragmentTransaction.setReorderingAllowed(true)
-            }
         }
     }
 

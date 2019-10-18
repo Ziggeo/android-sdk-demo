@@ -38,17 +38,7 @@ class AppActivity : MvpAppCompatActivity() {
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
-    private val navigator: Navigator =
-        object : SupportAppNavigator(this, supportFragmentManager, R.id.container) {
-            override fun setupFragmentTransaction(
-                command: Command?,
-                currentFragment: Fragment?,
-                nextFragment: Fragment?,
-                fragmentTransaction: FragmentTransaction
-            ) {
-                fragmentTransaction.setReorderingAllowed(true)
-            }
-        }
+    private val navigator: Navigator = SupportAppNavigator(this, supportFragmentManager, R.id.container)
 
     private var notifierDisposable: Disposable? = null
 

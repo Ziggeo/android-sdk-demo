@@ -19,7 +19,7 @@ import javax.inject.Inject
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-abstract class BaseToolbarFragment<V : MvpView, P : BasePresenter<V>> : BaseScreenFragment<V,P>() {
+abstract class BaseToolbarFragment<V : MvpView, P : BasePresenter<V>> : BaseScreenFragment<V, P>() {
 
     @Inject
     lateinit var ziggeo: Ziggeo
