@@ -26,4 +26,7 @@
     <dimen name="recording_item_height">100dp</dimen>
     <dimen name="icon_size">60dp</dimen>
 
+    <!-- Recording details screen -->
+    <dimen name="preview_height">250dp</dimen>
+
 </resources>

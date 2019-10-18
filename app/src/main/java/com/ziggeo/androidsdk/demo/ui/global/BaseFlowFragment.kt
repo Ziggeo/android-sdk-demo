@@ -2,8 +2,6 @@ package com.ziggeo.androidsdk.demo.ui.global
 
 import android.os.Bundle
 import androidx.annotation.IdRes
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.di.module.FlowNavigationModule
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
@@ -13,7 +11,6 @@ import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
-import ru.terrakok.cicerone.commands.Command
 import toothpick.Scope
 import javax.inject.Inject
 
@@ -47,9 +44,6 @@ abstract class BaseFlowFragment : BaseFragment() {
 
     private val navigator: Navigator by lazy {
         object : SupportAppNavigator(this.activity, childFragmentManager, getContainerId()) {
-            override fun activityBack() {
-                router.exit()
-            }
         }
     }
 
