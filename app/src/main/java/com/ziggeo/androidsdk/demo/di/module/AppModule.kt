@@ -1,6 +1,8 @@
 package com.ziggeo.androidsdk.demo.di.module
 
 import android.content.Context
+import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
+import com.ziggeo.androidsdk.demo.model.data.storage.KVStorageImpl
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import ru.terrakok.cicerone.Cicerone
@@ -21,6 +23,7 @@ class AppModule(context: Context) : Module() {
         bind(Context::class.java).toInstance(context)
         bind(SystemMessageNotifier::class.java).toInstance(SystemMessageNotifier())
         bind(Prefs::class.java).toInstance(Prefs(context))
+        bind(KVStorage::class.java).toInstance(KVStorageImpl())
 
         // Navigation
         val cicerone = Cicerone.create()
