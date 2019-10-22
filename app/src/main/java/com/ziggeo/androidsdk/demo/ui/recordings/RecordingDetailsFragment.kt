@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.bumptech.glide.Glide
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingDetailsPresenter
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingDetailsView
@@ -60,6 +61,10 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
         et_token_or_key.setText(videoModel.key ?: videoModel.token)
         et_title.setText(videoModel.title)
         et_description.setText(videoModel.description)
+    }
+
+    override fun showPreview(url: String) {
+        Glide.with(iv_preview).load(url).into(iv_preview)
     }
 
     override fun showViewsInEditState() {

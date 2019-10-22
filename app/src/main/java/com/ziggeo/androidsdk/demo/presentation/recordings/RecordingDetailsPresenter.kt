@@ -31,6 +31,7 @@ class RecordingDetailsPresenter @Inject constructor(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         videoToken = kvStorage.get(VIDEO_TOKEN) as String
+        viewState.showPreview(recordingsInteractor.getImageUrl(videoToken))
         disposable = recordingsInteractor.getInfo(videoToken)
             .doOnSubscribe {
                 viewState.showProgressDialog(true)

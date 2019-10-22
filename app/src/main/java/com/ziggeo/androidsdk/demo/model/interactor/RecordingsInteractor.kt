@@ -10,6 +10,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
+import java.io.InputStream
 import javax.inject.Inject
 
 
@@ -56,6 +57,17 @@ class RecordingsInteractor @Inject constructor(
             .doOnError(this::onError)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun downloadImage(token: String): Single<InputStream> {
+        return videoService.downloadImage(token)
+            .doOnError(this::onError)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun getImageUrl(token: String): String {
+        return videoService.getImageUrl(token)
     }
 
     private fun onError(t: Throwable) {
