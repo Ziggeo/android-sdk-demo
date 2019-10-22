@@ -34,8 +34,9 @@ class DrawerTest {
     val rule = ActivityTestRule(AppActivity::class.java)
 
     @Before
-    fun navToMainScreen() {
+    fun before() {
         // make sure prefs has store token before launch
+        // this will allow to navigate to the main screen
         val application = ApplicationProvider.getApplicationContext<Application>()
         val scope = Toothpick.openScope(DI.APP_SCOPE)
         scope.installModules(AppModule(application))
