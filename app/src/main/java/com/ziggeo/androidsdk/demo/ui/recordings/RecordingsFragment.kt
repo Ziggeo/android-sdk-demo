@@ -108,10 +108,6 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
         pull_to_refresh.isRefreshing = false
     }
 
-    override fun showError() {
-        Toast.makeText(context, R.string.common_error, Toast.LENGTH_SHORT).show()
-    }
-
     override fun startCameraRecorder() {
         ziggeo.startCameraRecorder()
     }

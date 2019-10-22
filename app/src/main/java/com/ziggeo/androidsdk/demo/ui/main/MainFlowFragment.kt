@@ -128,8 +128,8 @@ class MainFlowFragment : BaseFlowFragment(), MainFlowView,
         iv_logout.setOnClickListener {
             MessageDialogFragment.create(
                 message = getString(R.string.logout_message),
-                positive = getString(R.string.btn_yes),
-                negative = getString(R.string.btn_no),
+                positive = getString(R.string.common_yes),
+                negative = getString(R.string.common_no),
                 tag = CONFIRM_LOGOUT_TAG
             ).show(childFragmentManager, CONFIRM_LOGOUT_TAG)
         }

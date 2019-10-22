@@ -22,8 +22,6 @@ interface RecordingsView : MvpView {
     fun showRecordingsList(list: List<VideoModel>)
     fun showNoRecordingsMessage()
 
-    fun showError()
-
     fun showLoading()
     fun hideLoading()
 

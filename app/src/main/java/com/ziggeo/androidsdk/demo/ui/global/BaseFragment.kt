@@ -11,8 +11,8 @@ import timber.log.Timber
 import toothpick.Scope
 import toothpick.Toothpick
 
-private const val PROGRESS_TAG = "bf_progress"
-private const val STATE_SCOPE_NAME = "state_scope_name"
+private const val PROGRESS_TAG = "PROGRESS_TAG"
+private const val STATE_SCOPE_NAME = "STATE_SCOPE_NAME"
 
 /**
  * Created by Alexander Bedulin on 25-Sep-19.
@@ -104,7 +104,7 @@ abstract class BaseFragment : MvpAppCompatFragment() {
             else -> isRealRemoving()
         }
 
-    protected fun showProgressDialog(progress: Boolean) {
+    fun showProgressDialog(progress: Boolean) {
         if (!isAdded || instanceStateSaved) return
 
         val fragment = childFragmentManager.findFragmentByTag(PROGRESS_TAG)

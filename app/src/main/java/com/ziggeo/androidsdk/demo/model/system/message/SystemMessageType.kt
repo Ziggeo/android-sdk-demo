@@ -7,6 +7,7 @@ package com.ziggeo.androidsdk.demo.model.system.message
  * alexb@ziggeo.com
  */
 enum class SystemMessageType {
+    COMMON_ERROR,
     ALERT,
     TOAST
 }

@@ -63,16 +63,15 @@ class MessageDialogFragment : DialogFragment() {
             positive: String? = null,
             negative: String? = null,
             tag: String? = null
-        ) =
-            MessageDialogFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_TITLE, title)
-                    putString(ARG_MESSAGE, message)
-                    putString(ARG_POSITIVE_TEXT, positive)
-                    putString(ARG_NEGATIVE_TEXT, negative)
-                    putString(ARG_TAG, tag)
-                }
+        ) = MessageDialogFragment().apply {
+            arguments = Bundle().apply {
+                putString(ARG_TITLE, title)
+                putString(ARG_MESSAGE, message)
+                putString(ARG_POSITIVE_TEXT, positive)
+                putString(ARG_NEGATIVE_TEXT, negative)
+                putString(ARG_TAG, tag)
             }
+        }
     }
 
     interface OnClickListener {

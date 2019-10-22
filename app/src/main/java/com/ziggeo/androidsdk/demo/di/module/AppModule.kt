@@ -24,6 +24,7 @@ class AppModule(context: Context) : Module() {
         bind(SystemMessageNotifier::class.java).toInstance(SystemMessageNotifier())
         bind(Prefs::class.java).toInstance(Prefs(context))
         bind(KVStorage::class.java).toInstance(KVStorageImpl())
+        bind(SystemMessageNotifier::class.java).toInstance(SystemMessageNotifier())
 
         // Navigation
         val cicerone = Cicerone.create()

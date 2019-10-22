@@ -9,12 +9,10 @@ import android.util.SparseArray
  * alexb@ziggeo.com
  */
 
-const val APP_TOKEN = 1
-
 class KVStorageImpl : KVStorage {
     private val arr = SparseArray<Any>()
 
     override fun put(key: Int, value: Any?) = arr.put(key, value)
-    override fun get(key: Int) = arr.get(key)
+    override fun get(key: Int): Any? = arr.get(key)
 
 }

@@ -3,10 +3,11 @@
     <!-- Common -->
     <string name="app_name">ZiggeoAndroidDemo</string>
     <string name="ok">OK</string>
-    <string name="btn_yes">Yes</string>
-    <string name="btn_no">No</string>
+    <string name="common_yes">Yes</string>
+    <string name="common_no">No</string>
     <string name="will_be_ready_soon">Will be ready soon!</string>
     <string name="common_error">Something wrong happened. Please, try again.</string>
+    <string name="common_confirm_message">Are you sure?</string>
 
     <!-- Auth screen -->
     <string name="auth_message">Please go to demo.ziggeo.com on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>
@@ -48,7 +49,5 @@
     <string name="hint_token_or_key">Token or key</string>
     <string name="hint_title">Title for the recording (optional)</string>
     <string name="hint_description">Description for the recording (optional)</string>
-    <string name="btn_save_text">Save</string>
-    <string name="btn_delete_text">Delete</string>
 
 </resources>

@@ -1,8 +1,9 @@
 package com.ziggeo.androidsdk.demo.presentation.recordings
 
-import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import com.ziggeo.androidsdk.demo.presentation.global.BaseView
+import com.ziggeo.androidsdk.net.models.videos.VideoModel
 
 
 /**
@@ -11,6 +12,14 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
  * alexb@ziggeo.com
  */
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface RecordingDetailsView : MvpView {
+interface RecordingDetailsView : BaseView {
+
+    fun showViewsInEditState()
+    fun showViewsInViewState()
+
+    fun showConfirmDeleteDialog()
+    fun hideConfirmDeleteDialog()
+
+    fun showRecordingData(videoModel: VideoModel)
 
 }

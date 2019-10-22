@@ -2,8 +2,6 @@ package com.ziggeo.androidsdk.demo.ui
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.di.DI
@@ -16,7 +14,6 @@ import io.reactivex.disposables.Disposable
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
-import ru.terrakok.cicerone.commands.Command
 import toothpick.Toothpick
 import javax.inject.Inject
 
@@ -38,7 +35,8 @@ class AppActivity : MvpAppCompatActivity() {
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
-    private val navigator: Navigator = SupportAppNavigator(this, supportFragmentManager, R.id.container)
+    private val navigator: Navigator =
+        SupportAppNavigator(this, supportFragmentManager, R.id.container)
 
     private var notifierDisposable: Disposable? = null
 
@@ -82,6 +80,7 @@ class AppActivity : MvpAppCompatActivity() {
         notifierDisposable = systemMessageNotifier.notifier
             .subscribe { msg ->
                 when (msg.type) {
+                    SystemMessageType.COMMON_ERROR -> showAlertMessage(getString(R.string.common_error))
                     SystemMessageType.ALERT -> showAlertMessage(msg.text)
                     SystemMessageType.TOAST -> showToastMessage(msg.text)
                 }
