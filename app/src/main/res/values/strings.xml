@@ -50,4 +50,30 @@
     <string name="hint_title">Title for the recording (optional)</string>
     <string name="hint_description">Description for the recording (optional)</string>
 
+    <!-- About screen -->
+    <string name="about_subtitle">Thanks for trying our demo!</string>
+    <string name="about_text">
+        \nVisit &lt;a href=https://github.com/Ziggeo/Android-Client-SDK>GitHub&lt;/a> if you want to star us or just to see the sources
+        \n\nYou might also want to take a look at other sections.
+        \n\nLearn:
+        \n- &lt;a href=https://ziggeo.com/quickstart>Quick start&lt;/a>
+        \n- &lt;a href=https://ziggeo.com/screencasts>Screencasts&lt;/a>
+        \n- &lt;a href=https://ziggeo.com/webinars>Webinars&lt;/a>
+        \n\nReference:
+        \n- &lt;a href=https://ziggeo.com/docs>Documentation&lt;/a>
+        \n- &lt;a href=https://support.ziggeo.com/>FAQs&lt;/a>
+        \n- &lt;a href=https://ziggeo.com/integrations>Integrations&lt;/a>
+        \n\nSandboxes
+        \n- &lt;a href=https://ziggeo.com/sandbox/configuration>Configuration&lt;/a>
+        \n- &lt;a href=https://ziggeo.com/sandbox/serverside>Server-Side&lt;/a>
+        \n- &lt;a href=https://ziggeo.com/sandbox/authorization-tokens>Authorization Tokens&lt;/a>
+        \n- &lt;a href=https://ziggeo.com/sandbox/webhooks>Webhooks Builder&lt;/a>
+        \n\nCommunity
+        \n- &lt;a href=https://support.ziggeo.com/hc/en-us/community/posts>Forum&lt;/a>
+        \n- &lt;a href=https://stackoverflow.com/search?q=ziggeo>StackOverflow&lt;/a>
+        \n\nSupport
+        \n- &lt;a href=mailto:support@ziggeo.com>Support&lt;/a>
+        \n- &lt;a href=https://ziggeo.com/dev-updates>Dev Updates&lt;/a>
+    </string>
+
 </resources>
