@@ -39,7 +39,9 @@ ext {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:0.80.3"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:61ded8b70f7c6f4c7f0c8e5713915f4fb6328c59" //todo
+//    implementation project(':sdk')
+
     //Support
     implementation "androidx.appcompat:appcompat:1.1.0"
     implementation "com.google.android.material:material:1.0.0"
