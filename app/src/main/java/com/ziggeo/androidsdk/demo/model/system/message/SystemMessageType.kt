@@ -8,6 +8,7 @@ package com.ziggeo.androidsdk.demo.model.system.message
  */
 enum class SystemMessageType {
     COMMON_ERROR,
+    COMMON_NOT_IMPLEMENTED_YET,
     ALERT,
     TOAST
 }

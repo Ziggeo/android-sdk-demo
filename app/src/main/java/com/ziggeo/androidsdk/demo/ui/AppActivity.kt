@@ -80,6 +80,7 @@ class AppActivity : MvpAppCompatActivity() {
         notifierDisposable = systemMessageNotifier.notifier
             .subscribe { msg ->
                 when (msg.type) {
+                    SystemMessageType.COMMON_NOT_IMPLEMENTED_YET -> showToastMessage(getString(R.string.not_implemented))
                     SystemMessageType.COMMON_ERROR -> showAlertMessage(getString(R.string.common_error))
                     SystemMessageType.ALERT -> showAlertMessage(msg.text)
                     SystemMessageType.TOAST -> showToastMessage(msg.text)

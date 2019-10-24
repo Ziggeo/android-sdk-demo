@@ -29,4 +29,7 @@
     <!-- Recording details screen -->
     <dimen name="preview_height">250dp</dimen>
 
+    <!-- Contact us -->
+    <dimen name="btn_start_now_top_margin">70dp</dimen>
+
 </resources>
