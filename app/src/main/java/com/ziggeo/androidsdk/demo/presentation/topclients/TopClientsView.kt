@@ -3,6 +3,7 @@ package com.ziggeo.androidsdk.demo.presentation.topclients
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import com.ziggeo.androidsdk.demo.model.ClientModel
 
 
 /**
@@ -13,4 +14,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface TopClientsView : MvpView {
 
+    fun showClients(clientsList: List<ClientModel>)
+
+    fun openUrl(url: String)
 }

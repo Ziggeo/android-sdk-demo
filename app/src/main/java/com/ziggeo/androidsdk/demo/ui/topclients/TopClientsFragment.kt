@@ -1,11 +1,16 @@
 package com.ziggeo.androidsdk.demo.ui.topclients
 
+import android.content.Intent
+import android.net.Uri
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
+import com.ziggeo.androidsdk.demo.model.ClientModel
 import com.ziggeo.androidsdk.demo.presentation.topclients.TopClientsPresenter
 import com.ziggeo.androidsdk.demo.presentation.topclients.TopClientsView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
+import kotlinx.android.synthetic.main.fragment_top_clients.*
 
 
 /**
@@ -26,4 +31,19 @@ class TopClientsFragment : BaseToolbarFragment<TopClientsView, TopClientsPresent
 
     override fun getTitleRes() = R.string.title_clients
 
+    override fun showClients(clientsList: List<ClientModel>) {
+        val adapter = TopClientsAdapter(clientsList)
+        adapter.onItemClickListener = object : TopClientsAdapter.ItemClickListener {
+            override fun onItemClick(model: ClientModel) {
+                presenter.onClientItemClicked(model)
+            }
+        }
+        rv_clients.layoutManager = LinearLayoutManager(context)
+        rv_clients.adapter = adapter
+    }
+
+    override fun openUrl(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
+    }
 }

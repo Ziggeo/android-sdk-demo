@@ -13,6 +13,7 @@
     <color name="white">@android:color/white</color>
     <color name="black">@android:color/black</color>
     <color name="lightGrey">#f1f1f1</color>
+    <color name="grayFilter">#CC4B4B4B</color>
 
     <!-- Recordings screen -->
     <color name="red">#C20202</color>
