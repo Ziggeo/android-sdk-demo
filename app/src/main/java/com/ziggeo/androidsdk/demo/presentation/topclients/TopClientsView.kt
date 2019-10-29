@@ -3,7 +3,7 @@ package com.ziggeo.androidsdk.demo.presentation.topclients
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import com.ziggeo.androidsdk.demo.model.ClientModel
+import com.ziggeo.androidsdk.demo.model.data.feature.ClientModel
 
 
 /**

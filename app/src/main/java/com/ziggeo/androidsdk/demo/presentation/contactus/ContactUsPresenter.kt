@@ -18,6 +18,6 @@ class ContactUsPresenter @Inject constructor(
     private var systemMessageNotifier: SystemMessageNotifier
 ) : BasePresenter<ContactUsView>() {
     fun onStartNowClicked() {
-        systemMessageNotifier.send(SystemMessage("", SystemMessageType.COMMON_NOT_IMPLEMENTED_YET))
+        systemMessageNotifier.send(SystemMessage("", SystemMessageType.COMING_SOON))
     }
 }

@@ -1,7 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.topclients
 
 import com.arellomobile.mvp.InjectViewState
-import com.ziggeo.androidsdk.demo.model.ClientModel
+import com.ziggeo.androidsdk.demo.model.data.feature.ClientModel
 import com.ziggeo.androidsdk.demo.model.interactor.TopClientsInteractor
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import io.reactivex.disposables.Disposable

@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ziggeo.androidsdk.demo.R
-import com.ziggeo.androidsdk.demo.model.ClientModel
+import com.ziggeo.androidsdk.demo.model.data.feature.ClientModel
 
 
 /**
@@ -23,14 +23,14 @@ class TopClientsAdapter(private val list: List<ClientModel>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopClientsViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_clients, parent, false)
-        val ivName = view.findViewById<ImageView>(R.id.iv_logo)
-        ivName.setColorFilter(
-            ContextCompat.getColor(view.context, R.color.grayFilter)
-        )
-        return TopClientsViewHolder(
+        val viewHolder = TopClientsViewHolder(
             onItemClickListener,
             view
         )
+        viewHolder.ivLogo?.setColorFilter(
+            ContextCompat.getColor(view.context, R.color.grayFilter)
+        )
+        return viewHolder
     }
 
     override fun getItemCount(): Int {
@@ -44,7 +44,7 @@ class TopClientsAdapter(private val list: List<ClientModel>) :
     class TopClientsViewHolder(
         private var onItemClickListener: ItemClickListener?,
         private var view: View,
-        private var ivLogo: ImageView? = view.findViewById(R.id.iv_logo)
+        var ivLogo: ImageView? = view.findViewById(R.id.iv_logo)
     ) : RecyclerView.ViewHolder(view) {
 
         fun bind(model: ClientModel) {

@@ -1,5 +1,7 @@
 package com.ziggeo.androidsdk.demo.ui.global
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -115,6 +117,11 @@ abstract class BaseFragment : MvpAppCompatFragment() {
             ProgressDialog().show(childFragmentManager, PROGRESS_TAG)
             childFragmentManager.executePendingTransactions()
         }
+    }
+
+    open fun openUrl(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 
     open fun onBackPressed() {}

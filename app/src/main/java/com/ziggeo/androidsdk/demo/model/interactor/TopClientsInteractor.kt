@@ -1,7 +1,7 @@
 package com.ziggeo.androidsdk.demo.model.interactor
 
 import com.ziggeo.androidsdk.demo.R
-import com.ziggeo.androidsdk.demo.model.ClientModel
+import com.ziggeo.androidsdk.demo.model.data.feature.ClientModel
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessage
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageType

@@ -1,4 +1,4 @@
-package com.ziggeo.androidsdk.demo.model
+package com.ziggeo.androidsdk.demo.model.data.feature
 
 import androidx.annotation.DrawableRes
 
@@ -7,8 +7,8 @@ import androidx.annotation.DrawableRes
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-data class ClientModel(
+data class SdkModel(
     @DrawableRes val drawableRes: Int,
-    val name: String,
-    val url: String
-)
+    val url: String,
+    val name: String? = null
+) : FeatureModel

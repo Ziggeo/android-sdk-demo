@@ -1,11 +1,15 @@
 package com.ziggeo.androidsdk.demo.ui.sdks
 
+import androidx.recyclerview.widget.GridLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
+import com.ziggeo.androidsdk.demo.model.data.feature.FeatureModel
+import com.ziggeo.androidsdk.demo.model.data.feature.SdkModel
 import com.ziggeo.androidsdk.demo.presentation.availablesdks.AvailableSDKsPresenter
 import com.ziggeo.androidsdk.demo.presentation.availablesdks.AvailableSDKsView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
+import kotlinx.android.synthetic.main.fragment_available_sdks.*
 
 
 /**
@@ -15,6 +19,7 @@ import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
  */
 class AvailableSDKsFragment : BaseToolbarFragment<AvailableSDKsView, AvailableSDKsPresenter>(),
     AvailableSDKsView {
+
     override val layoutRes = R.layout.fragment_available_sdks
 
     @InjectPresenter
@@ -25,5 +30,26 @@ class AvailableSDKsFragment : BaseToolbarFragment<AvailableSDKsView, AvailableSD
         scope.getInstance(AvailableSDKsPresenter::class.java)
 
     override fun getTitleRes() = R.string.title_sdks
+
+    override fun showSdks(clientsList: List<FeatureModel>) {
+        val adapter = AvailableSDKsAdapter(clientsList)
+        adapter.onItemClickListener = object : AvailableSDKsAdapter.ItemClickListener {
+            override fun onItemClick(model: SdkModel) {
+                presenter.onClientItemClicked(model)
+            }
+        }
+        val layoutManager = GridLayoutManager(context, 2)
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return when (adapter.getItemViewType(position)) {
+                    TYPE_CATEGORY -> 2
+                    TYPE_ITEM -> 1
+                    else -> 1
+                }
+            }
+        }
+        rv_sdks.layoutManager = layoutManager
+        rv_sdks.adapter = adapter
+    }
 
 }
