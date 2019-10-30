@@ -6,6 +6,7 @@ import com.agoda.kakao.image.KImageView
 import com.agoda.kakao.recycler.KRecyclerItem
 import com.agoda.kakao.recycler.KRecyclerView
 import com.agoda.kakao.screen.Screen
+import com.agoda.kakao.swiperefresh.KSwipeRefreshLayout
 import com.agoda.kakao.text.KButton
 import com.agoda.kakao.text.KTextView
 import com.ziggeo.androidsdk.demo.R
@@ -24,7 +25,7 @@ open class RecordingsScreen : Screen<RecordingsScreen>() {
     val btnScreenRecorder = KButton { withId(R.id.fab_screen) }
     val btnAudionRecorder = KButton { withId(R.id.fab_audio) }
     val btnImageCapturer = KButton { withId(R.id.fab_image) }
-
+    val pullToRefreshLayout = KSwipeRefreshLayout { withId(R.id.pull_to_refresh) }
     val rvRecordings = KRecyclerView({ withId(R.id.rv_recordings) }, { itemType(::NestedItem) })
 
     class NestedItem(parent: Matcher<View>) : KRecyclerItem<NestedItem>(parent) {

@@ -79,6 +79,15 @@ class RecordingsTest {
     }
 
     @Test
+    fun testListLoading() {
+        onScreen<RecordingsScreen> {
+            pullToRefreshLayout{
+                isDisplayed()
+            }
+        }
+    }
+
+    @Test
     fun testHidingBtnsOnListScroll() {
 //        onScreen<RecordingsScreen> {
 //            btnShowActions.isDisplayed()
