@@ -5,6 +5,7 @@
     <string name="ok">OK</string>
     <string name="common_yes">Yes</string>
     <string name="common_no">No</string>
+    <string name="coming_soon">Coming soon!</string>
     <string name="will_be_ready_soon">Will be ready soon!</string>
     <string name="common_error">Something wrong happened. Please, try again.</string>
     <string name="common_confirm_message">Are you sure?</string>
@@ -75,5 +76,8 @@
         \n- &lt;a href=mailto:support@ziggeo.com>Support&lt;/a>
         \n- &lt;a href=https://ziggeo.com/dev-updates>Dev Updates&lt;/a>
     </string>
+
+    <!-- Contact us -->
+    <string name="btn_start_now_text">Click here to \nSTART RIGHT NOW.</string>
 
 </resources>
