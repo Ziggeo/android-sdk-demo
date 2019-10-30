@@ -39,7 +39,7 @@ ext {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:61ded8b70f7c6f4c7f0c8e5713915f4fb6328c59" //todo
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:7257adb64860e61941ddf3f07a1abf6aa36b5d6d" //todo
 //    implementation project(':sdk')
 
     //Support
@@ -81,7 +81,7 @@ dependencies {
     //Mockito Kotlin
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     //Kakao
-    androidTestImplementation "com.agoda.kakao:kakao:2.1.0"
+    androidTestImplementation "com.agoda.kakao:kakao:2.2.0"
     androidTestImplementation "androidx.annotation:annotation:1.1.0"
     def rulesAndRunner = "1.2.0"
     androidTestImplementation "androidx.test:runner:$rulesAndRunner"
