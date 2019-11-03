@@ -1,5 +1,18 @@
 ## Changelog
 
+Version 0.81.1*(2019-11-03)*
+----------------------------
+* Player config now requires context
+* Fixed crash when back press during recording.
+* Video/Stream model improvements
+* Added more methods to videos service
+* TargetSdk, compileSdk, buildTools, gradle and libs versions updated
+* Streaming implemented for screen recorder
+* Fixed screen recorder resolution and landscape orientation
+* Fixed time for retrieving images for cover shots
+* Added rampToZoomFactor for CameraView
+* Added preloading configuration 
+
 Version 0.80.3*(2019-9-9)*
 ----------------------------
 * Removed Timber and VideoCache dependencies

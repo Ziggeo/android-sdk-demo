@@ -29,7 +29,7 @@ public class ZiggeoPlayerActivity extends BaseActivity {
      * Also see styles.xml for configuring the Player through XML
      */
     private void configurePlayer(@NonNull Ziggeo ziggeo) {
-        PlayerConfig playerConfig = new PlayerConfig.Builder()
+        PlayerConfig playerConfig = new PlayerConfig.Builder(this)
                 .style(new PlayerStyle.Builder()
                         .controllerStyle(PlayerStyle.DEFAULT)
                         .build())

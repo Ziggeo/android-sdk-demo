@@ -815,9 +815,19 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
 ## Update Information<a name="update"></a>
 
-The information is for upgrading from `0.80.2` to `0.80.3`. You will need to inspect the Changelog if you are switching from older versions.
-
-### Removed a lot of old deprecated things.
+The information is for upgrading from `0.80.3` to `0.81.1`. You will need to inspect the Changelog if you are switching from older versions.
+#### Broken changes
+* Player config now requires context
+#### Other changes
+* Fixed crash when back press during recording.
+* Video/Stream model improvements
+* Added more methods to videos service
+* TargetSdk, compileSdk, buildTools, gradle and libs versions updated
+* Streaming implemented for screen recorder
+* Fixed screen recorder resolution and landscape orientation
+* Fixed time for retrieving images for cover shots
+* Added rampToZoomFactor for CameraView
+* Added preloading configuration 
 
 ## Changelog<a name="Changelog"></a>
 

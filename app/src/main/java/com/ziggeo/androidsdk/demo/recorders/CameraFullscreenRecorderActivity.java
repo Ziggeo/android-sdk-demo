@@ -183,7 +183,7 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
         };
     }
 
-    private void disableZoom(){
+    private void disableZoom() {
         for (String cameraId : ziggeo.getCameraIdList()) {
             ziggeo.getCamera(cameraId).getCharacteristics().setZoomEnabled(false);
         }
