@@ -69,7 +69,7 @@ For Proguard config please see `app\\proguard-rules.pro`
 **Step 2.** Add the dependency in your application related dependencies
 
     dependencies {
-            compile 'com.github.ZiggeoJitpackService:Android-SDK:$version'
+            implementation 'com.github.ZiggeoJitpackService:Android-SDK:$version'
     }
 
 ## Codes<a name="codes"></a>
