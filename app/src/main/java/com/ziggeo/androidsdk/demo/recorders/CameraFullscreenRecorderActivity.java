@@ -9,6 +9,7 @@ import com.ziggeo.androidsdk.callbacks.RecorderCallback;
 import com.ziggeo.androidsdk.demo.BaseActivity;
 import com.ziggeo.androidsdk.recorder.MicSoundLevel;
 import com.ziggeo.androidsdk.recorder.RecorderConfig;
+import com.ziggeo.demo.R;
 
 import java.io.File;
 import java.util.Arrays;
@@ -24,16 +25,18 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ziggeo = new Ziggeo(APP_TOKEN, CameraFullscreenRecorderActivity.this);
-        RecorderConfig config = new RecorderConfig.Builder()
-                .callback(prepareCallback())
-                .sendImmediately(false)
-                .enableCoverShot(false)
-                .maxDuration(20000)
-                .build();
-        ziggeo.setRecorderConfig(config);
-        ziggeo.startCameraRecorder();
+        setContentView(R.layout.activity_fullscreen_recorder);
+        findViewById(R.id.btn_start_recorder).setOnClickListener(v -> {
+            ziggeo = new Ziggeo(APP_TOKEN, CameraFullscreenRecorderActivity.this);
+            RecorderConfig config = new RecorderConfig.Builder()
+                    .callback(prepareCallback())
+                    .sendImmediately(false)
+                    .enableCoverShot(false)
+                    .maxDuration(20000)
+                    .build();
+            ziggeo.setRecorderConfig(config);
+            ziggeo.startCameraRecorder();
+        });
     }
 
     private IRecorderCallback prepareCallback() {

@@ -24,4 +24,7 @@
     <!-- Audio recorder -->
     <string name="btn_text_start_audio_recorder">Press me to start audio recorder</string>
 
+    <!-- Fullscreen recorder -->
+    <string name="btn_text_start_camera_recorder">Press me to start camera recorder</string>
+
 </resources>
