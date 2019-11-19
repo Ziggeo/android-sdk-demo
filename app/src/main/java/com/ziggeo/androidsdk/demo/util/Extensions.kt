@@ -7,7 +7,6 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.BackTo
 import ru.terrakok.cicerone.commands.Replace
 
-
 /**
  * Created by Alexander Bedulin on 25-Sep-19.
  * Ziggeo, Inc.

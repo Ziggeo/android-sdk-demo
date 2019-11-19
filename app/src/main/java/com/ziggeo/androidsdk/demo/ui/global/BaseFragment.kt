@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.ziggeo.androidsdk.demo.di.DI
@@ -28,7 +29,6 @@ abstract class BaseFragment : MvpAppCompatFragment() {
 
     private val viewHandler = Handler()
 
-    //TODO remove this check at all?
     protected open val parentScopeName: String by lazy {
         (parentFragment as? BaseFragment)?.fragmentScopeName
             ?: DI.APP_SCOPE
@@ -60,7 +60,7 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = inflater.inflate(layoutRes, container, false)
+    ): View = inflater.inflate(layoutRes, container, false)
 
     override fun onResume() {
         super.onResume()

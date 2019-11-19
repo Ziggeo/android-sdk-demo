@@ -1,9 +1,11 @@
 package com.ziggeo.androidsdk.demo.presentation.auth
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.qr.QrScannerCallback
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
@@ -15,22 +17,30 @@ import javax.inject.Inject
  */
 @InjectViewState
 class AuthPresenter @Inject constructor(
+    private var ziggeo: IZiggeo,
     private var prefs: Prefs,
     private var router: Router
 ) : BasePresenter<AuthView>() {
 
     fun onScanQrClicked() {
-        val token = ""
-        if (token.isNotEmpty()) {
-            prefs.appToken = token
-            navigateToMainFlow()
+        ziggeo.qrScannerConfig.callback = object : QrScannerCallback() {
+            override fun onQrDecoded(value: String) {
+                super.onQrDecoded(value)
+                if (value.isNotEmpty()) {
+                    prefs.appToken = value
+                    ziggeo.appToken = value
+                    navigateToMainFlow()
+                }
+            }
         }
+        ziggeo.startQrScanner()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         router.exit()
     }
+
     private fun navigateToMainFlow() {
         router.newRootScreen(Screens.MainFlow)
     }
