@@ -19,6 +19,7 @@
         </activity>
 
         <activity android:name="com.ziggeo.androidsdk.demo.recorders.CameraEmbeddedRecorderActivity" />
+        <activity android:name="com.ziggeo.androidsdk.demo.QrScannerActivity" />
 
         <activity android:name="com.ziggeo.androidsdk.demo.recorders.CameraViewActivity" />
 

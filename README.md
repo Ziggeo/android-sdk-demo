@@ -13,6 +13,7 @@
     1. [Init](#init)
     2. [Recorder](#recorder)
     3. [Player](#player)
+    3. [QR Scanner](#qr-scanner)
     4. [Events / Callbacks](#events)
     5. [API](#API)
     6. [Examples](#examples)
@@ -169,6 +170,13 @@ Playback from Ziggeo servers
       * @param videoToken      - One or more video token.
       */
     ziggeo.attachPlayer(@NonNull FragmentManager fragmentManager, int contentId, String... videoToken);
+
+### QR Scanner<a name="qr-scanner"></a>
+```
+    ziggeo.setQrScannerConfig(...)
+    ziggeo.startQrScanner();
+```
+See more in `QrScannerActivity`
 
 ### Events / Callbacks<a name="events"></a>
 
@@ -815,19 +823,13 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
 ## Update Information<a name="update"></a>
 
-The information is for upgrading from `0.80.3` to `0.81.1`. You will need to inspect the Changelog if you are switching from older versions.
+The information is for upgrading from `0.81.1` to `0.82.0`. You will need to inspect the Changelog if you are switching from older versions.
 #### Broken changes
-* Player config now requires context
+* Deleted `cancelRequest` method
 #### Other changes
-* Fixed crash when back press during recording.
-* Video/Stream model improvements
-* Added more methods to videos service
-* TargetSdk, compileSdk, buildTools, gradle and libs versions updated
-* Streaming implemented for screen recorder
-* Fixed screen recorder resolution and landscape orientation
-* Fixed time for retrieving images for cover shots
-* Added rampToZoomFactor for CameraView
-* Added preloading configuration 
+* Added QR Scanner feature
+* OkHttp version set to `3.12.6` - this is max version that supports API 16
+* Improvements for uploading queue and related notifications
 
 ## Changelog<a name="Changelog"></a>
 

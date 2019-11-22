@@ -289,7 +289,7 @@ public class CameraViewActivity extends BaseActivity implements View.OnClickList
                         streamToken = model.getStreamModel().getToken();
 
                         hidePreparingStreamProgress();
-                        cvCamera.startStream(APP_TOKEN, videoToken, streamToken);
+                        runOnUiThread(() -> cvCamera.startStream(APP_TOKEN, videoToken, streamToken));
 
                         Timber.d("Streaming to:%s %s", videoToken, streamToken);
                     } else {

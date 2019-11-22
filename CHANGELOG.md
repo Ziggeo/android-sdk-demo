@@ -1,5 +1,13 @@
 ## Changelog
 
+Version 0.82.0*(2019-11-22)*
+----------------------------
+* Deleted `cancelRequest` method
+* Added QR scanner feature
+* OkHttp version set to `3.12.6` - this is max version that supports API 16
+* Improvements for uploading queue and related notifications
+* Bugfixing
+
 Version 0.81.1*(2019-11-03)*
 ----------------------------
 * Player config now requires context
