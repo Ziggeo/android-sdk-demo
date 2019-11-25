@@ -63,7 +63,7 @@ For Proguard config please see `app\\proguard-rules.pro`
     allprojects {
         repositories {
             ...
-            maven { url '<https://jitpack.io>' }
+            maven { url 'https://jitpack.io' }
         }
     }
 
