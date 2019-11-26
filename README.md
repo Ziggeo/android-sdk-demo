@@ -823,13 +823,8 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
 ## Update Information<a name="update"></a>
 
-The information is for upgrading from `0.81.1` to `0.82.0`. You will need to inspect the Changelog if you are switching from older versions.
-#### Broken changes
-* Deleted `cancelRequest` method
-#### Other changes
-* Added QR Scanner feature
-* OkHttp version set to `3.12.6` - this is max version that supports API 16
-* Improvements for uploading queue and related notifications
+The information is for upgrading from `0.82.0` to `0.82.1`. You will need to inspect the Changelog if you are switching from older versions.
+#### No broken changes, you can safely upgrade
 
 ## Changelog<a name="Changelog"></a>
 

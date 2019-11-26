@@ -1,5 +1,9 @@
 ## Changelog
 
+Version 0.82.1*(2019-11-26)*
+----------------------------
+* Fixed memory leak in UploadingService
+
 Version 0.82.0*(2019-11-22)*
 ----------------------------
 * Deleted `cancelRequest` method
