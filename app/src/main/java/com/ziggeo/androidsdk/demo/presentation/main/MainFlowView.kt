@@ -18,7 +18,8 @@ interface MainFlowView : MvpView {
         SDKS,
         CLIENTS,
         CONTACT_US,
-        ABOUT
+        ABOUT,
+        VIDEO_EDITOR
     }
 
     fun selectMenuItem(item: MenuItem)
@@ -35,4 +36,5 @@ interface MainFlowView : MvpView {
     fun openClientsScreen()
     fun openContactUsScreen()
     fun openAboutScreen()
+    fun openVideoEditorScreen()
 }

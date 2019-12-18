@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.di.module
 
 import android.content.Context
+import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.Ziggeo
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.net.services.streams.IStreamsServiceRx
@@ -17,7 +18,7 @@ class FragmentModule(context: Context, prefs: Prefs) : Module() {
 
     init {
         val ziggeo = Ziggeo(prefs.appToken!!, context)
-        bind(Ziggeo::class.java).toInstance(ziggeo)
+        bind(IZiggeo::class.java).toInstance(ziggeo)
         bind(IVideosServiceRx::class.java).toInstance(ziggeo.apiRx().videos())
         bind(IStreamsServiceRx::class.java).toInstance(ziggeo.apiRx().streams())
     }

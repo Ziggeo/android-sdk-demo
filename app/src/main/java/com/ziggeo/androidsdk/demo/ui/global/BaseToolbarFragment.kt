@@ -6,6 +6,7 @@ import android.view.View
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.Toolbar
 import com.arellomobile.mvp.MvpView
+import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.Ziggeo
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.di.module.FragmentModule
@@ -22,7 +23,7 @@ import javax.inject.Inject
 abstract class BaseToolbarFragment<V : MvpView, P : BasePresenter<V>> : BaseScreenFragment<V, P>() {
 
     @Inject
-    lateinit var ziggeo: Ziggeo
+    lateinit var ziggeo: IZiggeo
 
     @StringRes
     abstract fun getTitleRes(): Int

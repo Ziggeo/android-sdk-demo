@@ -11,6 +11,7 @@ import com.ziggeo.androidsdk.demo.ui.recordings.RecordingsFragment
 import com.ziggeo.androidsdk.demo.ui.sdks.AvailableSDKsFragment
 import com.ziggeo.androidsdk.demo.ui.settings.SettingsFragment
 import com.ziggeo.androidsdk.demo.ui.topclients.TopClientsFragment
+import com.ziggeo.androidsdk.demo.ui.videoeditor.VideoEditFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 /**
@@ -65,5 +66,9 @@ object Screens {
 
     object About : SupportAppScreen() {
         override fun getFragment() = AboutFragment()
+    }
+
+    object VideoEditor : SupportAppScreen() {
+        override fun getFragment() = VideoEditFragment()
     }
 }

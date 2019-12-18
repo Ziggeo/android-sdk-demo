@@ -106,6 +106,10 @@ class MainFlowFragment : BaseFlowFragment(), MainFlowView,
         router.newRootScreen(Screens.About)
     }
 
+    override fun openVideoEditorScreen() {
+        router.newRootScreen(Screens.VideoEditor)
+    }
+
     override fun selectMenuItem(item: MainFlowView.MenuItem) {
         (0 until drawer_menu_container.childCount)
             .map { drawer_menu_container.getChildAt(it) }
@@ -136,12 +140,14 @@ class MainFlowFragment : BaseFlowFragment(), MainFlowView,
 
         mi_recordings.tag = RECORDINGS
         mi_settings.tag = SETTINGS
+        mi_video_editor.tag = VIDEO_EDITOR
         mi_sdks.tag = SDKS
         mi_clients.tag = CLIENTS
         mi_contact.tag = CONTACT_US
         mi_about.tag = ABOUT
 
         mi_recordings.setOnClickListener(itemClickListener)
+        mi_video_editor.setOnClickListener(itemClickListener)
         mi_settings.setOnClickListener(itemClickListener)
         mi_sdks.setOnClickListener(itemClickListener)
         mi_clients.setOnClickListener(itemClickListener)

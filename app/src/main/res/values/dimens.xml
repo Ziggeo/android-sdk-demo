@@ -42,4 +42,7 @@
     <!-- Available SDKs screen -->
     <dimen name="category_text_size">20sp</dimen>
 
+    <!-- Video Editor screen -->
+    <dimen name="btn_select_file_margin_top">250dp</dimen>
+
 </resources>

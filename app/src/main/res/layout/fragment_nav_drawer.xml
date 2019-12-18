@@ -68,6 +68,11 @@
                 android:text="@string/item_recordings" />
 
             <TextView
+                android:id="@+id/mi_video_editor"
+                style="@style/MenuItemStyle"
+                android:text="@string/item_video_editor" />
+
+            <TextView
                 android:id="@+id/mi_settings"
                 style="@style/MenuItemStyle"
                 android:text="@string/item_settings" />
