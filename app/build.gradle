@@ -32,7 +32,7 @@ android {
     }
 }
 ext {
-    kotlinVersion = "1.3.50"
+    kotlinVersion = "1.3.61"
 }
 dependencies {
     //Ziggeo
@@ -46,7 +46,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
 
     //Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.50"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
     //MVP Moxy
     def moxyVersion = "1.7.0"
