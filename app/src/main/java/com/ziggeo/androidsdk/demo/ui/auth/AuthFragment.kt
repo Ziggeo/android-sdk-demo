@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.ui.auth
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -29,6 +30,9 @@ class AuthFragment : BaseScreenFragment<AuthView, AuthPresenter>(), AuthView {
         super.onViewCreated(view, savedInstanceState)
         btn_scan_qr.setOnClickListener {
             presenter.onScanQrClicked()
+        }
+        btn_prelaunch.setOnClickListener {
+            presenter.onPrelaunchTestBtnClicked(tv_prelaunch.text.toString())
         }
     }
 

@@ -22,18 +22,24 @@ class AuthPresenter @Inject constructor(
     private var router: Router
 ) : BasePresenter<AuthView>() {
 
-    fun onScanQrClicked() {
-        ziggeo.qrScannerConfig.callback = object : QrScannerCallback() {
-            override fun onQrDecoded(value: String) {
-                super.onQrDecoded(value)
-                if (value.isNotEmpty()) {
-                    prefs.appToken = value
-                    ziggeo.appToken = value
-                    navigateToMainFlow()
-                }
+    private val qrScannerCallback = object : QrScannerCallback() {
+        override fun onQrDecoded(value: String) {
+            super.onQrDecoded(value)
+            if (value.isNotEmpty()) {
+                prefs.appToken = value
+                ziggeo.appToken = value
+                navigateToMainFlow()
             }
         }
+    }
+
+    fun onScanQrClicked() {
+        ziggeo.qrScannerConfig.callback = qrScannerCallback
         ziggeo.startQrScanner()
+    }
+
+    fun onPrelaunchTestBtnClicked(token: String) {
+        qrScannerCallback.onQrDecoded(token)
     }
 
     override fun onBackPressed() {
