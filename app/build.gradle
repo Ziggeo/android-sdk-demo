@@ -14,10 +14,20 @@ android {
         versionName "1.0.0_internal0"
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true
-        buildConfigField("String", "APP_TOKEN", "\""+System.getenv("app_token")+"\"")
+        buildConfigField("String", "APP_TOKEN", "\"" + System.getenv("app_token") + "\"")
+        setProperty("archivesBaseName", "androidKotlin-v" + versionName + "_" + getDate())
+    }
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("storeFile"))
+            storePassword System.getenv("storePassword")
+            keyAlias System.getenv("keyAlias")
+            keyPassword System.getenv("keyPassword")
+        }
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -36,8 +46,7 @@ ext {
 }
 dependencies {
     //Ziggeo
-//    implementation "com.github.ZiggeoJitpackService:Android-SDK:androidX-SNAPSHOT" //todo
-    implementation project(':sdk')
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:new_demo_release-SNAPSHOT"
 
     //Support
     implementation "androidx.appcompat:appcompat:1.1.0"
@@ -114,4 +123,8 @@ configurations.all {
 gradle.buildFinished {
     println "VersionName: ${android.defaultConfig.versionName}"
     println "VersionCode: ${android.defaultConfig.versionCode}"
+}
+
+static def getDate() {
+    return new Date().format('HH.mm.ss_dd-MM-YYYY')
 }
