@@ -81,7 +81,7 @@ class AppActivity : MvpAppCompatActivity() {
             .subscribe { msg ->
                 when (msg.type) {
                     SystemMessageType.COMING_SOON -> showToastMessage(getString(R.string.coming_soon))
-                    SystemMessageType.COMMON_ERROR -> showAlertMessage(getString(R.string.common_error))
+                    SystemMessageType.COMMON_ERROR -> showAlertMessage(getString(R.string.err_common))
                     SystemMessageType.ALERT -> showAlertMessage(msg.text)
                     SystemMessageType.TOAST -> showToastMessage(msg.text)
                 }

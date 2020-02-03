@@ -15,7 +15,7 @@
     <dimen name="logo_margin_bottom">24dp</dimen>
     <dimen name="btn_qr_width">160dp</dimen>
     <dimen name="btn_qr_height">55dp</dimen>
-    <dimen name="btn_qr_margin_bottom">250dp</dimen>
+    <dimen name="auth_controls_margin_top">80dp</dimen>
 
     <!-- Drawer -->
     <dimen name="drawer_width">250dp</dimen>

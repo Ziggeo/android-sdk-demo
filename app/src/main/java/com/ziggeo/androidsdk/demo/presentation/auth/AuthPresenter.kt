@@ -38,8 +38,20 @@ class AuthPresenter @Inject constructor(
         ziggeo.startQrScanner()
     }
 
-    fun onPrelaunchTestBtnClicked(token: String) {
-        qrScannerCallback.onQrDecoded(token)
+    fun onEnterQrManuallyClicked() {
+        viewState.showEnterQrField()
+    }
+
+    fun onUseScannerClicked() {
+        viewState.showScannerButton()
+    }
+
+    fun onUseEnteredQrClicked(value: String) {
+        if (value.isEmpty()) {
+            viewState.showQrCannotBeEmptyError()
+        } else {
+            qrScannerCallback.onQrDecoded(value)
+        }
     }
 
     override fun onBackPressed() {

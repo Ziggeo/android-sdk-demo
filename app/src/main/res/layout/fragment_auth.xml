@@ -1,64 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/common_margin"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:fillViewport="true">
 
-    <!-- This is only for prelaunch GooglePlay report   -->
-    <FrameLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="@dimen/logo_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/logo_margin_top"
+            android:layout_marginBottom="@dimen/logo_margin_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_ziggeo_logo" />
+
         <TextView
-            android:id="@+id/tv_prelaunch"
+            android:id="@+id/tv_auth_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin"
+            android:layout_marginBottom="@dimen/common_margin"
+            android:autoLink="web"
+            android:gravity="center"
+            android:text="@string/auth_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_qr"
             android:layout_width="0dp"
-            android:layout_height="0dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/auth_controls_margin_top"
+            android:hint="@string/enter_qr_manually_hint"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_auth_message">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_qr"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:imeOptions="actionGo"
+                android:layout_height="match_parent"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btn_prelaunch"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
-    </FrameLayout>
+            android:id="@+id/btn_scan_qr"
+            android:layout_width="@dimen/btn_qr_width"
+            android:layout_height="@dimen/btn_qr_height"
+            android:text="@string/btn_scan_qr_text"
+            android:textColor="@android:color/white"
+            app:backgroundTint="@color/colorPrimaryLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_qr" />
 
-    <ImageView
-        android:id="@+id/iv_logo"
-        android:layout_width="@dimen/logo_width"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/logo_margin_top"
-        android:layout_marginBottom="@dimen/logo_margin_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_ziggeo_logo" />
+        <TextView
+            android:id="@+id/tv_enter_manually"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/half_padding"
+            android:text="@string/enter_qr_manually_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_scan_qr" />
 
-    <TextView
-        android:id="@+id/tv_auth_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_margin"
-        android:layout_marginBottom="@dimen/common_margin"
-        android:autoLink="web"
-        android:gravity="center"
-        android:text="@string/auth_message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+        <Button
+            android:id="@+id/btn_use_entered_qr"
+            android:layout_width="@dimen/btn_qr_width"
+            android:layout_height="@dimen/btn_qr_height"
+            android:text="@string/btn_use_entered_text"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            app:backgroundTint="@color/colorPrimaryLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_qr" />
 
-    <Button
-        android:id="@+id/btn_scan_qr"
-        android:layout_width="@dimen/btn_qr_width"
-        android:layout_height="@dimen/btn_qr_height"
-        android:layout_marginBottom="@dimen/btn_qr_margin_bottom"
-        android:text="@string/btn_scan_qr_text"
-        android:textColor="@android:color/white"
-        app:backgroundTint="@color/colorPrimaryLight"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/tv_use_scanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/half_padding"
+            android:text="@string/use_scanner_text"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_use_entered_qr" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

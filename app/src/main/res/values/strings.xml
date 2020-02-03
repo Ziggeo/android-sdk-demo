@@ -7,12 +7,17 @@
     <string name="common_no">No</string>
     <string name="coming_soon">Coming soon!</string>
     <string name="will_be_ready_soon">Will be ready soon!</string>
-    <string name="common_error">Something wrong happened. Please, try again.</string>
     <string name="common_confirm_message">Are you sure?</string>
+    <string name="err_common">Something wrong happened. Please, try again.</string>
+    <string name="err_not_empty">Field should not be empty.</string>
 
     <!-- Auth screen -->
     <string name="auth_message">Please go to demo.ziggeo.com on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>
     <string name="btn_scan_qr_text">Scan QR code</string>
+    <string name="btn_use_entered_text">Use entered</string>
+    <string name="enter_qr_manually_text">or enter manually</string>
+    <string name="enter_qr_manually_hint">QR code</string>
+    <string name="use_scanner_text">or use scanner</string>
 
     <!-- Drawer -->
     <string name="title_app_token">Application token:</string>

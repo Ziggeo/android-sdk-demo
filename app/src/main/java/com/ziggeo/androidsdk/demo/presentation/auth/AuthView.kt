@@ -13,4 +13,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface AuthView : MvpView {
 
+    fun showQrCannotBeEmptyError()
+    fun showScannerButton()
+    fun showEnterQrField()
+
 }

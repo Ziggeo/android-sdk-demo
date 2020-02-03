@@ -1,7 +1,6 @@
 package com.ziggeo.androidsdk.demo.ui.auth
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -31,12 +30,43 @@ class AuthFragment : BaseScreenFragment<AuthView, AuthPresenter>(), AuthView {
         btn_scan_qr.setOnClickListener {
             presenter.onScanQrClicked()
         }
-        btn_prelaunch.setOnClickListener {
-            presenter.onPrelaunchTestBtnClicked(tv_prelaunch.text.toString())
+        tv_enter_manually.setOnClickListener {
+            presenter.onEnterQrManuallyClicked()
         }
+        tv_use_scanner.setOnClickListener {
+            presenter.onUseScannerClicked()
+        }
+        et_qr.setOnEditorActionListener { _, _, _ ->
+            btn_use_entered_qr.performClick()
+            true
+        }
+        btn_use_entered_qr.setOnClickListener {
+            presenter.onUseEnteredQrClicked(et_qr.text.toString())
+        }
+    }
+
+    override fun showQrCannotBeEmptyError() {
+        et_qr.error = getString(R.string.err_not_empty)
     }
 
     @ProvidePresenter
     override fun providePresenter(): AuthPresenter = scope.getInstance(AuthPresenter::class.java)
 
+    override fun showScannerButton() {
+        btn_scan_qr.visibility = View.VISIBLE
+        tv_enter_manually.visibility = View.VISIBLE
+
+        til_qr.visibility = View.INVISIBLE
+        btn_use_entered_qr.visibility = View.GONE
+        tv_use_scanner.visibility = View.GONE
+    }
+
+    override fun showEnterQrField() {
+        btn_scan_qr.visibility = View.GONE
+        tv_enter_manually.visibility = View.GONE
+
+        til_qr.visibility = View.VISIBLE
+        btn_use_entered_qr.visibility = View.VISIBLE
+        tv_use_scanner.visibility = View.VISIBLE
+    }
 }
