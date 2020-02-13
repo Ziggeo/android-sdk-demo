@@ -71,18 +71,13 @@ class RecordingDetailsPresenter @Inject constructor(
     }
 
     fun onSaveClicked(tokenOrKey: String, title: String, description: String) {
-        //TODO remove this hardcode whe API will be ready
-        val args = HashMap<String, String>()
         if (model.token != tokenOrKey) {
             model.key = tokenOrKey
-            args["key"] = tokenOrKey
         }
         model.title = title
         model.description = description
 
-        args["title"] = title
-        args["description"] = description
-        disposable = recordingsInteractor.updateInfo(model.token, args)
+        disposable = recordingsInteractor.updateInfo(model)
             .doOnSubscribe {
                 viewState.showProgressDialog(true)
             }.doFinally {
