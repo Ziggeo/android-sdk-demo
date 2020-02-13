@@ -6,7 +6,6 @@
     <string name="common_yes">Yes</string>
     <string name="common_no">No</string>
     <string name="coming_soon">Coming soon!</string>
-    <string name="will_be_ready_soon">Will be ready soon!</string>
     <string name="common_confirm_message">Are you sure?</string>
     <string name="err_common">Something wrong happened. Please, try again.</string>
     <string name="err_not_empty">Field should not be empty.</string>

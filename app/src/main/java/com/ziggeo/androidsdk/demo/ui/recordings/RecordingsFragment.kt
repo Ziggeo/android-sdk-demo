@@ -117,11 +117,11 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
     }
 
     override fun startAudioRecorder() {
-        Toast.makeText(context, R.string.will_be_ready_soon, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, R.string.coming_soon, Toast.LENGTH_SHORT).show()
     }
 
     override fun startImageCapture() {
-        Toast.makeText(context, R.string.will_be_ready_soon, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, R.string.coming_soon, Toast.LENGTH_SHORT).show()
     }
 
     override fun startShowAnimationMainFab() {
