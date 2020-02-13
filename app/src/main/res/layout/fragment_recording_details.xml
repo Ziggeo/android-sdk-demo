@@ -35,11 +35,12 @@
                     android:layout_height="match_parent" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/iv_ic_play"
+                    android:id="@+id/fab_play"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:alpha="0.75"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/ic_play" />
             </FrameLayout>
 

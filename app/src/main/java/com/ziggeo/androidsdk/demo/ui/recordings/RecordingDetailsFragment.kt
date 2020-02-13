@@ -1,11 +1,16 @@
 package com.ziggeo.androidsdk.demo.ui.recordings
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingDetailsPresenter
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingDetailsView
@@ -55,7 +60,7 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
             }
             true
         }
-        iv_ic_play.setOnClickListener {
+        fab_play.setOnClickListener {
             presenter.onPlayClicked()
         }
     }
@@ -67,7 +72,31 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
     }
 
     override fun showPreview(url: String) {
-        Glide.with(iv_preview).load(url).into(iv_preview)
+        Glide.with(iv_preview)
+            .load(url)
+            .listener(object : RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    fab_play.show()
+                    return false
+                }
+
+            })
+            .into(iv_preview)
     }
 
     override fun showViewsInEditState() {
