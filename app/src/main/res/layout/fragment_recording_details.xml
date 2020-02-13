@@ -25,10 +25,23 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/iv_preview"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/preview_height" />
+                android:layout_height="@dimen/preview_height">
+
+                <ImageView
+                    android:id="@+id/iv_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/iv_ic_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alpha="0.75"
+                    app:srcCompat="@drawable/ic_play" />
+            </FrameLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

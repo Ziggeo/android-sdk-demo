@@ -55,6 +55,9 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
             }
             true
         }
+        iv_ic_play.setOnClickListener {
+            presenter.onPlayClicked()
+        }
     }
 
     override fun showRecordingData(videoModel: VideoModel) {

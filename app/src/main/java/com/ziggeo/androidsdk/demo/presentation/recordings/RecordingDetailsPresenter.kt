@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.recordings
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
 import com.ziggeo.androidsdk.demo.model.data.storage.VIDEO_TOKEN
@@ -21,7 +22,8 @@ import javax.inject.Inject
 class RecordingDetailsPresenter @Inject constructor(
     private var recordingsInteractor: RecordingsInteractor,
     private var router: FlowRouter,
-    private var kvStorage: KVStorage
+    private var kvStorage: KVStorage,
+    private var ziggeo: IZiggeo
 ) : BasePresenter<RecordingDetailsView>() {
 
     private lateinit var model: VideoModel
@@ -42,6 +44,10 @@ class RecordingDetailsPresenter @Inject constructor(
                 viewState.showRecordingData(model)
             }
         viewState.showViewsInViewState()
+    }
+
+    fun onPlayClicked() {
+        ziggeo.startPlayer(videoToken)
     }
 
     fun onConfirmNoClicked() {
