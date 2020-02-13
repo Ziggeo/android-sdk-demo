@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Common -->
-    <string name="app_name">ZiggeoAndroidDemo</string>
+    <string name="app_name">Ziggeo demo. Native (Kotlin)</string>
     <string name="ok">OK</string>
     <string name="common_yes">Yes</string>
     <string name="common_no">No</string>
@@ -16,7 +16,7 @@
     <string name="btn_scan_qr_text">Scan QR code</string>
     <string name="btn_use_entered_text">Use entered</string>
     <string name="enter_qr_manually_text">or enter manually</string>
-    <string name="enter_qr_manually_hint">QR code</string>
+    <string name="enter_manually_hint">Application token</string>
     <string name="use_scanner_text">or use scanner</string>
 
     <!-- Drawer -->

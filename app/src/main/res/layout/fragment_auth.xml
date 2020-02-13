@@ -41,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/auth_controls_margin_top"
-            android:hint="@string/enter_qr_manually_hint"
+            android:hint="@string/enter_manually_hint"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
