@@ -7,6 +7,7 @@ import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
 import com.ziggeo.androidsdk.demo.model.data.storage.VIDEO_TOKEN
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
+import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import io.reactivex.disposables.Disposable
@@ -23,8 +24,9 @@ class RecordingDetailsPresenter @Inject constructor(
     private var recordingsInteractor: RecordingsInteractor,
     private var router: FlowRouter,
     private var kvStorage: KVStorage,
-    private var ziggeo: IZiggeo
-) : BasePresenter<RecordingDetailsView>() {
+    private var ziggeo: IZiggeo,
+    smn: SystemMessageNotifier
+) : BasePresenter<RecordingDetailsView>(smn) {
 
     private lateinit var model: VideoModel
     private lateinit var videoToken: String
@@ -35,6 +37,7 @@ class RecordingDetailsPresenter @Inject constructor(
         videoToken = kvStorage.get(VIDEO_TOKEN) as String
         viewState.showPreview(recordingsInteractor.getImageUrl(videoToken))
         disposable = recordingsInteractor.getInfo(videoToken)
+            .doOnError { commonOnError(it) }
             .doOnSubscribe {
                 viewState.showProgressDialog(true)
             }.doFinally {
@@ -57,6 +60,7 @@ class RecordingDetailsPresenter @Inject constructor(
     fun onConfirmYesClicked() {
         viewState.hideConfirmDeleteDialog()
         disposable = recordingsInteractor.destroy(videoToken)
+            .doOnError { commonOnError(it) }
             .doOnSubscribe {
                 viewState.showProgressDialog(true)
             }.doFinally {
@@ -78,6 +82,7 @@ class RecordingDetailsPresenter @Inject constructor(
         model.description = description
 
         disposable = recordingsInteractor.updateInfo(model)
+            .doOnError { commonOnError(it) }
             .doOnSubscribe {
                 viewState.showProgressDialog(true)
             }.doFinally {

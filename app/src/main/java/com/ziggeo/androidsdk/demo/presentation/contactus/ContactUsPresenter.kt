@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.contactus
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessage
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageType
@@ -16,8 +17,8 @@ import javax.inject.Inject
 @InjectViewState
 class ContactUsPresenter @Inject constructor(
     private var systemMessageNotifier: SystemMessageNotifier
-) : BasePresenter<ContactUsView>() {
+) : BasePresenter<ContactUsView>(systemMessageNotifier) {
     fun onStartNowClicked() {
-        systemMessageNotifier.send(SystemMessage("", SystemMessageType.COMING_SOON))
+        systemMessageNotifier.send(SystemMessage(R.string.coming_soon, SystemMessageType.TOAST))
     }
 }

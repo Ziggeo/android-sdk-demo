@@ -137,14 +137,8 @@ class TopClientsInteractor @Inject constructor(
         )
         return Single.fromCallable<List<ClientModel>> {
             list
-        }.doOnError(this::onError)
-            .subscribeOn(Schedulers.io())
+        }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-    }
-
-    private fun onError(t: Throwable) {
-        systemMessageNotifier.send(SystemMessage("", SystemMessageType.COMMON_ERROR))
-        Timber.e(t)
     }
 
 }

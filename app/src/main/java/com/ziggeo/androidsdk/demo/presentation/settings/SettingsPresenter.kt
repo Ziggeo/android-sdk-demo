@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.settings
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import javax.inject.Inject
 
@@ -11,6 +12,6 @@ import javax.inject.Inject
  * alexb@ziggeo.com
  */
 @InjectViewState
-class SettingsPresenter @Inject constructor() : BasePresenter<SettingsView>() {
-
-}
+class SettingsPresenter @Inject constructor(
+    systemMessageNotifier: SystemMessageNotifier
+) : BasePresenter<SettingsView>(systemMessageNotifier)

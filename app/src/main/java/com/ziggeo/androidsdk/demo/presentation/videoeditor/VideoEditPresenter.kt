@@ -3,6 +3,7 @@ package com.ziggeo.androidsdk.demo.presentation.videoeditor
 import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.ziggeo.androidsdk.IZiggeo
+import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import com.ziggeo.androidsdk.videoeditor.VideoEditorCallback
 import timber.log.Timber
@@ -16,8 +17,9 @@ import javax.inject.Inject
  */
 @InjectViewState
 class VideoEditPresenter @Inject constructor(
-    val ziggeo: IZiggeo
-) : BasePresenter<VideoEditView>() {
+    val ziggeo: IZiggeo,
+    systemMessageNotifier: SystemMessageNotifier
+) : BasePresenter<VideoEditView>(systemMessageNotifier) {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()

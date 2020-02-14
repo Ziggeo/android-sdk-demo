@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.availablesdks
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.model.data.feature.FeatureModel
 import com.ziggeo.androidsdk.demo.model.data.feature.SdkModel
 import com.ziggeo.androidsdk.demo.model.interactor.AvailableSdksInteractor
@@ -21,7 +22,7 @@ import javax.inject.Inject
 class AvailableSDKsPresenter @Inject constructor(
     private var availableSdksInteractor: AvailableSdksInteractor,
     private var systemMessageNotifier: SystemMessageNotifier
-) : BasePresenter<AvailableSDKsView>() {
+) : BasePresenter<AvailableSDKsView>(systemMessageNotifier) {
     private var disposable: Disposable? = null
 
     override fun onFirstViewAttach() {
@@ -39,7 +40,7 @@ class AvailableSDKsPresenter @Inject constructor(
 
     fun onClientItemClicked(model: SdkModel) {
         if (model.url.isEmpty()) {
-            systemMessageNotifier.send(SystemMessage("", SystemMessageType.COMING_SOON))
+            systemMessageNotifier.send(SystemMessage(R.string.coming_soon, SystemMessageType.TOAST))
         } else {
             viewState.openUrl(model.url)
         }

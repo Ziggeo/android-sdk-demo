@@ -41,6 +41,9 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initFab()
+        pull_to_refresh.setOnRefreshListener {
+            presenter.onPullToRefresh()
+        }
     }
 
     override fun showRecordingsList(list: List<VideoModel>) {
@@ -66,10 +69,6 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
                 }
             }
         })
-
-        pull_to_refresh.setOnRefreshListener {
-            presenter.onPullToRefresh()
-        }
     }
 
     override fun showActionFabs() {

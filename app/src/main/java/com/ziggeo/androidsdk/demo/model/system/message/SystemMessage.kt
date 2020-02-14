@@ -1,5 +1,7 @@
 package com.ziggeo.androidsdk.demo.model.system.message
 
+import androidx.annotation.StringRes
+
 
 /**
  * Created by Alexander Bedulin on 25-Sep-19.
@@ -7,6 +9,7 @@ package com.ziggeo.androidsdk.demo.model.system.message
  * alexb@ziggeo.com
  */
 data class SystemMessage(
-    val text: String,
+    @StringRes
+    val textRes: Int,
     val type: SystemMessageType = SystemMessageType.ALERT
 )

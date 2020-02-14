@@ -3,6 +3,7 @@ package com.ziggeo.androidsdk.demo.presentation.topclients
 import com.arellomobile.mvp.InjectViewState
 import com.ziggeo.androidsdk.demo.model.data.feature.ClientModel
 import com.ziggeo.androidsdk.demo.model.interactor.TopClientsInteractor
+import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
@@ -15,8 +16,9 @@ import javax.inject.Inject
  */
 @InjectViewState
 class TopClientsPresenter @Inject constructor(
-    var topClientsInteractor: TopClientsInteractor
-) : BasePresenter<TopClientsView>() {
+    private var topClientsInteractor: TopClientsInteractor,
+    systemMessageNotifier: SystemMessageNotifier
+) : BasePresenter<TopClientsView>(systemMessageNotifier) {
     private var disposable: Disposable? = null
 
     override fun onFirstViewAttach() {

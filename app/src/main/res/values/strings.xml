@@ -33,6 +33,7 @@
 
     <!-- Recordings screen -->
     <string name="title_recordings">Recordings</string>
+    <string name="err_check_indexing">It\'s possible you\'ve forgotten to allow index operation. Please, check app settings on the website.</string>
 
     <!-- Settings screen -->
     <string name="title_settings">Settings</string>

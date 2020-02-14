@@ -4,6 +4,7 @@ import com.arellomobile.mvp.InjectViewState
 import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
+import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import com.ziggeo.androidsdk.qr.QrScannerCallback
 import ru.terrakok.cicerone.Router
@@ -19,8 +20,9 @@ import javax.inject.Inject
 class AuthPresenter @Inject constructor(
     private var ziggeo: IZiggeo,
     private var prefs: Prefs,
-    private var router: Router
-) : BasePresenter<AuthView>() {
+    private var router: Router,
+    systemMessageNotifier: SystemMessageNotifier
+) : BasePresenter<AuthView>(systemMessageNotifier) {
 
     private val qrScannerCallback = object : QrScannerCallback() {
         override fun onQrDecoded(value: String) {

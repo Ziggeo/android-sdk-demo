@@ -1,5 +1,6 @@
 package com.ziggeo.androidsdk.demo.model.system.message
 
+import androidx.annotation.StringRes
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 
@@ -14,5 +15,5 @@ class SystemMessageNotifier {
 
     val notifier: Observable<SystemMessage> = notifierRelay.hide()
     fun send(message: SystemMessage) = notifierRelay.accept(message)
-    fun send(message: String) = notifierRelay.accept(SystemMessage(message))
+    fun send(@StringRes messageRes: Int) = notifierRelay.accept(SystemMessage(messageRes))
 }

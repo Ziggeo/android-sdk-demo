@@ -1,14 +1,19 @@
 package com.ziggeo.androidsdk.demo.presentation.recordings
 
 import com.arellomobile.mvp.InjectViewState
+import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
 import com.ziggeo.androidsdk.demo.model.data.storage.VIDEO_TOKEN
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
+import com.ziggeo.androidsdk.demo.model.system.message.SystemMessage
+import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.net.exceptions.ResponseException
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import io.reactivex.disposables.Disposable
+import okhttp3.Response
 import javax.inject.Inject
 
 
@@ -21,8 +26,9 @@ import javax.inject.Inject
 class RecordingsPresenter @Inject constructor(
     private val recordingsInteractor: RecordingsInteractor,
     private var router: FlowRouter,
-    private var kvStorage: KVStorage
-) : BasePresenter<RecordingsView>() {
+    private var kvStorage: KVStorage,
+    private var systemMessageNotifier: SystemMessageNotifier
+) : BasePresenter<RecordingsView>(systemMessageNotifier) {
 
     private var fabActionsExpanded = false
     private var disposable: Disposable? = null
@@ -102,7 +108,17 @@ class RecordingsPresenter @Inject constructor(
                     viewState.showRecordingsList(data)
                 }
             }, {
-                viewState.showNoRecordingsMessage()
+                if (it is ResponseException && indexingNotAllowed(it.statusCode)) {
+                    systemMessageNotifier.send(SystemMessage(R.string.err_check_indexing))
+                } else {
+                    commonOnError(it)
+                    viewState.showNoRecordingsMessage()
+                }
             })
+    }
+
+    private fun indexingNotAllowed(code: Int): Boolean {
+        val unauthorized = 401
+        return code == unauthorized
     }
 }

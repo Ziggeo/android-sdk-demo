@@ -3,6 +3,7 @@ package com.ziggeo.androidsdk.demo.presentation.main
 import com.arellomobile.mvp.InjectViewState
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.model.interactor.SessionInteractor
+import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import com.ziggeo.androidsdk.demo.presentation.main.MainFlowView.MenuItem
 import com.ziggeo.androidsdk.demo.presentation.main.MainFlowView.MenuItem.*
@@ -17,8 +18,9 @@ import javax.inject.Inject
 @InjectViewState
 class MainFlowPresenter @Inject constructor(
     private val sessionInteractor: SessionInteractor,
-    private val prefs: Prefs
-) : BasePresenter<MainFlowView>() {
+    private val prefs: Prefs,
+    systemMessageNotifier: SystemMessageNotifier
+) : BasePresenter<MainFlowView>(systemMessageNotifier) {
 
     private var currentSelectedItem: MenuItem? = null
 
