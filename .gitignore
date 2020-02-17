@@ -133,3 +133,6 @@ tmp/
 # TeXlipse plugin
 .texlipse
 /captures/
+
+#Firebase
+**/google-services.json
