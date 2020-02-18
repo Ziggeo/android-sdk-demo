@@ -7,6 +7,8 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
     defaultConfig {
         applicationId "com.ziggeo.androidsdk.demo"
         minSdkVersion 16
@@ -48,7 +50,7 @@ ext {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:new_demo_release-SNAPSHOT"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:0.83.0_rc3"
 
     //Support
     implementation "androidx.appcompat:appcompat:1.1.0"
