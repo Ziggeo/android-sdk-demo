@@ -132,3 +132,4 @@ tmp/
 
 # TeXlipse plugin
 .texlipse
+/captures/
