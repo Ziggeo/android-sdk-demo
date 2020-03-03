@@ -1,5 +1,9 @@
 ## Changelog
 
+Version 0.82.2*(2020-03-03)*
+----------------------------
+* Added ability to configure audio encoder
+
 Version 0.82.1*(2019-11-26)*
 ----------------------------
 * Fixed memory leak in UploadingService
