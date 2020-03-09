@@ -1,5 +1,9 @@
 ## Changelog
 
+Version 0.82.3*(2020-03-09)*
+----------------------------
+* Added wakelock to prevent screen turn off during recording
+
 Version 0.82.1*(2019-11-26)*
 ----------------------------
 * Fixed memory leak in UploadingService
