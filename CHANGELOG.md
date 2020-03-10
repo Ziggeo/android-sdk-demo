@@ -1,5 +1,10 @@
 ## Changelog
 
+Version 0.82.4*(2020-03-10)*
+----------------------------
+* Fixed recording orientation for camera facing front
+* Added a few checks to prevents crashing when set the wake lock 
+
 Version 0.82.3*(2020-03-09)*
 ----------------------------
 * Added wakelock to prevent screen turn off during recording
