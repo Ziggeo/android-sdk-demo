@@ -1,5 +1,9 @@
 ## Changelog
 
+Version 0.82.5*(2020-03-11)*
+----------------------------
+* Added stop confirmation check when back button pressed
+
 Version 0.82.4*(2020-03-10)*
 ----------------------------
 * Fixed recording orientation for camera facing front
