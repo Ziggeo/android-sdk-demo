@@ -1,5 +1,9 @@
 ## Changelog
 
+Version 0.82.6*(2020-03-12)*
+----------------------------
+* Fixed crash related to memory leak after recording stop
+
 Version 0.82.5*(2020-03-11)*
 ----------------------------
 * Added stop confirmation check when back button pressed
