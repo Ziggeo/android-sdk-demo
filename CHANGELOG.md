@@ -1,5 +1,12 @@
 ## Changelog
 
+Version 0.82.9*(2020-03-12)*
+----------------------------
+* Camera1 API now forced for all devices with LEGACY level of Camera2 support.
+* Fixed `cancelledByUser` callback
+* Fixed Player and Recorder style config to prevent crashing.
+* Improvements for handling back button press
+
 Version 0.82.6*(2020-03-12)*
 ----------------------------
 * Fixed crash related to memory leak after recording stop
