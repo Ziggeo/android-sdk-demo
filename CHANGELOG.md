@@ -1,11 +1,15 @@
 ## Changelog
 
-Version 0.82.9*(2020-03-12)*
+Version 0.83.0*(2020-03-31)*
 ----------------------------
-* Camera1 API now forced for all devices with LEGACY level of Camera2 support.
-* Fixed `cancelledByUser` callback
-* Fixed Player and Recorder style config to prevent crashing.
-* Improvements for handling back button press
+* New: deleted `RecorderCacheConfig` class, use `CacheConfig` instead.
+* New: video file will be deleted after uploading in case cache is filled.
+
+Version 0.82.10*(2020-03-30)*
+----------------------------
+* New: Added file duration and folder name in file selector.
+* Fix: uploading progress callback.
+* Fix: crash in file selector.
 
 Version 0.82.6*(2020-03-12)*
 ----------------------------

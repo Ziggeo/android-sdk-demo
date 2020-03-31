@@ -28,7 +28,7 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
         setContentView(R.layout.activity_fullscreen_recorder);
         findViewById(R.id.btn_start_recorder).setOnClickListener(v -> {
             ziggeo = new Ziggeo(APP_TOKEN, CameraFullscreenRecorderActivity.this);
-            RecorderConfig config = new RecorderConfig.Builder()
+            RecorderConfig config = new RecorderConfig.Builder(getApplicationContext())
                     .callback(prepareCallback())
                     .sendImmediately(false)
                     .enableCoverShot(false)

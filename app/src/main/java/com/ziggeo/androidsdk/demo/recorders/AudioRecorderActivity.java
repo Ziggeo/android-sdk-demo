@@ -26,7 +26,7 @@ public class AudioRecorderActivity extends BaseActivity {
     @OnClick(R.id.btn_run_audio_recorder)
     void onRunAudioRecorderClicked() {
         Ziggeo ziggeo = new Ziggeo(APP_TOKEN, this);
-        RecorderConfig config = new RecorderConfig.Builder()
+        RecorderConfig config = new RecorderConfig.Builder(getApplicationContext())
                 .callback(prepareCallback())
                 .sendImmediately(false)
                 .enableCoverShot(false)
