@@ -133,3 +133,4 @@ tmp/
 # TeXlipse plugin
 .texlipse
 /captures/
+/*.json

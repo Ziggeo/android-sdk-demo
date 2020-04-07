@@ -7,14 +7,17 @@ import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.callbacks.IRecorderCallback;
 import com.ziggeo.androidsdk.callbacks.RecorderCallback;
 import com.ziggeo.androidsdk.demo.BaseActivity;
+import com.ziggeo.androidsdk.log.ZLog;
 import com.ziggeo.androidsdk.recorder.MicSoundLevel;
 import com.ziggeo.androidsdk.recorder.RecorderConfig;
 import com.ziggeo.demo.R;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
+import io.reactivex.Observable;
 import timber.log.Timber;
 
 public class CameraFullscreenRecorderActivity extends BaseActivity {
@@ -190,6 +193,26 @@ public class CameraFullscreenRecorderActivity extends BaseActivity {
         for (String cameraId : ziggeo.getCameraIdList()) {
             ziggeo.getCamera(cameraId).getCharacteristics().setZoomEnabled(false);
         }
+    }
+
+    private void clearRecordings() {
+        HashMap<String, String> args = new HashMap<>();
+        args.put("limit", "100");
+        ziggeo.apiRx()
+                .videos()
+                .index(args)
+                .toObservable()
+                .flatMap(list -> {
+                    ZLog.d("size:%s", list.size());
+                    return Observable.fromIterable(list);
+                })
+                .flatMap(videoModel -> {
+                    ZLog.d("deleting:%s", videoModel.getToken());
+                    return ziggeo.apiRx().videos()
+                            .destroy(videoModel.getToken()).toObservable();
+                })
+                .doOnError(ZLog::e)
+                .subscribe();
     }
 
 }

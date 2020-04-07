@@ -1,5 +1,15 @@
 ## Changelog
 
+Version 0.84.0*(2020-04-07)*
+----------------------------
+* New: Added landscape mode for the Recorder.
+* New: Added a flag to prevent uploading by the SDK.
+* New: Removed `turnOffCameraWhileUploading`.
+
+Version 0.83.1*(2020-04-01)*
+----------------------------
+* New: crash tracker turned off by default. Added a config to turn it on.
+
 Version 0.83.0*(2020-03-31)*
 ----------------------------
 * New: deleted `RecorderCacheConfig` class, use `CacheConfig` instead.
