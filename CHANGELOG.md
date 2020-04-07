@@ -1,5 +1,9 @@
 ## Changelog
 
+Version 0.84.1*(2020-04-07)*
+----------------------------
+* New: Default player for FileSelector is the one from the SDK
+
 Version 0.84.0*(2020-04-07)*
 ----------------------------
 * New: Added landscape mode for the Recorder.

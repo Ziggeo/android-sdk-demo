@@ -823,8 +823,8 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
 ## Update Information<a name="update"></a>
 
-The information is for upgrading from `0.82.9` to `0.83.0`. You will need to inspect the Changelog if you are switching from older versions.
-#### deleted `RecorderCacheConfig` class, use `CacheConfig` instead.
+The information is for upgrading from `0.83.0` to `0.84.1`. You will need to inspect the Changelog if you are switching from older versions.
+#### Removed `turnOffCameraWhileUploading`.
 
 ## Changelog<a name="Changelog"></a>
 
