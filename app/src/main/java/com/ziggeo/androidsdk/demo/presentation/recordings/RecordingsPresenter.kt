@@ -1,7 +1,6 @@
 package com.ziggeo.androidsdk.demo.presentation.recordings
 
 import com.arellomobile.mvp.InjectViewState
-import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
@@ -14,6 +13,7 @@ import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import com.ziggeo.androidsdk.net.exceptions.ResponseException
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import io.reactivex.disposables.Disposable
+import okhttp3.Response
 import javax.inject.Inject
 
 
@@ -27,8 +27,7 @@ class RecordingsPresenter @Inject constructor(
     private val recordingsInteractor: RecordingsInteractor,
     private var router: FlowRouter,
     private var kvStorage: KVStorage,
-    private var systemMessageNotifier: SystemMessageNotifier,
-    private var ziggeo: IZiggeo
+    private var systemMessageNotifier: SystemMessageNotifier
 ) : BasePresenter<RecordingsView>(systemMessageNotifier) {
 
     private var fabActionsExpanded = false
@@ -54,8 +53,6 @@ class RecordingsPresenter @Inject constructor(
     }
 
     fun onFabCameraClicked() {
-        //TODO
-        ziggeo.recorderConfig.startDelay = 0
         viewState.startCameraRecorder()
     }
 
