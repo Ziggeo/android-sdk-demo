@@ -16,7 +16,6 @@ class Prefs @Inject constructor(
     private fun getSharedPreferences(prefsName: String) =
         context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
 
-    //region auth
     private val AUTH_DATA = "auth_data"
     private val KEY_APP_TOKEN = "KEY_APP_TOKEN"
     private val authPrefs by lazy { getSharedPreferences(AUTH_DATA) }
@@ -26,6 +25,4 @@ class Prefs @Inject constructor(
         set(value) {
             authPrefs.edit().putString(KEY_APP_TOKEN, value).apply()
         }
-
-    //endregion
 }

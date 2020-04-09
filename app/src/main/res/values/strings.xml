@@ -91,7 +91,7 @@
     <string name="btn_select_file_text">Select file to cut</string>
     <string name="read_storage_permission_message">The app needs access to read files.</string>
     <string name="cut_video_saved_to">Video saved to: %s</string>
-    <string name="video_chooser_tile">Select video</string>
+    <string name="video_chooser_title">Select video</string>
 
 
 </resources>

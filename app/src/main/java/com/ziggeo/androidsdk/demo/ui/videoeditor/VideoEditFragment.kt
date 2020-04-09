@@ -87,7 +87,7 @@ class VideoEditFragment : BaseToolbarFragment<VideoEditView, VideoEditPresenter>
         intent.action = Intent.ACTION_GET_CONTENT
         intent.addFlags(FLAG_GRANT_READ_URI_PERMISSION)
         startActivityForResult(
-            Intent.createChooser(intent, getString(R.string.video_chooser_tile)),
+            Intent.createChooser(intent, getString(R.string.video_chooser_title)),
             0
         )
     }
