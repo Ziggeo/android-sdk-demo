@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -6,6 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.ziggeo.androidsdk.demo"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -34,6 +38,9 @@ android {
     }
 }
 
+ext {
+    kotlinVersion = "1.3.61"
+}
 dependencies {
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.github.ZiggeoJitpackService:Android-SDK:0.84.1'
@@ -45,4 +52,19 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation files('libs/YouTubeAndroidPlayerApi_v1.2.2.jar')
     implementation 'com.android.support:multidex:1.0.3'
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    //Tests
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.agoda.kakao:kakao:2.1.0-support'
+    androidTestImplementation group: 'com.android.support.test.espresso', name: 'espresso-core', version: '3.0.2'
+}
+
+configurations.all {
+    resolutionStrategy {
+        force("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+    }
 }
