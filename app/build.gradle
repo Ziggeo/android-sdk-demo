@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
@@ -14,8 +13,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        versionCode 4
-        versionName "1.0.0_internal3"
+        versionCode 5
+        versionName "1.0.0_internal4"
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true
         buildConfigField("String", "APP_TOKEN", "\"" + System.getenv("app_token") + "\"")
@@ -50,7 +49,7 @@ ext {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:0.83.0_rc3"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:rc8_1.0.0"
 
     //Support
     implementation "androidx.appcompat:appcompat:1.1.0"
@@ -93,8 +92,8 @@ dependencies {
     // Utils
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation 'com.karumi:dexter:6.0.1'
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
-    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta01'
+    implementation 'com.google.firebase:firebase-analytics:17.3.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta03'
 
     //JUnit
     testImplementation "junit:junit:4.12"
@@ -103,7 +102,7 @@ dependencies {
     //Mockito Kotlin
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     //Kakao
-    androidTestImplementation "com.agoda.kakao:kakao:2.2.0"
+    androidTestImplementation "com.agoda.kakao:kakao:2.3.0"
     androidTestImplementation "androidx.annotation:annotation:1.1.0"
     def rulesAndRunner = "1.2.0"
     androidTestImplementation "androidx.test:runner:$rulesAndRunner"
@@ -135,3 +134,4 @@ gradle.buildFinished {
 static def getDate() {
     return new Date().format('HH.mm.ss_dd-MM-YYYY')
 }
+apply plugin: 'com.google.gms.google-services'
