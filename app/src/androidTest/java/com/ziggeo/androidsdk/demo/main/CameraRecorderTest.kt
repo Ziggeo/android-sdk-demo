@@ -39,6 +39,7 @@ class CameraRecorderTest {
         val application = ApplicationProvider.getApplicationContext<Application>()
         val scope = Toothpick.openScope(DI.APP_SCOPE)
         scope.getInstance(Prefs::class.java).appToken = BuildConfig.APP_TOKEN
+        scope.getInstance(Prefs::class.java).startDelay = 0
     }
 
     @Test

@@ -13,7 +13,6 @@ import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import com.ziggeo.androidsdk.net.exceptions.ResponseException
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import io.reactivex.disposables.Disposable
-import okhttp3.Response
 import javax.inject.Inject
 
 

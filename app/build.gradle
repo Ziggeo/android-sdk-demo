@@ -49,7 +49,7 @@ ext {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:rc8_1.0.0"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:rc10_1.0.0"
 
     //Support
     implementation "androidx.appcompat:appcompat:1.1.0"
@@ -107,9 +107,12 @@ dependencies {
     def rulesAndRunner = "1.2.0"
     androidTestImplementation "androidx.test:runner:$rulesAndRunner"
     androidTestImplementation "androidx.test:rules:$rulesAndRunner"
+
     //Espresso
     def espresso = "3.2.0"
+    androidTestImplementation 'androidx.test:core:1.2.0'
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
 }
 tasks.withType(Test) {
     testLogging {
@@ -130,4 +133,5 @@ gradle.buildFinished {
 static def getDate() {
     return new Date().format('HH.mm.ss_dd-MM-YYYY')
 }
+
 apply plugin: 'com.google.gms.google-services'

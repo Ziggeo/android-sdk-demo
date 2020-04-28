@@ -17,12 +17,21 @@ class Prefs @Inject constructor(
         context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
 
     private val AUTH_DATA = "auth_data"
+
     private val KEY_APP_TOKEN = "KEY_APP_TOKEN"
+    private val KEY_START_DELAY = "KEY_START_DELAY"
+
     private val authPrefs by lazy { getSharedPreferences(AUTH_DATA) }
 
     var appToken: String?
         get() = authPrefs.getString(KEY_APP_TOKEN, null)
         set(value) {
             authPrefs.edit().putString(KEY_APP_TOKEN, value).apply()
+        }
+
+    var startDelay: Int
+        get() = authPrefs.getInt(KEY_START_DELAY, 0)
+        set(value) {
+            authPrefs.edit().putInt(KEY_START_DELAY, value).apply()
         }
 }
