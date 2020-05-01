@@ -19,6 +19,7 @@ import com.ziggeo.androidsdk.demo.di.module.AppModule
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.ui.AppActivity
 import com.ziggeo.androidsdk.demo.util.nthChildOf
+import com.ziggeo.androidsdk.log.ZLog
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -27,7 +28,7 @@ import toothpick.Toothpick
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-class DrawerTest {
+class DrawerTest : BaseTest() {
 
     @Rule
     @JvmField
@@ -41,6 +42,10 @@ class DrawerTest {
         val scope = Toothpick.openScope(DI.APP_SCOPE)
         scope.installModules(AppModule(application))
         scope.getInstance(Prefs::class.java).appToken = BuildConfig.APP_TOKEN
+    }
+
+    @Test
+    fun dumbTest() {
     }
 
     @Test

@@ -1,8 +1,6 @@
 package com.ziggeo.androidsdk.demo.main
 
-import android.app.Application
 import android.os.SystemClock
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.rule.ActivityTestRule
 import androidx.test.rule.GrantPermissionRule
@@ -11,15 +9,13 @@ import com.ziggeo.androidsdk.demo.BuildConfig
 import com.ziggeo.androidsdk.demo.di.DI
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.ui.AppActivity
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
 import org.junit.runner.RunWith
 import toothpick.Toothpick
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-class CameraRecorderTest {
+class CameraRecorderTest : BaseTest() {
 
     @Rule
     @JvmField
@@ -36,10 +32,15 @@ class CameraRecorderTest {
     fun before() {
         // make sure prefs has store token before launch
         // this will allow to navigate to the main screen
-        val application = ApplicationProvider.getApplicationContext<Application>()
         val scope = Toothpick.openScope(DI.APP_SCOPE)
-        scope.getInstance(Prefs::class.java).appToken = BuildConfig.APP_TOKEN
-        scope.getInstance(Prefs::class.java).startDelay = 0
+        prefs = scope.getInstance(Prefs::class.java)
+        prefs.appToken = BuildConfig.APP_TOKEN
+        prefs.startDelay = 0
+    }
+
+    @Test
+    fun dumbTest() {
+
     }
 
     @Test

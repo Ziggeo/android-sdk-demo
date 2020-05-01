@@ -8,7 +8,6 @@ import androidx.test.rule.ActivityTestRule
 import com.agoda.kakao.screen.Screen.Companion.onScreen
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.di.DI
-import com.ziggeo.androidsdk.demo.di.module.AppModule
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.ui.AppActivity
 import org.junit.Before
@@ -19,7 +18,7 @@ import toothpick.Toothpick
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-class AuthScreenTest {
+class AuthScreenTest : BaseTest() {
 
     @Rule
     @JvmField
@@ -30,8 +29,12 @@ class AuthScreenTest {
         // clear prefs before launch. This will allow to stay on AuthScreen
         val application = ApplicationProvider.getApplicationContext<Application>()
         val scope = Toothpick.openScope(DI.APP_SCOPE)
-        scope.installModules(AppModule(application))
-        scope.getInstance(Prefs::class.java).appToken = null
+        prefs = scope.getInstance(Prefs::class.java)
+        prefs.appToken = null
+    }
+
+    @Test
+    fun dumbTest() {
     }
 
     @Test

@@ -21,5 +21,10 @@ class FragmentModule(context: Context, prefs: Prefs) : Module() {
         bind(IZiggeo::class.java).toInstance(ziggeo)
         bind(IVideosServiceRx::class.java).toInstance(ziggeo.apiRx().videos())
         bind(IStreamsServiceRx::class.java).toInstance(ziggeo.apiRx().streams())
+        bindPrefs(ziggeo, prefs)
+    }
+
+    fun bindPrefs(ziggeo: Ziggeo, prefs: Prefs) {
+        ziggeo.recorderConfig.startDelay = prefs.startDelay
     }
 }
