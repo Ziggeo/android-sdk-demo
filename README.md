@@ -1,5 +1,3 @@
-# Android SDK
-
 # Ziggeo's Android SDK
 
 ## Index
