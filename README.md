@@ -89,7 +89,7 @@ Recorder can be added in 2 ways. As a fullscreen recorder and the embedded recor
 
 The fullscreen recorder is useful when you want your recorder to take entire screen.
 
-The embedded recordder is useful when you want your recorder to be part of your app. For example if you had an avatar in your app and you want it to be a quick video.
+The embedded recorder is useful when you want your recorder to be part of your app. For example if you had an avatar in your app and you want it to be a quick video.
 
 **Create fullscreen Video Recorder**
 
@@ -186,7 +186,7 @@ We have separated the events that are available to you into several different ca
 
 Common callbacks happen for both player and recorder. It usually does not depend on the embed method you have used, however each callback has additional details next to it.
 
-Ups, something unexpected happened! Now its your time to react.
+Ups, something unexpected happened! Now it's your time to react.
 
     /**
      * Called in case of any error occurred
