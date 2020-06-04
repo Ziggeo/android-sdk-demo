@@ -12,7 +12,7 @@ class SessionInteractor @Inject constructor(
     private val prefs: Prefs
 ) {
     val hasAccount: Boolean
-        get() = prefs.appToken != null
+        get() = !prefs.appToken.isNullOrEmpty()
 
     fun logout() {
         prefs.appToken = null
