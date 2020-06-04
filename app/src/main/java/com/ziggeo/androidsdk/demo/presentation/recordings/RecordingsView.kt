@@ -18,6 +18,7 @@ interface RecordingsView : MvpView {
     fun startScreenRecorder()
     fun startAudioRecorder()
     fun startImageCapture()
+    fun startFileSelector()
 
     fun showRecordingsList(list: List<VideoModel>)
     fun showNoRecordingsMessage()

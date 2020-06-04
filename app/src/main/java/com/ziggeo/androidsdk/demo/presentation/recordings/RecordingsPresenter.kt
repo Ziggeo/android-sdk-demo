@@ -67,6 +67,10 @@ class RecordingsPresenter @Inject constructor(
         viewState.startImageCapture()
     }
 
+    fun onFabFileClicked() {
+        viewState.startFileSelector()
+    }
+
     fun onFabActionsClicked() {
         if (fabActionsExpanded) {
             viewState.startHideAnimationMainFab()

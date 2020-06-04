@@ -37,14 +37,18 @@ class RecordingDetailsPresenter @Inject constructor(
         videoToken = kvStorage.get(VIDEO_TOKEN) as String
         viewState.showPreview(recordingsInteractor.getImageUrl(videoToken))
         disposable = recordingsInteractor.getInfo(videoToken)
-            .doOnError { commonOnError(it) }
             .doOnSubscribe {
                 viewState.showProgressDialog(true)
             }.doFinally {
                 viewState.showProgressDialog(false)
-            }.subscribe { model ->
-                this.model = model
-                viewState.showRecordingData(model)
+            }.subscribe { model, throwable ->
+                model?.let {
+                    this.model = model
+                    viewState.showRecordingData(model)
+                }
+                throwable?.let {
+                    commonOnError(it)
+                }
             }
         viewState.showViewsInViewState()
     }

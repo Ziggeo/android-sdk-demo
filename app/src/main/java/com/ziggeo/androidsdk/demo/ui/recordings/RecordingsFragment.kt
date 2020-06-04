@@ -76,6 +76,7 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
         fab_screen.show()
         fab_audio.show()
         fab_image.show()
+        fab_file.show()
     }
 
     override fun hideActionFabs() {
@@ -83,6 +84,7 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
         fab_screen.hide()
         fab_audio.hide()
         fab_image.hide()
+        fab_file.hide()
     }
 
     override fun hideSelectorFab() {
@@ -123,6 +125,10 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
         Toast.makeText(context, R.string.coming_soon, Toast.LENGTH_SHORT).show()
     }
 
+    override fun startFileSelector() {
+        ziggeo.uploadFromFileSelector(null)
+    }
+
     override fun startShowAnimationMainFab() {
         fab_selector.startAnimation(rotateForward)
     }
@@ -149,6 +155,9 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
         }
         fab_image.setOnClickListener {
             presenter.onFabImageClicked()
+        }
+        fab_file.setOnClickListener {
+            presenter.onFabFileClicked()
         }
     }
 }
