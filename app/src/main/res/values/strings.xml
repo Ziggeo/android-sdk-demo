@@ -11,7 +11,7 @@
     <string name="err_not_empty">Field should not be empty.</string>
 
     <!-- Auth screen -->
-    <string name="auth_message">Please go to demo.ziggeo.com on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>
+    <string name="auth_message">Please go to ziggeo.com/quickstart on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>
     <string name="btn_scan_qr_text">Scan QR code</string>
     <string name="btn_use_entered_text">Use entered</string>
     <string name="enter_qr_manually_text">or enter manually</string>
@@ -34,6 +34,7 @@
     <!-- Recordings screen -->
     <string name="title_recordings">Recordings</string>
     <string name="err_check_indexing">It\'s possible you\'ve forgotten to allow index operation. Please, check app settings on the website.</string>
+    <string name="message_recordings_list_empty">There are no recordings.\nPress plus button to add some.</string>
 
     <!-- Settings screen -->
     <string name="title_settings">Settings</string>
@@ -47,10 +48,6 @@
     <!-- Contact screen -->
     <string name="title_contact">Contact us</string>
 
-    <!-- Recordings screen -->
-    <string name="title_about">About</string>
-    <string name="message_recordings_list_empty">There are no recordings.\nPress plus button to add some.</string>
-
     <!-- Recording details screen -->
     <string name="title_details">Details</string>
     <string name="hint_token_or_key">Token or key</string>
@@ -58,6 +55,7 @@
     <string name="hint_description">Description for the recording (optional)</string>
 
     <!-- About screen -->
+    <string name="title_about">About</string>
     <string name="about_subtitle">Thanks for trying our demo!</string>
     <string name="about_text">
         \nVisit &lt;a href=https://github.com/Ziggeo/Android-Client-SDK>GitHub&lt;/a> if you want to star us or just to see the sources
@@ -92,6 +90,5 @@
     <string name="read_storage_permission_message">The app needs access to read files.</string>
     <string name="cut_video_saved_to">Video saved to: %s</string>
     <string name="video_chooser_title">Select video</string>
-
 
 </resources>
