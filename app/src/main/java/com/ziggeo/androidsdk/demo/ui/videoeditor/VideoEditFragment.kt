@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
+import android.os.FileUtils
 import android.view.View
 import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -46,8 +47,8 @@ class VideoEditFragment : BaseToolbarFragment<VideoEditView, VideoEditPresenter>
             .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-                    btn_select_file.visibility = View.VISIBLE
-                    btn_select_file.setOnClickListener { presenter.onSelectFileClicked() }
+//                    btn_select_file.visibility = View.VISIBLE
+//                    btn_select_file.setOnClickListener { presenter.onSelectFileClicked() }
                 }
 
                 override fun onPermissionRationaleShouldBeShown(
