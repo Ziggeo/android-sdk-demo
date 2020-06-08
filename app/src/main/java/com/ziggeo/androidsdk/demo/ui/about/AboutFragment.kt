@@ -13,6 +13,7 @@ import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.about.AboutPresenter
 import com.ziggeo.androidsdk.demo.presentation.about.AboutView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
+import com.ziggeo.androidsdk.demo.util.fromHtml
 import kotlinx.android.synthetic.main.fragment_about.*
 
 
@@ -35,18 +36,7 @@ class AboutFragment : BaseToolbarFragment<AboutView, AboutPresenter>(), AboutVie
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tv_text.text = fromHtml(getString(R.string.about_text).replace("\n", "<br>"))
+        tv_text.text = String.fromHtml(getString(R.string.about_text).replace("\n", "<br>"))
         tv_text.movementMethod = LinkMovementMethod.getInstance()
-    }
-
-    private fun fromHtml(html: String?): Spanned {
-        return when {
-            html == null -> SpannableString("")
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.N -> Html.fromHtml(
-                html,
-                Html.FROM_HTML_MODE_LEGACY
-            )
-            else -> return Html.fromHtml(html)
-        }
     }
 }

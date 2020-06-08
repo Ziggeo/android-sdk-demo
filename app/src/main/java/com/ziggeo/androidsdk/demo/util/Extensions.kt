@@ -1,6 +1,10 @@
 package com.ziggeo.androidsdk.demo.util
 
 import android.graphics.drawable.Drawable
+import android.os.Build
+import android.text.Html
+import android.text.SpannableString
+import android.text.Spanned
 import android.widget.TextView
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
@@ -30,4 +34,15 @@ fun TextView.setStartDrawable(drawable: Drawable) {
         null,
         null
     )
+}
+
+fun String.Companion.fromHtml(html: String?): Spanned {
+    return when {
+        html == null -> SpannableString("")
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.N -> Html.fromHtml(
+            html,
+            Html.FROM_HTML_MODE_LEGACY
+        )
+        else -> return Html.fromHtml(html)
+    }
 }
