@@ -1,13 +1,15 @@
 package com.ziggeo.androidsdk.demo;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.ziggeo.androidsdk.IZiggeo;
 import com.ziggeo.androidsdk.Ziggeo;
 import com.ziggeo.androidsdk.qr.QrScannerCallback;
 import com.ziggeo.androidsdk.qr.QrScannerConfig;
+import com.ziggeo.androidsdk.ui.activities.BaseActivity;
 
 import java.util.List;
 
