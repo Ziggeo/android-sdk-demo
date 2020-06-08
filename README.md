@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.com/3akat/DemoCi.svg?token=mdQjmt7YBpiVWHG1fxhs&branch=new_demo)](https://travis-ci.com/3akat/DemoCi)
+[![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
+[![](https://jitpack.io/v/ZiggeoJitpackService/Android-SDK.svg)](https://jitpack.io/#ZiggeoJitpackService/Android-SDK)
+
 # Ziggeo's Android SDK
 
 ## Index
@@ -308,9 +312,9 @@ Need to make sure someone confirms the video submission? Use this callback and r
      * Video has been recorded and is available for preview and redo option and this shows a button
      * that just raises this event, does not do anything on our end,
      * however the button is basically there to confirm the submission of that video.
-     * 
+     *
      * This is a requirement in some countries.
-     * 
+     *
      * Will be fired in case of sendImmediately = false.
      */
     void manuallySubmitted();
@@ -401,7 +405,7 @@ Want to know if and where to someone changes the playback (seeks the video)?
 Want to know lightning conditions?
 
     ziggeo.setSensorCallback(@Nullable SensorManager.Callback callback);
-    
+
     /**
      * Called every second.
      *
@@ -716,7 +720,7 @@ Our recorder is utilizing helper class to define different properties of the rec
 *Auto start recorder*
 
     /**
-     * Configure if the recording should be started 
+     * Configure if the recording should be started
      * after initialisation of the recorder.
      */
     configBuilder.autostartRecording(boolean autostart);
@@ -760,7 +764,7 @@ Our recorder is utilizing helper class to define different properties of the rec
 *Show stop dialog*
 
     configBuilder.confirmStopRecording(boolean confirmStopRecording);
-    
+
     /**
       * Configure a dialog to confirm recording stop.
       * The dialog will be shown for both cases: either user press `stop` button or `sendAndClose` checkmark.
@@ -772,7 +776,7 @@ Our recorder is utilizing helper class to define different properties of the rec
 *Register callback*
 
     /**
-      * Register a callback to be invoked when a recording 
+      * Register a callback to be invoked when a recording
       * is started, stopped, an error occurred, etc.
       *
       * @param callback - the callback
@@ -795,7 +799,7 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
     HashMap<String, String> extraArguments = new HashMap<>();
     extraArguments.put("data", "{\"key\":\"value\"}");
-    
+
     RecorderConfig config = new RecorderConfig.Builder()
                     .maxDuration(5000)
                     .extraArgs(extraArguments)
@@ -805,7 +809,7 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
     HashMap<String, String> extraArguments = new HashMap<>();
     extraArguments.put("effect_profile", "1234567890");
-    
+
     RecorderConfig config = new RecorderConfig.Builder()
                     .extraArgs(extraArguments)
                     .build();
@@ -814,15 +818,14 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
 
     HashMap<String, String> extraArguments = new HashMap<>();
     extraArguments.put("video_profile", "1234567890");
-    
+
     RecorderConfig config = new RecorderConfig.Builder()
                     .extraArgs(extraArguments)
                     .build();
 
 ## Update Information<a name="update"></a>
-
-The information is for upgrading from `0.83.0` to `0.84.1`. You will need to inspect the Changelog if you are switching from older versions.
-#### Removed `turnOffCameraWhileUploading`.
+Version 1.0.0 containt several broken changes, e.g., AndroidX migration, some methods renamed.
+You will need to inspect the Changelog if you are switching from older versions.
 
 ## Changelog<a name="Changelog"></a>
 

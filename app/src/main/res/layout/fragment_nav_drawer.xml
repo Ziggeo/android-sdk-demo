@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:animateLayoutChanges="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_app_token_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_margin"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_marginTop="@dimen/common_margin"
+            android:text="@string/title_app_token"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/iv_logout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_app_token"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_margin"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_app_token_title"
+            tools:text="1wefewfergewgqg3234g3wg3egwe43t43g4" />
+
+        <ImageView
+            android:id="@+id/iv_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/common_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_exit_to_app_white_24dp" />
+
+        <LinearLayout
+            android:id="@+id/drawer_menu_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/common_margin"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_app_token">
+
+            <TextView
+                android:id="@+id/mi_recordings"
+                style="@style/MenuItemStyle"
+                android:text="@string/item_recordings" />
+
+            <TextView
+                android:id="@+id/mi_video_editor"
+                style="@style/MenuItemStyle"
+                android:text="@string/item_video_editor" />
+
+            <TextView
+                android:id="@+id/mi_settings"
+                style="@style/MenuItemStyle"
+                android:text="@string/item_settings" />
+
+            <include layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/mi_sdks"
+                style="@style/MenuItemStyle"
+                android:text="@string/item_sdks" />
+
+            <TextView
+                android:id="@+id/mi_clients"
+                style="@style/MenuItemStyle"
+                android:text="@string/item_clients" />
+
+            <TextView
+                android:id="@+id/mi_contact"
+                style="@style/MenuItemStyle"
+                android:text="@string/item_contact" />
+
+            <TextView
+                android:id="@+id/mi_about"
+                style="@style/MenuItemStyle"
+                android:text="@string/item_about" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

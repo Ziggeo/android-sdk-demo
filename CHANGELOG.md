@@ -1,71 +1,21 @@
 ## Changelog
 
-Version 0.84.1*(2020-04-07)*
+Version 1.0.0*(2020-06-08)*
 ----------------------------
-* New: Default player for FileSelector is the one from the SDK
-
-Version 0.84.0*(2020-04-07)*
-----------------------------
-* New: Added landscape mode for the Recorder.
-* New: Added a flag to prevent uploading by the SDK.
-* New: Removed `turnOffCameraWhileUploading`.
-
-Version 0.83.1*(2020-04-01)*
-----------------------------
-* New: crash tracker turned off by default. Added a config to turn it on.
-
-Version 0.83.0*(2020-03-31)*
-----------------------------
-* New: deleted `RecorderCacheConfig` class, use `CacheConfig` instead.
-* New: video file will be deleted after uploading in case cache is filled.
-
-Version 0.82.10*(2020-03-30)*
-----------------------------
-* New: Added file duration and folder name in file selector.
-* Fix: uploading progress callback.
-* Fix: crash in file selector.
-
-Version 0.82.6*(2020-03-12)*
-----------------------------
-* Fixed crash related to memory leak after recording stop
-
-Version 0.82.5*(2020-03-11)*
-----------------------------
-* Added stop confirmation check when back button pressed
-
-Version 0.82.4*(2020-03-10)*
-----------------------------
-* Fixed recording orientation for camera facing front
-* Added a few checks to prevents crashing when set the wake lock 
-
-Version 0.82.3*(2020-03-09)*
-----------------------------
-* Added wakelock to prevent screen turn off during recording
-
-Version 0.82.1*(2019-11-26)*
-----------------------------
-* Fixed memory leak in UploadingService
-
-Version 0.82.0*(2019-11-22)*
-----------------------------
-* Deleted `cancelRequest` method
-* Added QR scanner feature
-* OkHttp version set to `3.12.6` - this is max version that supports API 16
-* Improvements for uploading queue and related notifications
-* Bugfixing
-
-Version 0.81.1*(2019-11-03)*
-----------------------------
-* Player config now requires context
-* Fixed crash when back press during recording.
-* Video/Stream model improvements
-* Added more methods to videos service
-* TargetSdk, compileSdk, buildTools, gradle and libs versions updated
-* Streaming implemented for screen recorder
-* Fixed screen recorder resolution and landscape orientation
-* Fixed time for retrieving images for cover shots
-* Added rampToZoomFactor for CameraView
-* Added preloading configuration 
+* AndroidX migration
+* Camera
+  * forced use of Camera1 API on devices with Camera support level INFO_SUPPORTED_HARDWARE_LEVEL_LIMITED and INFO_SUPPORTED_HARDWARE_LEVEL_LEGACY
+  * Several camera issues fixed
+* File selector
+  * added header text
+  * UI improvements
+  * now it uses a player from the SDK
+  * max duration config support
+  * back navigation improvements
+* Improvements of methods, argumets and other for correct usage with Kotlin.
+* Ziggeo's crash tracker (/debugger) turned off by default
+* Allowed landscape device orientation.
+* Other changes
 
 Version 0.80.3*(2019-9-9)*
 ----------------------------

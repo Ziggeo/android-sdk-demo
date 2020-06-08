@@ -134,3 +134,6 @@ tmp/
 .texlipse
 /captures/
 /*.json
+
+#Firebase
+**/google-services.json
