@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.com/3akat/DemoCi.svg?token=mdQjmt7YBpiVWHG1fxhs&branch=new_demo)](https://travis-ci.com/3akat/DemoCi)
 [![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
 [![](https://jitpack.io/v/ZiggeoJitpackService/Android-SDK.svg)](https://jitpack.io/#ZiggeoJitpackService/Android-SDK)
 
