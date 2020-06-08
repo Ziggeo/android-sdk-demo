@@ -23,6 +23,6 @@ class SettingsFragment : BaseToolbarFragment<SettingsView, SettingsPresenter>(),
     override fun providePresenter(): SettingsPresenter =
         scope.getInstance(SettingsPresenter::class.java)
 
-    override fun getTitleRes() = R.string.title_settings
+    override fun getHeaderTextRes() = R.string.settings_header
 
 }

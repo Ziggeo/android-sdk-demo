@@ -27,7 +27,7 @@ class TopClientsFragment : BaseToolbarFragment<TopClientsView, TopClientsPresent
     override fun providePresenter(): TopClientsPresenter =
         scope.getInstance(TopClientsPresenter::class.java)
 
-    override fun getTitleRes() = R.string.title_clients
+    override fun getHeaderTextRes() = R.string.clients_header
 
     override fun showClients(clientsList: List<ClientModel>) {
         val adapter = TopClientsAdapter(clientsList)

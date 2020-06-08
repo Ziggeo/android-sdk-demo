@@ -26,7 +26,7 @@ class RecordingsPresenter @Inject constructor(
     private val recordingsInteractor: RecordingsInteractor,
     private var router: FlowRouter,
     private var kvStorage: KVStorage,
-    private var systemMessageNotifier: SystemMessageNotifier
+    systemMessageNotifier: SystemMessageNotifier
 ) : BasePresenter<RecordingsView>(systemMessageNotifier) {
 
     private var fabActionsExpanded = false

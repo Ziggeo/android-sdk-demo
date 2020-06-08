@@ -32,7 +32,7 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
     RecordingDetailsView,
     MessageDialogFragment.OnClickListener {
 
-    override fun getTitleRes(): Int = R.string.title_details
+    override fun getHeaderTextRes(): Int = R.string.details_header
 
     override val layoutRes = R.layout.fragment_recording_details
 

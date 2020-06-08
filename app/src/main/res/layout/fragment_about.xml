@@ -9,8 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/about_subtitle"
-        android:textSize="@dimen/about_subtitle_text_size"
+        android:text="@string/about_title"
+        android:textSize="@dimen/title_text_size"
         android:textStyle="bold" />
 
     <TextView
@@ -22,5 +22,5 @@
         android:focusable="true"
         android:linksClickable="true"
         android:textColorLink="@color/colorPrimary"
-        android:textSize="@dimen/about_content_text_size" />
+        android:textSize="@dimen/message_text_size" />
 </LinearLayout>

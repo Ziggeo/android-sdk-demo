@@ -36,7 +36,7 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
     override fun providePresenter(): RecordingsPresenter =
         scope.getInstance(RecordingsPresenter::class.java)
 
-    override fun getTitleRes() = R.string.title_recordings
+    override fun getHeaderTextRes() = R.string.recordings_header
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -29,7 +29,7 @@ class AvailableSDKsFragment : BaseToolbarFragment<AvailableSDKsView, AvailableSD
     override fun providePresenter(): AvailableSDKsPresenter =
         scope.getInstance(AvailableSDKsPresenter::class.java)
 
-    override fun getTitleRes() = R.string.title_sdks
+    override fun getHeaderTextRes() = R.string.sdks_header
 
     override fun showSdks(clientsList: List<FeatureModel>) {
         val adapter = AvailableSDKsAdapter(clientsList)

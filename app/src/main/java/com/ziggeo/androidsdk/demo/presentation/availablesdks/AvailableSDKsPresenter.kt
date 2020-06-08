@@ -21,7 +21,7 @@ import javax.inject.Inject
 @InjectViewState
 class AvailableSDKsPresenter @Inject constructor(
     private var availableSdksInteractor: AvailableSdksInteractor,
-    private var systemMessageNotifier: SystemMessageNotifier
+    systemMessageNotifier: SystemMessageNotifier
 ) : BasePresenter<AvailableSDKsView>(systemMessageNotifier) {
     private var disposable: Disposable? = null
 

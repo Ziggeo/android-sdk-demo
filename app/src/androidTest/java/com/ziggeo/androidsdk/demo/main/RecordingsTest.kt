@@ -49,7 +49,7 @@ class RecordingsTest : BaseTest() {
                 withId(R.id.toolbar),
                 1
             )
-        ).check(matches(withText(R.string.title_recordings)))
+        ).check(matches(withText(R.string.recordings_header)))
     }
 
     @Test

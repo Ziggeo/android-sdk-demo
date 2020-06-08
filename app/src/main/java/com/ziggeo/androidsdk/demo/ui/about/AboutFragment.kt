@@ -1,10 +1,6 @@
 package com.ziggeo.androidsdk.demo.ui.about
 
-import android.os.Build
 import android.os.Bundle
-import android.text.Html
-import android.text.SpannableString
-import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -32,7 +28,7 @@ class AboutFragment : BaseToolbarFragment<AboutView, AboutPresenter>(), AboutVie
     override fun providePresenter(): AboutPresenter =
         scope.getInstance(AboutPresenter::class.java)
 
-    override fun getTitleRes() = R.string.title_about
+    override fun getHeaderTextRes() = R.string.about_header
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

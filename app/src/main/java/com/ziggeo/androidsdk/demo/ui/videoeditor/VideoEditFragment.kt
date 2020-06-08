@@ -34,7 +34,7 @@ class VideoEditFragment : BaseToolbarFragment<VideoEditView, VideoEditPresenter>
     @InjectPresenter
     lateinit var presenter: VideoEditPresenter
 
-    override fun getTitleRes(): Int = R.string.title_video_editor
+    override fun getHeaderTextRes(): Int = R.string.video_editor_header
     override val layoutRes: Int = R.layout.fragment_video_edit
 
     @ProvidePresenter

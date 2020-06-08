@@ -8,6 +8,8 @@
     <dimen name="list_empty_message_margin_top">200dp</dimen>
     <dimen name="item_elevation">4dp</dimen>
     <dimen name="item_corner_radius">4dp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="message_text_size">18sp</dimen>
 
     <!-- Auth screen -->
     <dimen name="logo_width">250dp</dimen>
@@ -31,10 +33,6 @@
 
     <!-- Contact us screen -->
     <dimen name="btn_start_now_top_margin">70dp</dimen>
-
-    <!-- About screen -->
-    <dimen name="about_subtitle_text_size">20sp</dimen>
-    <dimen name="about_content_text_size">18sp</dimen>
 
     <!-- Top clients screen -->
     <dimen name="clients_item_height">200dp</dimen>

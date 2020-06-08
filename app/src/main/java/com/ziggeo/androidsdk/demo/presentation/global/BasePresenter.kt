@@ -5,7 +5,6 @@ import com.arellomobile.mvp.MvpView
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessage
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
-import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageType
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import timber.log.Timber
@@ -17,7 +16,7 @@ import timber.log.Timber
  * alexb@ziggeo.com
  */
 open class BasePresenter<V : MvpView>(
-    private var systemMessageNotifier: SystemMessageNotifier
+    protected var systemMessageNotifier: SystemMessageNotifier
 ) : MvpPresenter<V>() {
 
     private val compositeDisposable = CompositeDisposable()
