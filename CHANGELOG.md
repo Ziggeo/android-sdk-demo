@@ -1,5 +1,22 @@
 ## Changelog
 
+Version 1.0.0*(2020-06-08)*
+----------------------------
+* AndroidX migration
+* Camera
+  * forced use of Camera1 API on devices with Camera support level INFO_SUPPORTED_HARDWARE_LEVEL_LIMITED and INFO_SUPPORTED_HARDWARE_LEVEL_LEGACY
+  * Several camera issues fixed
+* File selector
+  * added header text
+  * UI improvements
+  * now it uses a player from the SDK
+  * max duration config support
+  * back navigation improvements
+* Improvements of methods, argumets and other for correct usage with Kotlin.
+* Ziggeo's crash tracker (/debugger) turned off by default
+* Allowed landscape device orientation.
+* Other changes
+
 Version 0.80.3*(2019-9-9)*
 ----------------------------
 * Removed Timber and VideoCache dependencies
