@@ -126,7 +126,7 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
     }
 
     override fun startFileSelector() {
-        ziggeo.uploadFromFileSelector(null)
+        ziggeo.uploadFromFileSelector()
     }
 
     override fun startShowAnimationMainFab() {

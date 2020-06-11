@@ -1,5 +1,10 @@
 ## Changelog
 
+Version 1.1.0*(2020-06-10)*
+----------------------------
+* Added separate config class for file selector 
+* Added separate callback for uploader 
+
 Version 1.0.0*(2020-06-08)*
 ----------------------------
 * AndroidX migration
