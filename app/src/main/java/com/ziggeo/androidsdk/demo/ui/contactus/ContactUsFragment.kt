@@ -48,7 +48,7 @@ class ContactUsFragment : BaseToolbarFragment<ContactUsView, ContactUsPresenter>
     }
 
     override fun sendEmailToZiggeo() {
-        val supportEmail = "https://support.ziggeo.com"
+        val supportEmail = "support@ziggeo.com"
         context?.let {
             sendEmail(it, supportEmail)
         }
