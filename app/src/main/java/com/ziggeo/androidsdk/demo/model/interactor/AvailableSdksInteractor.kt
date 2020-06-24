@@ -62,7 +62,7 @@ class AvailableSdksInteractor @Inject constructor(
         list.add(
             SdkModel(
                 R.drawable.ic_flutter,
-                ""
+                "https://github.com/Ziggeo/Flutter-SDK"
             )
         )
 
