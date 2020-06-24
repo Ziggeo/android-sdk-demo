@@ -50,9 +50,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_qr"
                 android:layout_width="match_parent"
-                android:inputType="text"
-                android:imeOptions="actionGo"
                 android:layout_height="match_parent"
+                android:imeOptions="actionGo"
+                android:inputType="text"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,7 +62,6 @@
             android:layout_height="@dimen/btn_qr_height"
             android:text="@string/btn_scan_qr_text"
             android:textColor="@android:color/white"
-            app:backgroundTint="@color/colorPrimaryLight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_qr" />
@@ -87,7 +86,6 @@
             android:text="@string/btn_use_entered_text"
             android:textColor="@android:color/white"
             android:visibility="gone"
-            app:backgroundTint="@color/colorPrimaryLight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_qr" />

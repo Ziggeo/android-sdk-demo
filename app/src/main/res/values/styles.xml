@@ -2,11 +2,15 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/quicksand_regular</item>
+        <item name="android:buttonStyle">@style/Button</item>
+    </style>
+
+    <style name="Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="backgroundTint">@color/colorPrimaryLight</item>
     </style>
 
     <style name="ProgressDialogTheme" parent="ThemeOverlay.AppCompat.Dialog">
