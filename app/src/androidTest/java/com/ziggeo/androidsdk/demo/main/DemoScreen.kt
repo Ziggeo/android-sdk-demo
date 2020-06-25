@@ -2,7 +2,7 @@ package com.ziggeo.androidsdk.demo.main
 
 import com.agoda.kakao.screen.Screen
 import com.agoda.kakao.text.KButton
-import com.ziggeo.demo.R
+import com.ziggeo.androidsdk.demo.R
 
 
 /**
