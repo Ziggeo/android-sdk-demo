@@ -1,5 +1,10 @@
 ## Changelog
 
+Version 2.0.0*(2020-06-25)*
+----------------------------
+* Some methods renamed to make better Kotlin compatibility.
+* Version update to 2.x.x just to be consistent with internal documentation.
+
 Version 1.1.0*(2020-06-10)*
 ----------------------------
 * Added separate config class for file selector 

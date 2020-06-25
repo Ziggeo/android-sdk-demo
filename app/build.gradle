@@ -49,7 +49,7 @@ ext {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:1.1.0"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.0"
 
     //Support
     implementation "androidx.appcompat:appcompat:1.1.0"

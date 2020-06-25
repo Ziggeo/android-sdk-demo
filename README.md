@@ -823,7 +823,7 @@ This can be used to specify effect profiles, video profiles, custom data, etc.
                     .build();
 
 ## Update Information<a name="update"></a>
-Version 1.0.0 and up contains several broken changes, e.g., AndroidX migration, some methods renamed.
+Version 2.0.0 and up contains several broken changes, e.g., AndroidX migration, some methods renamed.
 You will need to inspect the Changelog if you are switching from older versions.
 
 ## Changelog<a name="Changelog"></a>
