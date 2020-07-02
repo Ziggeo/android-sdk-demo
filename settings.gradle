@@ -1,1 +1,4 @@
 include ':app'
+//, ':sdk'
+//project(':sdk').projectDir = new File('../Android-SDK/sdk') // for internal development
+
