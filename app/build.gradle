@@ -13,8 +13,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        versionCode 8
-        versionName "1.0.1"
+        versionCode 9
+        versionName "1.0.2"
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true
         buildConfigField("String", "APP_TOKEN", "\"" + System.getenv("app_token") + "\"")
@@ -53,13 +53,13 @@ ext {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.1"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.2"
 //    implementation project(':sdk') // for internal development
 
     //Support
     implementation "androidx.appcompat:appcompat:1.1.0"
     implementation "com.google.android.material:material:1.1.0"
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
 
