@@ -22,12 +22,7 @@ android {
     }
     signingConfigs {
         debug{}
-        release {
-            storeFile file(System.getenv("storeFile"))
-            storePassword System.getenv("storePassword")
-            keyAlias System.getenv("keyAlias")
-            keyPassword System.getenv("keyPassword")
-        }
+        release {}
     }
     buildTypes {
         debug {
