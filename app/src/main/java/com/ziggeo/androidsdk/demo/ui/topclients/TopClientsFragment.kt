@@ -1,5 +1,6 @@
 package com.ziggeo.androidsdk.demo.ui.topclients
 
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -36,7 +37,7 @@ class TopClientsFragment : BaseToolbarFragment<TopClientsView, TopClientsPresent
                 presenter.onClientItemClicked(model)
             }
         }
-        rv_clients.layoutManager = LinearLayoutManager(context)
+        rv_clients.layoutManager = GridLayoutManager(context,2)
         rv_clients.adapter = adapter
     }
 
