@@ -13,22 +13,21 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        versionCode 8
-        versionName "1.0.1"
+        versionCode 10
+        versionName "1.0.3"
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true
         buildConfigField("String", "APP_TOKEN", "\"" + System.getenv("app_token") + "\"")
         setProperty("archivesBaseName", "androidKotlin-v" + versionName + "_" + getDate())
     }
     signingConfigs {
-        release {
-            storeFile file(System.getenv("storeFile"))
-            storePassword System.getenv("storePassword")
-            keyAlias System.getenv("keyAlias")
-            keyPassword System.getenv("keyPassword")
-        }
+        debug{}
+        release {}
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
@@ -49,12 +48,13 @@ ext {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.0"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.2"
+//    implementation project(':sdk') // for internal development
 
     //Support
     implementation "androidx.appcompat:appcompat:1.1.0"
     implementation "com.google.android.material:material:1.1.0"
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
 
@@ -93,7 +93,7 @@ dependencies {
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation 'com.karumi:dexter:6.0.1'
     implementation 'com.google.firebase:firebase-analytics:17.4.3'
-    implementation 'com.google.firebase:firebase-crashlytics:17.0.1'
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
 
     //JUnit
     testImplementation "junit:junit:4.12"

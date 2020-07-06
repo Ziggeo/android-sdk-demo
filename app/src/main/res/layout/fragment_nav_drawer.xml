@@ -98,6 +98,11 @@
                 android:id="@+id/mi_about"
                 style="@style/MenuItemStyle"
                 android:text="@string/item_about" />
+
+            <TextView
+                android:id="@+id/mi_log"
+                style="@style/MenuItemStyle"
+                android:text="@string/item_log" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

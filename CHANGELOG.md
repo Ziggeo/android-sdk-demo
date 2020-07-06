@@ -1,5 +1,10 @@
 ## Changelog
 
+Version 2.0.2*(2020-07-02)*
+----------------------------
+* Fixed progress bar when loading folders list. 
+* Added temporary fix for file selector for Android API 29 
+
 Version 2.0.0*(2020-06-25)*
 ----------------------------
 * Some methods renamed to make better Kotlin compatibility.

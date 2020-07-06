@@ -90,6 +90,10 @@ class MainFlowFragment : BaseFlowFragment(), MainFlowView,
         router.newRootScreen(Screens.Settings)
     }
 
+    override fun openLogScreen() {
+        router.newRootScreen(Screens.Log)
+    }
+
     override fun openSdksScreen() {
         router.newRootScreen(Screens.AvailableSdks)
     }
@@ -145,6 +149,7 @@ class MainFlowFragment : BaseFlowFragment(), MainFlowView,
         mi_clients.tag = CLIENTS
         mi_contact.tag = CONTACT_US
         mi_about.tag = ABOUT
+        mi_log.tag = LOG
 
         mi_recordings.setOnClickListener(itemClickListener)
         mi_video_editor.setOnClickListener(itemClickListener)
@@ -153,6 +158,7 @@ class MainFlowFragment : BaseFlowFragment(), MainFlowView,
         mi_clients.setOnClickListener(itemClickListener)
         mi_contact.setOnClickListener(itemClickListener)
         mi_about.setOnClickListener(itemClickListener)
+        mi_log.setOnClickListener(itemClickListener)
 
         selectMenuItem(RECORDINGS)
     }

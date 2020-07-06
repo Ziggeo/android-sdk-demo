@@ -137,3 +137,6 @@ tmp/
 
 #Firebase
 **/google-services.json
+
+# Mac
+**/.DS_Store
