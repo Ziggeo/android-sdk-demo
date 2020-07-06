@@ -14,12 +14,13 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 interface MainFlowView : MvpView {
     enum class MenuItem {
         RECORDINGS,
+        VIDEO_EDITOR,
         SETTINGS,
         SDKS,
         CLIENTS,
         CONTACT_US,
         ABOUT,
-        VIDEO_EDITOR
+        LOG,
     }
 
     fun selectMenuItem(item: MenuItem)
@@ -32,6 +33,7 @@ interface MainFlowView : MvpView {
     fun openAuthScreen()
     fun openRecordingsScreen()
     fun openSettingsScreen()
+    fun openLogScreen()
     fun openSdksScreen()
     fun openClientsScreen()
     fun openContactUsScreen()

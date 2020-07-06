@@ -27,6 +27,7 @@
     <string name="item_clients">Top clients</string>
     <string name="item_contact">Contact us</string>
     <string name="item_about">About</string>
+    <string name="item_log">Log</string>
     <string name="item_video_editor">Video Editor</string>
 
     <!-- Logout confirmation -->
@@ -39,6 +40,9 @@
 
     <!-- Settings screen -->
     <string name="settings_header">Settings</string>
+
+    <!-- Log screen -->
+    <string name="log_header">Log</string>
 
     <!-- SDKs screen -->
     <string name="sdks_header">Available SDKs</string>

@@ -40,6 +40,7 @@ class MainFlowPresenter @Inject constructor(
                 CONTACT_US -> viewState.openContactUsScreen()
                 ABOUT -> viewState.openAboutScreen()
                 VIDEO_EDITOR -> viewState.openVideoEditorScreen()
+                LOG -> viewState.openLogScreen()
             }
         }
     }
