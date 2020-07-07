@@ -6,6 +6,7 @@ import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.log.LogPresenter
 import com.ziggeo.androidsdk.demo.presentation.log.LogView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
+import kotlinx.android.synthetic.main.fragment_log.*
 
 
 /**
@@ -25,4 +26,7 @@ class LogFragment : BaseToolbarFragment<LogView, LogPresenter>(), LogView {
 
     override fun getHeaderTextRes() = R.string.log_header
 
+    override fun showLogs(logs: String?) {
+        tv_log.text = logs
+    }
 }

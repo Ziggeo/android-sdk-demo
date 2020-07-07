@@ -12,5 +12,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
  */
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface LogView : MvpView {
-
+    fun showLogs(log: String?)
 }
