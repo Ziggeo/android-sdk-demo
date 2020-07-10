@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.view.GravityCompat
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.google.firebase.analytics.ktx.logEvent
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.presentation.main.MainFlowPresenter
@@ -54,6 +55,9 @@ class MainFlowFragment : BaseFlowFragment(), MainFlowView,
     }
 
     private fun openNavDrawer(open: Boolean) {
+        analytics.logEvent("drawer_open") {
+            param("open", open.toString())
+        }
         if (open) drawer.openDrawer(GravityCompat.START)
         else drawer.closeDrawer(GravityCompat.START)
     }

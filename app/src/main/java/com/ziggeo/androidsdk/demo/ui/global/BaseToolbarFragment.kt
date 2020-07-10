@@ -11,6 +11,7 @@ import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.di.module.FragmentModule
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.demo.ui.log.EventLogger
 import toothpick.Scope
 import javax.inject.Inject
 
@@ -32,14 +33,16 @@ abstract class BaseToolbarFragment<V : MvpView, P : BasePresenter<V>> : BaseScre
         initTitle()
     }
 
-    private fun initTitle() = activity?.findViewById<Toolbar>(R.id.toolbar)?.setTitle(getHeaderTextRes())
+    private fun initTitle() =
+        activity?.findViewById<Toolbar>(R.id.toolbar)?.setTitle(getHeaderTextRes())
 
     override fun installModules(scope: Scope) {
         super.installModules(scope)
         scope.installModules(
             FragmentModule(
                 scope.getInstance(Context::class.java),
-                scope.getInstance(Prefs::class.java)
+                scope.getInstance(Prefs::class.java),
+                scope.getInstance(EventLogger::class.java)
             )
         )
     }

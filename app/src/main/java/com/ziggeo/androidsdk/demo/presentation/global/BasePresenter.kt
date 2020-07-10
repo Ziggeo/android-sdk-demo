@@ -2,6 +2,8 @@ package com.ziggeo.androidsdk.demo.presentation.global
 
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.MvpView
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessage
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
@@ -16,7 +18,8 @@ import timber.log.Timber
  * alexb@ziggeo.com
  */
 open class BasePresenter<V : MvpView>(
-    protected var systemMessageNotifier: SystemMessageNotifier
+    protected var systemMessageNotifier: SystemMessageNotifier,
+    protected var analytics: FirebaseAnalytics
 ) : MvpPresenter<V>() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -34,6 +37,9 @@ open class BasePresenter<V : MvpView>(
     }
 
     protected fun commonOnError(throwable: Throwable) {
+        analytics.logEvent("common_error") {
+            param("error", throwable.toString())
+        }
         systemMessageNotifier.send(SystemMessage(R.string.err_common))
         Timber.e(throwable)
     }

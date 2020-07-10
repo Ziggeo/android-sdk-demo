@@ -1,7 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.videoeditor
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
@@ -18,8 +18,9 @@ import javax.inject.Inject
 @InjectViewState
 class VideoEditPresenter @Inject constructor(
     val ziggeo: IZiggeo,
-    systemMessageNotifier: SystemMessageNotifier
-) : BasePresenter<VideoEditView>(systemMessageNotifier) {
+    systemMessageNotifier: SystemMessageNotifier,
+    analytics: FirebaseAnalytics
+) : BasePresenter<VideoEditView>(systemMessageNotifier, analytics) {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()

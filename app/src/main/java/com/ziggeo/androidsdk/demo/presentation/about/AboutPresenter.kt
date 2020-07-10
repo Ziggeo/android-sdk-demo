@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.about
 
 import com.arellomobile.mvp.InjectViewState
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import javax.inject.Inject
@@ -13,5 +14,6 @@ import javax.inject.Inject
  */
 @InjectViewState
 class AboutPresenter @Inject constructor(
-    systemMessageNotifier: SystemMessageNotifier
-) : BasePresenter<AboutView>(systemMessageNotifier)
+    systemMessageNotifier: SystemMessageNotifier,
+    analytics: FirebaseAnalytics
+) : BasePresenter<AboutView>(systemMessageNotifier, analytics)

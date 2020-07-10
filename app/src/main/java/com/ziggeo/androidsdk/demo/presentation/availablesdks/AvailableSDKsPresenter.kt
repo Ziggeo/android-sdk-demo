@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.availablesdks
 
 import com.arellomobile.mvp.InjectViewState
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.model.data.feature.FeatureModel
 import com.ziggeo.androidsdk.demo.model.data.feature.SdkModel
@@ -21,8 +22,9 @@ import javax.inject.Inject
 @InjectViewState
 class AvailableSDKsPresenter @Inject constructor(
     private var availableSdksInteractor: AvailableSdksInteractor,
-    systemMessageNotifier: SystemMessageNotifier
-) : BasePresenter<AvailableSDKsView>(systemMessageNotifier) {
+    systemMessageNotifier: SystemMessageNotifier,
+    analytics: FirebaseAnalytics
+) : BasePresenter<AvailableSDKsView>(systemMessageNotifier, analytics) {
     private var disposable: Disposable? = null
 
     override fun onFirstViewAttach() {

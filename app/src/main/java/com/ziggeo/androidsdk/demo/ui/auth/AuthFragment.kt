@@ -28,6 +28,7 @@ class AuthFragment : BaseScreenFragment<AuthView, AuthPresenter>(), AuthView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_scan_qr.setOnClickListener {
+            analytics.logEvent("scan_qr_clicked", null)
             presenter.onScanQrClicked()
         }
         tv_enter_manually.setOnClickListener {
@@ -41,6 +42,7 @@ class AuthFragment : BaseScreenFragment<AuthView, AuthPresenter>(), AuthView {
             true
         }
         btn_use_entered_qr.setOnClickListener {
+            analytics.logEvent("use_entered_qr_clicked", null)
             presenter.onUseEnteredQrClicked(et_qr.text.toString())
         }
     }

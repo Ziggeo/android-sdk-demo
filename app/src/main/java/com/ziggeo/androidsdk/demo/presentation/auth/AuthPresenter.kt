@@ -1,6 +1,8 @@
 package com.ziggeo.androidsdk.demo.presentation.auth
 
 import com.arellomobile.mvp.InjectViewState
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
 import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
@@ -21,12 +23,16 @@ class AuthPresenter @Inject constructor(
     private var ziggeo: IZiggeo,
     private var prefs: Prefs,
     private var router: Router,
-    systemMessageNotifier: SystemMessageNotifier
-) : BasePresenter<AuthView>(systemMessageNotifier) {
+    systemMessageNotifier: SystemMessageNotifier,
+    analytics: FirebaseAnalytics
+) : BasePresenter<AuthView>(systemMessageNotifier, analytics) {
 
     private val qrScannerCallback = object : QrScannerCallback() {
         override fun onQrDecoded(value: String) {
             super.onQrDecoded(value)
+            analytics.logEvent("qr_decoded") {
+                param("value", value)
+            }
             if (value.isNotEmpty()) {
                 prefs.appToken = value
                 ziggeo.appToken = value

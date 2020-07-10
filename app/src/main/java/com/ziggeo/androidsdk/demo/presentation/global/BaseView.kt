@@ -9,5 +9,5 @@ import com.arellomobile.mvp.MvpView
  * alexb@ziggeo.com
  */
 interface BaseView : MvpView {
-    fun showProgressDialog(boolean: Boolean)
+    fun showLoading(show: Boolean)
 }

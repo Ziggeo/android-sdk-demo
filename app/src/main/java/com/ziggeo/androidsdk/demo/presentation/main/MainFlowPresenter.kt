@@ -1,6 +1,7 @@
 package com.ziggeo.androidsdk.demo.presentation.main
 
 import com.arellomobile.mvp.InjectViewState
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.model.interactor.SessionInteractor
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
@@ -19,8 +20,9 @@ import javax.inject.Inject
 class MainFlowPresenter @Inject constructor(
     private val sessionInteractor: SessionInteractor,
     private val prefs: Prefs,
-    systemMessageNotifier: SystemMessageNotifier
-) : BasePresenter<MainFlowView>(systemMessageNotifier) {
+    systemMessageNotifier: SystemMessageNotifier,
+    analytics: FirebaseAnalytics
+) : BasePresenter<MainFlowView>(systemMessageNotifier, analytics) {
 
     private var currentSelectedItem: MenuItem? = null
 

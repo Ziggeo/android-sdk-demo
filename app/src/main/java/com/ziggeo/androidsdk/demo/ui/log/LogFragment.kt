@@ -1,8 +1,12 @@
 package com.ziggeo.androidsdk.demo.ui.log
 
+import android.view.View
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
+import com.ziggeo.androidsdk.demo.model.data.feature.LogModel
 import com.ziggeo.androidsdk.demo.presentation.log.LogPresenter
 import com.ziggeo.androidsdk.demo.presentation.log.LogView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
@@ -26,7 +30,24 @@ class LogFragment : BaseToolbarFragment<LogView, LogPresenter>(), LogView {
 
     override fun getHeaderTextRes() = R.string.log_header
 
-    override fun showLogs(logs: String?) {
-        tv_log.text = logs
+    override fun showLogs(logModels: List<LogModel>) {
+        tv_empty_list.visibility = View.INVISIBLE
+        rv_logs.visibility = View.VISIBLE
+
+        val adapter = LogAdapter(logModels.asReversed())
+        rv_logs.layoutManager = LinearLayoutManager(context)
+        rv_logs.adapter = adapter
+        rv_logs.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+
+    }
+
+    override fun showNoLogsMessage() {
+        tv_empty_list.visibility = View.VISIBLE
+        rv_logs.visibility = View.INVISIBLE
     }
 }

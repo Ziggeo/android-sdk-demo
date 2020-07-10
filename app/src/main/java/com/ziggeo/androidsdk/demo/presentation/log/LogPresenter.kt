@@ -1,8 +1,13 @@
 package com.ziggeo.androidsdk.demo.presentation.log
 
 import com.arellomobile.mvp.InjectViewState
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.ziggeo.androidsdk.demo.model.interactor.LogsInteractor
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import java.io.BufferedReader
 import java.io.IOException
@@ -16,29 +21,34 @@ import javax.inject.Inject
  */
 @InjectViewState
 class LogPresenter @Inject constructor(
-    systemMessageNotifier: SystemMessageNotifier
-) : BasePresenter<LogView>(systemMessageNotifier) {
+    systemMessageNotifier: SystemMessageNotifier,
+    private val logsInteractor: LogsInteractor,
+    analytics: FirebaseAnalytics
+) : BasePresenter<LogView>(systemMessageNotifier, analytics) {
+
+    private var disposable: Disposable? = null
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        viewState.showLogs(loadLogs())
+        disposable = logsInteractor.getLogsList()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { viewState.showLoading(true) }
+            .doFinally { viewState.showLoading(false) }
+            .subscribe({ data ->
+                if (data.isEmpty()) {
+                    viewState.showNoLogsMessage()
+                } else {
+                    viewState.showLogs(data)
+                }
+            }, {
+                commonOnError(it)
+                viewState.showNoLogsMessage()
+            })
     }
 
-    private fun loadLogs(): String? {
-        try {
-            val process = Runtime.getRuntime().exec("logcat -d")
-            val bufferedReader = BufferedReader(
-                InputStreamReader(process.inputStream)
-            )
-            val log = StringBuilder()
-            var line: String? = ""
-            while (bufferedReader.readLine().also { line = it } != null) {
-                log.append(line)
-            }
-            return log.toString()
-        } catch (e: IOException) {
-            Timber.e(e)
-        }
-        return null
+    override fun detachView(view: LogView?) {
+        super.detachView(view)
+        disposable?.dispose()
     }
 }

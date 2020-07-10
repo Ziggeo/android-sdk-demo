@@ -43,6 +43,7 @@
 
     <!-- Log screen -->
     <string name="log_header">Log</string>
+    <string name="message_log_empty">There are no logs.</string>
 
     <!-- SDKs screen -->
     <string name="sdks_header">Available SDKs</string>
@@ -99,5 +100,25 @@
 
     <!-- Fullscreen recorder -->
     <string name="btn_text_start_camera_recorder">Press me to start camera recorder</string>
+
+    <!-- Recorder events -->
+    <string name="ev_rec_loaded">Recorder: loaded</string>
+    <string name="ev_rec_manuallySubmitted">Recorder: manually submitted</string>
+    <string name="ev_rec_recordingStarted">Recorder: recording started</string>
+    <string name="ev_rec_recordingStopped">Recording stopped</string>
+    <string name="ev_rec_countdown">Recorder: countdown</string>
+    <string name="ev_rec_recordingProgress">Recorder: recording progress</string>
+    <string name="ev_rec_readyToRecord">Recorder: ready to record</string>
+    <string name="ev_rec_accessForbidden">Recorder: access forbidden</string>
+    <string name="ev_rec_accessGranted">Recorder: access granted</string>
+    <string name="ev_rec_noCamera">Recorder: no camera</string>
+    <string name="ev_rec_noMicrophone">Recorder: no microphone</string>
+    <string name="ev_rec_hasCamera">Recorder: has camera</string>
+    <string name="ev_rec_hasMicrophone">Recorder: has microphone</string>
+    <string name="ev_rec_microphoneHealth">Recorder: microphone health</string>
+    <string name="ev_rec_canceledByUser">Recorder: canceled by user</string>
+    <string name="ev_rec_error">Recorder: error</string>
+    <string name="ev_rec_streamingStarted">Recorder: streaming started</string>
+    <string name="ev_rec_streamingStopped">Recorder: streaming stopped</string>
 
 </resources>

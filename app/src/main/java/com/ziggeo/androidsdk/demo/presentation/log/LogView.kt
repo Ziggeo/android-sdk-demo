@@ -1,8 +1,9 @@
 package com.ziggeo.androidsdk.demo.presentation.log
 
-import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import com.ziggeo.androidsdk.demo.presentation.global.BaseView
+import com.ziggeo.androidsdk.demo.model.data.feature.LogModel
 
 
 /**
@@ -11,6 +12,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
  * alexb@ziggeo.com
  */
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface LogView : MvpView {
-    fun showLogs(log: String?)
+interface LogView : BaseView {
+    fun showLogs(logModels: List<LogModel>)
+    fun showNoLogsMessage()
 }
