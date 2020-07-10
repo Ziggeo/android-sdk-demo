@@ -21,7 +21,7 @@
 
     <!-- Drawer -->
     <string name="title_app_token">Application token:</string>
-    <string name="item_recordings">Recording</string>
+    <string name="item_recordings">Recordings</string>
     <string name="item_settings">Settings</string>
     <string name="item_sdks">Available SDKs</string>
     <string name="item_clients">Top clients</string>
@@ -120,5 +120,17 @@
     <string name="ev_rec_error">Recorder: error</string>
     <string name="ev_rec_streamingStarted">Recorder: streaming started</string>
     <string name="ev_rec_streamingStopped">Recorder: streaming stopped</string>
+
+    <!-- Player events -->
+    <string name="ev_pl_loaded">Player: loaded</string>
+    <string name="ev_pl_accessForbidden">Player: access forbidden</string>
+    <string name="ev_pl_accessGranted">Player: access granted</string>
+    <string name="ev_pl_canceledByUser">Player: canceled by user</string>
+    <string name="ev_pl_error">Player: error</string>
+    <string name="ev_pl_playing">Player: playing</string>
+    <string name="ev_pl_paused">Player: paused</string>
+    <string name="ev_pl_ended">Player: ended</string>
+    <string name="ev_pl_seek">Player: seek</string>
+    <string name="ev_pl_readyToPlay">Player: ready to play</string>
 
 </resources>

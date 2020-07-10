@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.Ziggeo
+import com.ziggeo.androidsdk.callbacks.PlayerCallback
 import com.ziggeo.androidsdk.callbacks.RecorderCallback
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
@@ -34,6 +35,7 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
         bind(FirebaseAnalytics::class.java).toInstance(analytics)
 
         initRecorderCallback(ziggeo, logger)
+        initPlayerCallback(ziggeo, logger)
     }
 
     fun bindPrefs(ziggeo: Ziggeo, prefs: Prefs) {
@@ -130,6 +132,60 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
             override fun streamingStopped() {
                 super.streamingStopped()
                 logger.addEvent(R.string.ev_rec_streamingStopped)
+            }
+        }
+    }
+
+    private fun initPlayerCallback(ziggeo: IZiggeo, logger: EventLogger) {
+        ziggeo.playerConfig.callback = object : PlayerCallback() {
+            override fun loaded() {
+                super.loaded()
+                logger.addEvent(R.string.ev_pl_loaded)
+            }
+
+            override fun accessForbidden(permissions: MutableList<String>) {
+                super.accessForbidden(permissions)
+                logger.addEvent(R.string.ev_pl_accessForbidden, permissions.toString())
+            }
+
+            override fun accessGranted() {
+                super.accessGranted()
+                logger.addEvent(R.string.ev_pl_accessGranted)
+            }
+
+            override fun canceledByUser() {
+                super.canceledByUser()
+                logger.addEvent(R.string.ev_pl_canceledByUser)
+            }
+
+            override fun error(throwable: Throwable) {
+                super.error(throwable)
+                logger.addEvent(R.string.ev_pl_error, throwable.toString())
+            }
+
+            override fun playing() {
+                super.playing()
+                logger.addEvent(R.string.ev_pl_playing)
+            }
+
+            override fun paused() {
+                super.paused()
+                logger.addEvent(R.string.ev_pl_paused)
+            }
+
+            override fun ended() {
+                super.ended()
+                logger.addEvent(R.string.ev_pl_ended)
+            }
+
+            override fun seek(millis: Long) {
+                super.seek(millis)
+                logger.addEvent(R.string.ev_pl_seek, millis.toString())
+            }
+
+            override fun readyToPlay() {
+                super.readyToPlay()
+                logger.addEvent(R.string.ev_pl_readyToPlay)
             }
         }
     }
