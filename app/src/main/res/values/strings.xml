@@ -142,4 +142,12 @@
     <string name="ev_upl_verified">Uploader: verified</string>
     <string name="ev_upl_error">Uploader: error</string>
 
+    <!-- Uploader events -->
+    <string name="ev_fs_loaded">FileSelector: loaded</string>
+    <string name="ev_fs_accessForbidden">FileSelector: access forbidden</string>
+    <string name="ev_fs_accessGranted">FileSelector: access granted</string>
+    <string name="ev_fs_canceledByUser">FileSelector: canceled by user</string>
+    <string name="ev_fs_uploadSelected">FileSelector: upload selected</string>
+    <string name="ev_fs_error">FileSelector: error</string>
+
 </resources>

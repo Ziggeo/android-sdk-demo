@@ -5,6 +5,7 @@ import android.content.Context
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.Ziggeo
+import com.ziggeo.androidsdk.callbacks.FileSelectorCallback
 import com.ziggeo.androidsdk.callbacks.PlayerCallback
 import com.ziggeo.androidsdk.callbacks.RecorderCallback
 import com.ziggeo.androidsdk.callbacks.UploadingCallback
@@ -15,7 +16,6 @@ import com.ziggeo.androidsdk.net.services.streams.IStreamsServiceRx
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import com.ziggeo.androidsdk.recorder.MicSoundLevel
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import toothpick.config.Module
@@ -45,6 +45,7 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
         initRecorderCallback(ziggeo, logger)
         initPlayerCallback(ziggeo, logger)
         initUploaderCallback(ziggeo, logger)
+        initFileSelectorCallback(ziggeo, logger)
     }
 
     fun bindPrefs(ziggeo: Ziggeo, prefs: Prefs) {
@@ -205,12 +206,12 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
         subj.debounce(100, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(Consumer {
+            .subscribe {
                 logger.addEvent(
                     R.string.ev_upl_uploadProgress,
                     "${it.token} ${it.uploaded}/${it.total}"
                 )
-            })
+            }
 
         ziggeo.uploadingConfig.callback = object : UploadingCallback() {
             override fun uploaded(path: String, token: String) {
@@ -253,9 +254,44 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
 
             override fun error(throwable: Throwable) {
                 super.error(throwable)
-                logger.addEvent(R.string.ev_pl_error, throwable.toString())
+                logger.addEvent(R.string.ev_upl_error, throwable.toString())
             }
         }
+    }
+
+    private fun initFileSelectorCallback(ziggeo: IZiggeo, logger: EventLogger) {
+        ziggeo.fileSelectorConfig.callback = object : FileSelectorCallback() {
+            override fun uploadSelected(paths: MutableList<String>) {
+                super.uploadSelected(paths)
+                logger.addEvent(R.string.ev_fs_uploadSelected, paths.toString())
+            }
+
+            override fun loaded() {
+                super.loaded()
+                logger.addEvent(R.string.ev_fs_loaded)
+            }
+
+            override fun canceledByUser() {
+                super.canceledByUser()
+                logger.addEvent(R.string.ev_fs_canceledByUser)
+            }
+
+            override fun accessForbidden(permissions: MutableList<String>) {
+                super.accessForbidden(permissions)
+                logger.addEvent(R.string.ev_fs_accessForbidden, permissions.toString())
+            }
+
+            override fun accessGranted() {
+                super.accessGranted()
+                logger.addEvent(R.string.ev_fs_accessGranted)
+            }
+
+            override fun error(throwable: Throwable) {
+                super.error(throwable)
+                logger.addEvent(R.string.ev_fs_error, throwable.toString())
+            }
+        }
+
     }
 
     data class Progress(val token: String, val uploaded: Long, val total: Long)
