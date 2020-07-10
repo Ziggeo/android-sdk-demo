@@ -26,9 +26,11 @@ android {
     }
     buildTypes {
         debug {
+            manifestPlaceholders = [crashlyticsCollectionEnabled:"false"]
             signingConfig signingConfigs.debug
         }
         release {
+            manifestPlaceholders = [crashlyticsCollectionEnabled:"true"]
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -48,7 +50,7 @@ ext {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.2"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.3"
 //    implementation project(':sdk') // for internal development
 
     //Support
@@ -92,8 +94,8 @@ dependencies {
     // Utils
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation 'com.karumi:dexter:6.0.1'
-    implementation 'com.google.firebase:firebase-analytics:17.4.3'
-    implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.3'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:17.1.0'
 
     //JUnit
     testImplementation "junit:junit:4.12"
