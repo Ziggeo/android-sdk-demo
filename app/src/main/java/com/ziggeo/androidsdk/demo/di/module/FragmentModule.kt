@@ -1,18 +1,26 @@
 package com.ziggeo.androidsdk.demo.di.module
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.Ziggeo
 import com.ziggeo.androidsdk.callbacks.PlayerCallback
 import com.ziggeo.androidsdk.callbacks.RecorderCallback
+import com.ziggeo.androidsdk.callbacks.UploadingCallback
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.ui.log.EventLogger
 import com.ziggeo.androidsdk.net.services.streams.IStreamsServiceRx
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import com.ziggeo.androidsdk.recorder.MicSoundLevel
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.PublishSubject
 import toothpick.config.Module
+import java.io.File
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -36,6 +44,7 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
 
         initRecorderCallback(ziggeo, logger)
         initPlayerCallback(ziggeo, logger)
+        initUploaderCallback(ziggeo, logger)
     }
 
     fun bindPrefs(ziggeo: Ziggeo, prefs: Prefs) {
@@ -189,4 +198,65 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
             }
         }
     }
+
+    @SuppressLint("CheckResult")
+    private fun initUploaderCallback(ziggeo: IZiggeo, logger: EventLogger) {
+        val subj = PublishSubject.create<Progress>()
+        subj.debounce(100, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(Consumer {
+                logger.addEvent(
+                    R.string.ev_upl_uploadProgress,
+                    "${it.token} ${it.uploaded}/${it.total}"
+                )
+            })
+
+        ziggeo.uploadingConfig.callback = object : UploadingCallback() {
+            override fun uploaded(path: String, token: String) {
+                super.uploaded(path, token)
+                logger.addEvent(
+                    R.string.ev_upl_uploaded,
+                    "$token $path"
+                )
+            }
+
+            override fun uploadingStarted(path: String) {
+                super.uploadingStarted(path)
+                logger.addEvent(R.string.ev_upl_uploadingStarted, path)
+            }
+
+            override fun uploadProgress(
+                videoToken: String,
+                file: File,
+                uploaded: Long,
+                total: Long
+            ) {
+                super.uploadProgress(videoToken, file, uploaded, total)
+                subj.onNext(Progress(videoToken, uploaded, total))
+            }
+
+            override fun processing(token: String) {
+                super.processing(token)
+                logger.addEvent(R.string.ev_upl_processing, token)
+            }
+
+            override fun processed(token: String) {
+                super.processed(token)
+                logger.addEvent(R.string.ev_upl_processed, token)
+            }
+
+            override fun verified(token: String) {
+                super.verified(token)
+                logger.addEvent(R.string.ev_upl_verified, token)
+            }
+
+            override fun error(throwable: Throwable) {
+                super.error(throwable)
+                logger.addEvent(R.string.ev_pl_error, throwable.toString())
+            }
+        }
+    }
+
+    data class Progress(val token: String, val uploaded: Long, val total: Long)
 }

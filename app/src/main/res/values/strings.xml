@@ -133,4 +133,13 @@
     <string name="ev_pl_seek">Player: seek</string>
     <string name="ev_pl_readyToPlay">Player: ready to play</string>
 
+    <!-- Uploader events -->
+    <string name="ev_upl_uploaded">Uploader: uploaded</string>
+    <string name="ev_upl_uploadingStarted">Uploader: uploading started</string>
+    <string name="ev_upl_uploadProgress">Uploader: upload progress</string>
+    <string name="ev_upl_processing">Uploader: processing</string>
+    <string name="ev_upl_processed">Uploader: processed</string>
+    <string name="ev_upl_verified">Uploader: verified</string>
+    <string name="ev_upl_error">Uploader: error</string>
+
 </resources>
