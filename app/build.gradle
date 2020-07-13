@@ -94,8 +94,8 @@ dependencies {
     // Utils
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation 'com.karumi:dexter:6.0.1'
-    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.3'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:17.1.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:17.1.1'
 
     //JUnit
     testImplementation "junit:junit:4.12"
