@@ -5,13 +5,11 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.demo.model.interactor.LogsInteractor
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.demo.util.EmailSender
+import com.ziggeo.androidsdk.net.models.DeviceInfo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
 import javax.inject.Inject
 
 /**
@@ -23,7 +21,8 @@ import javax.inject.Inject
 class LogPresenter @Inject constructor(
     systemMessageNotifier: SystemMessageNotifier,
     private val logsInteractor: LogsInteractor,
-    analytics: FirebaseAnalytics
+    analytics: FirebaseAnalytics,
+    private val emailSender: EmailSender
 ) : BasePresenter<LogView>(systemMessageNotifier, analytics) {
 
     private var disposable: Disposable? = null
@@ -50,5 +49,22 @@ class LogPresenter @Inject constructor(
     override fun detachView(view: LogView?) {
         super.detachView(view)
         disposable?.dispose()
+    }
+
+    fun onBtnSendReportClicked() {
+        disposable = logsInteractor.saveDumpToFile()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { viewState.showLoading(true) }
+            .doFinally { viewState.showLoading(false) }
+            .subscribe({ uri ->
+                val di = DeviceInfo()
+                emailSender.sendEmailToSupport(
+                    "${di.sdkType} demo app v${di.ziggeoSdkVer} autoreport",
+                    uri
+                )
+            }, {
+                commonOnError(it)
+            })
     }
 }

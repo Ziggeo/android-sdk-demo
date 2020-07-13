@@ -15,6 +15,4 @@ interface ContactUsView : MvpView {
 
     fun openSupportPage()
 
-    fun sendEmailToZiggeo()
-
 }

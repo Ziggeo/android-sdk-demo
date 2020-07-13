@@ -12,6 +12,7 @@ import com.ziggeo.androidsdk.callbacks.UploadingCallback
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.ui.log.EventLogger
+import com.ziggeo.androidsdk.demo.util.EmailSender
 import com.ziggeo.androidsdk.net.services.streams.IStreamsServiceRx
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import com.ziggeo.androidsdk.recorder.MicSoundLevel
@@ -36,6 +37,7 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
         bind(IZiggeo::class.java).toInstance(ziggeo)
         bind(IVideosServiceRx::class.java).toInstance(ziggeo.apiRx().videos())
         bind(IStreamsServiceRx::class.java).toInstance(ziggeo.apiRx().streams())
+        bind(EmailSender::class.java).toInstance(EmailSender(context))
         bindPrefs(ziggeo, prefs)
 
         val analytics = FirebaseAnalytics.getInstance(context)

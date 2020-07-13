@@ -43,4 +43,7 @@
     <!-- Video Editor screen -->
     <dimen name="btn_select_file_margin_top">250dp</dimen>
 
+    <!-- Log screen -->
+    <dimen name="btn_contact_us_width">200dp</dimen>
+
 </resources>

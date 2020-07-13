@@ -4,6 +4,7 @@ import com.arellomobile.mvp.InjectViewState
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.demo.util.EmailSender
 import javax.inject.Inject
 
 
@@ -15,7 +16,8 @@ import javax.inject.Inject
 @InjectViewState
 class ContactUsPresenter @Inject constructor(
     systemMessageNotifier: SystemMessageNotifier,
-    analytics: FirebaseAnalytics
+    analytics: FirebaseAnalytics,
+    private val emailSender: EmailSender
 ) : BasePresenter<ContactUsView>(systemMessageNotifier, analytics) {
 
     fun onVisitSupportClicked() {
@@ -23,6 +25,6 @@ class ContactUsPresenter @Inject constructor(
     }
 
     fun onContactUsClicked() {
-        viewState.sendEmailToZiggeo()
+        emailSender.sendEmailToSupport()
     }
 }

@@ -9,7 +9,6 @@ import com.ziggeo.androidsdk.demo.presentation.contactus.ContactUsPresenter
 import com.ziggeo.androidsdk.demo.presentation.contactus.ContactUsView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
 import com.ziggeo.androidsdk.demo.util.openUrl
-import com.ziggeo.androidsdk.demo.util.sendEmail
 import kotlinx.android.synthetic.main.fragment_contact_us.*
 
 
@@ -44,13 +43,6 @@ class ContactUsFragment : BaseToolbarFragment<ContactUsView, ContactUsPresenter>
         val supportUrl = "https://support.ziggeo.com"
         context?.let {
             openUrl(it, supportUrl)
-        }
-    }
-
-    override fun sendEmailToZiggeo() {
-        val supportEmail = "support@ziggeo.com"
-        context?.let {
-            sendEmail(it, supportEmail)
         }
     }
 }

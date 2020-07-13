@@ -1,5 +1,6 @@
 package com.ziggeo.androidsdk.demo.ui.log
 
+import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +31,13 @@ class LogFragment : BaseToolbarFragment<LogView, LogPresenter>(), LogView {
 
     override fun getHeaderTextRes() = R.string.log_header
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btn_send_report.setOnClickListener {
+            presenter.onBtnSendReportClicked()
+        }
+    }
+
     override fun showLogs(logModels: List<LogModel>) {
         tv_empty_list.visibility = View.INVISIBLE
         rv_logs.visibility = View.VISIBLE
@@ -43,7 +51,6 @@ class LogFragment : BaseToolbarFragment<LogView, LogPresenter>(), LogView {
                 DividerItemDecoration.VERTICAL
             )
         )
-
     }
 
     override fun showNoLogsMessage() {

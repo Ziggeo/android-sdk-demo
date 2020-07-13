@@ -29,6 +29,7 @@ abstract class BaseFragment : MvpAppCompatFragment() {
     abstract val layoutRes: Int
     private var instanceStateSaved: Boolean = false
     private val viewHandler = Handler()
+    protected lateinit var root: View
 
     @Inject
     protected lateinit var analytics: FirebaseAnalytics
@@ -64,7 +65,10 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(layoutRes, container, false)
+    ): View {
+        root = inflater.inflate(layoutRes, container, false)
+        return root
+    }
 
     override fun onResume() {
         super.onResume()

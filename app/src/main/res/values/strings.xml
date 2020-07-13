@@ -51,6 +51,10 @@
     <!-- Clients screen -->
     <string name="clients_header">Top Clients</string>
 
+    <!-- Logs screen -->
+    <string name="btn_send_report">Send report</string>
+    <string name="log_write_permission_rationale">The app need write permission to save log info.</string>
+
     <!-- Contact screen -->
     <string name="contact_header">Contact us</string>
     <string name="contact_title">Stay in touch</string>
