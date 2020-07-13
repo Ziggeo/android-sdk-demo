@@ -3,8 +3,9 @@ package com.ziggeo.androidsdk.demo.presentation.log
 import com.arellomobile.mvp.InjectViewState
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.demo.model.interactor.LogsInteractor
+import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
-import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.demo.presentation.global.BaseMainFlowPresenter
 import com.ziggeo.androidsdk.demo.util.EmailSender
 import com.ziggeo.androidsdk.net.models.DeviceInfo
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -19,11 +20,12 @@ import javax.inject.Inject
  */
 @InjectViewState
 class LogPresenter @Inject constructor(
+    router: FlowRouter,
     systemMessageNotifier: SystemMessageNotifier,
-    private val logsInteractor: LogsInteractor,
     analytics: FirebaseAnalytics,
+    private val logsInteractor: LogsInteractor,
     private val emailSender: EmailSender
-) : BasePresenter<LogView>(systemMessageNotifier, analytics) {
+) : BaseMainFlowPresenter<LogView>(router, systemMessageNotifier, analytics) {
 
     private var disposable: Disposable? = null
 

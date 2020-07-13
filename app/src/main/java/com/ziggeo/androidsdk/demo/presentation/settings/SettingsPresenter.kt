@@ -2,8 +2,9 @@ package com.ziggeo.androidsdk.demo.presentation.settings
 
 import com.arellomobile.mvp.InjectViewState
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
-import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.demo.presentation.global.BaseMainFlowPresenter
 import javax.inject.Inject
 
 
@@ -14,6 +15,7 @@ import javax.inject.Inject
  */
 @InjectViewState
 class SettingsPresenter @Inject constructor(
+    router: FlowRouter,
     systemMessageNotifier: SystemMessageNotifier,
     analytics: FirebaseAnalytics
-) : BasePresenter<SettingsView>(systemMessageNotifier, analytics)
+) : BaseMainFlowPresenter<SettingsView>(router, systemMessageNotifier, analytics)

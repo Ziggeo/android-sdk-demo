@@ -11,7 +11,7 @@ import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessage
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
-import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.demo.presentation.global.BaseMainFlowPresenter
 import com.ziggeo.androidsdk.net.exceptions.ResponseException
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import io.reactivex.disposables.Disposable
@@ -30,7 +30,7 @@ class RecordingsPresenter @Inject constructor(
     private var kvStorage: KVStorage,
     systemMessageNotifier: SystemMessageNotifier,
     analytics: FirebaseAnalytics
-) : BasePresenter<RecordingsView>(systemMessageNotifier, analytics) {
+) : BaseMainFlowPresenter<RecordingsView>(router, systemMessageNotifier, analytics) {
 
     private var fabActionsExpanded = false
     private var disposable: Disposable? = null
@@ -43,11 +43,6 @@ class RecordingsPresenter @Inject constructor(
     override fun detachView(view: RecordingsView?) {
         super.detachView(view)
         disposable?.dispose()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        router.exit()
     }
 
     fun onPullToRefresh() {

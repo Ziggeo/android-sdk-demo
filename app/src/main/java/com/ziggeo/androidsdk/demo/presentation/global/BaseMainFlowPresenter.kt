@@ -1,11 +1,9 @@
-package com.ziggeo.androidsdk.demo.presentation.about
+package com.ziggeo.androidsdk.demo.presentation.global
 
-import com.arellomobile.mvp.InjectViewState
+import com.arellomobile.mvp.MvpView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
-import com.ziggeo.androidsdk.demo.presentation.global.BaseMainFlowPresenter
-import javax.inject.Inject
 
 
 /**
@@ -13,9 +11,15 @@ import javax.inject.Inject
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-@InjectViewState
-class AboutPresenter @Inject constructor(
-    router: FlowRouter,
+open class BaseMainFlowPresenter<V : MvpView>(
+    private var router: FlowRouter,
     systemMessageNotifier: SystemMessageNotifier,
     analytics: FirebaseAnalytics
-) : BaseMainFlowPresenter<AboutView>(router, systemMessageNotifier, analytics)
+) : BasePresenter<V>(systemMessageNotifier, analytics) {
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        router.exit()
+    }
+
+}
