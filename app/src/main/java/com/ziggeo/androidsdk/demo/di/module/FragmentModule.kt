@@ -44,173 +44,190 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
         analytics.setUserId(token)
         bind(FirebaseAnalytics::class.java).toInstance(analytics)
 
-        initRecorderCallback(ziggeo, logger)
-        initPlayerCallback(ziggeo, logger)
-        initUploaderCallback(ziggeo, logger)
-        initFileSelectorCallback(ziggeo, logger)
+        initRecorderCallback(ziggeo, logger, context)
+        initPlayerCallback(ziggeo, logger, context)
+        initUploaderCallback(ziggeo, logger, context)
+        initFileSelectorCallback(ziggeo, logger, context)
     }
 
     fun bindPrefs(ziggeo: Ziggeo, prefs: Prefs) {
         ziggeo.recorderConfig.startDelay = prefs.startDelay
     }
 
-    private fun initRecorderCallback(ziggeo: IZiggeo, logger: EventLogger) {
+    private fun initRecorderCallback(ziggeo: IZiggeo, logger: EventLogger, context: Context) {
         ziggeo.recorderConfig.callback = object : RecorderCallback() {
             override fun loaded() {
                 super.loaded()
-                logger.addEvent(R.string.ev_rec_loaded)
+                logger.addEvent(context.getString(R.string.ev_rec_loaded))
             }
 
             override fun manuallySubmitted() {
                 super.manuallySubmitted()
-                logger.addEvent(R.string.ev_rec_manuallySubmitted)
+                logger.addEvent(context.getString(R.string.ev_rec_manuallySubmitted))
             }
 
             override fun recordingStarted() {
                 super.recordingStarted()
-                logger.addEvent(R.string.ev_rec_recordingStarted)
+                logger.addEvent(context.getString(R.string.ev_rec_recordingStarted))
             }
 
             override fun recordingStopped(path: String) {
                 super.recordingStopped(path)
-                logger.addEvent(R.string.ev_rec_recordingStopped, path)
+                logger.addEvent(context.getString(R.string.ev_rec_recordingStopped), path)
             }
 
             override fun countdown(timeLeft: Int) {
                 super.countdown(timeLeft)
-                logger.addEvent(R.string.ev_rec_countdown, timeLeft.toString())
+                logger.addEvent(context.getString(R.string.ev_rec_countdown), timeLeft.toString())
             }
 
             override fun recordingProgress(time: Long) {
                 super.recordingProgress(time)
-                logger.addEvent(R.string.ev_rec_recordingProgress, time.toString())
+                logger.addEvent(
+                    context.getString(
+                        R.string.ev_rec_recordingProgress
+                    ),
+                    time.toString()
+                )
             }
 
             override fun readyToRecord() {
                 super.readyToRecord()
-                logger.addEvent(R.string.ev_rec_readyToRecord)
+                logger.addEvent(context.getString(R.string.ev_rec_readyToRecord))
             }
 
             override fun accessForbidden(permissions: MutableList<String>) {
                 super.accessForbidden(permissions)
-                logger.addEvent(R.string.ev_rec_accessForbidden, permissions.toString())
+                logger.addEvent(
+                    context.getString(
+                        R.string.ev_rec_accessForbidden
+                    ),
+                    permissions.toString()
+                )
             }
 
             override fun accessGranted() {
                 super.accessGranted()
-                logger.addEvent(R.string.ev_rec_accessGranted)
+                logger.addEvent(context.getString(R.string.ev_rec_accessGranted))
             }
 
             override fun noCamera() {
                 super.noCamera()
-                logger.addEvent(R.string.ev_rec_noCamera)
+                logger.addEvent(context.getString(R.string.ev_rec_noCamera))
             }
 
             override fun noMicrophone() {
                 super.noMicrophone()
-                logger.addEvent(R.string.ev_rec_noMicrophone)
+                logger.addEvent(context.getString(R.string.ev_rec_noMicrophone))
             }
 
             override fun hasCamera() {
                 super.hasCamera()
-                logger.addEvent(R.string.ev_rec_hasCamera)
+                logger.addEvent(context.getString(R.string.ev_rec_hasCamera))
             }
 
             override fun hasMicrophone() {
                 super.hasMicrophone()
-                logger.addEvent(R.string.ev_rec_hasMicrophone)
+                logger.addEvent(context.getString(R.string.ev_rec_hasMicrophone))
             }
 
             override fun microphoneHealth(micStatus: MicSoundLevel) {
                 super.microphoneHealth(micStatus)
-                logger.addEvent(R.string.ev_rec_microphoneHealth, micStatus.name)
+                logger.addEvent(context.getString(R.string.ev_rec_microphoneHealth), micStatus.name)
             }
 
             override fun canceledByUser() {
                 super.canceledByUser()
-                logger.addEvent(R.string.ev_rec_canceledByUser)
+                logger.addEvent(context.getString(R.string.ev_rec_canceledByUser))
             }
 
             override fun error(throwable: Throwable) {
                 super.error(throwable)
-                logger.addEvent(R.string.ev_rec_error, throwable.toString())
+                logger.addEvent(context.getString(R.string.ev_rec_error), throwable.toString())
             }
 
             override fun streamingStarted() {
                 super.streamingStarted()
-                logger.addEvent(R.string.ev_rec_streamingStarted)
+                logger.addEvent(context.getString(R.string.ev_rec_streamingStarted))
             }
 
             override fun streamingStopped() {
                 super.streamingStopped()
-                logger.addEvent(R.string.ev_rec_streamingStopped)
+                logger.addEvent(context.getString(R.string.ev_rec_streamingStopped))
             }
         }
     }
 
-    private fun initPlayerCallback(ziggeo: IZiggeo, logger: EventLogger) {
+    private fun initPlayerCallback(ziggeo: IZiggeo, logger: EventLogger, context: Context) {
         ziggeo.playerConfig.callback = object : PlayerCallback() {
             override fun loaded() {
                 super.loaded()
-                logger.addEvent(R.string.ev_pl_loaded)
+                logger.addEvent(context.getString(R.string.ev_pl_loaded))
             }
 
             override fun accessForbidden(permissions: MutableList<String>) {
                 super.accessForbidden(permissions)
-                logger.addEvent(R.string.ev_pl_accessForbidden, permissions.toString())
+                logger.addEvent(
+                    context.getString(
+                        R.string.ev_pl_accessForbidden
+                    ),
+                    permissions.toString()
+                )
             }
 
             override fun accessGranted() {
                 super.accessGranted()
-                logger.addEvent(R.string.ev_pl_accessGranted)
+                logger.addEvent(context.getString(R.string.ev_pl_accessGranted))
             }
 
             override fun canceledByUser() {
                 super.canceledByUser()
-                logger.addEvent(R.string.ev_pl_canceledByUser)
+                logger.addEvent(context.getString(R.string.ev_pl_canceledByUser))
             }
 
             override fun error(throwable: Throwable) {
                 super.error(throwable)
-                logger.addEvent(R.string.ev_pl_error, throwable.toString())
+                logger.addEvent(context.getString(R.string.ev_pl_error), throwable.toString())
             }
 
             override fun playing() {
                 super.playing()
-                logger.addEvent(R.string.ev_pl_playing)
+                logger.addEvent(context.getString(R.string.ev_pl_playing))
             }
 
             override fun paused() {
                 super.paused()
-                logger.addEvent(R.string.ev_pl_paused)
+                logger.addEvent(context.getString(R.string.ev_pl_paused))
             }
 
             override fun ended() {
                 super.ended()
-                logger.addEvent(R.string.ev_pl_ended)
+                logger.addEvent(context.getString(R.string.ev_pl_ended))
             }
 
             override fun seek(millis: Long) {
                 super.seek(millis)
-                logger.addEvent(R.string.ev_pl_seek, millis.toString())
+                logger.addEvent(context.getString(R.string.ev_pl_seek), millis.toString())
             }
 
             override fun readyToPlay() {
                 super.readyToPlay()
-                logger.addEvent(R.string.ev_pl_readyToPlay)
+                logger.addEvent(context.getString(R.string.ev_pl_readyToPlay))
             }
         }
     }
 
     @SuppressLint("CheckResult")
-    private fun initUploaderCallback(ziggeo: IZiggeo, logger: EventLogger) {
+    private fun initUploaderCallback(ziggeo: IZiggeo, logger: EventLogger, context: Context) {
         val subj = PublishSubject.create<Progress>()
         subj.debounce(100, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 logger.addEvent(
-                    R.string.ev_upl_uploadProgress,
+                    context.getString(
+                        R.string.ev_upl_uploadProgress
+                    ),
                     "${it.token} ${it.uploaded}/${it.total}"
                 )
             }
@@ -219,14 +236,14 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
             override fun uploaded(path: String, token: String) {
                 super.uploaded(path, token)
                 logger.addEvent(
-                    R.string.ev_upl_uploaded,
+                    context.getString(R.string.ev_upl_uploaded),
                     "$token $path"
                 )
             }
 
             override fun uploadingStarted(path: String) {
                 super.uploadingStarted(path)
-                logger.addEvent(R.string.ev_upl_uploadingStarted, path)
+                logger.addEvent(context.getString(R.string.ev_upl_uploadingStarted), path)
             }
 
             override fun uploadProgress(
@@ -241,56 +258,61 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
 
             override fun processing(token: String) {
                 super.processing(token)
-                logger.addEvent(R.string.ev_upl_processing, token)
+                logger.addEvent(context.getString(R.string.ev_upl_processing), token)
             }
 
             override fun processed(token: String) {
                 super.processed(token)
-                logger.addEvent(R.string.ev_upl_processed, token)
+                logger.addEvent(context.getString(R.string.ev_upl_processed), token)
             }
 
             override fun verified(token: String) {
                 super.verified(token)
-                logger.addEvent(R.string.ev_upl_verified, token)
+                logger.addEvent(context.getString(R.string.ev_upl_verified), token)
             }
 
             override fun error(throwable: Throwable) {
                 super.error(throwable)
-                logger.addEvent(R.string.ev_upl_error, throwable.toString())
+                logger.addEvent(context.getString(R.string.ev_upl_error), throwable.toString())
             }
         }
     }
 
-    private fun initFileSelectorCallback(ziggeo: IZiggeo, logger: EventLogger) {
+    private fun initFileSelectorCallback(ziggeo: IZiggeo, logger: EventLogger, context: Context) {
         ziggeo.fileSelectorConfig.callback = object : FileSelectorCallback() {
             override fun uploadSelected(paths: MutableList<String>) {
                 super.uploadSelected(paths)
-                logger.addEvent(R.string.ev_fs_uploadSelected, paths.toString())
+                logger.addEvent(context.getString(R.string.ev_fs_uploadSelected), paths.toString())
             }
 
             override fun loaded() {
                 super.loaded()
-                logger.addEvent(R.string.ev_fs_loaded)
+                logger.addEvent(context.getString(R.string.ev_fs_loaded))
             }
 
             override fun canceledByUser() {
                 super.canceledByUser()
-                logger.addEvent(R.string.ev_fs_canceledByUser)
+                logger.addEvent(context.getString(R.string.ev_fs_canceledByUser))
             }
 
             override fun accessForbidden(permissions: MutableList<String>) {
                 super.accessForbidden(permissions)
-                logger.addEvent(R.string.ev_fs_accessForbidden, permissions.toString())
+                logger.addEvent(
+                    context.getString(
+                        R.string.ev_fs_accessForbidden
+                    ),
+                    permissions.toString()
+                )
             }
 
             override fun accessGranted() {
                 super.accessGranted()
-                logger.addEvent(R.string.ev_fs_accessGranted)
+                logger.addEvent(context.getString(R.string.ev_fs_accessGranted))
             }
 
             override fun error(throwable: Throwable) {
                 super.error(throwable)
-                logger.addEvent(R.string.ev_fs_error, throwable.toString())
+                logger.addEvent(context.getString(R.string.ev_fs_error), throwable.toString())
             }
         }
 

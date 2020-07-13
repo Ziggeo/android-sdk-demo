@@ -31,11 +31,14 @@ class LogsInteractor @Inject constructor(
         val dumpName = "ziggeoLogs_${System.currentTimeMillis()}.log"
         return getLogsList().flatMap { list: List<LogModel> ->
             val file = File(context.externalCacheDir, dumpName)
-            file.appendText(DeviceInfo().toString())
+            val sb = StringBuilder(DeviceInfo().toString())
+                .append("\n")
             for (model in list) {
-                file.appendText(model.toString())
+                sb.append(model.toString())
+                    .append("\n")
             }
-            file.appendText(getSystemLog())
+            sb.append(getSystemLog())
+            file.appendText(sb.toString())
             Single.fromCallable { file }
         }
     }

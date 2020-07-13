@@ -1,6 +1,5 @@
 package com.ziggeo.androidsdk.demo.ui.log
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,8 +35,7 @@ class LogAdapter(private val list: List<LogModel>) :
     }
 
     class LogsViewHolder(
-        private val view: View,
-        private val context: Context = view.context
+        private val view: View
     ) : FeatureViewHolder(view) {
         fun bind(logModel: LogModel) {
             val format = if (logModel.details == null) {
@@ -48,7 +46,7 @@ class LogAdapter(private val list: List<LogModel>) :
             view.tv_log.text = String.format(
                 format,
                 DateTimeUtils.formatDate(Date(logModel.timestamp)),
-                context.getString(logModel.name),
+                logModel.name,
                 logModel.details
             )
         }
