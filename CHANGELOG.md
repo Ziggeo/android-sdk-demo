@@ -1,5 +1,15 @@
 ## Changelog
 
+Version 2.0.4*(2020-07-07)*
+----------------------------
+* onPictureTaken callback hidden, since image-only not implemented yet
+* Fixed handling permissions list when access forbidden
+
+Version 2.0.3*(2020-07-07)*
+----------------------------
+* Fixed error callback for file selector 
+* Fixed pause/resume for player
+
 Version 2.0.2*(2020-07-02)*
 ----------------------------
 * Fixed progress bar when loading folders list. 
