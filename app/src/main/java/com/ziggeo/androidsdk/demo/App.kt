@@ -4,11 +4,13 @@ import android.app.Application
 import android.content.Context
 import android.os.Build
 import androidx.multidex.MultiDex
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.ziggeo.androidsdk.demo.di.DI
 import com.ziggeo.androidsdk.demo.di.module.AppModule
 import timber.log.Timber
 import toothpick.Toothpick
 import toothpick.configuration.Configuration
+import java.util.*
 
 /**
  * Created by Alexander Bedulin on 25-Sep-19.
@@ -31,6 +33,7 @@ class App : Application() {
         initLogger()
         initToothpick()
         initAppScope()
+        initCrashlitics()
     }
 
     private fun initLogger() {
@@ -50,6 +53,10 @@ class App : Application() {
     private fun initAppScope() {
         Toothpick.openScope(DI.APP_SCOPE)
             .installModules(AppModule(this))
+    }
+
+    private fun initCrashlitics() {
+        FirebaseCrashlytics.getInstance().setCustomKey("Locale", Locale.getDefault().toString())
     }
 
 }

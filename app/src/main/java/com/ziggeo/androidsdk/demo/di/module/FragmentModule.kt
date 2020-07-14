@@ -3,6 +3,7 @@ package com.ziggeo.androidsdk.demo.di.module
 import android.annotation.SuppressLint
 import android.content.Context
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.Ziggeo
 import com.ziggeo.androidsdk.callbacks.FileSelectorCallback
@@ -43,6 +44,8 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
         val analytics = FirebaseAnalytics.getInstance(context)
         analytics.setUserId(token)
         bind(FirebaseAnalytics::class.java).toInstance(analytics)
+
+        FirebaseCrashlytics.getInstance().setCustomKey("app_token", token)
 
         initRecorderCallback(ziggeo, logger, context)
         initPlayerCallback(ziggeo, logger, context)

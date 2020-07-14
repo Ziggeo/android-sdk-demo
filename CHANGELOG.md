@@ -1,5 +1,10 @@
 ## Changelog
 
+Version 2.0.6*(2020-07-14)*
+----------------------------
+* Fixed cancel action for screen recorder.
+* Fixed screen recording service when running on android 9+
+
 Version 2.0.4*(2020-07-07)*
 ----------------------------
 * onPictureTaken callback hidden, since image-only not implemented yet
