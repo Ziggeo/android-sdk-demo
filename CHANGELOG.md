@@ -1,5 +1,9 @@
 ## Changelog
 
+Version 2.0.7*(2020-07-14)*
+----------------------------
+* Changed fields names for better code style in Kotlin
+
 Version 2.0.6*(2020-07-14)*
 ----------------------------
 * Fixed cancel action for screen recorder.
