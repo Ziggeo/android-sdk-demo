@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.firebase.crashlytics'
+apply from: "../build.gradle"
 
 android {
     compileSdkVersion 29
@@ -21,7 +22,7 @@ android {
         setProperty("archivesBaseName", "androidKotlin-v" + versionName + "_" + getDate())
     }
     signingConfigs {
-        debug{}
+        debug {}
         release {}
     }
     buildTypes {
@@ -45,12 +46,9 @@ android {
         jvmTarget = "1.8"
     }
 }
-ext {
-    kotlinVersion = "1.3.72"
-}
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.7"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.8"
 //    implementation project(':sdk') // for internal development
 
     //Support
@@ -61,7 +59,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
 
     //Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //MVP Moxy
     def moxyVersion = "1.7.0"
@@ -119,11 +117,6 @@ dependencies {
 tasks.withType(Test) {
     testLogging {
         events("started", "passed", "skipped", "failed")
-    }
-}
-configurations.all {
-    resolutionStrategy {
-        force("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     }
 }
 

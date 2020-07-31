@@ -1,16 +1,8 @@
 package com.ziggeo.androidsdk.demo.model.interactor
 
-import android.annotation.SuppressLint
-import android.content.Context
-import com.ziggeo.androidsdk.demo.model.data.feature.LogModel
 import com.ziggeo.androidsdk.demo.ui.log.EventLogger
-import com.ziggeo.androidsdk.net.models.DeviceInfo
+import com.ziggeo.androidsdk.log.LogModel
 import io.reactivex.Single
-import timber.log.Timber
-import java.io.BufferedReader
-import java.io.File
-import java.io.IOException
-import java.io.InputStreamReader
 import javax.inject.Inject
 
 /**
@@ -19,40 +11,8 @@ import javax.inject.Inject
  * alexb@ziggeo.com
  */
 class LogsInteractor @Inject constructor(
-    private val logger: EventLogger,
-    private val context: Context
+    private val logger: EventLogger
 ) {
-
     fun getLogsList(): Single<List<LogModel>> =
         Single.fromCallable { logger.logsDump() }
-
-    @SuppressLint("CheckResult")
-    fun saveDumpToFile(): Single<File> {
-        val dumpName = "ziggeoLogs_${System.currentTimeMillis()}.log"
-        return getLogsList().flatMap { list: List<LogModel> ->
-            val file = File(context.externalCacheDir, dumpName)
-            val sb = StringBuilder(DeviceInfo().toString())
-                .append("\n")
-            for (model in list) {
-                sb.append(model.toString())
-                    .append("\n")
-            }
-            sb.append(getSystemLog())
-            file.appendText(sb.toString())
-            Single.fromCallable { file }
-        }
-    }
-
-    private fun getSystemLog(): String {
-        var log = ""
-        try {
-            val process = Runtime.getRuntime().exec("logcat -d")
-            log = BufferedReader(
-                InputStreamReader(process.inputStream)
-            ).use(BufferedReader::readText)
-        } catch (e: IOException) {
-            Timber.e(e)
-        }
-        return log
-    }
 }

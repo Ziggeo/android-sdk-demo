@@ -9,7 +9,6 @@
     <string name="common_confirm_message">Are you sure?</string>
     <string name="err_common">Something wrong happened. Please, try again.</string>
     <string name="err_not_empty">Field should not be empty.</string>
-    <string name="email_chooser_title">Send email</string>
 
     <!-- Auth screen -->
     <string name="auth_message">Please go to ziggeo.com/quickstart on your desktop or laptop and scan QR code. This will allow you to connect your desktop and mobile demo experience</string>

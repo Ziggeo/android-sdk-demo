@@ -3,7 +3,7 @@ package com.ziggeo.androidsdk.demo.presentation.log
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.ziggeo.androidsdk.demo.presentation.global.BaseView
-import com.ziggeo.androidsdk.demo.model.data.feature.LogModel
+import com.ziggeo.androidsdk.log.LogModel
 
 
 /**

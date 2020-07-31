@@ -1,5 +1,11 @@
 ## Changelog
 
+Version 2.0.8*(2020-07-31)*
+----------------------------
+* File selector now in single-selection mode bu default. Added a flag to allow multiple selection. 
+* Fixed crash when session expired.
+* Added methods for sending support email and crash report
+
 Version 2.0.7*(2020-07-14)*
 ----------------------------
 * Changed fields names for better code style in Kotlin

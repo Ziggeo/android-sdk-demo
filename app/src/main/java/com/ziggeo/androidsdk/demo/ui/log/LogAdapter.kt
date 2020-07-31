@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ziggeo.androidsdk.demo.R
-import com.ziggeo.androidsdk.demo.model.data.feature.LogModel
 import com.ziggeo.androidsdk.demo.ui.global.FeatureViewHolder
+import com.ziggeo.androidsdk.log.LogModel
 import com.ziggeo.androidsdk.utils.DateTimeUtils
 import kotlinx.android.synthetic.main.item_log.view.*
 import java.util.*

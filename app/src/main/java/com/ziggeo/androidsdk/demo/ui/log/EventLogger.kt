@@ -1,7 +1,6 @@
 package com.ziggeo.androidsdk.demo.ui.log
 
-import androidx.annotation.StringRes
-import com.ziggeo.androidsdk.demo.model.data.feature.LogModel
+import com.ziggeo.androidsdk.log.LogModel
 
 /**
  * Created by Alexander Bedulin on 06-Jul-20.

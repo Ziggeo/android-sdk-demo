@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.ziggeo.androidsdk.demo.R
-import com.ziggeo.androidsdk.demo.model.data.feature.LogModel
 import com.ziggeo.androidsdk.demo.presentation.log.LogPresenter
 import com.ziggeo.androidsdk.demo.presentation.log.LogView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
+import com.ziggeo.androidsdk.log.LogModel
 import kotlinx.android.synthetic.main.fragment_log.*
 
 
