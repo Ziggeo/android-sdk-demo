@@ -1,11 +1,17 @@
 package com.ziggeo.androidsdk.demo.ui.settings
 
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.google.android.material.snackbar.Snackbar
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.settings.SettingsPresenter
 import com.ziggeo.androidsdk.demo.presentation.settings.SettingsView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 
 /**
@@ -25,4 +31,30 @@ class SettingsFragment : BaseToolbarFragment<SettingsView, SettingsPresenter>(),
 
     override fun getHeaderTextRes() = R.string.settings_header
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        et_start_delay.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                var startDelayValue = 0
+                if (!s.isNullOrEmpty()) {
+                    startDelayValue = s.toString().toInt()
+                }
+                presenter.onStartDelayChanged(startDelayValue)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        btn_save.setOnClickListener {
+            presenter.onSaveClicked()
+        }
+    }
+
+    override fun showSavedNotification() {
+        Snackbar.make(root, R.string.successfully_saved_message, Snackbar.LENGTH_SHORT).show()
+    }
 }

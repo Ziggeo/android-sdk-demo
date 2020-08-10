@@ -39,6 +39,9 @@
 
     <!-- Settings screen -->
     <string name="settings_header">Settings</string>
+    <string name="hint_start_delay">Start delay (seconds)</string>
+    <string name="btn_save">Save</string>
+    <string name="successfully_saved_message">Saved</string>
 
     <!-- Log screen -->
     <string name="log_header">Log</string>

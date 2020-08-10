@@ -19,6 +19,8 @@ class Prefs @Inject constructor(
     private val AUTH_DATA = "auth_data"
 
     private val KEY_APP_TOKEN = "KEY_APP_TOKEN"
+
+    // settings
     private val KEY_START_DELAY = "KEY_START_DELAY"
 
     private val authPrefs by lazy { getSharedPreferences(AUTH_DATA) }

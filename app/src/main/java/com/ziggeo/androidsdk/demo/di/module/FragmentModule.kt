@@ -51,7 +51,7 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
         initFileSelectorCallback(ziggeo, logger, context)
     }
 
-    fun bindPrefs(ziggeo: Ziggeo, prefs: Prefs) {
+    private fun bindPrefs(ziggeo: Ziggeo, prefs: Prefs) {
         ziggeo.recorderConfig.startDelay = prefs.startDelay
     }
 
