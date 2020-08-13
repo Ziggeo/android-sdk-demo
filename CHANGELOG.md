@@ -1,5 +1,13 @@
 ## Changelog
 
+Version 2.0.9*(2020-07-31)*
+----------------------------
+* Trimming request arguments 
+* Changed field types for *_profile values
+* Changed UI for countdown timer 
+* Dependencies updated 
+* some fixes for Xamarin 
+
 Version 2.0.8*(2020-07-31)*
 ----------------------------
 * File selector now in single-selection mode bu default. Added a flag to allow multiple selection. 
