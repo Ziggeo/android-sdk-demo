@@ -1,5 +1,9 @@
 ## Changelog
 
+Version 2.0.1*(2020-09-04)*
+----------------------------
+* Fixed meta_profile type in video model and profile types for stream model
+
 Version 2.0.9*(2020-07-31)*
 ----------------------------
 * Trimming request arguments 

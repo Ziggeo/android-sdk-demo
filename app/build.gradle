@@ -48,15 +48,15 @@ android {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.9"
+    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.0.11"
 //    implementation project(':sdk') // for internal development
 
     //Support
     implementation "androidx.appcompat:appcompat:1.2.0"
-    implementation "com.google.android.material:material:1.2.0"
+    implementation "com.google.android.material:material:1.2.1"
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.cardview:cardview:1.0.0"
-    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.1"
 
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -91,9 +91,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     // Utils
     implementation "com.jakewharton.timber:timber:4.7.1"
-    implementation 'com.karumi:dexter:6.0.1'
-    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:17.1.1'
+    implementation 'com.karumi:dexter:6.2.1'
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.5.0'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:17.2.1'
 
     //JUnit
     testImplementation "junit:junit:4.12"
@@ -104,13 +104,13 @@ dependencies {
     //Kakao
     androidTestImplementation "com.agoda.kakao:kakao:2.3.0"
     androidTestImplementation "androidx.annotation:annotation:1.1.0"
-    def rulesAndRunner = "1.2.0"
+    def rulesAndRunner = "1.3.0"
     androidTestImplementation "androidx.test:runner:$rulesAndRunner"
     androidTestImplementation "androidx.test:rules:$rulesAndRunner"
+    androidTestImplementation "androidx.test:core:$rulesAndRunner"
 
     //Espresso
-    def espresso = "3.2.0"
-    androidTestImplementation 'androidx.test:core:1.2.0'
+    def espresso = "3.3.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
 }
