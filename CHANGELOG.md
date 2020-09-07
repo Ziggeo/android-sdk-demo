@@ -1,6 +1,10 @@
 ## Changelog
 
-Version 2.0.1*(2020-09-04)*
+Version 2.0.12*(2020-09-04)*
+----------------------------
+* Fixed video_profile type in video model
+
+Version 2.0.11*(2020-09-04)*
 ----------------------------
 * Fixed meta_profile type in video model and profile types for stream model
 
