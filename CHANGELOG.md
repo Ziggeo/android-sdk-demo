@@ -2,6 +2,11 @@
 
 Version 2.0.13*(2020-09-10)*
 ----------------------------
+* Changed implementation for single-choice mode in file selector.
+* Added ability to confirm uploading for file on Player screen.  
+
+Version 2.0.13*(2020-09-10)*
+----------------------------
 * uploadFromFileSelector method is deprecated, use startFileSelector instead.
 * Fixed session expiration issue which was blocking some cases for auth token.
 * Fixed issue with sending analytics events when there is no app token. 
