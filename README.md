@@ -323,7 +323,7 @@ Want to know when upload starts?
     /**
      * Triggered when a video uploadingStarted has started
      */
-    void uploadingStarted(@NonNull String path);
+    void uploadingStarted(@NonNull String videoToken);
 
 Want to know the progress of the uploads?
 

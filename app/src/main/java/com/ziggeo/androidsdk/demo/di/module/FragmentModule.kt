@@ -20,7 +20,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import toothpick.config.Module
-import java.io.File
 import java.util.concurrent.TimeUnit
 
 
@@ -242,18 +241,18 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
                 )
             }
 
-            override fun uploadingStarted(path: String) {
-                super.uploadingStarted(path)
-                logger.addEvent(context.getString(R.string.ev_upl_uploadingStarted), path)
+            override fun uploadingStarted(videoToken: String) {
+                super.uploadingStarted(videoToken)
+                logger.addEvent(context.getString(R.string.ev_upl_uploadingStarted), videoToken)
             }
 
             override fun uploadProgress(
                 videoToken: String,
-                file: File,
+                path: String,
                 uploaded: Long,
                 total: Long
             ) {
-                super.uploadProgress(videoToken, file, uploaded, total)
+                super.uploadProgress(videoToken, path, uploaded, total)
                 subj.onNext(Progress(videoToken, uploaded, total))
             }
 
@@ -303,7 +302,7 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
                         R.string.ev_fs_accessForbidden
                     ),
                     permissions.toString()
-                )
+                )   
             }
 
             override fun accessGranted() {
@@ -316,7 +315,6 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
                 logger.addEvent(context.getString(R.string.ev_fs_error), throwable.toString())
             }
         }
-
     }
 
     data class Progress(val token: String, val uploaded: Long, val total: Long)
