@@ -1,5 +1,14 @@
 ## Changelog
 
+Version 2.1.0*(2020-09-10)*
+----------------------------
+* New: added filters for file selector and switcher for grid/list modes
+* New: changed toolbar icon in file selector from arrow to cross, other UI improvements
+* New: added `rerecord` event for recorder callback
+* Changes: 
+  - arguments in `uploadProgress` event
+  - `uploadingStarted` now contains `videoToken` instead of `path` in args
+
 Version 2.0.13*(2020-09-10)*
 ----------------------------
 * Changed implementation for single-choice mode in file selector.
