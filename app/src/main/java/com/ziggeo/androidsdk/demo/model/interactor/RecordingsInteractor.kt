@@ -1,15 +1,14 @@
 package com.ziggeo.androidsdk.demo.model.interactor
 
-import com.ziggeo.androidsdk.demo.model.system.message.SystemMessage
-import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
-import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageType
+import com.ziggeo.androidsdk.IZiggeo
+import com.ziggeo.androidsdk.net.ZUrlHelper
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
+import okhttp3.HttpUrl
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -20,7 +19,8 @@ import javax.inject.Inject
  * alexb@ziggeo.com
  */
 class RecordingsInteractor @Inject constructor(
-    private val videoService: IVideosServiceRx
+    private val videoService: IVideosServiceRx,
+    private val ziggeo: IZiggeo,
 ) {
 
     fun getRecordingsList(): Single<List<VideoModel>> {
@@ -59,7 +59,13 @@ class RecordingsInteractor @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getImageUrl(token: String): String {
-        return videoService.getImageUrl(token)
+    fun getImageUrl(token: String): Single<String> {
+        return Single.fromCallable {
+            val builder = HttpUrl.get(videoService.getImageUrl(token)).newBuilder()
+            ZUrlHelper.appendAuthTokens(
+                builder, ziggeo
+            )
+            builder.build().toString()
+        }
     }
 }

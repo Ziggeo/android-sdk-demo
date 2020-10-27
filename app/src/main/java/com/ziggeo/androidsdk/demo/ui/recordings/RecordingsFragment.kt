@@ -109,7 +109,6 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
             pull_to_refresh.isRefreshing = true
         } else {
             pull_to_refresh.isRefreshing = false
-
         }
     }
 

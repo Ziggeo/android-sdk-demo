@@ -302,7 +302,7 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
                         R.string.ev_fs_accessForbidden
                     ),
                     permissions.toString()
-                )   
+                )
             }
 
             override fun accessGranted() {

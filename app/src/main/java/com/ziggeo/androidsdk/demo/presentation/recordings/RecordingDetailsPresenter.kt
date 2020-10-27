@@ -38,16 +38,19 @@ class RecordingDetailsPresenter @Inject constructor(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         videoToken = kvStorage.get(VIDEO_TOKEN) as String
-        viewState.showPreview(recordingsInteractor.getImageUrl(videoToken))
         disposable = recordingsInteractor.getInfo(videoToken)
+            .flatMap {
+                this.model = it
+                viewState.showRecordingData(model)
+                recordingsInteractor.getImageUrl(videoToken)
+            }
             .doOnSubscribe {
                 viewState.showLoading(true)
             }.doFinally {
                 viewState.showLoading(false)
-            }.subscribe { model, throwable ->
-                model?.let {
-                    this.model = model
-                    viewState.showRecordingData(model)
+            }.subscribe { url, throwable ->
+                url?.let {
+                    viewState.showPreview(it)
                 }
                 throwable?.let {
                     commonOnError(it)
