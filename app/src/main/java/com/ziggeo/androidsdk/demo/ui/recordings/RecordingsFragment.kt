@@ -1,10 +1,12 @@
 package com.ziggeo.androidsdk.demo.ui.recordings
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -117,6 +119,7 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
         ziggeo.startCameraRecorder()
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun startScreenRecorder() {
         analytics.logEvent("start_screen_recorder", null)
         ziggeo.startScreenRecorder(null)

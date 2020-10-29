@@ -20,7 +20,7 @@ import javax.inject.Inject
  */
 class RecordingsInteractor @Inject constructor(
     private val videoService: IVideosServiceRx,
-    private val ziggeo: IZiggeo,
+    private val ziggeo: IZiggeo
 ) {
 
     fun getRecordingsList(): Single<List<VideoModel>> {

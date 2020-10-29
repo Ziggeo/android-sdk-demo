@@ -27,15 +27,6 @@ fun Navigator.setLaunchScreen(screen: SupportAppScreen) {
 
 fun Any.objectScopeName() = "${javaClass.simpleName}_${hashCode()}"
 
-fun TextView.setStartDrawable(drawable: Drawable) {
-    setCompoundDrawablesRelativeWithIntrinsicBounds(
-        drawable,
-        null,
-        null,
-        null
-    )
-}
-
 fun String.Companion.fromHtml(html: String?): Spanned {
     return when {
         html == null -> SpannableString("")
