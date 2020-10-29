@@ -20,7 +20,7 @@
             android:id="@+id/iv_icon"
             android:layout_width="@dimen/icon_size"
             android:layout_height="match_parent"
-            android:tint="@color/black"
+            app:tint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
