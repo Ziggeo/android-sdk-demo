@@ -30,6 +30,8 @@ android {
         multiDexEnabled true
         buildConfigField("String", "APP_TOKEN", "\"" + System.getenv("app_token") + "\"")
         setProperty("archivesBaseName", "androidKotlin-v" + versionName + "_" + getDate())
+
+        missingDimensionStrategy "default", "androidnative" // for internal development
     }
     signingConfigs {
         debug {}
@@ -63,15 +65,15 @@ android {
 }
 dependencies {
     //Ziggeo
-    implementation "com.github.ZiggeoJitpackService:Android-SDK:2.1.2"
-//    implementation project(':sdk') // for internal development
+    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.1.4")
+//    implementation project(":sdk") // for internal development
 
     //Support
     implementation "androidx.appcompat:appcompat:1.2.0"
     implementation "com.google.android.material:material:1.2.1"
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.cardview:cardview:1.0.0"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.2"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
 
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

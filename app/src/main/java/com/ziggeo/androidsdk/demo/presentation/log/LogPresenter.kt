@@ -7,6 +7,8 @@ import com.ziggeo.androidsdk.demo.model.interactor.LogsInteractor
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BaseMainFlowPresenter
+import com.ziggeo.androidsdk.log.LogModel
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -54,6 +56,9 @@ class LogPresenter @Inject constructor(
 
     fun onBtnSendReportClicked() {
         disposable = logsInteractor.getLogsList()
+            .flatMapObservable { list -> Observable.fromIterable(list) }
+            .map { it.toString() }
+            .toList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { viewState.showLoading(true) }
