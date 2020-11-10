@@ -1,11 +1,20 @@
-## Changelog
+# Changelog
+
+Version 2.1.5*(2020-11-10)*
+----------------------------
+* Added support for 1:1 aspect ratio
+* QR scanner callback improvements
+* Changed arg type of `sendReport` method
+* General SDK API style improvements
+* Fixed authentication for player
+* Dependencies updated
 
 Version 2.1.0*(2020-09-10)*
 ----------------------------
 * New: added filters for file selector and switcher for grid/list modes
 * New: changed toolbar icon in file selector from arrow to cross, other UI improvements
 * New: added `rerecord` event for recorder callback
-* Changes: 
+* Changes:
   - arguments in `uploadProgress` event
   - `uploadingStarted` now contains `videoToken` instead of `path` in args
 
