@@ -28,8 +28,8 @@ class AuthPresenter @Inject constructor(
 ) : BasePresenter<AuthView>(systemMessageNotifier, analytics) {
 
     private val qrScannerCallback = object : QrScannerCallback() {
-        override fun onQrDecoded(value: String) {
-            super.onQrDecoded(value)
+        override fun onDecoded(value: String) {
+            super.onDecoded(value)
             analytics.logEvent("qr_decoded") {
                 param("value", value)
             }
@@ -58,7 +58,7 @@ class AuthPresenter @Inject constructor(
         if (value.isEmpty()) {
             viewState.showQrCannotBeEmptyError()
         } else {
-            qrScannerCallback.onQrDecoded(value)
+            qrScannerCallback.onDecoded(value)
         }
     }
 

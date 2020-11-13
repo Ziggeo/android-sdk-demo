@@ -1,5 +1,13 @@
 # Changelog
 
+Version 2.1.6*(2020-11-13)*
+----------------------------
+* Fixed crash when running analytics service in the background.
+
+Version 2.1.6*(2020-11-12)*
+----------------------------
+* Removed deprecated QR callback method
+
 Version 2.1.5*(2020-11-10)*
 ----------------------------
 * Added support for 1:1 aspect ratio
