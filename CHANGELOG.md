@@ -1,6 +1,17 @@
 # Changelog
 
-Version 2.1.6*(2020-11-13)*
+Version 2.1.9*(2020-11-30)*
+----------------------------
+* Added config to start uploading without service and notification
+* Fixed QR scanner config builder.
+* Added retry for 403 responses with auth tokens (case when IP changed)
+* Added `shouldAllowMultipleSelection` for file selector config
+
+Version 2.1.8*(2020-11-19)*
+----------------------------
+* Executing HTTP requests one by one when auth tokens used.
+
+Version 2.1.7*(2020-11-13)*
 ----------------------------
 * Fixed crash when running analytics service in the background.
 

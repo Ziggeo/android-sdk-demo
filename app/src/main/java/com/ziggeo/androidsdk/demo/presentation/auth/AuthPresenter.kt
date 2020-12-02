@@ -42,7 +42,7 @@ class AuthPresenter @Inject constructor(
     }
 
     fun onScanQrClicked() {
-        ziggeo.qrScannerConfig.callback = qrScannerCallback
+        ziggeo.qrScannerConfig?.callback = qrScannerCallback
         ziggeo.startQrScanner()
     }
 

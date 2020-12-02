@@ -53,19 +53,7 @@ class RecordingsInteractor @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun downloadImage(token: String): Single<InputStream> {
-        return videoService.downloadImage(token)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-
     fun getImageUrl(token: String): Single<String> {
-        return Single.fromCallable {
-            val builder = HttpUrl.get(videoService.getImageUrl(token)).newBuilder()
-            ZUrlHelper.appendAuthTokens(
-                builder, ziggeo
-            )
-            builder.build().toString()
-        }
+        return videoService.getImageUrl(token)
     }
 }
