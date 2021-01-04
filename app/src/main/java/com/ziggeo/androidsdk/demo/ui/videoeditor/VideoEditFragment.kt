@@ -18,7 +18,6 @@ import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.videoeditor.VideoEditPresenter
 import com.ziggeo.androidsdk.demo.presentation.videoeditor.VideoEditView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
-import com.ziggeo.androidsdk.utils.FileUtils
 import kotlinx.android.synthetic.main.fragment_video_edit.*
 import timber.log.Timber
 
@@ -46,8 +45,8 @@ class VideoEditFragment : BaseToolbarFragment<VideoEditView, VideoEditPresenter>
             .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-//                    btn_select_file.visibility = View.VISIBLE
-//                    btn_select_file.setOnClickListener { presenter.onSelectFileClicked() }
+                    btn_select_file.visibility = View.VISIBLE
+                    btn_select_file.setOnClickListener { presenter.onSelectFileClicked() }
                 }
 
                 override fun onPermissionRationaleShouldBeShown(
@@ -72,9 +71,8 @@ class VideoEditFragment : BaseToolbarFragment<VideoEditView, VideoEditPresenter>
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             val uri = data?.data
-            val path = FileUtils.getPath(context, uri)
-            if (path != null) {
-                presenter.onFileSelected(path)
+            if (uri != null) {
+                presenter.onFileSelected(uri)
             } else {
                 Timber.e("Can't get path from uri:%s", uri)
             }

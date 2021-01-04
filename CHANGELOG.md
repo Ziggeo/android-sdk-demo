@@ -1,5 +1,34 @@
 # Changelog
 
+Version 2.1.12*(2020-12-22)*
+----------------------------
+* Fixed frames loading in video editor
+* Method `void startVideoEditor(@NonNull String filePath)` is removed, use `void startVideoEditor(@NonNull Uri filePath)` instead
+
+Version 2.1.11*(2020-12-22)*
+----------------------------
+* Exoplayer updated. Added ability to play from Uri
+* Fixed crash during preparing analytics events
+* File selector improvements
+  - Added PullToRefresh
+  - Fixed extra padding inafter app was minimized/maximized
+  - Fixed playing from selected position
+  - Fixed player UI when playing completed
+  - Seek bar reimplemented to make seek changes applied immediately, without rebuilding the layout
+  - Fixed cursor and borders moving, borders set before and after first/last frames
+  - Reset seekbar after app minimized
+  - Added cancelled by user callback for videoeditor
+  - Dynamic frames count calculation based on frame preview size
+
+Version 2.1.10_b2*(2020-12-04)*
+----------------------------
+* Videos API update:
+  - changed implementation for getImage/Video url
+  - removed downloadVideo/Image methods
+  - removed applyEffects method
+* Fixed the crash in uploader when the app goes background
+* Improvements for frames preview in video editor
+
 Version 2.1.9*(2020-11-30)*
 ----------------------------
 * Added config to start uploading without service and notification

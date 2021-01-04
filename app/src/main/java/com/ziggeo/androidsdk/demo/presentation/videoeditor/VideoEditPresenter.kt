@@ -1,5 +1,6 @@
 package com.ziggeo.androidsdk.demo.presentation.videoeditor
 
+import android.net.Uri
 import com.arellomobile.mvp.InjectViewState
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ziggeo.androidsdk.IZiggeo
@@ -33,8 +34,8 @@ class VideoEditPresenter @Inject constructor(
         viewState.showFileSelector()
     }
 
-    fun onFileSelected(path: String) {
-        ziggeo.videoEditorCallback = object : VideoEditorCallback() {
+    fun onFileSelected(uri: Uri) {
+        ziggeo.videoEditorConfig.callback = object : VideoEditorCallback() {
             override fun onVideoCut(path: String) {
                 super.onVideoCut(path)
                 viewState.showVideoSavedToNotification(path)
@@ -45,6 +46,6 @@ class VideoEditPresenter @Inject constructor(
                 Timber.e(throwable)
             }
         }
-        ziggeo.startVideoEditor(path)
+        ziggeo.startVideoEditor(uri)
     }
 }
