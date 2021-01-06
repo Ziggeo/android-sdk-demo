@@ -31,7 +31,7 @@ android {
         buildConfigField("String", "APP_TOKEN", "\"" + System.getenv("app_token") + "\"")
         setProperty("archivesBaseName", "androidKotlin-v" + versionName + "_" + getDate())
 
-        missingDimensionStrategy "default", "androidnative" // for internal development
+        missingDimensionStrategy "dim", "androidnative" // for internal development
     }
     signingConfigs {
         debug {}
