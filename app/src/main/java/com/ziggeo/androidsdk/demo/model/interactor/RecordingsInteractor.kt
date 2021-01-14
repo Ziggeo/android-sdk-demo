@@ -38,7 +38,6 @@ class RecordingsInteractor @Inject constructor(
     fun getInfo(videoToken: String): Single<VideoModel> {
         return videoService[videoToken]
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun updateInfo(token: String, args: HashMap<String, String>): Single<VideoModel> {

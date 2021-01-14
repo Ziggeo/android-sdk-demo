@@ -12,6 +12,7 @@ import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
@@ -41,9 +42,10 @@ class RecordingDetailsPresenter @Inject constructor(
         disposable = recordingsInteractor.getInfo(videoToken)
             .flatMap {
                 this.model = it
-                viewState.showRecordingData(model)
                 recordingsInteractor.getImageUrl(videoToken)
             }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSuccess {  viewState.showRecordingData(model) }
             .doOnSubscribe {
                 viewState.showLoading(true)
             }.doFinally {
