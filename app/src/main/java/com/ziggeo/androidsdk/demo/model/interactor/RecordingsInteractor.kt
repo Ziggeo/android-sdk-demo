@@ -28,6 +28,7 @@ class RecordingsInteractor @Inject constructor(
             audiosService.index(null),
             { videos, audios ->
                 videos.addAll(audios)
+                videos.sortByDescending { it.date }
                 videos
             }
         )

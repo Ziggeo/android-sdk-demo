@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ziggeo.androidsdk.net.models.ContentModel
-import com.ziggeo.androidsdk.net.models.audios.AudioModel
+import com.ziggeo.androidsdk.net.models.audios.Audio
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 
 
@@ -95,22 +95,22 @@ class RecordingsAdapter(private val list: List<ContentModel>) :
                 }
             }
 
-            if (model is AudioModel && model.audio != null) {
+            if (model is Audio) {
                 ivIcon?.setImageResource(com.ziggeo.androidsdk.demo.R.drawable.ic_mic_white_24dp)
 
-                val tags = model.audio.tags?.toString()?.replace("[", "")?.replace("]", "")
+                val tags = model.tags?.toString()?.replace("[", "")?.replace("]", "")
                 if (tags.isNullOrEmpty()) {
                     tvTags?.visibility = View.GONE
                 } else {
                     tvTags?.visibility = View.VISIBLE
                     tvTags?.text = tags
                 }
-                tvDate?.text = DateFormat.format(DATE_FORMAT, model.audio.submission_date * 1000L)
+                tvDate?.text = DateFormat.format(DATE_FORMAT, model.submission_date)
 
-                if (!model.audio.approved.isNullOrEmpty()) {
+                if (!model.approved.isNullOrEmpty()) {
                     val context = itemView.context
-                    tvStatus?.text = model.audio.approved
-                    val color = when (model.audio.approved) {
+                    tvStatus?.text = model.approved
+                    val color = when (model.approved) {
                         VideoModel.STATUS_FAILED -> ContextCompat.getColor(
                             context,
                             com.ziggeo.androidsdk.demo.R.color.red

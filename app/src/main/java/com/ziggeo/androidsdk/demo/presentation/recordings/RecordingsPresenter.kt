@@ -14,6 +14,7 @@ import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BaseMainFlowPresenter
 import com.ziggeo.androidsdk.net.exceptions.ResponseException
 import com.ziggeo.androidsdk.net.models.ContentModel
+import com.ziggeo.androidsdk.net.models.audios.Audio
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
@@ -98,6 +99,9 @@ class RecordingsPresenter @Inject constructor(
         if (model is VideoModel) {
             kvStorage.put(VIDEO_TOKEN, model.token)
             router.startFlow(Screens.RecordingDetailsFlow)
+        }
+        if (model is Audio) {
+            //todo add detail audio screen
         }
     }
 
