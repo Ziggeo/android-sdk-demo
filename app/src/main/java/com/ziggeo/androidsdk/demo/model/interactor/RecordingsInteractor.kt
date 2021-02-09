@@ -24,7 +24,13 @@ class RecordingsInteractor @Inject constructor(
 ) {
 
     fun getRecordingsList(): Single<List<ContentModel>> {
-        return videoService.index(null)
+        return videoService.index(null).zipWith(
+            audiosService.index(null),
+            { videos, audios ->
+                videos.addAll(audios)
+                videos
+            }
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
