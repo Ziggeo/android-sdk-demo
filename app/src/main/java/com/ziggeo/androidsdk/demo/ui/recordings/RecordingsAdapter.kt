@@ -95,7 +95,7 @@ class RecordingsAdapter(private val list: List<ContentModel>) :
                 }
             }
 
-            if (model is AudioModel) {
+            if (model is AudioModel && model.audio != null) {
                 ivIcon?.setImageResource(com.ziggeo.androidsdk.demo.R.drawable.ic_mic_white_24dp)
 
                 val tags = model.audio.tags?.toString()?.replace("[", "")?.replace("]", "")
@@ -107,29 +107,29 @@ class RecordingsAdapter(private val list: List<ContentModel>) :
                 }
                 tvDate?.text = DateFormat.format(DATE_FORMAT, model.audio.submission_date * 1000L)
 
-//                if (!model.audio.state.isNullOrEmpty()) {
-//                    val context = itemView.context
-//                    tvStatus?.text = model.audio.state
-//                    val color = when (model.stateString) {
-//                        VideoModel.STATUS_FAILED -> ContextCompat.getColor(
-//                            context,
-//                            com.ziggeo.androidsdk.demo.R.color.red
-//                        )
-//                        VideoModel.STATUS_READY -> ContextCompat.getColor(
-//                            context,
-//                            com.ziggeo.androidsdk.demo.R.color.green
-//                        )
-//                        VideoModel.STATUS_PROCESSING -> ContextCompat.getColor(
-//                            context,
-//                            com.ziggeo.androidsdk.demo.R.color.yellow
-//                        )
-//                        else -> ContextCompat.getColor(
-//                            context,
-//                            com.ziggeo.androidsdk.demo.R.color.colorSecondaryText
-//                        )
-//                    }
-//                    tvStatus?.setTextColor(color)
-//                }
+                if (!model.audio.approved.isNullOrEmpty()) {
+                    val context = itemView.context
+                    tvStatus?.text = model.audio.approved
+                    val color = when (model.audio.approved) {
+                        VideoModel.STATUS_FAILED -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.red
+                        )
+                        VideoModel.STATUS_READY -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.green
+                        )
+                        VideoModel.STATUS_PROCESSING -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.yellow
+                        )
+                        else -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.colorSecondaryText
+                        )
+                    }
+                    tvStatus?.setTextColor(color)
+                }
             }
         }
     }
