@@ -1,15 +1,14 @@
 package com.ziggeo.androidsdk.demo.model.interactor
 
 import com.ziggeo.androidsdk.IZiggeo
-import com.ziggeo.androidsdk.net.ZUrlHelper
+import com.ziggeo.androidsdk.net.models.ContentModel
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
+import com.ziggeo.androidsdk.net.services.audios.IAudiosServiceRX
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import okhttp3.HttpUrl
-import java.io.InputStream
 import javax.inject.Inject
 
 
@@ -20,10 +19,11 @@ import javax.inject.Inject
  */
 class RecordingsInteractor @Inject constructor(
     private val videoService: IVideosServiceRx,
+    private val audiosService: IAudiosServiceRX,
     private val ziggeo: IZiggeo
 ) {
 
-    fun getRecordingsList(): Single<List<VideoModel>> {
+    fun getRecordingsList(): Single<List<ContentModel>> {
         return videoService.index(null)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

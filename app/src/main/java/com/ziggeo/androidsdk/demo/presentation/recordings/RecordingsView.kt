@@ -1,11 +1,9 @@
 package com.ziggeo.androidsdk.demo.presentation.recordings
 
-import com.arellomobile.mvp.MvpView
-import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.ziggeo.androidsdk.demo.presentation.global.BaseView
-import com.ziggeo.androidsdk.net.models.videos.VideoModel
+import com.ziggeo.androidsdk.net.models.ContentModel
 
 
 /**
@@ -22,7 +20,7 @@ interface RecordingsView : BaseView {
     fun startImageCapture()
     fun startFileSelector()
 
-    fun showRecordingsList(list: List<VideoModel>)
+    fun showRecordingsList(list: List<ContentModel>)
     fun showNoRecordingsMessage()
 
     fun hideActionFabs()

@@ -15,7 +15,7 @@ import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingsPresenter
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingsView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
-import com.ziggeo.androidsdk.net.models.videos.VideoModel
+import com.ziggeo.androidsdk.net.models.ContentModel
 import kotlinx.android.synthetic.main.fragment_recordings.*
 
 
@@ -49,7 +49,7 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
         }
     }
 
-    override fun showRecordingsList(list: List<VideoModel>) {
+    override fun showRecordingsList(list: List<ContentModel>) {
         tv_empty_list.visibility = View.INVISIBLE
         rv_recordings.visibility = View.VISIBLE
 
@@ -127,7 +127,7 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
 
     override fun startAudioRecorder() {
         analytics.logEvent("start_audio_recorder", null)
-        Toast.makeText(context, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+        ziggeo.startAudioRecorder()
     }
 
     override fun startImageCapture() {

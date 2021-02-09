@@ -13,6 +13,7 @@ import com.ziggeo.androidsdk.demo.model.system.message.SystemMessage
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BaseMainFlowPresenter
 import com.ziggeo.androidsdk.net.exceptions.ResponseException
+import com.ziggeo.androidsdk.net.models.ContentModel
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
@@ -93,9 +94,11 @@ class RecordingsPresenter @Inject constructor(
         viewState.hideSelectorFab()
     }
 
-    fun onItemClicked(model: VideoModel) {
-        kvStorage.put(VIDEO_TOKEN, model.token)
-        router.startFlow(Screens.RecordingDetailsFlow)
+    fun onItemClicked(model: ContentModel) {
+        if (model is VideoModel) {
+            kvStorage.put(VIDEO_TOKEN, model.token)
+            router.startFlow(Screens.RecordingDetailsFlow)
+        }
     }
 
     private fun updateRecordingsList() {

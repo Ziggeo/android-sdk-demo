@@ -13,6 +13,7 @@ import com.ziggeo.androidsdk.callbacks.UploadingCallback
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.ui.log.EventLogger
+import com.ziggeo.androidsdk.net.services.audios.IAudiosServiceRX
 import com.ziggeo.androidsdk.net.services.streams.IStreamsServiceRx
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import com.ziggeo.androidsdk.recorder.MicSoundLevel
@@ -35,6 +36,7 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
         val ziggeo = Ziggeo(token, context)
         bind(IZiggeo::class.java).toInstance(ziggeo)
         bind(IVideosServiceRx::class.java).toInstance(ziggeo.apiRx().videos())
+        bind(IAudiosServiceRX::class.java).toInstance(ziggeo.apiRx().audios())
         bind(IStreamsServiceRx::class.java).toInstance(ziggeo.apiRx().streams())
         bindPrefs(ziggeo, prefs)
 

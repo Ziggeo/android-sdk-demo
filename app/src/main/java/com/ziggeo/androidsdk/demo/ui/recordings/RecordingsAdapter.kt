@@ -8,6 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.ziggeo.androidsdk.net.models.ContentModel
+import com.ziggeo.androidsdk.net.models.audios.AudioModel
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 
 
@@ -16,7 +18,7 @@ import com.ziggeo.androidsdk.net.models.videos.VideoModel
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-class RecordingsAdapter(private val list: List<VideoModel>) :
+class RecordingsAdapter(private val list: List<ContentModel>) :
     RecyclerView.Adapter<RecordingsAdapter.RecordingsViewHolder>() {
 
     var onItemClickListener: ItemClickListener? = null
@@ -51,43 +53,83 @@ class RecordingsAdapter(private val list: List<VideoModel>) :
         private var tvDate: TextView? = view.findViewById(com.ziggeo.androidsdk.demo.R.id.tv_date)
     ) : RecyclerView.ViewHolder(view) {
 
-        fun bind(model: VideoModel) {
+        fun bind(model: ContentModel) {
             view.setOnClickListener {
                 onItemClickListener?.onItemClick(view, adapterPosition)
             }
-            ivIcon?.setImageResource(com.ziggeo.androidsdk.demo.R.drawable.ic_videocam_white_24dp)
             tvVideoToken?.text = model.token
-            val tags = model.tags?.toString()?.replace("[", "")?.replace("]", "")
-            if (tags.isNullOrEmpty()) {
-                tvTags?.visibility = View.GONE
-            } else {
-                tvTags?.visibility = View.VISIBLE
-                tvTags?.text = tags
-            }
-            tvDate?.text = DateFormat.format(DATE_FORMAT, model.submissionDate * 1000L)
+            if (model is VideoModel) {
+                ivIcon?.setImageResource(com.ziggeo.androidsdk.demo.R.drawable.ic_videocam_white_24dp)
 
-            if (!model.stateString.isNullOrEmpty()) {
-                val context = itemView.context
-                tvStatus?.text = model.stateString
-                val color = when (model.stateString) {
-                    VideoModel.STATUS_FAILED -> ContextCompat.getColor(
-                        context,
-                        com.ziggeo.androidsdk.demo.R.color.red
-                    )
-                    VideoModel.STATUS_READY -> ContextCompat.getColor(
-                        context,
-                        com.ziggeo.androidsdk.demo.R.color.green
-                    )
-                    VideoModel.STATUS_PROCESSING -> ContextCompat.getColor(
-                        context,
-                        com.ziggeo.androidsdk.demo.R.color.yellow
-                    )
-                    else -> ContextCompat.getColor(
-                        context,
-                        com.ziggeo.androidsdk.demo.R.color.colorSecondaryText
-                    )
+                val tags = model.tags?.toString()?.replace("[", "")?.replace("]", "")
+                if (tags.isNullOrEmpty()) {
+                    tvTags?.visibility = View.GONE
+                } else {
+                    tvTags?.visibility = View.VISIBLE
+                    tvTags?.text = tags
                 }
-                tvStatus?.setTextColor(color)
+                tvDate?.text = DateFormat.format(DATE_FORMAT, model.submissionDate * 1000L)
+
+                if (!model.stateString.isNullOrEmpty()) {
+                    val context = itemView.context
+                    tvStatus?.text = model.stateString
+                    val color = when (model.stateString) {
+                        VideoModel.STATUS_FAILED -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.red
+                        )
+                        VideoModel.STATUS_READY -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.green
+                        )
+                        VideoModel.STATUS_PROCESSING -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.yellow
+                        )
+                        else -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.colorSecondaryText
+                        )
+                    }
+                    tvStatus?.setTextColor(color)
+                }
+            }
+
+            if (model is AudioModel) {
+                ivIcon?.setImageResource(com.ziggeo.androidsdk.demo.R.drawable.ic_mic_white_24dp)
+
+                val tags = model.audio.tags?.toString()?.replace("[", "")?.replace("]", "")
+                if (tags.isNullOrEmpty()) {
+                    tvTags?.visibility = View.GONE
+                } else {
+                    tvTags?.visibility = View.VISIBLE
+                    tvTags?.text = tags
+                }
+                tvDate?.text = DateFormat.format(DATE_FORMAT, model.audio.submission_date * 1000L)
+
+//                if (!model.audio.state.isNullOrEmpty()) {
+//                    val context = itemView.context
+//                    tvStatus?.text = model.audio.state
+//                    val color = when (model.stateString) {
+//                        VideoModel.STATUS_FAILED -> ContextCompat.getColor(
+//                            context,
+//                            com.ziggeo.androidsdk.demo.R.color.red
+//                        )
+//                        VideoModel.STATUS_READY -> ContextCompat.getColor(
+//                            context,
+//                            com.ziggeo.androidsdk.demo.R.color.green
+//                        )
+//                        VideoModel.STATUS_PROCESSING -> ContextCompat.getColor(
+//                            context,
+//                            com.ziggeo.androidsdk.demo.R.color.yellow
+//                        )
+//                        else -> ContextCompat.getColor(
+//                            context,
+//                            com.ziggeo.androidsdk.demo.R.color.colorSecondaryText
+//                        )
+//                    }
+//                    tvStatus?.setTextColor(color)
+//                }
             }
         }
     }
