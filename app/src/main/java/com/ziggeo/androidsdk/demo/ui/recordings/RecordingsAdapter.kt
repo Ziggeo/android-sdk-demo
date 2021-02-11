@@ -105,7 +105,7 @@ class RecordingsAdapter(private val list: List<ContentModel>) :
                     tvTags?.visibility = View.VISIBLE
                     tvTags?.text = tags
                 }
-                tvDate?.text = DateFormat.format(DATE_FORMAT, model.submission_date)
+                tvDate?.text = DateFormat.format(DATE_FORMAT, model.submissionDate)
 
                 if (!model.approved.isNullOrEmpty()) {
                     val context = itemView.context
