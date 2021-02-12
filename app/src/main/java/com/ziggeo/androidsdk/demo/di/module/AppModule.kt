@@ -10,6 +10,7 @@ import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.ui.log.EventLogger
 import com.ziggeo.androidsdk.net.services.audios.IAudiosServiceRX
+import com.ziggeo.androidsdk.net.services.images.IImageServiceRx
 import com.ziggeo.androidsdk.net.services.streams.IStreamsServiceRx
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import ru.terrakok.cicerone.Cicerone
@@ -46,6 +47,7 @@ class AppModule(context: Context) : Module() {
         bind(IVideosServiceRx::class.java).toInstance(ziggeo.apiRx().videos())
         bind(IAudiosServiceRX::class.java).toInstance(ziggeo.apiRx().audios())
         bind(IStreamsServiceRx::class.java).toInstance(ziggeo.apiRx().streams())
+        bind(IImageServiceRx::class.java).toInstance(ziggeo.apiRx().images())
 
         // Firebase
         bind(FirebaseAnalytics::class.java).toInstance(FirebaseAnalytics.getInstance(context))

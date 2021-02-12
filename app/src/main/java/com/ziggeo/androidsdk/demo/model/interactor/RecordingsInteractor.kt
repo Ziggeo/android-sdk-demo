@@ -4,6 +4,7 @@ import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.net.models.ContentModel
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import com.ziggeo.androidsdk.net.services.audios.IAudiosServiceRX
+import com.ziggeo.androidsdk.net.services.images.IImageServiceRx
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -20,14 +21,18 @@ import javax.inject.Inject
 class RecordingsInteractor @Inject constructor(
     private val videoService: IVideosServiceRx,
     private val audiosService: IAudiosServiceRX,
+    private val imagesService: IImageServiceRx,
     private val ziggeo: IZiggeo
 ) {
 
     fun getRecordingsList(): Single<List<ContentModel>> {
-        return videoService.index(null).zipWith(
+        return Single.zip(
+            videoService.index(null),
             audiosService.index(null),
-            { videos, audios ->
+            imagesService.index(null),
+            { videos, audios, images ->
                 videos.addAll(audios)
+                videos.addAll(images)
                 videos.sortByDescending { it.date }
                 videos
             }

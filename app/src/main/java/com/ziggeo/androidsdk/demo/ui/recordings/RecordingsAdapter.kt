@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ziggeo.androidsdk.net.models.ContentModel
 import com.ziggeo.androidsdk.net.models.audios.Audio
+import com.ziggeo.androidsdk.net.models.images.Image
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 
 
@@ -106,6 +107,43 @@ class RecordingsAdapter(private val list: List<ContentModel>) :
                     tvTags?.text = tags
                 }
                 tvDate?.text = DateFormat.format(DATE_FORMAT, model.submissionDate)
+
+                if (!model.approved.isNullOrEmpty()) {
+                    val context = itemView.context
+                    tvStatus?.text = model.approved
+                    val color = when (model.approved) {
+                        VideoModel.STATUS_FAILED -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.red
+                        )
+                        VideoModel.STATUS_READY -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.green
+                        )
+                        VideoModel.STATUS_PROCESSING -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.yellow
+                        )
+                        else -> ContextCompat.getColor(
+                            context,
+                            com.ziggeo.androidsdk.demo.R.color.colorSecondaryText
+                        )
+                    }
+                    tvStatus?.setTextColor(color)
+                }
+            }
+
+            if (model is Image) {
+                ivIcon?.setImageResource(com.ziggeo.androidsdk.demo.R.drawable.ic_photo_white_24dp)
+
+                val tags = model.tags?.toString()?.replace("[", "")?.replace("]", "")
+                if (tags.isNullOrEmpty()) {
+                    tvTags?.visibility = View.GONE
+                } else {
+                    tvTags?.visibility = View.VISIBLE
+                    tvTags?.text = tags
+                }
+                tvDate?.text = DateFormat.format(DATE_FORMAT, model.date)
 
                 if (!model.approved.isNullOrEmpty()) {
                     val context = itemView.context

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -132,7 +131,7 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
 
     override fun startImageCapture() {
         analytics.logEvent("start_image_capture", null)
-        Toast.makeText(context, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+        ziggeo.startImageRecorder()
     }
 
     override fun startFileSelector() {
