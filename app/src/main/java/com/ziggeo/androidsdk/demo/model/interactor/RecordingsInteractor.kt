@@ -1,7 +1,9 @@
 package com.ziggeo.androidsdk.demo.model.interactor
 
 import com.ziggeo.androidsdk.IZiggeo
+import com.ziggeo.androidsdk.db.impl.room.models.FileType
 import com.ziggeo.androidsdk.net.models.ContentModel
+import com.ziggeo.androidsdk.net.models.audios.Audio
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import com.ziggeo.androidsdk.net.services.audios.IAudiosServiceRX
 import com.ziggeo.androidsdk.net.services.images.IImageServiceRx
@@ -41,16 +43,40 @@ class RecordingsInteractor @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun destroy(videoToken: String): Completable {
-        return videoService.destroy(videoToken)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+    fun destroy(model: ContentModel): Completable {
+        return when (model) {
+            is VideoModel -> videoService.destroy(model.token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+            is Audio -> audiosService.destroy(model.token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+            else -> imagesService.destroy(model.token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        }
     }
 
-    fun getInfo(videoToken: String): Single<VideoModel> {
-        return videoService[videoToken]
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+    fun getInfo(mediaType: FileType, token: String): Single<ContentModel> {
+        return when (mediaType) {
+            FileType.AUDIO_FILE -> {
+                audiosService.get(token)
+                    .map { it.audio as ContentModel }
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+            }
+            FileType.IMAGE_FILE -> {
+                imagesService.get(token)
+                    .map { it.image as ContentModel }
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+            }
+            else -> {
+                videoService[token]
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+            }
+        }
     }
 
     fun updateInfo(token: String, args: HashMap<String, String>): Single<VideoModel> {
@@ -59,13 +85,30 @@ class RecordingsInteractor @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun updateInfo(videoModel: VideoModel): Single<VideoModel> {
-        return videoService.update(videoModel)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+    fun updateInfo(model: ContentModel): Single<ContentModel> {
+        return when (model) {
+            is VideoModel -> videoService.update(model)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+            is Audio -> audiosService.update(model.token, null)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+            else -> imagesService.update(model.token, null)
+                .map { it.image as ContentModel }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        }
+    }
+
+    fun getPreviewUrl(token: String): Single<String> {
+        return videoService.getImageUrl(token)
     }
 
     fun getImageUrl(token: String): Single<String> {
-        return videoService.getImageUrl(token)
+        return imagesService.source(token)
+    }
+
+    fun getAudioUrl(token: String): Single<String> {
+        return audiosService.source(token)
     }
 }

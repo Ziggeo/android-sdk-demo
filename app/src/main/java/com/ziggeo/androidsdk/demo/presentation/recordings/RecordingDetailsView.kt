@@ -3,7 +3,7 @@ package com.ziggeo.androidsdk.demo.presentation.recordings
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.ziggeo.androidsdk.demo.presentation.global.BaseView
-import com.ziggeo.androidsdk.net.models.videos.VideoModel
+import com.ziggeo.androidsdk.net.models.ContentModel
 
 
 /**
@@ -22,6 +22,6 @@ interface RecordingDetailsView : BaseView {
     fun showConfirmDeleteDialog()
     fun hideConfirmDeleteDialog()
 
-    fun showRecordingData(videoModel: VideoModel)
+    fun showRecordingData(contentModel: ContentModel)
 
 }

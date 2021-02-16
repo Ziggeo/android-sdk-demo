@@ -5,6 +5,8 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.ziggeo.androidsdk.demo.R
 import com.ziggeo.androidsdk.demo.Screens
+import com.ziggeo.androidsdk.demo.model.data.storage.AUDIO_TOKEN
+import com.ziggeo.androidsdk.demo.model.data.storage.IMAGE_TOKEN
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
 import com.ziggeo.androidsdk.demo.model.data.storage.VIDEO_TOKEN
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
@@ -102,10 +104,12 @@ class RecordingsPresenter @Inject constructor(
             router.startFlow(Screens.RecordingDetailsFlow)
         }
         if (model is Audio) {
-            //todo add detail audio screen
+            kvStorage.put(AUDIO_TOKEN, model.token)
+            router.startFlow(Screens.RecordingDetailsFlow)
         }
         if (model is Image) {
-            //todo add detail image screen
+            kvStorage.put(IMAGE_TOKEN, model.token)
+            router.startFlow(Screens.RecordingDetailsFlow)
         }
     }
 

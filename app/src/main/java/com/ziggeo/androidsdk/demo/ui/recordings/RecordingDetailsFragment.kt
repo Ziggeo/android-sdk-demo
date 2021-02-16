@@ -16,7 +16,7 @@ import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingDetailsPresen
 import com.ziggeo.androidsdk.demo.presentation.recordings.RecordingDetailsView
 import com.ziggeo.androidsdk.demo.ui.global.BaseToolbarFragment
 import com.ziggeo.androidsdk.demo.ui.global.MessageDialogFragment
-import com.ziggeo.androidsdk.net.models.videos.VideoModel
+import com.ziggeo.androidsdk.net.models.ContentModel
 import kotlinx.android.synthetic.main.fragment_recording_details.*
 
 
@@ -65,38 +65,45 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
         }
     }
 
-    override fun showRecordingData(videoModel: VideoModel) {
-        et_token_or_key.setText(videoModel.key ?: videoModel.token)
-        et_title.setText(videoModel.title)
-        et_description.setText(videoModel.description)
+    override fun showRecordingData(contentModel: ContentModel) {
+        et_token_or_key.setText(contentModel.key ?: contentModel.token)
+        et_title.setText(contentModel.title)
+        et_description.setText(contentModel.description)
     }
 
     override fun showPreview(url: String) {
-        Glide.with(iv_preview)
-            .load(url)
-            .listener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    return false
-                }
+        if (url.isEmpty()) {
+            iv_preview.setImageResource(R.drawable.ic_microphone)
+            iv_preview.setOnClickListener {
+                presenter.onPlayClicked()
+            }
+        } else {
+            Glide.with(iv_preview)
+                .load(url)
+                .listener(object : RequestListener<Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return false
+                    }
 
-                override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    fab_play.show()
-                    return false
-                }
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        fab_play.show()
+                        return false
+                    }
 
-            })
-            .into(iv_preview)
+                })
+                .into(iv_preview)
+        }
     }
 
     override fun showViewsInEditState() {

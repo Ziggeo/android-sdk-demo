@@ -4,14 +4,21 @@ import com.arellomobile.mvp.InjectViewState
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.ziggeo.androidsdk.IZiggeo
+import com.ziggeo.androidsdk.db.impl.room.models.FileType
 import com.ziggeo.androidsdk.demo.Screens
+import com.ziggeo.androidsdk.demo.model.data.storage.AUDIO_TOKEN
+import com.ziggeo.androidsdk.demo.model.data.storage.IMAGE_TOKEN
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
 import com.ziggeo.androidsdk.demo.model.data.storage.VIDEO_TOKEN
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BasePresenter
+import com.ziggeo.androidsdk.net.models.ContentModel
+import com.ziggeo.androidsdk.net.models.audios.Audio
+import com.ziggeo.androidsdk.net.models.images.Image
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
+import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
@@ -31,18 +38,47 @@ class RecordingDetailsPresenter @Inject constructor(
     analytics: FirebaseAnalytics
 ) : BasePresenter<RecordingDetailsView>(smn, analytics) {
 
-    private lateinit var model: VideoModel
-    private lateinit var videoToken: String
+    private lateinit var model: ContentModel
+    private lateinit var type: FileType
+    private lateinit var token: String
     private var disposable: Disposable? = null
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        videoToken = kvStorage.get(VIDEO_TOKEN) as String
-        disposable = recordingsInteractor.getInfo(videoToken)
-            .flatMap {
+
+        when {
+            kvStorage.get(VIDEO_TOKEN) != null -> {
+                token = kvStorage.get(VIDEO_TOKEN) as String
+                type = FileType.VIDEO_FILE
+            }
+            kvStorage.get(AUDIO_TOKEN) != null -> {
+                token = kvStorage.get(AUDIO_TOKEN) as String
+                type = FileType.AUDIO_FILE
+            }
+            kvStorage.get(IMAGE_TOKEN) != null -> {
+                token = kvStorage.get(IMAGE_TOKEN) as String
+                type = FileType.IMAGE_FILE
+            }
+        }
+        kvStorage.clear()
+
+        disposable = recordingsInteractor.getInfo(type, token)
+            .map {
                 this.model = it
                 viewState.showRecordingData(model)
-                recordingsInteractor.getImageUrl(videoToken)
+            }
+            .flatMap {
+                when (model) {
+                    is VideoModel -> {
+                        recordingsInteractor.getPreviewUrl(token)
+                    }
+                    is Image -> {
+                        recordingsInteractor.getImageUrl(token)
+                    }
+                    else -> {
+                        Single.just("")
+                    }
+                }
             }
             .doOnSubscribe {
                 viewState.showLoading(true)
@@ -61,9 +97,17 @@ class RecordingDetailsPresenter @Inject constructor(
 
     fun onPlayClicked() {
         analytics.logEvent("play_clicked") {
-            param("video_token", videoToken)
+            param("video_token", token)
         }
-        ziggeo.startPlayer(videoToken)
+        if (model is VideoModel) {
+            ziggeo.startPlayer(token)
+        }
+        if (model is Audio) {
+            ziggeo.startAudioRecorder(null, token)
+        }
+        if (model is Image) {
+            // todo open image
+        }
     }
 
     fun onConfirmNoClicked() {
@@ -73,9 +117,9 @@ class RecordingDetailsPresenter @Inject constructor(
     fun onConfirmYesClicked() {
         viewState.hideConfirmDeleteDialog()
         analytics.logEvent("delete_video") {
-            param("video_token", videoToken)
+            param("video_token", token)
         }
-        disposable = recordingsInteractor.destroy(videoToken)
+        disposable = recordingsInteractor.destroy(model)
             .doOnError { commonOnError(it) }
             .doOnSubscribe {
                 viewState.showLoading(true)
@@ -92,7 +136,7 @@ class RecordingDetailsPresenter @Inject constructor(
 
     fun onSaveClicked(tokenOrKey: String, title: String, description: String) {
         analytics.logEvent("save_video_details") {
-            param("video_token", videoToken)
+            param("video_token", token)
         }
         if (model.token != tokenOrKey) {
             model.key = tokenOrKey
@@ -114,7 +158,7 @@ class RecordingDetailsPresenter @Inject constructor(
 
     fun onEditClicked() {
         analytics.logEvent("edit_video_details") {
-            param("video_token", videoToken)
+            param("video_token", token)
         }
         viewState.showViewsInEditState()
     }
