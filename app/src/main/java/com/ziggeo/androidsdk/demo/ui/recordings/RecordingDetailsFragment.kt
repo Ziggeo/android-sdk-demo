@@ -71,7 +71,7 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
         et_description.setText(contentModel.description)
     }
 
-    override fun showPreview(url: String) {
+    override fun showPreview(url: String, isVideo: Boolean) {
         if (url.isEmpty()) {
             iv_preview.setImageResource(R.drawable.ic_microphone)
             iv_preview.setOnClickListener {
@@ -97,7 +97,13 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
                         dataSource: DataSource?,
                         isFirstResource: Boolean
                     ): Boolean {
-                        fab_play.show()
+                        if (isVideo) {
+                            fab_play.show()
+                        } else {
+                            iv_preview.setOnClickListener {
+                                presenter.onPlayClicked()
+                            }
+                        }
                         return false
                     }
 

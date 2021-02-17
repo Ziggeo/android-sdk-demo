@@ -17,7 +17,7 @@ interface RecordingDetailsView : BaseView {
     fun showViewsInEditState()
     fun showViewsInViewState()
 
-    fun showPreview(url: String)
+    fun showPreview(url: String, isVideo: Boolean)
 
     fun showConfirmDeleteDialog()
     fun hideConfirmDeleteDialog()

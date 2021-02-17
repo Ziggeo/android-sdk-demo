@@ -86,7 +86,7 @@ class RecordingDetailsPresenter @Inject constructor(
                 viewState.showLoading(false)
             }.subscribe { url, throwable ->
                 url?.let {
-                    viewState.showPreview(it)
+                    viewState.showPreview(it, model is VideoModel)
                 }
                 throwable?.let {
                     commonOnError(it)
@@ -106,7 +106,7 @@ class RecordingDetailsPresenter @Inject constructor(
             ziggeo.startAudioRecorder(null, token)
         }
         if (model is Image) {
-            // todo open image
+            ziggeo.showImage(token)
         }
     }
 

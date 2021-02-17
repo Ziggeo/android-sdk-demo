@@ -105,10 +105,7 @@ class RecordingsInteractor @Inject constructor(
     }
 
     fun getImageUrl(token: String): Single<String> {
-        return imagesService.source(token)
+        return imagesService.getImageUrl(token)
     }
 
-    fun getAudioUrl(token: String): Single<String> {
-        return audiosService.source(token)
-    }
 }
