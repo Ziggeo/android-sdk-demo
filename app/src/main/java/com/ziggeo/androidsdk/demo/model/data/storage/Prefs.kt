@@ -22,6 +22,8 @@ class Prefs @Inject constructor(
 
     // settings
     private val KEY_START_DELAY = "KEY_START_DELAY"
+    private val KEY_CUSTOM_VIDEO = "KEY_CUSTOM_VIDEO"
+    private val KEY_CUSTOM_CAMERA = "KEY_CUSTOM_CAMERA"
 
     private val authPrefs by lazy { getSharedPreferences(AUTH_DATA) }
 
@@ -35,5 +37,17 @@ class Prefs @Inject constructor(
         get() = authPrefs.getInt(KEY_START_DELAY, 0)
         set(value) {
             authPrefs.edit().putInt(KEY_START_DELAY, value).apply()
+        }
+
+    var isCustomVideo: Boolean
+        get() = authPrefs.getBoolean(KEY_CUSTOM_VIDEO, false)
+        set(value) {
+            authPrefs.edit().putBoolean(KEY_CUSTOM_VIDEO, value).apply()
+        }
+
+    var isCustomCamera: Boolean
+        get() = authPrefs.getBoolean(KEY_CUSTOM_CAMERA, false)
+        set(value) {
+            authPrefs.edit().putBoolean(KEY_CUSTOM_CAMERA, value).apply()
         }
 }
