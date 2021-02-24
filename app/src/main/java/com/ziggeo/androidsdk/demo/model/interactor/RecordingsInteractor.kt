@@ -4,6 +4,9 @@ import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.db.impl.room.models.FileType
 import com.ziggeo.androidsdk.net.models.ContentModel
 import com.ziggeo.androidsdk.net.models.audios.Audio
+import com.ziggeo.androidsdk.net.models.audios.AudioDetails
+import com.ziggeo.androidsdk.net.models.images.Image
+import com.ziggeo.androidsdk.net.models.images.ImageDetails
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import com.ziggeo.androidsdk.net.services.audios.IAudiosServiceRX
 import com.ziggeo.androidsdk.net.services.images.IImageServiceRx
@@ -90,13 +93,23 @@ class RecordingsInteractor @Inject constructor(
             is VideoModel -> videoService.update(model)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-            is Audio -> audiosService.update(model.token, null)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-            else -> imagesService.update(model.token, null)
-                .map { it.image as ContentModel }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+            is Audio -> {
+                val audioModel = AudioDetails()
+                audioModel.audio = model
+                audiosService.update(audioModel)
+                    .map { it.audio as ContentModel }
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+            }
+            is Image -> {
+                val audioModel = ImageDetails()
+                audioModel.image = model
+                imagesService.update(audioModel)
+                    .map { it.image as ContentModel }
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+            }
+            else -> Single.just(model)
         }
     }
 
