@@ -22,6 +22,9 @@ class CustomModeCameraPresenter @Inject constructor(
 ) : BasePresenter<CustomModeCameraView>(smn, analytics) {
 
     init {
+    }
+
+    fun loadConfig() {
         viewState.loadConfigs(ziggeo)
     }
 

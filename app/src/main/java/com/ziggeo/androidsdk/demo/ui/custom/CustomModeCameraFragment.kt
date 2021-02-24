@@ -13,6 +13,7 @@ import android.os.Looper
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -23,6 +24,7 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.CompositeMultiplePermissionsListener
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import com.karumi.dexter.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener
 import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.StopRecordingConfirmationDialogConfig
 import com.ziggeo.androidsdk.callbacks.IAnalyticsManager
@@ -195,17 +197,25 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         }
         updateTimeStatusText(0, maxDuration)
 
-        cv_camera.setResolution(config.resolution)
-        cv_camera.setVideoBitrate(config.videoBitrate)
-        cv_camera.setAudioBitrate(config.audioBitrate)
-        cv_camera.setAudioSampleRate(config.audioSampleRate)
+    }
+
+    private fun loadCameraConfigs() {
+
+        cv_camera.setResolution(this.config.resolution)
+        cv_camera.setVideoBitrate(this.config.videoBitrate)
+        cv_camera.setAudioBitrate(this.config.audioBitrate)
+        cv_camera.setAudioSampleRate(this.config.audioSampleRate)
         cv_camera.quality = quality
-        cv_camera.facing = config.facing
+        cv_camera.facing = this.config.facing
 
         cv_camera.setCameraCallback(object : CameraCallback() {
             override fun cameraOpened() {
                 super.cameraOpened()
                 readyToRecord()
+            }
+
+            override fun cameraClosed() {
+                super.cameraClosed()
             }
         })
 
@@ -528,11 +538,11 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         Handler(Looper.getMainLooper()).postDelayed({ setBtnStartListener() }, 1500)
     }
 
-    protected open fun getCallback(): IRecorderCallback? {
-        return config.callback
+    private fun getCallback(): IRecorderCallback? {
+        return this.config.callback
     }
 
-    protected open fun isPermissionsGranted(): Boolean {
+    private fun isPermissionsGranted(): Boolean {
         var granted = true
         for (permission in getNeededPermissionsList()) {
             granted = granted and isPermissionGranted(permission)
@@ -540,7 +550,7 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         return granted
     }
 
-    protected open fun isPermissionGranted(permission: String): Boolean {
+    private fun isPermissionGranted(permission: String): Boolean {
         val activity: Activity? = activity
         return if (activity != null) {
             ActivityCompat.checkSelfPermission(
@@ -552,7 +562,7 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         }
     }
 
-    protected open fun getNeededPermissionsList(): Array<String> {
+    private fun getNeededPermissionsList(): Array<String> {
         val permissions: ArrayList<String> = object : ArrayList<String>() {
             init {
                 add(Manifest.permission.CAMERA)
@@ -562,11 +572,11 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         return permissions.toArray(arrayOf())
     }
 
-    protected open fun requestActionPermissions() {
+    private fun requestActionPermissions() {
         Dexter.withContext(activity)
             .withPermissions(*getNeededPermissionsList())
             .withListener(CompositeMultiplePermissionsListener(
-                null,
+                getRationalePermissionListener(getRationaleMessageId()),
                 object : MultiplePermissionsListener {
                     override fun onPermissionsChecked(report: MultiplePermissionsReport) {
                         if (isPermissionsGranted()) {
@@ -593,7 +603,19 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
             .check()
     }
 
-    protected open fun onPermissionsGranted() {
+    private fun getRationalePermissionListener(@StringRes stringRes: Int): MultiplePermissionsListener? {
+        return SnackbarOnAnyDeniedMultiplePermissionsListener.Builder
+            .with(root, stringRes)
+            .withOpenSettingsButton(R.string.settings)
+            .build()
+    }
+
+    private fun getRationaleMessageId() = R.string.camera_permission_rationale
+
+
+    private fun onPermissionsGranted() {
+        presenter.loadConfig()
+
         if (getCallback() != null) {
             getCallback()!!.accessGranted()
         }
@@ -611,6 +633,7 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
             if (getCallback() != null) {
                 getCallback()!!.hasCamera()
             }
+            loadCameraConfigs()
             cv_camera.start()
         } else {
             if (getCallback() != null) {
@@ -619,7 +642,7 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         }
     }
 
-    protected open fun hasCamera(): Boolean {
+    private fun hasCamera(): Boolean {
         val activity: Activity? = activity
         return if (activity != null) {
             ((activity.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA) ||
@@ -630,7 +653,7 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         }
     }
 
-    protected open fun hasMicrophone(): Boolean {
+    private fun hasMicrophone(): Boolean {
         val activity: Activity? = activity
         return activity?.packageManager?.hasSystemFeature(PackageManager.FEATURE_MICROPHONE)
             ?: false
