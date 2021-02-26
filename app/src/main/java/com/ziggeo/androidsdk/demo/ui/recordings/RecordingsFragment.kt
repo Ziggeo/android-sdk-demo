@@ -126,7 +126,7 @@ class RecordingsFragment : BaseToolbarFragment<RecordingsView, RecordingsPresent
 
     override fun startAudioRecorder() {
         analytics.logEvent("start_audio_recorder", null)
-        ziggeo.startAudioRecorder(null, null)
+        ziggeo.startAudioRecorder()
     }
 
     override fun startImageCapture() {

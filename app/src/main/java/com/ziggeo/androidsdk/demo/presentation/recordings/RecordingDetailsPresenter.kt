@@ -103,7 +103,7 @@ class RecordingDetailsPresenter @Inject constructor(
             ziggeo.startPlayer(token)
         }
         if (model is Audio) {
-            ziggeo.startAudioRecorder(null, token)
+            ziggeo.startAudioPlayer(null, token)
         }
         if (model is Image) {
             ziggeo.showImage(token)
