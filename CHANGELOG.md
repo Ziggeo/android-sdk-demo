@@ -1,5 +1,20 @@
 # Changelog
 
+Version 2.2.3*(2021-03-19)*
+----------------------------
+* Changed uploading implementation for internal recorder to allow auth tokens with only `read` permission
+
+Version 2.2.1*(2020-12-22)*
+----------------------------
+* Fixed receving session
+* Fixed icons sizes
+
+Version 2.2.0*(2020-12-22)*
+----------------------------
+* Added ability to specify ad URL in player config
+* Added `destroy` method for services API
+* Fixed several issues related to auth tokens
+
 Version 2.1.12*(2020-12-22)*
 ----------------------------
 * Fixed frames loading in video editor
