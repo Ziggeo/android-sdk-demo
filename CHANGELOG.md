@@ -1,5 +1,9 @@
 # Changelog
 
+Version 2.2.4*(2021-04-05)*
+----------------------------
+* Fixed playing HLS/M3U stream
+
 Version 2.2.3*(2021-03-19)*
 ----------------------------
 * Changed uploading implementation for internal recorder to allow auth tokens with only `read` permission
