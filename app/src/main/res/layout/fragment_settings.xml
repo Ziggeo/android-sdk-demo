@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/ic_small_size"
-                    android:text="sc_custom_video"
+                    android:text="@string/use_custom_camera"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/sc_custom_video" />
 
@@ -58,7 +58,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="sc_custom_camera"
+                    android:text="@string/use_custom_player"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/sc_custom_camera" />
 
