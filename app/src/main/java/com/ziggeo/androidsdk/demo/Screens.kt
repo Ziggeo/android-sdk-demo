@@ -4,6 +4,8 @@ import com.ziggeo.androidsdk.demo.ui.about.AboutFragment
 import com.ziggeo.androidsdk.demo.ui.auth.AuthFlowFragment
 import com.ziggeo.androidsdk.demo.ui.auth.AuthFragment
 import com.ziggeo.androidsdk.demo.ui.contactus.ContactUsFragment
+import com.ziggeo.androidsdk.demo.ui.custom.CustomModeCameraFragment
+import com.ziggeo.androidsdk.demo.ui.custom.CustomModeVideoFragment
 import com.ziggeo.androidsdk.demo.ui.log.LogFragment
 import com.ziggeo.androidsdk.demo.ui.main.MainFlowFragment
 import com.ziggeo.androidsdk.demo.ui.recordings.RecordingDetailsFlowFragment
@@ -46,6 +48,14 @@ object Screens {
 
     object RecordingDetails : SupportAppScreen() {
         override fun getFragment() = RecordingDetailsFragment()
+    }
+
+    object CustomModeVideo : SupportAppScreen() {
+        override fun getFragment() = CustomModeVideoFragment()
+    }
+
+    object CustomModeCamera : SupportAppScreen() {
+        override fun getFragment() = CustomModeCameraFragment()
     }
 
     object AvailableSdks : SupportAppScreen() {

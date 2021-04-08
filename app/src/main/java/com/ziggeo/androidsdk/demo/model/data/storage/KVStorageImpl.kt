@@ -14,5 +14,8 @@ class KVStorageImpl : KVStorage {
 
     override fun put(key: Int, value: Any?) = arr.put(key, value)
     override fun get(key: Int): Any? = arr.get(key)
+    override fun clear() {
+        arr.clear()
+    }
 
 }

@@ -1,15 +1,12 @@
 package com.ziggeo.androidsdk.demo.model.interactor
 
 import com.ziggeo.androidsdk.IZiggeo
-import com.ziggeo.androidsdk.net.ZUrlHelper
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import okhttp3.HttpUrl
-import java.io.InputStream
 import javax.inject.Inject
 
 

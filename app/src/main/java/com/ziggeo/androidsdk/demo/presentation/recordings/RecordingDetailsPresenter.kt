@@ -6,6 +6,7 @@ import com.google.firebase.analytics.ktx.logEvent
 import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
+import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.model.data.storage.VIDEO_TOKEN
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
@@ -28,6 +29,7 @@ class RecordingDetailsPresenter @Inject constructor(
     private var router: FlowRouter,
     private var kvStorage: KVStorage,
     private var ziggeo: IZiggeo,
+    private val prefs: Prefs,
     smn: SystemMessageNotifier,
     analytics: FirebaseAnalytics
 ) : BasePresenter<RecordingDetailsView>(smn, analytics) {
@@ -65,7 +67,12 @@ class RecordingDetailsPresenter @Inject constructor(
         analytics.logEvent("play_clicked") {
             param("video_token", videoToken)
         }
-        ziggeo.startPlayer(videoToken)
+        if (prefs.isCustomVideo) {
+            kvStorage.put(VIDEO_TOKEN, model.token)
+            router.startFlow(Screens.CustomModeVideo)
+        } else {
+            ziggeo.startPlayer(videoToken)
+        }
     }
 
     fun onConfirmNoClicked() {
