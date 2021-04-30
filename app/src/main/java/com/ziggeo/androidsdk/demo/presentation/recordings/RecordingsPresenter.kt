@@ -8,6 +8,7 @@ import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.data.storage.AUDIO_TOKEN
 import com.ziggeo.androidsdk.demo.model.data.storage.IMAGE_TOKEN
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
+import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.model.data.storage.VIDEO_TOKEN
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
@@ -32,6 +33,7 @@ import javax.inject.Inject
 class RecordingsPresenter @Inject constructor(
     private val recordingsInteractor: RecordingsInteractor,
     private var router: FlowRouter,
+    private var prefs: Prefs,
     private var kvStorage: KVStorage,
     systemMessageNotifier: SystemMessageNotifier,
     analytics: FirebaseAnalytics
@@ -55,7 +57,11 @@ class RecordingsPresenter @Inject constructor(
     }
 
     fun onFabCameraClicked() {
-        viewState.startCameraRecorder()
+        if (prefs.isCustomCamera) {
+            router.startFlow(Screens.CustomModeCamera)
+        } else {
+            viewState.startCameraRecorder()
+        }
     }
 
     fun onFabScreenClicked() {

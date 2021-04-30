@@ -7,6 +7,7 @@ import com.ziggeo.androidsdk.Ziggeo
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorageImpl
 import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
+import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.ui.log.EventLogger
 import com.ziggeo.androidsdk.net.services.audios.IAudiosServiceRX
@@ -39,6 +40,7 @@ class AppModule(context: Context) : Module() {
         // Navigation
         val cicerone = Cicerone.create()
         bind(Router::class.java).toInstance(cicerone.router)
+        bind(FlowRouter::class.java).toInstance(FlowRouter(cicerone.router))
         bind(NavigatorHolder::class.java).toInstance(cicerone.navigatorHolder)
 
         // Ziggeo

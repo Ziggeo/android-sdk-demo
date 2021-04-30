@@ -9,6 +9,7 @@ import com.ziggeo.androidsdk.demo.Screens
 import com.ziggeo.androidsdk.demo.model.data.storage.AUDIO_TOKEN
 import com.ziggeo.androidsdk.demo.model.data.storage.IMAGE_TOKEN
 import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
+import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
 import com.ziggeo.androidsdk.demo.model.data.storage.VIDEO_TOKEN
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
@@ -19,6 +20,7 @@ import com.ziggeo.androidsdk.net.models.audios.Audio
 import com.ziggeo.androidsdk.net.models.images.Image
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
@@ -34,6 +36,7 @@ class RecordingDetailsPresenter @Inject constructor(
     private var router: FlowRouter,
     private var kvStorage: KVStorage,
     private var ziggeo: IZiggeo,
+    private val prefs: Prefs,
     smn: SystemMessageNotifier,
     analytics: FirebaseAnalytics
 ) : BasePresenter<RecordingDetailsView>(smn, analytics) {
@@ -80,6 +83,8 @@ class RecordingDetailsPresenter @Inject constructor(
                     }
                 }
             }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSuccess {  viewState.showRecordingData(model) }
             .doOnSubscribe {
                 viewState.showLoading(true)
             }.doFinally {
@@ -99,14 +104,19 @@ class RecordingDetailsPresenter @Inject constructor(
         analytics.logEvent("play_clicked") {
             param("video_token", token)
         }
-        if (model is VideoModel) {
-            ziggeo.startPlayer(token)
-        }
-        if (model is Audio) {
-            ziggeo.startAudioPlayer(null, token)
-        }
-        if (model is Image) {
-            ziggeo.showImage(token)
+        if (prefs.isCustomVideo) {
+            kvStorage.put(VIDEO_TOKEN, model.token)
+            router.startFlow(Screens.CustomModeVideo)
+        } else {
+            if (model is VideoModel) {
+                ziggeo.startPlayer(token)
+            }
+            if (model is Audio) {
+                ziggeo.startAudioPlayer(null, token)
+            }
+            if (model is Image) {
+                ziggeo.showImage(token)
+            }
         }
     }
 

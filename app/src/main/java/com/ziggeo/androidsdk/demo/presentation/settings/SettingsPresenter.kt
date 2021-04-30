@@ -31,8 +31,22 @@ class SettingsPresenter @Inject constructor(
         settingsModel.startDelay = time
     }
 
+    fun onCustomVideoChanged(isCustomVideo: Boolean) {
+        settingsModel.isCustomVideo = isCustomVideo
+    }
+
+    fun onCustomCameraChanged(isCustomCamera: Boolean) {
+        settingsModel.isCustomCamera = isCustomCamera
+    }
+
+    fun getCustomVideoMode() = prefs.isCustomVideo
+
+    fun getCustomCameraMode() = prefs.isCustomCamera
+
     fun onSaveClicked() {
         prefs.startDelay = settingsModel.startDelay
+        prefs.isCustomVideo = settingsModel.isCustomVideo
+        prefs.isCustomCamera = settingsModel.isCustomCamera
         viewState.showSavedNotification()
     }
 

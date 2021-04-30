@@ -6,6 +6,7 @@ package com.ziggeo.androidsdk.demo.model.data.storage
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
+const val VIDEO_FILE_PATH = 0
 const val VIDEO_TOKEN = 1
 const val AUDIO_TOKEN = 2
 const val IMAGE_TOKEN = 3

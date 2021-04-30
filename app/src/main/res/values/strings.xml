@@ -42,6 +42,8 @@
     <string name="hint_start_delay">Start delay (seconds)</string>
     <string name="btn_save">Save</string>
     <string name="successfully_saved_message">Saved</string>
+    <string name="use_custom_camera">Use custom camera</string>
+    <string name="use_custom_player">Use custom player</string>
 
     <!-- Log screen -->
     <string name="log_header">Log</string>

@@ -5,4 +5,8 @@ package com.ziggeo.androidsdk.demo.model.data.feature
  * Ziggeo, Inc.
  * alexb@ziggeo.com
  */
-data class SettingsModel(var startDelay: Int = 0) : FeatureModel
+data class SettingsModel(
+    var startDelay: Int = 0,
+    var isCustomVideo: Boolean = false,
+    var isCustomCamera: Boolean = false
+) : FeatureModel

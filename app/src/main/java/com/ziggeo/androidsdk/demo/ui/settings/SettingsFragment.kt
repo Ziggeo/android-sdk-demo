@@ -49,6 +49,21 @@ class SettingsFragment : BaseToolbarFragment<SettingsView, SettingsPresenter>(),
             }
         })
 
+        sc_custom_video.isChecked = presenter.getCustomVideoMode()
+        sc_custom_camera.isChecked = presenter.getCustomCameraMode()
+
+        sc_custom_video.setOnCheckedChangeListener { _, isChecked ->
+            presenter.onCustomVideoChanged(
+                isChecked
+            )
+        }
+
+        sc_custom_camera.setOnCheckedChangeListener { _, isChecked ->
+            presenter.onCustomCameraChanged(
+                isChecked
+            )
+        }
+
         btn_save.setOnClickListener {
             presenter.onSaveClicked()
         }
