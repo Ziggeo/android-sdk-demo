@@ -69,7 +69,6 @@ class RecordingsAdapter(private val list: List<ContentModel>) :
                     tvTags?.visibility = View.VISIBLE
                     tvTags?.text = tags
                 }
-                tvDate?.text = DateFormat.format(DATE_FORMAT, model.submissionDate * 1000L)
             }
 
             if (model is Audio) {
@@ -82,7 +81,6 @@ class RecordingsAdapter(private val list: List<ContentModel>) :
                     tvTags?.visibility = View.VISIBLE
                     tvTags?.text = tags
                 }
-                tvDate?.text = DateFormat.format(DATE_FORMAT, model.submissionDate)
             }
 
             if (model is Image) {
@@ -95,8 +93,8 @@ class RecordingsAdapter(private val list: List<ContentModel>) :
                     tvTags?.visibility = View.VISIBLE
                     tvTags?.text = tags
                 }
-                tvDate?.text = DateFormat.format(DATE_FORMAT, model.date)
             }
+            tvDate?.text = DateFormat.format(DATE_FORMAT, model.date* 1000L)
 
             if (!model.stateString.isNullOrEmpty()) {
                 val context = itemView.context
