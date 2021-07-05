@@ -34,7 +34,8 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
 
     init {
         val token = prefs.appToken!!
-        val ziggeo = Ziggeo(token, context)
+        val ziggeo = Ziggeo.getInstance(context)
+        ziggeo.appToken = token
         bind(IZiggeo::class.java).toInstance(ziggeo)
         bind(IVideosServiceRx::class.java).toInstance(ziggeo.apiRx().videos())
         bind(IAudiosServiceRX::class.java).toInstance(ziggeo.apiRx().audios())
