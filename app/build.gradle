@@ -14,7 +14,7 @@ if (keystorePropertiesFile.exists()) {
 android {
     def sdk = 31
     compileSdkVersion sdk
-    buildToolsVersion "29.0.3"
+    buildToolsVersion "30.0.3"
 
     lintOptions {
         abortOnError false
@@ -70,8 +70,8 @@ dependencies {
     implementation project(":sdk") // for internal development
 
     //Support
-    implementation "androidx.appcompat:appcompat:1.2.0"
-    implementation "com.google.android.material:material:1.2.1"
+    implementation "androidx.appcompat:appcompat:1.3.0"
+    implementation "com.google.android.material:material:1.4.0"
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.constraintlayout:constraintlayout:2.0.4"
@@ -110,8 +110,8 @@ dependencies {
     // Utils
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation 'com.karumi:dexter:6.2.1'
-    implementation 'com.google.firebase:firebase-analytics-ktx:18.0.0'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:17.2.2'
+    implementation 'com.google.firebase:firebase-analytics-ktx:19.0.0'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.0'
 
     //JUnit
     testImplementation 'junit:junit:4.13.1'
@@ -121,14 +121,14 @@ dependencies {
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
     //Kakao
     androidTestImplementation "com.agoda.kakao:kakao:2.3.0"
-    androidTestImplementation "androidx.annotation:annotation:1.1.0"
-    def rulesAndRunner = "1.3.0"
+    androidTestImplementation "androidx.annotation:annotation:1.2.0"
+    def rulesAndRunner = "1.4.0"
     androidTestImplementation "androidx.test:runner:$rulesAndRunner"
     androidTestImplementation "androidx.test:rules:$rulesAndRunner"
     androidTestImplementation "androidx.test:core:$rulesAndRunner"
 
     //Espresso
-    def espresso = "3.3.0"
+    def espresso = "3.4.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
 }
