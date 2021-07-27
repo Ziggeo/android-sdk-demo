@@ -12,7 +12,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    def sdk = 30
+    def sdk = 31
     compileSdkVersion sdk
     buildToolsVersion "29.0.3"
 
