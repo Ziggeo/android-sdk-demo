@@ -146,7 +146,6 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
 
         if (disableCameraSwitching) {
             v_switch_camera.visibility = View.INVISIBLE
-            v_start_stop.visibility = View.INVISIBLE
         } else {
             v_switch_camera.setOnCheckedChangeListener { _: ToggleImageView?, _: Boolean -> switchCamera() }
         }

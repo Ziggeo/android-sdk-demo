@@ -7,8 +7,6 @@ import com.ziggeo.androidsdk.IZiggeo
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
 import com.ziggeo.androidsdk.demo.presentation.global.BaseMainFlowPresenter
-import com.ziggeo.androidsdk.videoeditor.VideoEditorCallback
-import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -35,17 +33,5 @@ class VideoEditPresenter @Inject constructor(
     }
 
     fun onFileSelected(uri: Uri) {
-        ziggeo.videoEditorConfig.callback = object : VideoEditorCallback() {
-            override fun onVideoCut(path: String) {
-                super.onVideoCut(path)
-                viewState.showVideoSavedToNotification(path)
-            }
-
-            override fun error(throwable: Throwable) {
-                super.error(throwable)
-                Timber.e(throwable)
-            }
-        }
-        ziggeo.startVideoEditor(uri)
     }
 }
