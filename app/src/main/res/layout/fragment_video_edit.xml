@@ -4,15 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_select_file"
+    <TextView
         android:layout_width="@dimen/btn_qr_width"
         android:layout_height="@dimen/btn_qr_height"
         android:layout_marginTop="@dimen/btn_select_file_margin_top"
-        android:text="@string/btn_select_file_text"
-        android:visibility="gone"
-        android:textColor="@android:color/white"
-        app:backgroundTint="@color/colorPrimaryLight"
+        android:text="@string/coming_soon"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

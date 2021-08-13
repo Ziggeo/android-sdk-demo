@@ -1,5 +1,10 @@
 # Changelog
 
+Version 2.2.5*(2021-07-27)*
+----------------------------
+* Video editor removed
+* exoplayer version downgraded
+
 Version 2.2.4*(2021-04-05)*
 ----------------------------
 * Fixed playing HLS/M3U stream
