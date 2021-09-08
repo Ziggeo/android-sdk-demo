@@ -4,13 +4,8 @@ import com.arellomobile.mvp.InjectViewState
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.ziggeo.androidsdk.IZiggeo
-import com.ziggeo.androidsdk.db.impl.room.models.FileType
 import com.ziggeo.androidsdk.demo.Screens
-import com.ziggeo.androidsdk.demo.model.data.storage.AUDIO_TOKEN
-import com.ziggeo.androidsdk.demo.model.data.storage.IMAGE_TOKEN
-import com.ziggeo.androidsdk.demo.model.data.storage.KVStorage
-import com.ziggeo.androidsdk.demo.model.data.storage.Prefs
-import com.ziggeo.androidsdk.demo.model.data.storage.VIDEO_TOKEN
+import com.ziggeo.androidsdk.demo.model.data.storage.*
 import com.ziggeo.androidsdk.demo.model.interactor.RecordingsInteractor
 import com.ziggeo.androidsdk.demo.model.system.flow.FlowRouter
 import com.ziggeo.androidsdk.demo.model.system.message.SystemMessageNotifier
@@ -19,6 +14,7 @@ import com.ziggeo.androidsdk.net.models.ContentModel
 import com.ziggeo.androidsdk.net.models.audios.Audio
 import com.ziggeo.androidsdk.net.models.images.Image
 import com.ziggeo.androidsdk.net.models.videos.VideoModel
+import com.ziggeo.androidsdk.utils.FileUtils
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -42,7 +38,7 @@ class RecordingDetailsPresenter @Inject constructor(
 ) : BasePresenter<RecordingDetailsView>(smn, analytics) {
 
     private lateinit var model: ContentModel
-    private lateinit var type: FileType
+    private var type: Int = 0
     private lateinit var token: String
     private var disposable: Disposable? = null
 
@@ -52,15 +48,15 @@ class RecordingDetailsPresenter @Inject constructor(
         when {
             kvStorage.get(VIDEO_TOKEN) != null -> {
                 token = kvStorage.get(VIDEO_TOKEN) as String
-                type = FileType.VIDEO_FILE
+                type = FileUtils.VIDEO
             }
             kvStorage.get(AUDIO_TOKEN) != null -> {
                 token = kvStorage.get(AUDIO_TOKEN) as String
-                type = FileType.AUDIO_FILE
+                type = FileUtils.AUDIO
             }
             kvStorage.get(IMAGE_TOKEN) != null -> {
                 token = kvStorage.get(IMAGE_TOKEN) as String
-                type = FileType.IMAGE_FILE
+                type = FileUtils.IMAGE
             }
         }
         kvStorage.clear()
@@ -84,7 +80,7 @@ class RecordingDetailsPresenter @Inject constructor(
                 }
             }
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSuccess {  viewState.showRecordingData(model) }
+            .doOnSuccess { viewState.showRecordingData(model) }
             .doOnSubscribe {
                 viewState.showLoading(true)
             }.doFinally {

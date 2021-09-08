@@ -66,7 +66,7 @@ android {
 }
 dependencies {
     //Ziggeo
-    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.2.5")
+    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.3.0_aio4")
 //    implementation project(":sdk") // for internal development
 
     //Support

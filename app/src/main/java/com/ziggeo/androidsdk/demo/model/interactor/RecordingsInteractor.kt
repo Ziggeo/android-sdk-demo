@@ -1,7 +1,6 @@
 package com.ziggeo.androidsdk.demo.model.interactor
 
 import com.ziggeo.androidsdk.IZiggeo
-import com.ziggeo.androidsdk.db.impl.room.models.FileType
 import com.ziggeo.androidsdk.net.models.ContentModel
 import com.ziggeo.androidsdk.net.models.audios.Audio
 import com.ziggeo.androidsdk.net.models.audios.AudioDetails
@@ -11,6 +10,7 @@ import com.ziggeo.androidsdk.net.models.videos.VideoModel
 import com.ziggeo.androidsdk.net.services.audios.IAudiosServiceRX
 import com.ziggeo.androidsdk.net.services.images.IImageServiceRx
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
+import com.ziggeo.androidsdk.utils.FileUtils
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -60,15 +60,15 @@ class RecordingsInteractor @Inject constructor(
         }
     }
 
-    fun getInfo(mediaType: FileType, token: String): Single<ContentModel> {
+    fun getInfo(mediaType: Int, token: String): Single<ContentModel> {
         return when (mediaType) {
-            FileType.AUDIO_FILE -> {
+            FileUtils.AUDIO -> {
                 audiosService.get(token)
                     .map { it.audio as ContentModel }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
             }
-            FileType.IMAGE_FILE -> {
+            FileUtils.IMAGE -> {
                 imagesService.get(token)
                     .map { it.image as ContentModel }
                     .subscribeOn(Schedulers.io())
