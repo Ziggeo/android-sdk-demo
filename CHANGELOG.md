@@ -1,9 +1,19 @@
 # Changelog
 
-Version 2.2.5*(2021-07-27)*
+Version 2.4.0*(2021-09-30)*
 ----------------------------
+* Added support for audio and image media types
+
+Version 2.2.6*(2021-07-23)*
+----------------------------
+* target sdk version set to 30
 * Video editor removed
 * exoplayer version downgraded
+
+Version 2.2.5*(2021-05-20)*
+----------------------------
+* fixed bug related to missing start/stop button
+* added fullscreen mode for video player
 
 Version 2.2.4*(2021-04-05)*
 ----------------------------
