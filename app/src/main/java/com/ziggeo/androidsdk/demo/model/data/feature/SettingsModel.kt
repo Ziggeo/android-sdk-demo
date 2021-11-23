@@ -8,5 +8,6 @@ package com.ziggeo.androidsdk.demo.model.data.feature
 data class SettingsModel(
     var startDelay: Int = 0,
     var isCustomVideo: Boolean = false,
-    var isCustomCamera: Boolean = false
+    var isCustomCamera: Boolean = false,
+    var isBlurMode: Boolean = false
 ) : FeatureModel

@@ -18,6 +18,8 @@ import com.ziggeo.androidsdk.net.services.images.IImageServiceRx
 import com.ziggeo.androidsdk.net.services.streams.IStreamsServiceRx
 import com.ziggeo.androidsdk.net.services.videos.IVideosServiceRx
 import com.ziggeo.androidsdk.recorder.MicSoundLevel
+import com.ziggeo.androidsdk.widgets.cameraview.CameraView.BLUR_MODE_OFF
+import com.ziggeo.androidsdk.widgets.cameraview.CameraView.BLUR_MODE_ON
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -57,6 +59,7 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
 
     private fun bindPrefs(ziggeo: Ziggeo, prefs: Prefs) {
         ziggeo.recorderConfig.startDelay = prefs.startDelay
+        ziggeo.recorderConfig.blurMode = if (prefs.isBlurMode) BLUR_MODE_ON else BLUR_MODE_OFF
     }
 
     private fun initRecorderCallback(ziggeo: IZiggeo, logger: EventLogger, context: Context) {

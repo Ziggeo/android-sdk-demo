@@ -69,6 +69,22 @@
                     android:paddingBottom="@dimen/ic_small_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sc_custom_video" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/use_lur_mode"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/sc_blur_mode" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sc_blur_mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/ic_small_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sc_custom_camera" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

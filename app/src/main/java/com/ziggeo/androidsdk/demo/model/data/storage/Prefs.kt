@@ -24,6 +24,7 @@ class Prefs @Inject constructor(
     private val KEY_START_DELAY = "KEY_START_DELAY"
     private val KEY_CUSTOM_VIDEO = "KEY_CUSTOM_VIDEO"
     private val KEY_CUSTOM_CAMERA = "KEY_CUSTOM_CAMERA"
+    private val KEY_BLUR_MODE = "KEY_BLUR_MODE"
 
     private val authPrefs by lazy { getSharedPreferences(AUTH_DATA) }
 
@@ -49,5 +50,11 @@ class Prefs @Inject constructor(
         get() = authPrefs.getBoolean(KEY_CUSTOM_CAMERA, false)
         set(value) {
             authPrefs.edit().putBoolean(KEY_CUSTOM_CAMERA, value).apply()
+        }
+
+    var isBlurMode: Boolean
+        get() = authPrefs.getBoolean(KEY_BLUR_MODE, false)
+        set(value) {
+            authPrefs.edit().putBoolean(KEY_BLUR_MODE, value).apply()
         }
 }

@@ -44,6 +44,7 @@
     <string name="successfully_saved_message">Saved</string>
     <string name="use_custom_camera">Use custom camera</string>
     <string name="use_custom_player">Use custom player</string>
+    <string name="use_lur_mode">Use blur mode</string>
 
     <!-- Log screen -->
     <string name="log_header">Log</string>

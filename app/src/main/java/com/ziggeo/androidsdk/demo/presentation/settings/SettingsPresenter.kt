@@ -39,14 +39,21 @@ class SettingsPresenter @Inject constructor(
         settingsModel.isCustomCamera = isCustomCamera
     }
 
+    fun onBlurModeChanged(isBlurMode: Boolean) {
+        settingsModel.isBlurMode = isBlurMode
+    }
+
     fun getCustomVideoMode() = prefs.isCustomVideo
 
     fun getCustomCameraMode() = prefs.isCustomCamera
+
+    fun getBlurMode() = prefs.isBlurMode
 
     fun onSaveClicked() {
         prefs.startDelay = settingsModel.startDelay
         prefs.isCustomVideo = settingsModel.isCustomVideo
         prefs.isCustomCamera = settingsModel.isCustomCamera
+        prefs.isBlurMode = settingsModel.isBlurMode
         viewState.showSavedNotification()
     }
 
