@@ -282,7 +282,11 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
 
     protected open fun stopRecording() {
         reset()
-        cv_camera.stopRecording()
+        if (config.blurMode) {
+            cv_camera.stopLiveRecording()
+        } else {
+            cv_camera.stopRecording()
+        }
     }
 
     private fun readyToRecord() {
@@ -438,7 +442,11 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
                             defaultPath,
                             FileUtils.getVideoFileName()
                         )
-                        cv_camera.startRecording(recordedFile!!.path, maxDuration.toInt())
+                        if (config.blurMode) {
+                            cv_camera.startLiveRecording(recordedFile!!.path, maxDuration.toInt())
+                        } else {
+                            cv_camera.startRecording(recordedFile!!.path, maxDuration.toInt())
+                        }
                     }
                     .subscribe()
                 return true
