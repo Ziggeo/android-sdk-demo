@@ -43,7 +43,7 @@ import com.ziggeo.androidsdk.utils.DateTimeUtils
 import com.ziggeo.androidsdk.utils.FileUtils
 import com.ziggeo.androidsdk.widgets.ToggleImageView
 import com.ziggeo.androidsdk.widgets.cameraview.CameraView
-import com.ziggeo.androidsdk.widgets.cameraview.CameraView.CameraCallback
+import com.ziggeo.androidsdk.widgets.cameraview.BaseCameraView.CameraCallback
 import com.ziggeo.androidsdk.widgets.cameraview.ZiggeoCameraUtils
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers

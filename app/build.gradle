@@ -32,7 +32,7 @@ android {
         buildConfigField("String", "APP_TOKEN", "\"" + System.getenv("app_token") + "\"")
         setProperty("archivesBaseName", "androidKotlin-v" + versionName + "_" + getDate())
 
-        missingDimensionStrategy "dim", "androidnative" // for internal development
+        missingDimensionStrategy "dim", "androidnativeblur" // for internal development
     }
     signingConfigs {
         debug {}
@@ -74,8 +74,11 @@ android {
 }
 dependencies {
     //Ziggeo
-//    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.3.0_aio4")
-    implementation project(":sdk") // for internal development
+    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.5.0:androidnativeblur@aar")
+            {
+                transitive = true
+            }
+//    implementation project(":sdk") // for internal development
 
     //Support
     implementation "androidx.appcompat:appcompat:1.2.0"
