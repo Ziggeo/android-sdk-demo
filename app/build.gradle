@@ -12,7 +12,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    def sdk = 30
+    def sdk = 31
     compileSdkVersion sdk
     buildToolsVersion "29.0.3"
 
@@ -74,7 +74,7 @@ android {
 }
 dependencies {
     //Ziggeo
-    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.5.0:androidnativeblur@aar")
+    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.5.4:androidnativeblur@aar")
             {
                 transitive = true
             }
