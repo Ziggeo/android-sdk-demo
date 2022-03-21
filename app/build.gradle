@@ -74,7 +74,7 @@ android {
 }
 dependencies {
     //Ziggeo
-    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.5.4:androidnativeblur@aar")
+    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.5.6:androidnativeblur@aar")
             {
                 transitive = true
             }
