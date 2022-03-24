@@ -64,17 +64,10 @@ android {
         jvmTarget = "1.8"
     }
 
-    packagingOptions {
-        pickFirst 'lib/arm64-v8a/libmediapipe_jni.so'
-        pickFirst 'lib/armeabi-v7a/libmediapipe_jni.so'
-        pickFirst 'lib/x86/libmediapipe_jni.so'
-        pickFirst 'lib/x86_64/libmediapipe_jni.so'
-    } //todo
-
 }
 dependencies {
     //Ziggeo
-    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.5.6:androidnativeblur@aar")
+    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.5.7:androidnativeblur@aar")
             {
                 transitive = true
             }
