@@ -1,45 +1,45 @@
 # Changelog
 
-Version 2.4.0*(2021-09-30)*
+Version 2.4.0 *(2021-09-30)*
 ----------------------------
 * Added support for audio and image media types
 
-Version 2.2.6*(2021-07-23)*
+Version 2.2.6 *(2021-07-23)*
 ----------------------------
 * target sdk version set to 30
 * Video editor removed
 * exoplayer version downgraded
 
-Version 2.2.5*(2021-05-20)*
+Version 2.2.5 *(2021-05-20)*
 ----------------------------
 * fixed bug related to missing start/stop button
 * added fullscreen mode for video player
 
-Version 2.2.4*(2021-04-05)*
+Version 2.2.4 *(2021-04-05)*
 ----------------------------
 * Fixed playing HLS/M3U stream
 
-Version 2.2.3*(2021-03-19)*
+Version 2.2.3 *(2021-03-19)*
 ----------------------------
 * Changed uploading implementation for internal recorder to allow auth tokens with only `read` permission
 
-Version 2.2.1*(2020-12-22)*
+Version 2.2.1 *(2020-12-22)*
 ----------------------------
 * Fixed receving session
 * Fixed icons sizes
 
-Version 2.2.0*(2020-12-22)*
+Version 2.2.0 *(2020-12-22)*
 ----------------------------
 * Added ability to specify ad URL in player config
 * Added `destroy` method for services API
 * Fixed several issues related to auth tokens
 
-Version 2.1.12*(2020-12-22)*
+Version 2.1.12 *(2020-12-22)*
 ----------------------------
 * Fixed frames loading in video editor
 * Method `void startVideoEditor(@NonNull String filePath)` is removed, use `void startVideoEditor(@NonNull Uri filePath)` instead
 
-Version 2.1.11*(2020-12-22)*
+Version 2.1.11 *(2020-12-22)*
 ----------------------------
 * Exoplayer updated. Added ability to play from Uri
 * Fixed crash during preparing analytics events
@@ -54,7 +54,7 @@ Version 2.1.11*(2020-12-22)*
   - Added cancelled by user callback for videoeditor
   - Dynamic frames count calculation based on frame preview size
 
-Version 2.1.10_b2*(2020-12-04)*
+Version 2.1.10_b2 *(2020-12-04)*
 ----------------------------
 * Videos API update:
   - changed implementation for getImage/Video url
@@ -63,26 +63,26 @@ Version 2.1.10_b2*(2020-12-04)*
 * Fixed the crash in uploader when the app goes background
 * Improvements for frames preview in video editor
 
-Version 2.1.9*(2020-11-30)*
+Version 2.1.9 *(2020-11-30)*
 ----------------------------
 * Added config to start uploading without service and notification
 * Fixed QR scanner config builder.
 * Added retry for 403 responses with auth tokens (case when IP changed)
 * Added `shouldAllowMultipleSelection` for file selector config
 
-Version 2.1.8*(2020-11-19)*
+Version 2.1.8 *(2020-11-19)*
 ----------------------------
 * Executing HTTP requests one by one when auth tokens used.
 
-Version 2.1.7*(2020-11-13)*
+Version 2.1.7 *(2020-11-13)*
 ----------------------------
 * Fixed crash when running analytics service in the background.
 
-Version 2.1.6*(2020-11-12)*
+Version 2.1.6 *(2020-11-12)*
 ----------------------------
 * Removed deprecated QR callback method
 
-Version 2.1.5*(2020-11-10)*
+Version 2.1.5 *(2020-11-10)*
 ----------------------------
 * Added support for 1:1 aspect ratio
 * QR scanner callback improvements
@@ -91,7 +91,7 @@ Version 2.1.5*(2020-11-10)*
 * Fixed authentication for player
 * Dependencies updated
 
-Version 2.1.0*(2020-09-10)*
+Version 2.1.0 *(2020-09-10)*
 ----------------------------
 * New: added filters for file selector and switcher for grid/list modes
 * New: changed toolbar icon in file selector from arrow to cross, other UI improvements
@@ -100,74 +100,74 @@ Version 2.1.0*(2020-09-10)*
   - arguments in `uploadProgress` event
   - `uploadingStarted` now contains `videoToken` instead of `path` in args
 
-Version 2.0.13*(2020-09-10)*
+Version 2.0.13 *(2020-09-10)*
 ----------------------------
 * Changed implementation for single-choice mode in file selector.
 * Added ability to confirm uploading for file on Player screen.  
 
-Version 2.0.13*(2020-09-10)*
+Version 2.0.13 *(2020-09-10)*
 ----------------------------
 * uploadFromFileSelector method is deprecated, use startFileSelector instead.
 * Fixed session expiration issue which was blocking some cases for auth token.
 * Fixed issue with sending analytics events when there is no app token. 
 
-Version 2.0.12*(2020-09-04)*
+Version 2.0.12 *(2020-09-04)*
 ----------------------------
 * Fixed video_profile type in video model
 
-Version 2.0.11*(2020-09-04)*
+Version 2.0.11 *(2020-09-04)*
 ----------------------------
 * Fixed meta_profile type in video model and profile types for stream model
 
-Version 2.0.9*(2020-07-31)*
+Version 2.0.9 *(2020-07-31)*
 ----------------------------
 * Trimming request arguments 
-* Changed field types for *_profile values
+* Changed field types for *_profile values*
 * Changed UI for countdown timer 
 * Dependencies updated 
 * some fixes for Xamarin 
 
-Version 2.0.8*(2020-07-31)*
+Version 2.0.8 *(2020-07-31)*
 ----------------------------
 * File selector now in single-selection mode bu default. Added a flag to allow multiple selection. 
 * Fixed crash when session expired.
 * Added methods for sending support email and crash report
 
-Version 2.0.7*(2020-07-14)*
+Version 2.0.7 *(2020-07-14)*
 ----------------------------
 * Changed fields names for better code style in Kotlin
 
-Version 2.0.6*(2020-07-14)*
+Version 2.0.6 *(2020-07-14)*
 ----------------------------
 * Fixed cancel action for screen recorder.
 * Fixed screen recording service when running on android 9+
 
-Version 2.0.4*(2020-07-07)*
+Version 2.0.4 *(2020-07-07)*
 ----------------------------
 * onPictureTaken callback hidden, since image-only not implemented yet
 * Fixed handling permissions list when access forbidden
 
-Version 2.0.3*(2020-07-07)*
+Version 2.0.3 *(2020-07-07)*
 ----------------------------
 * Fixed error callback for file selector 
 * Fixed pause/resume for player
 
-Version 2.0.2*(2020-07-02)*
+Version 2.0.2 *(2020-07-02)*
 ----------------------------
 * Fixed progress bar when loading folders list. 
 * Added temporary fix for file selector for Android API 29 
 
-Version 2.0.0*(2020-06-25)*
+Version 2.0.0 *(2020-06-25)*
 ----------------------------
 * Some methods renamed to make better Kotlin compatibility.
 * Version update to 2.x.x just to be consistent with internal documentation.
 
-Version 1.1.0*(2020-06-10)*
+Version 1.1.0 *(2020-06-10)*
 ----------------------------
 * Added separate config class for file selector 
 * Added separate callback for uploader 
 
-Version 1.0.0*(2020-06-08)*
+Version 1.0.0 *(2020-06-08)*
 ----------------------------
 * AndroidX migration
 * Camera
@@ -184,25 +184,25 @@ Version 1.0.0*(2020-06-08)*
 * Allowed landscape device orientation.
 * Other changes
 
-Version 0.80.3*(2019-9-9)*
+Version 0.80.3 *(2019-9-9)*
 ----------------------------
 * Removed Timber and VideoCache dependencies
 * Some internal changes for Xamarin
 * Old deprecated things removed
 
-Version 0.80.2*(2019-8-1)*
+Version 0.80.2 *(2019-8-1)*
 ----------------------------
 * Added more configs to `RecorderConfig`: `resolution`, `videoBitrate`,
 `audioBitrate`, `audioSampleRate`
 
-Version 0.80.1*(2019-7-24)*
+Version 0.80.1 *(2019-7-24)*
 ----------------------------
 * Added video streaming
 * Zoom enabled by default
 * Added sound amplitude chart for audio recorder
 * Added seek bar for audio recorder and player
 
-Version 0.79.7*(2019-05-19)*
+Version 0.79.7 *(2019-05-19)*
 ----------------------------
 * Added support for FullHD aspect ratio
 * Fixed crash during the very first initialisation.
@@ -217,7 +217,7 @@ Version 0.79.7*(2019-05-19)*
 * Fixed `cancelledByUser` callback for file selector
 * Switched from `implementation` to `api` for internal OkHttp dependency
 
-Version 0.79.1*(2019-03-27)*
+Version 0.79.1 *(2019-03-27)*
 ----------------------------
 * Methods `configureUploading`, `configureRecorder`, `configurePlayer` are deprecated.
 Use `setUploadingConfig`, `setRecorderConfig`, `setPlayerConfig` instead.
@@ -225,25 +225,25 @@ Use `setUploadingConfig`, `setRecorderConfig`, `setPlayerConfig` instead.
 * Fixed extra args for file selector
 * Fixed fullHD resolution support.
 
-Version 0.79.0*(2019-03-18)*
+Version 0.79.0 *(2019-03-18)*
 ----------------------------
 * Added zoom support for the camera.
 * Added `mute` config for player
   
-Version 0.78.4*(2019-03-05)*
+Version 0.78.4 *(2019-03-05)*
 ----------------------------
 * Fixed access to the recorder configuration.
   
-Version 0.78.3*(2019-03-04)*
+Version 0.78.3 *(2019-03-04)*
 ----------------------------
 * Fixed issue in player cause by wrong type in JSON
   
-Version 0.78.2*(2019-03-04)*
+Version 0.78.2 *(2019-03-04)*
 ----------------------------
 * Fixed stop confirmation for screen recorder
 * Fixes for Xamarin integration
   
-Version 0.78.1*(2019-02-14)*
+Version 0.78.1 *(2019-02-14)*
 ----------------------------
 * Added `setSensorCallback()` method for all possible info from sensors 
 * Added docs for several methods
@@ -254,7 +254,7 @@ Version 0.78.1*(2019-02-14)*
   * fixed assigning of ids for views 
   * added attrs missing in Exoplayer’s binding
   
-Version 0.78.0*(2019-02-06)*
+Version 0.78.0 *(2019-02-06)*
 ----------------------------
  - Changes in autostart logic. Method `setAutostartRecordingAfter` is deprecated, instead there are now two methods
    a. `setAutostartRecording` - if `true`, when the recorder is initialized, the count down timer will be started. After the time will run out the recording will be started.
@@ -302,13 +302,13 @@ Broken changes
  - methods `setExtraArgsForRecorder`, `getExtraArgsForRecorder`, `configureStopRecordingConfirmationDialog`, `getStopRecordingConfirmationDialogConfig`, `setAutostartRecordingAfter`, `setAutostartRecordingAfter`, `getAutostartRecordingAfter`, `setVideoRecordingProcessCallback`, `setRecordingProcessCallback`, `getVideoRecordingProcessCallback`, `getRecordingProcessCallback`,
  `setTurnOffCameraWhileUploading`, `setColorForStoppedCameraOverlay`, `setDrawableForStoppedCameraOverlay`, `setCoverSelectorEnabled`, `setCoverSelectorEnabled`, `setMaxRecordingDuration`, `setPreferredCameraFacing`, `setPreferredQuality`, `getPreferredQuality`, `setCameraSwitchDisabled`, `setSendImmediately`, `isSendImmediately` are deprecated. Please, use methods in `CameraRecorderConfig.Builder` class.
  - methods `configureLocalPlayback`, `getLocalPlaybackConfig`, `setExtraArgsForPlayer` are deprecated. Please, use corresponding
- - method `addCallback` in `CameraView` class is deprecated. Please, use `setCameraCallback` and `
+ - method `addCallback` in `CameraView` class is deprecated. Please, use `setCameraCallback`
 
-Version 0.77.1*(2018-12-10)*
+Version 0.77.1 *(2018-12-10)*
 ----------------------------
 * Added methods for setting theme params for non-native SDKs.
 
-Version 0.77.0*(2018-10-16)*
+Version 0.77.0 *(2018-10-16)*
 --------------------------
 * Deep linking support
 * Playlist support
@@ -316,11 +316,11 @@ Version 0.77.0*(2018-10-16)*
 * Audio recorder implemented
 * `IVideoRecordingCallback` is deprecated, use `IRecordingProcessCallback` instead.
 
-Version 0.76.1*(2018-10-29)*
+Version 0.76.1 *(2018-10-29)*
 --------------------------
 * Fixed token value returned by `create` request for Xamarin.
 
-Version 0.76.0*(2018-10-10)*
+Version 0.76.0 *(2018-10-10)*
 --------------------------
 * Method `onProgressUpdate(long sentBytes, long totalBytes)` in ProgressCallback class is deprecated.
   Use `onProgressUpdate(@NonNull File file, long sentBytes, long totalBytes)` instead.
@@ -333,14 +333,14 @@ Version 0.76.0*(2018-10-10)*
 * Methods `startScreenRecordService`, `stopScreenRecordService`, `stopScreenRecord` are deprecated.
 * Added check on null bundle to prevent crash.
 
-Version 0.75.0*(2018-8-19)*
+Version 0.75.0 *(2018-8-19)*
 --------------------------
 * New: Methods marked as deprecated
  `startScreenCaptureService`, `stopScreenCaptureService`, `startScreenCapture`, `stopScreenCapture`
  Use instead
  `startScreenRecordService`, `stopScreenRecordService`, `startScreenRecord`, `stopScreenRecord`
 
-Version 0.75.0*(2018-8-19)*
+Version 0.75.0 *(2018-8-19)*
 --------------------------
 * New: Added send-and-close feature for screen recorder.
 * New: Showing sound bar on player screen when sound icon was long clicked.
@@ -351,13 +351,13 @@ Version 0.75.0*(2018-8-19)*
 * Fix: UI lag when stopping the recording
 * Fix: Removed library for getting the device name
 
-Version 0.74.3*(2018-8-10)*
+Version 0.74.3 *(2018-8-10)*
 --------------------------
 * Added crash tracking system.
 * Bugfixing
 * Gradle version updated
 
-Version 0.74.2*(2018-8-1)*
+Version 0.74.2 *(2018-8-1)*
 --------------------------
  * Removed old deprecated methods
  ```
@@ -385,7 +385,7 @@ Version 0.74.2*(2018-8-1)*
  ```
  * Added mute sound functionality for player
 
-Version 0.74.0*(2018-7-28)*
+Version 0.74.0 *(2018-7-28)*
 --------------------------
  * API 21+: Added screen recorder feature.
  * Fixed vector icon causing crash on android below API 21.
@@ -394,17 +394,17 @@ Version 0.74.0*(2018-7-28)*
  * In class `ResponseException` methods `getResponse` and `setResponse` are deprecated. Use `getMessage` and `setMessage` instead.
  * Classes `IStreamsService`, `StreamsService`,  `IVideosService`,  `VideosService` moved from `com.ziggeo.androidsdk.net.rest.services.` to `com.ziggeo.androidsdk.net.services.`
 
-Version 0.73.12*(2018-7-18)*
+Version 0.73.12 *(2018-7-18)*
 --------------------------
  * Fixed error during recorder initialisation on Android 8.0 for Camera2 api.
 
-Version 0.73.11*(2018-6-21)*
+Version 0.73.11 *(2018-6-21)*
 --------------------------
  * Changed checkmark behavior - currently it closes the recorder.
    Also the recorder will be closed if video is sent immediately after the recording is finished.
 
 
-Version 0.73.10*(2018-6-13)*
+Version 0.73.10 *(2018-6-13)*
 --------------------------
  * Changed return type for `ziggeo.getVideoRecordingProcessCallback()` from class to its interface.
  * Fixed issue 20. Lost bundle args were causing a crash.
@@ -413,40 +413,40 @@ Version 0.73.10*(2018-6-13)*
  * Removed deprecated method from IVideoRecordingCallback.
  * Added applyEffect method to Videos API.
 
-Version 0.73.8*(2018-5-12)*
+Version 0.73.8 *(2018-5-12)*
 --------------------------
  * Added callback to indicate video uploading started.
 
-Version 0.73.7*(2018-5-11)*
+Version 0.73.7 *(2018-5-11)*
 --------------------------
  * Fixed recorder icons visibility
 
-Version 0.73.6*(2018-5-08)*
+Version 0.73.6 *(2018-5-08)*
 --------------------------
  * Removed rests of Hungarian notation.
  * Replaced old icons with vectors
  * General code/layouts improvements
 
-Version 0.73.5*(2018-5-07)*
+Version 0.73.5 *(2018-5-07)*
 --------------------------
  * Additional permission check for player
  * Small code improvements and bugfixes
 
-Version 0.73.4*(2018-4-25)*
+Version 0.73.4 *(2018-4-25)*
 --------------------------
  * Removed some unused classes.
  * Small code improvements.
  * Improved gradle config for naming of output build files.
 
-Version 0.73.3*(2018-4-23)*
+Version 0.73.3 *(2018-4-23)*
 ---------------------------
  * Added a few getters to prevent issues when binding the SDK with Xamarin.
 
-Version 0.73.2*(2018-4-11)*
+Version 0.73.2 *(2018-4-11)*
 --------------------------
  * Added ability to set client and server auth tokens for all requests.
 
-Version 0.73.1*(2018-3-28)*
+Version 0.73.1 *(2018-3-28)*
 --------------------------
  * Fix: Added 1 hour expiration time for a session token
  * Config improvements:
@@ -455,7 +455,7 @@ Version 0.73.1*(2018-3-28)*
     * Build tools version updated to 27.0.3
     * Project dependencies provided with the latest approach
 
-Version 0.73.0*(2018-3-20)*
+Version 0.73.0 *(2018-3-20)*
 ---------------------------
  * Docs updated.
  * Fixed issue when dialog for stop recording confirmation overlaps with covershot selection dialog.
@@ -506,55 +506,55 @@ Version 0.73.0*(2018-3-20)*
    * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, boolean disableCameraSwitching, @Nullable CameraHelper.Quality videoQuality, @Nullable Callback callback)`
    * `ziggeo.createVideo(@NonNull Context context, long maxDurationInMillis, @CameraView.Facing int preferredCamera, @Nullable CameraHelper.Quality videoQuality, @Nullable Callback callback)`
 
-Version 0.72.7*(2018-3-6)*
+Version 0.72.7 *(2018-3-6)*
 --------------------------
  * Lambdas removed from the SDK.
 
-Version 0.72.6*(2018-3-5)*
+Version 0.72.6 *(2018-3-5)*
 --------------------------
  * Method `setExtraArgsForCreateVideo` was deprecated, please use `setExtraArgsForEmbeddedRecorder`.
  * Method `setExtraArgsForPlayVideo` was deprecated, please use `setExtraArgsForEmbeddedPlayer`.
 
-Version 0.72.4*(2018-3-1)*
+Version 0.72.4 *(2018-3-1)*
 --------------------------
  * Fix: Session token now automatically appended to every request.
 
-Version 0.72.3*(2018-2-26)*
+Version 0.72.3 *(2018-2-26)*
 ---------------------------
  * New: Removed deprecated callbacks for video compressor.
  * Fix: Fixed authentication through server/client tokens.
 
-Version 0.72.2*(2018-2-16)*
+Version 0.72.2 *(2018-2-16)*
 ---------------------------
  * New: Removed deprecated video encoder.
 
-Version 0.72.1*(2018-2-8)*
+Version 0.72.1 *(2018-2-8)*
 --------------------------
  * New: Changed launch mode for recorder activity to `singleInstance`.
 
-Version 0.72.0*(2018-1-29)*
+Version 0.72.0 *(2018-1-29)*
 ----------------------------
  * New: Added settings for player cache.
  * Fix: Cache for player
  * Fix: Checking for filled cache.
  * Fix: Blank preview for case when the app returns from background.
 
-Version 0.71.7*(2017-12-25)*
+Version 0.71.7 *(2017-12-25)*
 ----------------------------
  * Fix: Fixed issue with loosing config for camera in case of autoswitching from Camera2 to Camera1.
  * Fix: Added seconds to video file name to prevent losing videos recorded during one minute.
 
-Version 0.71.6*(2017-11-17)*
+Version 0.71.6 *(2017-11-17)*
 ----------------------------
  * Fix: Crash when starting activity from application context.
 
-Version 0.71.5*(2017-11-12)*
+Version 0.71.5 *(2017-11-12)*
 ----------------------------
  * Fix: Removed compressor for medium video size. Lower bitrate set for medium and low quality. 
  * Fix: Showing preview after start pressed if the preview was hidden. 
  * Versions of dependencies updated.
 
-Version 0.71.1*(2017-11-7)*
+Version 0.71.1 *(2017-11-7)*
 ----------------------------
  * New: Analytics integration.
  * Fix: Orientation calculation for recorder in Camera1 
@@ -562,36 +562,36 @@ Version 0.71.1*(2017-11-7)*
  * Fix: Default state for `switchCameraDisabled` set to `false`
  * Other fixes and improvements
 
-Version 0.70.1*(2017-10-10)*
+Version 0.70.1 *(2017-10-10)*
 ----------------------------
  * New: Added ability to start player as separate screen.
 
-Version 0.70.0*(2017-09-19)*
+Version 0.70.0 *(2017-09-19)*
 ----------------------------
  * Fix: Fixed player layout.
  * Fix: Fixed logic for immediate video sending.
  * New: Methods for getting Videos and Stream services exposed to interface.
 
-Version 0.69.2*(2017-09-19)*
+Version 0.69.2 *(2017-09-19)*
 ----------------------------
  * New: Video compressor exposed to interface.
 
-Version 0.69.1*(2017-09-15)*
+Version 0.69.1 *(2017-09-15)*
 ----------------------------
  * Fix: Forced AAC audio codec and H264 video codec for Camera1
 
-Version 0.69.0*(2017-09-14)*
+Version 0.69.0 *(2017-09-14)*
 ----------------------------
  * Fix: Improved video size scaling for medium quality
  * New: Added video compressor in case of using medium video quality
  * New: Added two methods to VideoRecordingCallback to indicate compression progress
 
-Version 0.68.1*(2017-08-17)*
+Version 0.68.1 *(2017-08-17)*
 ----------------------------
  * Fix: Missing resource id crash
  * Fix: Removed wrong `Deprecated` mark
 
-Version 0.68.0*(2017-08-16)*
+Version 0.68.0 *(2017-08-16)*
 ----------------------------
  * Broken compatibility: `CameraView` should be using for layout customisation instead of `SurfaceView`
  * New: Customisation through layout is `Deprecated`. `CameraView` should be used instead.
@@ -599,7 +599,7 @@ Version 0.68.0*(2017-08-16)*
  * New: Added quality settings for `CameraView`
  * Fix: Bugfixing
  
-Version 0.67.6*(2017-08-10)*
+Version 0.67.6 *(2017-08-10)*
 ----------------------------
  * Fix: Resolved issue related to uploading speed.
 
