@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "365743268809",
+    "firebase_url": "https://ziggeo-flutter-demo.firebaseio.com",
+    "project_id": "ziggeo-flutter-demo",
+    "storage_bucket": "ziggeo-flutter-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365743268809:android:d6f5dc97511cfe1566fe18",
+        "android_client_info": {
+          "package_name": "com.ziggeo.androidsdk.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365743268809-jmta3e9bf0kv4sv2840ra0b81hqd7j8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY9fqQIjQLq70XkNpgfeLzenjTJ_oL2X8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365743268809-jmta3e9bf0kv4sv2840ra0b81hqd7j8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
