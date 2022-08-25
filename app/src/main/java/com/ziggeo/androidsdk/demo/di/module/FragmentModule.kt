@@ -2,9 +2,9 @@ package com.ziggeo.androidsdk.demo.di.module
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+import android.net.Uri
 import com.ziggeo.androidsdk.IZiggeo
+import com.ziggeo.androidsdk.StopRecordingConfirmationDialogConfig
 import com.ziggeo.androidsdk.Ziggeo
 import com.ziggeo.androidsdk.callbacks.FileSelectorCallback
 import com.ziggeo.androidsdk.callbacks.PlayerCallback
@@ -43,11 +43,11 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
         bind(IImageServiceRx::class.java).toInstance(ziggeo.apiRx().images())
         bindPrefs(ziggeo, prefs)
 
-        val analytics = FirebaseAnalytics.getInstance(context)
-        analytics.setUserId(token)
-        bind(FirebaseAnalytics::class.java).toInstance(analytics)
+//        val analytics = FirebaseAnalytics.getInstance(context)
+//        analytics.setUserId(token)
+//        bind(FirebaseAnalytics::class.java).toInstance(analytics)
 
-        FirebaseCrashlytics.getInstance().setCustomKey("app_token", token)
+//        FirebaseCrashlytics.getInstance().setCustomKey("app_token", token)
 
         initRecorderCallback(ziggeo, logger, context)
         initPlayerCallback(ziggeo, logger, context)
@@ -56,7 +56,53 @@ class FragmentModule(context: Context, prefs: Prefs, logger: EventLogger) : Modu
     }
 
     private fun bindPrefs(ziggeo: Ziggeo, prefs: Prefs) {
+        // bind settings to recorderConfig
         ziggeo.recorderConfig.startDelay = prefs.startDelay
+        ziggeo.recorderConfig.blurMode = prefs.isBlurMode
+        ziggeo.recorderConfig.shouldShowFaceOutline = prefs.shouldShowFaceOutline
+        ziggeo.recorderConfig.maxDuration = prefs.maxDuration
+        ziggeo.recorderConfig.videoQuality = prefs.videoQuality
+        ziggeo.recorderConfig.isLiveStreaming = prefs.isLiveStreaming
+        ziggeo.recorderConfig.shouldAutoStartRecording = prefs.shouldAutoStartRecording
+        ziggeo.recorderConfig.isImageOnlyMode = prefs.isImageOnlyMode
+        ziggeo.recorderConfig.shouldSendImmediately = prefs.shouldSendImmediately
+        ziggeo.recorderConfig.shouldDisableCameraSwitch = prefs.shouldDisableCameraSwitch
+        ziggeo.recorderConfig.shouldEnableCoverShot = prefs.shouldEnableCoverShot
+        ziggeo.recorderConfig.shouldConfirmStopRecording = prefs.shouldConfirmStopRecording
+        ziggeo.recorderConfig.videoBitrate = prefs.videoBitrate
+        ziggeo.recorderConfig.audioBitrate = prefs.audioBitrate
+        ziggeo.recorderConfig.audioSampleRate = prefs.audioSampleRate
+        ziggeo.recorderConfig.facing = prefs.facing
+
+        // bind settings to recorderConfig
+        ziggeo.playerConfig.shouldShowSubtitles = prefs.shouldShowSubtitles
+        ziggeo.playerConfig.isMuted = prefs.isMuted
+        ziggeo.playerConfig.isCachingEnabled// todo no set method for isCashingEnabled
+        ziggeo.playerConfig.shouldPreload // todo no set method for shouldPreload
+        ziggeo.playerConfig.adsUri = Uri.parse(prefs.adsUri)
+
+        // bind settings to fileSelectorConfig
+        ziggeo.fileSelectorConfig.shouldAllowMultipleSelection = prefs.shouldAllowMultipleSelection
+        ziggeo.fileSelectorConfig.mediaType = prefs.mediaType
+        ziggeo.fileSelectorConfig.maxDuration = prefs.maxDurationSelector
+
+        // bind settings to qrScannerConfig
+        ziggeo.qrScannerConfig.shouldCloseAfterSuccessfulScan = prefs.shouldCloseAfterSuccessfulScan
+
+        // bind settings to uploadingConfig
+        ziggeo.uploadingConfig.shouldTurnOffUploader = prefs.shouldTurnOffUploader
+        ziggeo.uploadingConfig.shouldUseWifiOnly = prefs.shouldUseWifiOnly
+        ziggeo.uploadingConfig.shouldStartAsForeground = prefs.shouldStartAsForeground
+        ziggeo.uploadingConfig.syncInterval = prefs.syncInterval
+
+        // bind settings to stopRecordingConfirmationDialogConfig
+        ziggeo.recorderConfig.stopRecordingConfirmationDialogConfig =
+            StopRecordingConfirmationDialogConfig.Builder()
+                .mesText(prefs.mesText)
+                .negBtnText(prefs.negBtnText)
+                .posBtnText(prefs.posBtnText)
+                .titleText(prefs.titleText)
+                .build()
     }
 
     private fun initRecorderCallback(ziggeo: IZiggeo, logger: EventLogger, context: Context) {

@@ -1,14 +1,14 @@
 buildscript {
-    ext.kotlin_version = '1.4.20'
+    ext.kotlin_version = '1.5.21'
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:7.0.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.2'
         classpath 'com.google.gms:google-services:4.3.4'
     }
 }
@@ -17,10 +17,17 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
+        maven { url 'https://jitpack.io'}
+        maven {url = "https://maven.pkg.github.com/ZiggeoJitpackService/androidsdk"
+            credentials {
+                username = "3akat"
+                password = "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"
+            }
+        }
         flatDir {
             dirs 'libs'
         }
+
     }
 }
 

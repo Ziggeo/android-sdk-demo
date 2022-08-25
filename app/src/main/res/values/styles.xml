@@ -34,6 +34,9 @@
     </style>
 
     <style name="ToolbarStyle" parent="Base.ToolbarStyle" />
+    <style name="BottomNavigationStyle">
+        <item name="android:lines">2</item>
+    </style>
 
     <style name="MenuItemStyle">
         <item name="android:layout_width">match_parent</item>

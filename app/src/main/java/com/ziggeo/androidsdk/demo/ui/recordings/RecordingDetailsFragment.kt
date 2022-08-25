@@ -1,9 +1,11 @@
 package com.ziggeo.androidsdk.demo.ui.recordings
 
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.bumptech.glide.Glide
@@ -78,8 +80,17 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
                 presenter.onPlayClicked()
             }
         } else {
+
+            val circularProgressDrawable = CircularProgressDrawable(activity!!.baseContext)
+            circularProgressDrawable
+                .setColorFilter(ContextCompat.getColor(activity!!, R.color.colorAccent), PorterDuff.Mode.SRC_IN )
+            circularProgressDrawable.strokeWidth = 10f
+            circularProgressDrawable.centerRadius = 35f
+            circularProgressDrawable.start()
+
             Glide.with(iv_preview)
                 .load(url)
+                .placeholder(circularProgressDrawable)
                 .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
                         e: GlideException?,
@@ -87,6 +98,7 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
                         target: Target<Drawable>?,
                         isFirstResource: Boolean
                     ): Boolean {
+                        circularProgressDrawable.stop()
                         return false
                     }
 
@@ -172,4 +184,5 @@ class RecordingDetailsFragment : BaseToolbarFragment<RecordingDetailsView,
             (it.findFragmentByTag(CONFIRM_TAG) as MessageDialogFragment).dismiss()
         }
     }
+
 }

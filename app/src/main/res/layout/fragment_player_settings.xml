@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_show_subtitles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_is_muted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_is_caching_enabled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_should_preload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_ads_uri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ads_uri"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sc_should_preload">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ads_uri"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textUri" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btn_save_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_save" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

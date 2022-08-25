@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/common_item"
+        android:title="@string/common_settings" />
+    <item
+        android:id="@+id/recorder_item"
+        android:title="@string/recorder_config" />
+    <item
+        android:id="@+id/player_item"
+        android:title="@string/player_config" />
+</menu>

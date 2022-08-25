@@ -42,8 +42,8 @@ import com.ziggeo.androidsdk.ui.dialogs.CountDownDialog
 import com.ziggeo.androidsdk.utils.DateTimeUtils
 import com.ziggeo.androidsdk.utils.FileUtils
 import com.ziggeo.androidsdk.widgets.ToggleImageView
+import com.ziggeo.androidsdk.widgets.cameraview.BaseCameraView.CameraCallback
 import com.ziggeo.androidsdk.widgets.cameraview.CameraView
-import com.ziggeo.androidsdk.widgets.cameraview.CameraView.CameraCallback
 import com.ziggeo.androidsdk.widgets.cameraview.ZiggeoCameraUtils
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -187,7 +187,7 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         }
 
         colorForStoppedCameraOverlayDefault =
-            ContextCompat.getColor(activity!!, R.color.colorStoppedCameraOverlay)
+            ContextCompat.getColor(requireActivity(), R.color.colorStoppedCameraOverlay)
         if (config.drawableForStoppedCameraOverlay != 0) {
             drawableForStoppedCameraOverlay = config.drawableForStoppedCameraOverlay
         }
@@ -282,7 +282,11 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
 
     protected open fun stopRecording() {
         reset()
-        cv_camera.stopRecording()
+        if (config.blurMode) {
+            cv_camera.stopLiveRecording()
+        } else {
+            cv_camera.stopRecording()
+        }
     }
 
     private fun readyToRecord() {
@@ -309,7 +313,7 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
     protected open fun reset() {
         resetFixedUpdate()
         countDownHandler.stop()
-        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         if (stopRecordingConfirmationDialog != null) {
             stopRecordingConfirmationDialog!!.hide()
         }
@@ -384,10 +388,10 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         val args = Bundle()
         args.putInt(CountDownDialog.ARG_INITIAL_TIME, delay)
         downDialog.arguments = args
-        downDialog.show(fragmentManager!!, null)
+        downDialog.show(requireFragmentManager(), null)
         countDownHandler.start(delay)
-        activity!!.requestedOrientation = ZiggeoCameraUtils.getCurrentOrientationToRequest(
-            context!!
+        requireActivity().requestedOrientation = ZiggeoCameraUtils.getCurrentOrientationToRequest(
+            requireContext()
         )
     }
 
@@ -438,7 +442,11 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
                             defaultPath,
                             FileUtils.getVideoFileName()
                         )
-                        cv_camera.startRecording(recordedFile!!.path, maxDuration.toInt())
+                        if (config.blurMode) {
+                            cv_camera.startLiveRecording(recordedFile!!.path, maxDuration.toInt())
+                        } else {
+                            cv_camera.startRecording(recordedFile!!.path, maxDuration.toInt())
+                        }
                     }
                     .subscribe()
                 return true
@@ -451,7 +459,7 @@ open class CustomModeCameraFragment : BaseScreenFragment<CustomModeCameraView,
         val path: String = recordedFile?.absolutePath ?: ""
         actualDuration = FileUtils.getDurationMillis(
             Uri.fromFile(recordedFile),
-            context!!
+            requireContext()
         )
 
         if (getCallback() != null) {

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_custom_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_custom_camera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_selectorConfig_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/common_margin"
+                    android:text="@string/file_selector_Config" />
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_should_allow_multiple_selection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_app_media_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/common_half_margin"
+                        android:text="@string/media_type"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/sc_should_allow_multiple_selection" />
+
+                    <Spinner
+                        android:id="@+id/spinner_media_type"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/common_half_margin"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@+id/sc_should_allow_multiple_selection" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_max_duration_selector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_max_duration">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_max_duration_selector"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberSigned" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_qrScannerConfig_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/common_margin"
+                    android:text="@string/qr_scanner_config" />
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_should_close_after_successful_scan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_uploadingConfig_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/common_margin"
+                    android:text="@string/uploading_config" />
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_turn_off_uploader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_use_wifi_only"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.ziggeo.androidsdk.demo.ui.settings.widgets.SettingsSwitchItem
+                    android:id="@+id/sc_start_as_foreground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_sync_interval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sync_interval">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_sync_interval"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberSigned" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_save" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

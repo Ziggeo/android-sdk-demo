@@ -33,7 +33,7 @@ class App : Application() {
         initLogger()
         initToothpick()
         initAppScope()
-        initCrashlitics()
+//        initCrashlitics()
     }
 
     private fun initLogger() {

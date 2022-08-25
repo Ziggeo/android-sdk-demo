@@ -38,12 +38,62 @@
     <string name="message_recordings_list_empty">There are no recordings.\nPress plus button to add some.</string>
 
     <!-- Settings screen -->
-    <string name="settings_header">Settings</string>
+    <string name="settings_header">Common settings</string>
+    <string name="common_settings">Common \n settings</string>
     <string name="hint_start_delay">Start delay (seconds)</string>
     <string name="btn_save">Save</string>
     <string name="successfully_saved_message">Saved</string>
     <string name="use_custom_camera">Use custom camera</string>
     <string name="use_custom_player">Use custom player</string>
+    <string name="use_lur_mode">Use blur mode</string>
+    <string name="show_face_outline">Show face outline</string>
+    <string name="hint_max_duration">Max duration (seconds)</string>
+    <string name="video_quality_high">Quality high</string>
+    <string name="video_quality_medium">Quality medium</string>
+    <string name="video_quality_low">Quality low</string>
+    <string name="video_quality">Video quality</string>
+    <string name="is_live_streaming">Is live streaming</string>
+    <string name="autostart_recording">Autostart recording</string>
+    <string name="image_only_Mode">Image only mode</string>
+    <string name="send_immediately">Send immediately</string>
+    <string name="disable_camera_switch">Disable camera switch</string>
+    <string name="enable_cover_shot">Enable cover shot</string>
+    <string name="confirm_stop_recording">Confirm stop Recording</string>
+    <string name="video_bitrate">Video bitrate(Kbps)</string>
+    <string name="audio_bitrate">Audio bitrate(Kbps)</string>
+    <string name="audio_sample_rate">Audio sample rate(KHz)</string>
+    <string name="facing_back">Facing back</string>
+    <string name="facing_front">Facing front</string>
+    <string name="facing">Use facing</string>
+    <string name="recorder_Config">Recorder config:</string>
+    <string name="recorder_config_title">Recorder config</string>
+    <string name="recorder_config">Recorder\n\tconfig </string>
+    <string name="show_subtitles">Show subtitles</string>
+    <string name="player_config_title">Player config</string>
+    <string name="player_config">Player \nconfig</string>
+    <string name="is_muted">Is muted:</string>
+    <string name="is_caching_enabled">Is caching enabled</string>
+    <string name="should_preload">Preload</string>
+    <string name="ads_uri">adsUri</string>
+    <string name="file_selector_Config">File selector config :</string>
+    <string name="should_allow_multiple_selection">Allow multiple selection</string>
+    <string name="media_type_video">Video</string>
+    <string name="media_type_audio">Audio</string>
+    <string name="media_type_image">Image</string>
+    <string name="media_type">Media Type</string>
+    <string name="qr_scanner_config">Qr scanner config:</string>
+    <string name="close_after_successful_scan">Close after successful Scan</string>
+    <string name="uploading_config">Uploading config:</string>
+    <string name="turn_off_uploader">Turn off uploader</string>
+    <string name="use_wifi_only">Use wifi only</string>
+    <string name="start_as_foreground">Start as foreground</string>
+    <string name="sync_interval">Sync interval</string>
+    <string name="stop_recording_confirmation_dialog_config">
+        Stop recording confirmation dialog config:</string>
+    <string name="title_text">Title text</string>
+    <string name="mes_text">Mes text</string>
+    <string name="pos_btn_text">Pos btn text</string>
+    <string name="neg_btn_text">Neg btn text</string>
 
     <!-- Log screen -->
     <string name="log_header">Log</string>

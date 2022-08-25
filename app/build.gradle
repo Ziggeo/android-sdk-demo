@@ -12,9 +12,9 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    def sdk = 30
+    def sdk = 31
     compileSdkVersion sdk
-    buildToolsVersion "29.0.3"
+    buildToolsVersion "30.0.3"
 
     lintOptions {
         abortOnError false
@@ -22,17 +22,17 @@ android {
 
     defaultConfig {
         applicationId "com.ziggeo.androidsdk.demo"
-        minSdkVersion 16
+        minSdkVersion 26
         targetSdkVersion sdk
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        versionCode 18
-        versionName "1.3.0"
+        versionCode 19
+        versionName "1.3.1"
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true
         buildConfigField("String", "APP_TOKEN", "\"" + System.getenv("app_token") + "\"")
         setProperty("archivesBaseName", "androidKotlin-v" + versionName + "_" + getDate())
 
-        missingDimensionStrategy "dim", "androidnative" // for internal development
+        missingDimensionStrategy "dim", "androidnativeblur" // for internal development
     }
     signingConfigs {
         debug {}
@@ -63,18 +63,25 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    ndkVersion '22.0.7026061'
 }
 dependencies {
+    //todo delete it
+//    implementation 'com.github.ZiggeoJitpackService:android-sdk-androidnativeblur:2.6.4.2'
     //Ziggeo
-    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.4.0")
+    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.6.4")
+            {
+                transitive = true
+            }
 //    implementation project(":sdk") // for internal development
 
     //Support
     implementation "androidx.appcompat:appcompat:1.2.0"
-    implementation "com.google.android.material:material:1.2.1"
+    implementation "com.google.android.material:material:1.6.1"
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.constraintlayout:constraintlayout:2.0.4"
+    implementation "androidx.multidex:multidex:2.0.1"
 
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -147,4 +154,4 @@ static def getDate() {
     return new Date().format('HH.mm.ss_dd-MM-YYYY')
 }
 
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
