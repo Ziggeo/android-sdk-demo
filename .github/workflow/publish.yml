@@ -1,8 +1,6 @@
 name: publish-github-package
 
-on:
-  push:
-    branches: [ 'feature_demo_publish_cicd' ]
+on: [ push ]
 
 jobs:
   build-and-publish:
