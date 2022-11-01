@@ -68,7 +68,7 @@ android {
 dependencies {
     //Ziggeo
 
-    implementation ('com.ziggeo.androidsdk:androidnativeblur:2.6.6.rc1') {
+    implementation ('com.ziggeo.androidsdk:androidnativeblur:2.6.8') {
         transitive = true
     }
 //    implementation("com.github.ZiggeoJitpackService:Android-SDK:2.6.5_no_blur")
